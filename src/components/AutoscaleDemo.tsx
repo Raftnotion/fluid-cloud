@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Zap, TrendingUp } from 'lucide-react';
-import FluidSphere from './FluidSphere';
+import LiveTerminal from './LiveTerminal';
 
 interface AutoscaleDemoProps {
     trafficScale: number;
@@ -41,24 +41,26 @@ const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficS
                     </div>
                 </div>
 
-                <div className="relative p-12 bg-[#0a0a0a] border border-[#333333] rounded-[32px] shadow-2xl overflow-hidden min-h-[600px] flex flex-col justify-between">
-                    {/* Internal Interactive Visual */}
-                    <div className="absolute inset-0 opacity-40">
-                        <FluidSphere trafficScale={trafficScale} ambient={false} />
-                    </div>
-
-                    <div className="relative z-10 flex justify-between items-center mb-10">
+                <div className="relative p-6 bg-[#0a0a0a] border border-[#333333] rounded-[32px] shadow-2xl overflow-hidden min-h-[600px] flex flex-col">
+                    {/* Terminal Header */}
+                    <div className="flex justify-between items-center mb-4">
                         <div className="flex flex-col">
-                            <span className="text-[10px] uppercase tracking-[0.3em] text-[#333] font-bold">Node Identity</span>
+                            <span className="text-[10px] uppercase tracking-[0.3em] text-[#555] font-bold">Cluster Monitor</span>
                             <span className="text-[#F2F2F2] font-bold">WPFYE-LON-042</span>
                         </div>
-                        <TrendingUp className={`w-8 h-8 transition-colors duration-500 ${trafficScale > 0.8 ? 'text-red-500 animate-pulse' : 'text-[#CCFF00]'}`} />
+                        <TrendingUp className={`w-6 h-6 transition-colors duration-500 ${trafficScale > 0.8 ? 'text-red-500 animate-pulse' : 'text-[#CCFF00]'}`} />
                     </div>
 
-                    <div className="relative z-10 mt-auto bg-[#050505]/80 backdrop-blur-xl p-8 rounded-2xl border border-[#333]">
-                        <div className="mb-8">
-                            <label className="block text-sm uppercase tracking-widest text-[#888888] mb-6 font-bold">
-                                Slide to Flood Server Traffic
+                    {/* Live Terminal */}
+                    <div className="flex-1 mb-6">
+                        <LiveTerminal trafficScale={trafficScale} />
+                    </div>
+
+                    {/* Controls */}
+                    <div className="bg-[#050505]/80 backdrop-blur-xl p-6 rounded-2xl border border-[#333]">
+                        <div className="mb-6">
+                            <label className="block text-sm uppercase tracking-widest text-[#888888] mb-4 font-bold">
+                                Simulate Traffic Load
                             </label>
                             <input
                                 type="range"
@@ -69,29 +71,37 @@ const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficS
                                 onChange={(e) => setTrafficScale(parseFloat(e.target.value))}
                                 className="w-full h-3 bg-[#1a1a1a] rounded-lg appearance-none cursor-pointer accent-[#CCFF00]"
                             />
-                            <div className="flex justify-between mt-4">
-                                <span className="text-[10px] font-bold text-[#333] uppercase">Idle State</span>
-                                <span className="text-xl font-black text-[#CCFF00] font-['Clash_Display']">{(trafficScale * 100).toFixed(0)}% Load</span>
-                                <span className="text-[10px] font-bold text-[#333] uppercase">Peak Stress</span>
+                            <div className="flex justify-between mt-3">
+                                <span className="text-[10px] font-bold text-[#444] uppercase">Idle</span>
+                                <span className="text-lg font-black text-[#CCFF00] font-['Clash_Display']">{(trafficScale * 100).toFixed(0)}% Load</span>
+                                <span className="text-[10px] font-bold text-[#444] uppercase">Peak</span>
                             </div>
                         </div>
 
-                        <div className="space-y-4">
-                            <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest">
-                                <span className="text-[#888888]">CPU Cluster</span>
-                                <div className="w-48 h-2 bg-[#1a1a1a] rounded-full overflow-hidden border border-[#333]">
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider">
+                                    <span className="text-[#888888]">CPU</span>
+                                    <span className="text-[#CCFF00]">{(10 + trafficScale * 85).toFixed(0)}%</span>
+                                </div>
+                                <div className="h-2 bg-[#1a1a1a] rounded-full overflow-hidden border border-[#333]">
                                     <motion.div
-                                        className="h-full bg-[#CCFF00] shadow-[0_0_15px_rgba(204,255,0,0.5)]"
+                                        className="h-full bg-[#CCFF00] shadow-[0_0_10px_rgba(204,255,0,0.5)]"
                                         animate={{ width: `${10 + (trafficScale * 85)}%` }}
+                                        transition={{ duration: 0.3 }}
                                     />
                                 </div>
                             </div>
-                            <div className="flex justify-between items-center text-xs font-bold uppercase tracking-widest">
-                                <span className="text-[#888888]">RAM Buffer</span>
-                                <div className="w-48 h-2 bg-[#1a1a1a] rounded-full overflow-hidden border border-[#333]">
+                            <div className="space-y-2">
+                                <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider">
+                                    <span className="text-[#888888]">RAM</span>
+                                    <span className="text-[#CCFF00]">{(5 + trafficScale * 90).toFixed(0)}%</span>
+                                </div>
+                                <div className="h-2 bg-[#1a1a1a] rounded-full overflow-hidden border border-[#333]">
                                     <motion.div
-                                        className="h-full bg-[#CCFF00] shadow-[0_0_15px_rgba(204,255,0,0.5)]"
+                                        className="h-full bg-[#CCFF00] shadow-[0_0_10px_rgba(204,255,0,0.5)]"
                                         animate={{ width: `${5 + (trafficScale * 90)}%` }}
+                                        transition={{ duration: 0.3 }}
                                     />
                                 </div>
                             </div>
