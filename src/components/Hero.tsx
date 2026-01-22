@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useRef, useState, lazy, Suspense } from 'react';
+import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
-
-// Lazy load the heavy 3D component
-const FluidSphere = lazy(() => import('./FluidSphere'));
+import CSSGlobe from './CSSGlobe';
 
 // Reduced particles for better performance (8 instead of 15)
 const FIXED_PARTICLES = [
@@ -155,14 +153,12 @@ const Hero: React.FC = () => {
                 </motion.div>
             </div>
 
-            {/* Lazy loaded 3D Sphere with Suspense */}
+            {/* Lightweight CSS Globe */}
             <motion.div
                 style={{ y: yParallax }}
-                className="absolute inset-0 z-0 flex items-center justify-center opacity-40 mix-blend-screen"
+                className="absolute inset-0 z-0 flex items-center justify-center opacity-50"
             >
-                <Suspense fallback={<div className="w-full h-full" />}>
-                    <FluidSphere ambient={true} trafficScale={0.15} />
-                </Suspense>
+                <CSSGlobe size={500} color="#CCFF00" />
             </motion.div>
 
             {/* CTA Button */}

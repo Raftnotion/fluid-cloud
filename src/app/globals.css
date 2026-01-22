@@ -25,7 +25,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Clash Display', sans-serif;
 }
 
@@ -56,18 +61,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Lenis Smooth Scroll */
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
+
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
+
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
+
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
@@ -76,13 +86,45 @@ html.lenis, html.lenis body {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--void-black);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--tungsten);
   border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--muted-steel);
+}
+
+/* CSS Globe Animations */
+@keyframes spin-slow {
+  from {
+    transform: rotateY(0deg) rotateX(15deg);
+  }
+
+  to {
+    transform: rotateY(360deg) rotateX(15deg);
+  }
+}
+
+@keyframes spin-reverse-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow linear infinite;
 }
