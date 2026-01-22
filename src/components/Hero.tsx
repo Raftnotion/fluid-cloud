@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
-import CSSGlobe from './CSSGlobe';
+import FluidSphere from './FluidSphere';
 
 // Reduced particles for better performance (8 instead of 15)
 const FIXED_PARTICLES = [
@@ -153,12 +153,12 @@ const Hero: React.FC = () => {
                 </motion.div>
             </div>
 
-            {/* Lightweight CSS Globe */}
+            {/* Optimized Three.js Globe */}
             <motion.div
                 style={{ y: yParallax }}
-                className="absolute inset-0 z-0 flex items-center justify-center opacity-50"
+                className="absolute inset-0 z-0 flex items-center justify-center opacity-40"
             >
-                <CSSGlobe size={500} color="#CCFF00" />
+                <FluidSphere ambient={true} trafficScale={0.15} />
             </motion.div>
 
             {/* CTA Button */}
