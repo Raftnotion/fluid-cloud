@@ -155,9 +155,9 @@ const Hero: React.FC = () => {
                     <motion.img
                         src="/images/hero-centerpiece.png"
                         alt="WPFYE Core"
-                        className="w-[85%] md:w-[60%] lg:w-[45%] h-auto object-contain opacity-[0.25] mix-blend-screen brightness-50 contrast-125"
+                        className="w-[85%] md:w-[60%] lg:w-[45%] h-auto object-contain opacity-40 mix-blend-screen brightness-75 contrast-125"
                         initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 0.25 }}
+                        animate={{ scale: 1, opacity: 0.4 }}
                         transition={{ duration: 1.5, ease: "easeOut" }}
                     />
                     {/* Radial Glow Overlay to blend black edges */}
