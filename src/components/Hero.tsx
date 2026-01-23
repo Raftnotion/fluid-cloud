@@ -114,14 +114,14 @@ const Hero: React.FC = () => {
                 >
                     <div className="flex items-center gap-4 mb-4">
                         <div className="h-[1px] w-8 bg-[#CCFF00]/50" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.6em] text-[#CCFF00]">
+                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#CCFF00]">
                             built for peak performance
                         </span>
                         <div className="h-[1px] w-8 bg-[#CCFF00]/50" />
                     </div>
                 </motion.div>
 
-                <h1 className="text-[14vw] md:text-[9vw] font-bold font-['Clash_Display'] leading-[0.8] mb-12 text-[#F2F2F2] tracking-tighter">
+                <h1 className="text-[14vw] md:text-[9vw] font-bold font-['Clash_Display'] leading-[0.8] mb-12 text-[#F2F2F2]">
                     <motion.span
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}

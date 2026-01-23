@@ -58,7 +58,7 @@ const ComparisonSection: React.FC = () => {
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-8xl font-bold text-white tracking-tighter leading-[0.85] mb-8 font-['Clash_Display']"
+                        className="text-5xl md:text-8xl font-bold text-white leading-[0.85] mb-8 font-['Clash_Display']"
                     >
                         Beyond the <br /> <span className="text-[#333333]">cPanel Ceiling.</span>
                     </motion.h2>
@@ -86,7 +86,7 @@ const ComparisonSection: React.FC = () => {
                                 <div className="px-3 py-1 bg-[#CCFF00] text-black text-[9px] font-black rounded uppercase tracking-widest">
                                     ADVANCED
                                 </div>
-                                <h3 className="text-3xl font-bold text-[#CCFF00] uppercase flex flex-col md:flex-row items-center gap-x-3 tracking-tighter leading-none">
+                                <h3 className="text-3xl font-bold text-[#CCFF00] uppercase flex flex-col md:flex-row items-center gap-x-3 leading-none">
                                     <span>WPFYE</span>
                                     <span>panel</span>
                                 </h3>
@@ -95,7 +95,7 @@ const ComparisonSection: React.FC = () => {
                                 <div className="px-3 py-1 bg-[#1a1a1a] text-[#888] text-[9px] font-black rounded uppercase tracking-widest border border-[#333]">
                                     Traditional
                                 </div>
-                                <h3 className="text-2xl font-bold text-[#F2F2F2] uppercase tracking-tight">cPanel</h3>
+                                <h3 className="text-2xl font-bold text-[#F2F2F2] uppercase">cPanel</h3>
                             </div>
                         </div>
 

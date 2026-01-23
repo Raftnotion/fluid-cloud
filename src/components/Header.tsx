@@ -15,7 +15,7 @@ const Header: React.FC = () => {
                 <div className="w-8 h-8 bg-[#CCFF00] rounded-sm flex items-center justify-center">
                     <span className="text-black font-bold text-lg">W</span>
                 </div>
-                <span className="text-xl font-bold tracking-tighter font-['Clash_Display']">WPFYE</span>
+                <span className="text-xl font-bold font-['Clash_Display']">WPFYE</span>
             </div>
 
             <nav className="hidden md:flex items-center gap-8">

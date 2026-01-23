@@ -62,7 +62,7 @@ const PlanPhilosophy: React.FC = () => {
                         <motion.span
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            className="text-[#CCFF00] text-[10px] uppercase tracking-[0.5em] font-black mb-6 block"
+                            className="text-[#CCFF00] text-[10px] uppercase tracking-[0.3em] font-black mb-6 block"
                         >
                             The Paradigm Shift
                         </motion.span>
@@ -70,7 +70,7 @@ const PlanPhilosophy: React.FC = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="text-5xl md:text-8xl font-bold mb-8 text-[#F2F2F2] tracking-tighter leading-[0.9]"
+                            className="text-5xl md:text-8xl font-bold mb-8 text-[#F2F2F2] leading-[0.9]"
                         >
                             The Only Plan <br /> <span className="text-[#333333]">You'll Ever Need.</span>
                         </motion.h2>

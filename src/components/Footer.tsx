@@ -10,14 +10,14 @@ const Footer: React.FC = () => {
                             <div className="w-6 h-6 bg-[#CCFF00] rounded-sm flex items-center justify-center">
                                 <span className="text-black font-bold text-xs">W</span>
                             </div>
-                            <span className="text-xl font-bold tracking-tighter font-['Clash_Display']">WPFYE</span>
+                            <span className="text-xl font-bold font-['Clash_Display']">WPFYE</span>
                         </div>
                         <p className="text-[#888888] max-w-sm text-sm">
                             Complexity Removed. Power Unlimited. The world's first fluid cloud infrastructure built for the next generation of digital creators.
                         </p>
                         <div className="flex items-center gap-3">
                             <div className="w-2 h-2 bg-[#CCFF00] rounded-full animate-pulse" />
-                            <span className="text-[10px] text-[#888888] uppercase tracking-[0.2em]">Operational — Global Edge Network</span>
+                            <span className="text-[10px] text-[#888888] uppercase tracking-[0.3em]">Operational — Global Edge Network</span>
                         </div>
                     </div>
 

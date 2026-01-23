@@ -15,7 +15,7 @@ const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficS
         <section id="infrastructure" className="w-full py-40 px-8 flex flex-col items-center bg-[#050505]">
             <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div>
-                    <span className="text-[#CCFF00] text-[10px] uppercase tracking-[0.4em] font-bold mb-6 block">Real-time Stress Test</span>
+                    <span className="text-[#CCFF00] text-[10px] uppercase tracking-[0.3em] font-bold mb-6 block">Real-time Stress Test</span>
                     <h2 className="text-4xl md:text-6xl font-bold mb-8 text-[#F2F2F2] font-['Clash_Display'] leading-[0.9]">
                         Adaptive Pulse <br />Technology
                     </h2>

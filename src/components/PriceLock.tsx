@@ -50,7 +50,7 @@ const PriceLock: React.FC = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         className="text-center"
                     >
-                        <span className="text-[#333333] text-sm uppercase tracking-[0.4em] mb-4 block">
+                        <span className="text-[#333333] text-sm uppercase tracking-[0.3em] mb-4 block">
                             {tier === 0 ? "Billed Annually" : `Billed every ${tier + 1} years`}
                         </span>
                         <div className="flex items-end gap-2 mb-2">
