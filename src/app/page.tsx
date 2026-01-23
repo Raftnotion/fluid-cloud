@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import AutoscaleDemo from "@/components/AutoscaleDemo";
 import ComparisonSection from "@/components/ComparisonSection";
+import Testimonials from "@/components/Testimonials";
 import PlanPhilosophy from "@/components/PlanPhilosophy";
 import PriceLock from "@/components/PriceLock";
 import GiftSection from "@/components/GiftSection";
@@ -39,6 +40,8 @@ export default function Home() {
                 />
 
                 <ComparisonSection />
+
+                <Testimonials />
 
                 <PlanPhilosophy />
 
