@@ -11,7 +11,7 @@ const PriceLock: React.FC = () => {
     const labels = ['1 Year', '2 Years', '3 Years (Locked)'];
 
     return (
-        <section className="w-full py-32 px-8 flex flex-col items-center bg-[#050505] relative overflow-hidden">
+        <section id="pricing" className="w-full py-32 px-8 flex flex-col items-center bg-[#050505] relative overflow-hidden">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#CCFF00]/5 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="max-w-4xl w-full text-center relative z-10">
