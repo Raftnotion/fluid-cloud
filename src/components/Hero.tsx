@@ -64,16 +64,16 @@ const Hero: React.FC = () => {
                     className="absolute rounded-full z-0 pointer-events-none"
                     style={{
                         left: `${particle.x}%`,
-                        width: particle.size,
-                        height: particle.size,
-                        background: 'rgba(204,255,0,0.6)',
-                        boxShadow: `0 0 ${particle.size * 3}px rgba(204,255,0,0.5)`,
+                        width: particle.size * 1.5,
+                        height: particle.size * 1.5,
+                        background: 'rgba(204,255,0,0.9)',
+                        boxShadow: `0 0 ${particle.size * 6}px rgba(204,255,0,0.7)`,
                         willChange: 'transform, opacity',
                         z: 5, // Above the centerpiece image
                     }}
                     animate={{
                         y: ["100vh", "-10vh"],
-                        opacity: [0, 0.8, 0.8, 0],
+                        opacity: [0, 1, 1, 0],
                     }}
                     transition={{
                         duration: particle.duration,
@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
                     transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute bottom-0 left-[-10%] right-[-10%] h-full"
                     style={{
-                        background: 'radial-gradient(ellipse 80% 50% at 50% 100%, rgba(204,255,0,0.06), transparent 60%)',
+                        background: 'radial-gradient(ellipse 80% 50% at 50% 100%, rgba(204,255,0,0.18), transparent 75%)',
                         willChange: 'transform',
                     }}
                 />
