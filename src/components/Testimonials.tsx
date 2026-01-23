@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Star, Quote, CheckCircle2 } from 'lucide-react';
+import { Star, Quote, CheckCircle2, ArrowUpRight } from 'lucide-react';
 
 const testimonials = [
     {
@@ -103,6 +103,24 @@ const Testimonials: React.FC = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Read More Link */}
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="mt-16 flex justify-center"
+                >
+                    <a
+                        href="https://hostadvice.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center gap-2 text-[#888] hover:text-[#CCFF00] transition-colors font-bold text-sm uppercase tracking-[0.2em]"
+                    >
+                        Read more reviews on HostAdvice
+                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </a>
+                </motion.div>
             </div>
         </section>
     );
