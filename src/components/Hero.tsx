@@ -3,16 +3,30 @@
 import React, { useRef } from 'react';
 import { motion, useTransform, useScroll } from 'framer-motion';
 
-// Reduced particles for better performance (8 instead of 15)
+// Increased particles for a richer visual effect (22 particles)
 const FIXED_PARTICLES = [
-    { id: 0, x: 10, size: 2, duration: 12, delay: 0 },
-    { id: 1, x: 25, size: 2.5, duration: 10, delay: 1.5 },
-    { id: 2, x: 40, size: 2, duration: 11, delay: 3 },
-    { id: 3, x: 55, size: 3, duration: 9, delay: 0.5 },
-    { id: 4, x: 70, size: 2.2, duration: 12, delay: 2 },
-    { id: 5, x: 85, size: 2.8, duration: 10, delay: 4 },
-    { id: 6, x: 30, size: 2, duration: 11, delay: 2.5 },
-    { id: 7, x: 60, size: 2.5, duration: 10, delay: 1 },
+    { id: 0, x: 5, size: 2, duration: 12, delay: 0 },
+    { id: 1, x: 15, size: 2.5, duration: 10, delay: 1.5 },
+    { id: 2, x: 25, size: 1.8, duration: 14, delay: 3 },
+    { id: 3, x: 35, size: 3, duration: 9, delay: 0.5 },
+    { id: 4, x: 45, size: 2.2, duration: 12, delay: 2 },
+    { id: 5, x: 55, size: 2.8, duration: 10, delay: 4 },
+    { id: 6, x: 65, size: 1.5, duration: 15, delay: 2.5 },
+    { id: 7, x: 75, size: 2.5, duration: 11, delay: 1 },
+    { id: 8, x: 85, size: 2, duration: 13, delay: 5 },
+    { id: 9, x: 95, size: 2.2, duration: 12, delay: 1.2 },
+    { id: 10, x: 12, size: 1.5, duration: 16, delay: 0.8 },
+    { id: 11, x: 28, size: 2.8, duration: 10, delay: 3.5 },
+    { id: 12, x: 42, size: 2, duration: 11, delay: 2.2 },
+    { id: 13, x: 58, size: 2.5, duration: 14, delay: 1.8 },
+    { id: 14, x: 72, size: 1.8, duration: 12, delay: 4.2 },
+    { id: 15, x: 88, size: 3, duration: 9, delay: 0.3 },
+    { id: 16, x: 3, size: 2.5, duration: 11, delay: 2.7 },
+    { id: 17, x: 97, size: 1.5, duration: 15, delay: 5.5 },
+    { id: 18, x: 50, size: 2, duration: 13, delay: 1.1 },
+    { id: 19, x: 20, size: 2.2, duration: 12, delay: 3.9 },
+    { id: 20, x: 80, size: 1.8, duration: 14, delay: 0.4 },
+    { id: 21, x: 40, size: 2.5, duration: 10, delay: 2.1 },
 ];
 
 const Hero: React.FC = () => {
