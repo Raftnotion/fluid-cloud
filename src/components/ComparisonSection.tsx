@@ -7,7 +7,7 @@ import { Check, X, Shield, Zap, Globe, Cpu } from 'lucide-react';
 const features = [
     { name: "Disk space", wpfye: "Unlimited", cpanel: "Hardware restricted", icon: <Zap className="w-4 h-4" /> },
     { name: "Bandwidth", wpfye: "Unlimited", cpanel: "Hardware restricted", icon: <Zap className="w-4 h-4" /> },
-    { name: "Autoscaling cloud platform", wpfye: true, cpanel: false, icon: <Zap className="w-4 h-4" /> },
+    { name: "Autoscaling RAM", wpfye: true, cpanel: false, icon: <Zap className="w-4 h-4" /> },
     { name: "Redundant web servers", wpfye: true, cpanel: false, icon: <Shield className="w-4 h-4" /> },
     { name: "Built-in replication & failover", wpfye: true, cpanel: false, icon: <Shield className="w-4 h-4" /> },
     { name: "Global CDN", wpfye: true, cpanel: false, icon: <Globe className="w-4 h-4" /> },
