@@ -7,8 +7,8 @@ import { Lock, ShieldCheck } from 'lucide-react';
 const PriceLock: React.FC = () => {
     const [tier, setTier] = useState<number>(2); // 0, 1, 2 corresponds to 1, 2, 3 years
 
-    const prices = [1299, 1099, 899];
-    const labels = ['1 Year', '2 Years', '3 Years'];
+    const prices = [899, 1798, 2697];
+    const labels = ['1 Year', '2 Years', '3 Years (Locked)'];
 
     return (
         <section className="w-full py-32 px-8 flex flex-col items-center bg-[#050505] relative overflow-hidden">
@@ -16,7 +16,7 @@ const PriceLock: React.FC = () => {
 
             <div className="max-w-4xl w-full text-center relative z-10">
                 <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#F2F2F2]">Freeze Time.</h2>
-                <p className="text-[#888888] mb-12 text-lg">Hosting prices inflate every quarter. With WPFYE, you lock your rate for life.</p>
+                <p className="text-[#888888] mb-12 text-lg">Hosting prices inflate every quarter. Lock your legacy rate with our 3-year plan.</p>
 
                 <div className="bg-[#0a0a0a] border border-[#333333] p-2 rounded-xl inline-flex gap-2 mb-16">
                     {labels.map((label, idx) => (
@@ -36,7 +36,7 @@ const PriceLock: React.FC = () => {
                             )}
                             {idx === 2 && (
                                 <span className="absolute -top-3 -right-2 px-2 py-0.5 bg-[#333333] text-[8px] text-[#CCFF00] rounded uppercase tracking-tighter border border-[#444]/50">
-                                    Best Value
+                                    Lifetime Lock
                                 </span>
                             )}
                         </button>
@@ -50,10 +50,12 @@ const PriceLock: React.FC = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         className="text-center"
                     >
-                        <span className="text-[#333333] text-sm uppercase tracking-[0.4em] mb-4 block">Starting from</span>
+                        <span className="text-[#333333] text-sm uppercase tracking-[0.4em] mb-4 block">
+                            {tier === 0 ? "Billed Annually" : `Billed every ${tier + 1} years`}
+                        </span>
                         <div className="flex items-end gap-2 mb-2">
                             <span className="text-7xl font-bold text-[#F2F2F2]">₹{prices[tier]}</span>
-                            <span className="text-[#888888] mb-3 text-xl">/yr</span>
+                            <span className="text-[#888888] mb-3 text-xl">{tier === 0 ? "/yr" : ` for ${tier + 1} yrs`}</span>
                         </div>
                     </motion.div>
 
@@ -63,11 +65,16 @@ const PriceLock: React.FC = () => {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
-                                className="mt-10 flex items-center gap-3 px-6 py-3 bg-[#CCFF00]/5 border border-[#CCFF00]/20 rounded-full"
+                                className="mt-10 flex flex-col items-center gap-2"
                             >
-                                <Lock className="w-4 h-4 text-[#CCFF00]" />
-                                <span className="text-[#CCFF00] text-sm font-bold">Inflation Protection Active</span>
-                                <ShieldCheck className="w-4 h-4 text-[#CCFF00]" />
+                                <div className="flex items-center gap-3 px-6 py-3 bg-[#CCFF00]/5 border border-[#CCFF00]/20 rounded-full">
+                                    <Lock className="w-4 h-4 text-[#CCFF00]" />
+                                    <span className="text-[#CCFF00] text-sm font-bold uppercase tracking-tight">3-Year Price Lock Active</span>
+                                    <ShieldCheck className="w-4 h-4 text-[#CCFF00]" />
+                                </div>
+                                <p className="text-[#888888] text-xs font-medium max-w-sm mt-2">
+                                    Exclusively for our 3-year partners: Your renewal price is fixed at ₹2697 every 3 years forever. While annual rates may increase, your legacy rate will never change.
+                                </p>
                             </motion.div>
                         )}
                     </AnimatePresence>
