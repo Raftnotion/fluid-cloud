@@ -138,7 +138,7 @@ const Hero: React.FC = () => {
             >
                 <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
                     <motion.img
-                        src="/images/hero-centerpiece.png"
+                        src="/images/hero-bg-widescreen.png"
                         alt="WPFYE Core"
                         className="absolute inset-0 w-full h-full object-cover opacity-20 md:opacity-30 mix-blend-screen"
                         initial={{ scale: 1.1, opacity: 0 }}
