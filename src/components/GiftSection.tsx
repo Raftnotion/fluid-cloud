@@ -48,7 +48,7 @@ const GiftSection: React.FC = () => {
 
                 <div className="space-y-8">
                     <div>
-                        <span className="text-[#CCFF00] font-bold uppercase tracking-widest text-xs mb-4 block">The Ultimate Bonus</span>
+                        <span className="text-[#CCFF00] font-bold uppercase tracking-[0.3em] text-xs mb-4 block">The Ultimate Bonus</span>
                         <h2 className="text-5xl font-bold text-[#F2F2F2] mb-6 leading-tight">We don't just host you. <br />We empower you.</h2>
                         <p className="text-[#888888] text-lg leading-relaxed">
                             Every WPFYE plan includes a genuine Elementor Pro license (Worth ₹4000+) for free.
