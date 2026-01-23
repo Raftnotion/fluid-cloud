@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
-import FluidSphere from './FluidSphere';
+import { motion, useTransform, useScroll } from 'framer-motion';
 
 // Reduced particles for better performance (8 instead of 15)
 const FIXED_PARTICLES = [
@@ -132,12 +131,28 @@ const Hero: React.FC = () => {
                 </motion.div>
             </div>
 
-            {/* Optimized Three.js Globe */}
+            {/* Premium Background Visual */}
             <motion.div
                 style={{ y: yParallax }}
-                className="absolute inset-0 z-0 flex items-center justify-center opacity-40"
+                className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none"
             >
-                <FluidSphere ambient={true} trafficScale={0.15} />
+                <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                    <motion.img
+                        src="/images/hero-centerpiece.png"
+                        alt="WPFYE Core"
+                        className="absolute inset-0 w-full h-full object-cover opacity-20 md:opacity-30 mix-blend-screen"
+                        initial={{ scale: 1.1, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 0.3 }}
+                        transition={{ duration: 2, ease: "easeOut" }}
+                    />
+                    {/* Centered Focus Overlay to blend edges and maintain text readability */}
+                    <div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                            background: 'radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 85%)'
+                        }}
+                    />
+                </div>
             </motion.div>
 
         </section>
