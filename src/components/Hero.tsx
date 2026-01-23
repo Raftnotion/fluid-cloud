@@ -121,7 +121,7 @@ const Hero: React.FC = () => {
                     </div>
                 </motion.div>
 
-                <h1 className="text-[14vw] md:text-[9vw] font-bold font-['Clash_Display'] leading-[0.8] mb-12 text-[#F2F2F2]">
+                <h1 className="text-[12vw] md:text-[7.5vw] font-bold font-['Clash_Display'] leading-[0.8] mb-12 text-[#F2F2F2]">
                     <motion.span
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
