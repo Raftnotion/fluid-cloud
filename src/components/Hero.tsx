@@ -52,9 +52,10 @@ const Hero: React.FC = () => {
                         left: `${particle.x}%`,
                         width: particle.size,
                         height: particle.size,
-                        background: 'rgba(204,255,0,0.5)',
-                        boxShadow: `0 0 ${particle.size * 2}px rgba(204,255,0,0.4)`,
+                        background: 'rgba(204,255,0,0.6)',
+                        boxShadow: `0 0 ${particle.size * 3}px rgba(204,255,0,0.5)`,
                         willChange: 'transform, opacity',
+                        z: 5, // Above the centerpiece image
                     }}
                     animate={{
                         y: ["100vh", "-10vh"],
@@ -131,25 +132,25 @@ const Hero: React.FC = () => {
                 </motion.div>
             </div>
 
-            {/* Premium Background Visual */}
+            {/* Premium Static Centerpiece */}
             <motion.div
                 style={{ y: yParallax }}
                 className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none"
             >
                 <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
                     <motion.img
-                        src="/images/hero-bg-widescreen.png"
+                        src="/images/hero-centerpiece.png"
                         alt="WPFYE Core"
-                        className="absolute inset-0 w-full h-full object-cover opacity-20 md:opacity-30 mix-blend-screen"
-                        initial={{ scale: 1.1, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 0.3 }}
-                        transition={{ duration: 2, ease: "easeOut" }}
+                        className="w-[85%] md:w-[60%] lg:w-[45%] h-auto object-contain opacity-40 mix-blend-screen brightness-75 contrast-125"
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 0.4 }}
+                        transition={{ duration: 1.5, ease: "easeOut" }}
                     />
-                    {/* Centered Focus Overlay to blend edges and maintain text readability */}
+                    {/* Radial Glow Overlay to blend black edges */}
                     <div
                         className="absolute inset-0 pointer-events-none"
                         style={{
-                            background: 'radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 85%)'
+                            background: 'radial-gradient(circle at center, transparent 30%, black 75%)'
                         }}
                     />
                 </div>
