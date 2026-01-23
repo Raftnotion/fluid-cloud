@@ -17,31 +17,10 @@ const FIXED_PARTICLES = [
 ];
 
 const Hero: React.FC = () => {
-    const buttonRef = useRef<HTMLButtonElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
     const { scrollY } = useScroll();
     const yParallax = useTransform(scrollY, [0, 1000], [0, 300]);
-
-    // Magnetic Button Physics
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-    const springX = useSpring(mouseX, { damping: 25, stiffness: 150 });
-    const springY = useSpring(mouseY, { damping: 25, stiffness: 150 });
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!buttonRef.current) return;
-        const { left, top, width, height } = buttonRef.current.getBoundingClientRect();
-        const centerX = left + width / 2;
-        const centerY = top + height / 2;
-        mouseX.set((e.clientX - centerX) * 0.3);
-        mouseY.set((e.clientY - centerY) * 0.3);
-    };
-
-    const handleMouseLeave = () => {
-        mouseX.set(0);
-        mouseY.set(0);
-    };
 
     return (
         <section
@@ -161,30 +140,6 @@ const Hero: React.FC = () => {
                 <FluidSphere ambient={true} trafficScale={0.15} />
             </motion.div>
 
-            {/* CTA Button */}
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="mt-4 z-20 flex flex-col items-center gap-8"
-            >
-                <motion.button
-                    ref={buttonRef}
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={handleMouseLeave}
-                    style={{ x: springX, y: springY }}
-                    className="group relative px-16 py-8 bg-[#CCFF00] text-black font-bold text-xl rounded-full overflow-hidden transition-shadow shadow-[0_0_50px_rgba(204,255,0,0.2)] hover:shadow-[0_0_80px_rgba(204,255,0,0.4)]"
-                >
-                    <span className="relative z-10 flex items-center gap-3 tracking-[0.2em]">
-                        INITIATE DEPLOYMENT
-                    </span>
-                    <motion.div
-                        animate={{ x: ["-100%", "200%"] }}
-                        transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 4 }}
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
-                    />
-                </motion.button>
-            </motion.div>
         </section>
     );
 };
