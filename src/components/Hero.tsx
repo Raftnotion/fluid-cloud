@@ -173,9 +173,9 @@ const Hero: React.FC = () => {
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseLeave}
                     style={{ x: springX, y: springY }}
-                    className="group relative px-16 py-8 bg-[#CCFF00] text-black font-black text-xl rounded-full overflow-hidden transition-shadow shadow-[0_0_50px_rgba(204,255,0,0.2)] hover:shadow-[0_0_80px_rgba(204,255,0,0.4)]"
+                    className="group relative px-16 py-8 bg-[#CCFF00] text-black font-bold text-xl rounded-full overflow-hidden transition-shadow shadow-[0_0_50px_rgba(204,255,0,0.2)] hover:shadow-[0_0_80px_rgba(204,255,0,0.4)]"
                 >
-                    <span className="relative z-10 flex items-center gap-3 tracking-tighter">
+                    <span className="relative z-10 flex items-center gap-3 tracking-[0.2em]">
                         INITIATE DEPLOYMENT
                     </span>
                     <motion.div
