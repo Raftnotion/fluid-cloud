@@ -69,18 +69,7 @@ const Hero: React.FC = () => {
                 />
             ))}
 
-            {/* 3. Aurora / Wave Effect - Simplified */}
-            <div className="absolute bottom-0 left-0 right-0 h-[30%] z-0 pointer-events-none overflow-hidden">
-                <motion.div
-                    animate={{ x: ["-10%", "10%", "-10%"] }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute bottom-0 left-[-10%] right-[-10%] h-full"
-                    style={{
-                        background: 'radial-gradient(ellipse 80% 50% at 50% 100%, rgba(204,255,0,0.18), transparent 75%)',
-                        willChange: 'transform',
-                    }}
-                />
-            </div>
+
 
             {/* === CONTENT SECTION === */}
             <div className="max-w-6xl w-full text-center z-10">
