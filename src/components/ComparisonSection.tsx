@@ -2,7 +2,42 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, X, Shield, Zap, Globe, Cpu, LayoutGrid, Terminal, ShieldAlert } from 'lucide-react';
+import { Check, X, Shield, Zap, Globe, Cpu, LayoutGrid, Terminal, ShieldAlert, AlertTriangle } from 'lucide-react';
+
+const ResourceBar: React.FC<{ view: 'wpfye' | 'cpanel', delay: number }> = ({ view, delay }) => {
+    return (
+        <div className="w-full h-1 my-3 bg-[#111] rounded-full overflow-hidden relative">
+            <motion.div
+                initial={{ width: 0 }}
+                animate={{
+                    width: view === 'wpfye' ? "100%" : "99%",
+                    backgroundColor: view === 'wpfye' ? "#CCFF00" : "#881111",
+                }}
+                transition={{
+                    duration: 1,
+                    delay: delay,
+                    backgroundColor: { duration: 0.3 }
+                }}
+                className="h-full relative"
+            >
+                {view === 'wpfye' && (
+                    <motion.div
+                        animate={{ x: ["-100%", "100%"] }}
+                        transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                    />
+                )}
+                {view === 'cpanel' && (
+                    <motion.div
+                        animate={{ opacity: [1, 0.4, 1] }}
+                        transition={{ repeat: Infinity, duration: 0.2 }}
+                        className="absolute right-0 top-0 h-full w-2 bg-red-500 shadow-[0_0_10px_red]"
+                    />
+                )}
+            </motion.div>
+        </div>
+    );
+};
 
 const features = [
     { name: "Disk space", wpfye: "Unlimited", cpanel: "Hardware restricted", icon: <Zap className="w-4 h-4" /> },
@@ -79,17 +114,64 @@ const ComparisonSection: React.FC = () => {
                             />
                             <button
                                 onClick={() => setView('wpfye')}
-                                className={`relative z-10 px-6 py-2.5 text-[11px] font-black uppercase tracking-widest transition-colors duration-300 w-[150px] ${view === 'wpfye' ? 'text-black' : 'text-[#555]'}`}
+                                className={`relative z-10 px-6 py-2.5 text-[11px] font-black uppercase tracking-widest transition-colors duration-300 w-[150px] ${view === 'wpfye' ? 'text-black' : 'text-[#CCFF00]'}`}
                             >
                                 WPFYE Panel
                             </button>
                             <button
                                 onClick={() => setView('cpanel')}
-                                className={`relative z-10 px-6 py-2.5 text-[11px] font-black uppercase tracking-widest transition-colors duration-300 w-[170px] ${view === 'cpanel' ? 'text-black' : 'text-[#555]'}`}
+                                className={`relative z-10 px-6 py-2.5 text-[11px] font-black uppercase tracking-widest transition-colors duration-300 w-[170px] ${view === 'cpanel' ? 'text-black' : 'text-[#881111]'}`}
                             >
                                 Legacy cPanel
                             </button>
                         </div>
+                    </div>
+
+                    {/* --- THE CEILING / surge EFFECT --- */}
+                    <div className="absolute inset-x-0 -top-8 h-20 z-20 pointer-events-none overflow-visible">
+                        <AnimatePresence>
+                            {view === 'cpanel' ? (
+                                <motion.div
+                                    key="limit-line"
+                                    initial={{ opacity: 0, scaleX: 0 }}
+                                    animate={{ opacity: 1, scaleX: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="absolute top-1/2 left-0 right-0"
+                                >
+                                    <div className="h-0.5 bg-red-600 shadow-[0_0_15px_rgba(255,0,0,0.8)] relative">
+                                        <motion.div
+                                            animate={{ opacity: [1, 0, 1] }}
+                                            transition={{ repeat: Infinity, duration: 0.1 }}
+                                            className="absolute -top-6 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-red-600 text-white text-[8px] font-black rounded flex items-center gap-1"
+                                        >
+                                            <AlertTriangle size={10} /> LEGACY RESOURCE CEILING REACHED
+                                        </motion.div>
+                                    </div>
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    key="shatter"
+                                    initial={{ opacity: 1 }}
+                                    animate={{ opacity: 0 }}
+                                    className="absolute inset-0 flex items-center justify-center"
+                                >
+                                    {[...Array(12)].map((_, i) => (
+                                        <motion.div
+                                            key={i}
+                                            initial={{ x: 0, y: 0, rotate: 0 }}
+                                            animate={{
+                                                x: (Math.random() - 0.5) * 800,
+                                                y: (Math.random() - 0.5) * 400,
+                                                rotate: Math.random() * 360,
+                                                opacity: 0
+                                            }}
+                                            transition={{ duration: 0.8, ease: "easeOut" }}
+                                            className="absolute w-8 h-8 md:w-16 md:h-1 bg-red-600/50 blur-[2px]"
+                                        />
+                                    ))}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
 
                     {/* Feature Matrix Grid */}
@@ -103,8 +185,8 @@ const ComparisonSection: React.FC = () => {
                                     exit={{ opacity: 0, scale: 0.95 }}
                                     transition={{ duration: 0.4, delay: idx * 0.03 }}
                                     className={`relative p-6 rounded-2xl border transition-all duration-500 overflow-hidden ${view === 'wpfye'
-                                            ? 'bg-[#CCFF00]/[0.02] border-[#CCFF00]/20 hover:border-[#CCFF00]/50'
-                                            : 'bg-[#111]/30 border-[#222] grayscale opacity-60'
+                                        ? 'bg-[#CCFF00]/[0.02] border-[#CCFF00]/20 hover:border-[#CCFF00]/50'
+                                        : 'bg-[#111]/30 border-[#222] grayscale opacity-60'
                                         }`}
                                 >
                                     {/* System Identifier Overlay */}
@@ -136,9 +218,29 @@ const ComparisonSection: React.FC = () => {
                                             )}
                                         </div>
                                     </div>
-                                    <h4 className={`text-sm font-bold uppercase tracking-wider transition-colors ${view === 'wpfye' ? 'text-white' : 'text-[#444]'}`}>
+                                    <h4 className={`text-sm font-bold uppercase tracking-wider transition-colors ${view === 'wpfye' ? 'text-white' : 'text-[#881111]/80'}`}>
                                         {feature.name}
                                     </h4>
+
+                                    <ResourceBar view={view} delay={idx * 0.05} />
+
+                                    <div className="text-[10px] font-mono mt-2 transition-colors">
+                                        {view === 'wpfye' ? (
+                                            <motion.span
+                                                animate={{ opacity: [1, 0.5, 1] }}
+                                                transition={{ repeat: Infinity, duration: 2 }}
+                                                className="text-[#CCFF00]/60 uppercase tracking-widest flex items-center gap-1"
+                                            >
+                                                <div className="w-1 h-1 rounded-full bg-[#CCFF00] shadow-[0_0_5px_#CCFF00]" />
+                                                Fluid Scaling Active
+                                            </motion.span>
+                                        ) : (
+                                            <span className="text-red-900/40 uppercase tracking-widest flex items-center gap-1">
+                                                <div className="w-1 h-1 rounded-full bg-red-900/30" />
+                                                Resource Throttled
+                                            </span>
+                                        )}
+                                    </div>
                                 </motion.div>
                             ))}
                         </AnimatePresence>
