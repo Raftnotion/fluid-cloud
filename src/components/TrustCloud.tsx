@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const BRANDS = [
     { name: 'AWS', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg' },
@@ -13,40 +12,22 @@ const BRANDS = [
 ];
 
 const TrustCloud: React.FC = () => {
-    // Duplicate brands for seamless loop
-    const duplicatedBrands = [...BRANDS, ...BRANDS];
-
     return (
-        <div className="w-full py-12 bg-transparent relative z-20 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 mb-8 text-center">
-                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#333]">
-                    Infrastructural Partners
-                </span>
-            </div>
-
-            <div className="relative flex overflow-hidden">
-                <motion.div
-                    animate={{ x: ["0%", "-50%"] }}
-                    transition={{
-                        duration: 30,
-                        repeat: Infinity,
-                        ease: "linear"
-                    }}
-                    className="flex items-center gap-16 md:gap-24 whitespace-nowrap"
-                >
-                    {duplicatedBrands.map((brand, idx) => (
-                        <div
-                            key={`${brand.name}-${idx}`}
-                            className="flex items-center justify-center grayscale brightness-200 contrast-0 opacity-20 hover:opacity-100 transition-all duration-500"
-                        >
-                            <img
-                                src={brand.logo}
-                                alt={brand.name}
-                                className="h-6 md:h-8 w-auto object-contain"
-                            />
-                        </div>
+        <div className="bg-black py-24 sm:py-32 border-y border-white/5 relative z-20">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                <h2 className="text-center text-[10px] font-black uppercase tracking-[0.5em] text-[#333]">
+                    Trusted by the world&apos;s most innovative infrastructure teams
+                </h2>
+                <div className="mx-auto mt-12 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
+                    {BRANDS.map((brand) => (
+                        <img
+                            key={brand.name}
+                            src={brand.logo}
+                            alt={brand.name}
+                            className="col-span-2 max-h-8 w-full object-contain grayscale invert opacity-30 hover:opacity-100 transition-opacity lg:col-span-1"
+                        />
                     ))}
-                </motion.div>
+                </div>
             </div>
         </div>
     );
