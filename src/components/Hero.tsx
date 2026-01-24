@@ -188,20 +188,14 @@ const Hero: React.FC = () => {
                         src="/images/center-orb.png"
                         alt="WPFYE Core"
                         className="w-[85%] md:w-[60%] lg:w-[45%] h-auto object-contain z-20"
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 1, scale: 1 }}
                         animate={{
-                            opacity: 1,
                             rotate: 360
                         }}
                         transition={{
-                            rotate: { duration: 60, repeat: Infinity, ease: "linear" },
-                            opacity: { duration: 1.5, ease: "easeOut" },
-                            scale: { duration: 1.5, ease: "easeOut" }
+                            rotate: { duration: 60, repeat: Infinity, ease: "linear" }
                         }}
                     />
-
-                    {/* Focal Glow behind the orb */}
-                    <div className="absolute w-[60%] h-[60%] bg-[#CCFF00]/10 blur-[120px] rounded-full z-10 animate-pulse" />
                 </div>
             </motion.div>
 
