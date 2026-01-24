@@ -114,7 +114,10 @@ const Hero: React.FC = () => {
                     </div>
                 </motion.div>
 
-                <h1 className="text-[12vw] md:text-[7.5vw] font-bold font-['Clash_Display'] leading-[0.8] mb-12 text-[#F2F2F2]">
+                <h1
+                    className="text-[12vw] md:text-[7.5vw] font-bold font-['Clash_Display'] leading-[0.8] mb-12 text-[#F2F2F2] relative"
+                    style={{ textShadow: '0 10px 40px rgba(0,0,0,0.8)' }}
+                >
                     <motion.span
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -128,7 +131,7 @@ const Hero: React.FC = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                         className="block text-[#CCFF00]"
-                        style={{ textShadow: '0 0 40px rgba(204,255,0,0.3)' }}
+                        style={{ textShadow: '0 0 40px rgba(204,255,0,0.3), 0 10px 30px rgba(0,0,0,0.6)' }}
                     >
                         That Breathes.
                     </motion.span>
@@ -140,11 +143,22 @@ const Hero: React.FC = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="max-w-2xl mx-auto"
                 >
-                    <p className="text-lg md:text-xl text-[#888888] font-medium leading-relaxed tracking-tight mb-12">
+                    <p
+                        className="text-lg md:text-xl text-[#F2F2F2]/80 font-medium leading-relaxed tracking-tight mb-12"
+                        style={{ textShadow: '0 2px 10px rgba(0,0,0,0.9)' }}
+                    >
                         Engineered for high-intensity workloads. Our cloud fabric expands organically with your traffic, delivering peak performance without manual intervention.
                     </p>
                 </motion.div>
             </div>
+
+            {/* Contrast Enhancement Mask (Sits between BG and Text) */}
+            <div
+                className="absolute inset-0 z-[5] pointer-events-none"
+                style={{
+                    background: 'radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, transparent 70%)'
+                }}
+            />
 
             {/* --- MULTI-LAYERED CINEMATIC BACKGROUND --- */}
 
