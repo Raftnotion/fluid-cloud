@@ -41,13 +41,13 @@ export default function Home() {
                     setTrafficScale={setTrafficScale}
                 />
 
-                <ComparisonSection />
-
                 <Testimonials />
+
+                <PriceLock />
 
                 <PlanPhilosophy />
 
-                <PriceLock />
+                <ComparisonSection />
 
                 <GiftSection />
             </main>
