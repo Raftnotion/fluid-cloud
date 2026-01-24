@@ -13,51 +13,42 @@ const BRANDS = [
 ];
 
 const TrustCloud: React.FC = () => {
+    // Duplicate brands for seamless loop
+    const duplicatedBrands = [...BRANDS, ...BRANDS];
+
     return (
-        <section className="w-full py-20 bg-black border-y border-[#111] relative overflow-hidden">
-            {/* Background Texture */}
-            <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
-                style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #CCFF00 1px, transparent 0)', backgroundSize: '40px 40px' }}
-            />
-
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="flex flex-col items-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="flex items-center gap-4 mb-12"
-                    >
-                        <div className="h-px w-6 bg-[#CCFF00]/30" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#444]">
-                            Engineered on Trusted Infrastructure
-                        </span>
-                        <div className="h-px w-6 bg-[#CCFF00]/30" />
-                    </motion.div>
-
-                    <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-16 md:gap-x-20 opacity-40">
-                        {BRANDS.map((brand, idx) => (
-                            <motion.div
-                                key={brand.name}
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                whileHover={{ opacity: 1, scale: 1.05 }}
-                                className="grayscale hover:grayscale-0 transition-all duration-500 cursor-crosshair group"
-                            >
-                                <img
-                                    src={brand.logo}
-                                    alt={brand.name}
-                                    className="h-6 md:h-8 w-auto object-contain brightness-[0.8] group-hover:brightness-100 transition-all"
-                                />
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
+        <div className="w-full py-12 bg-transparent relative z-20 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6 mb-8 text-center">
+                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#333]">
+                    Infrastructural Partners
+                </span>
             </div>
-        </section>
+
+            <div className="relative flex overflow-hidden">
+                <motion.div
+                    animate={{ x: ["0%", "-50%"] }}
+                    transition={{
+                        duration: 30,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                    className="flex items-center gap-16 md:gap-24 whitespace-nowrap"
+                >
+                    {duplicatedBrands.map((brand, idx) => (
+                        <div
+                            key={`${brand.name}-${idx}`}
+                            className="flex items-center justify-center grayscale brightness-200 contrast-0 opacity-20 hover:opacity-100 transition-all duration-500"
+                        >
+                            <img
+                                src={brand.logo}
+                                alt={brand.name}
+                                className="h-6 md:h-8 w-auto object-contain"
+                            />
+                        </div>
+                    ))}
+                </motion.div>
+            </div>
+        </div>
     );
 };
 
