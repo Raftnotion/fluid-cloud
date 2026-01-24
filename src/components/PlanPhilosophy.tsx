@@ -2,7 +2,11 @@
 
 import React from 'react';
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
-import { Infinity, Zap, Terminal, Shield } from 'lucide-react';
+import {
+    Infinity, Zap, Terminal, Shield, HardDrive, Activity,
+    Database, Mail, ShieldCheck, Scaling, Boxes, Globe,
+    Layers, ShieldAlert, Search, ShoppingBag, Gauge, Network
+} from 'lucide-react';
 
 const BentoBox: React.FC<{ icon: React.ReactNode, title: string, desc: string, index: number }> = ({ icon, title, desc, index }) => {
     const mouseX = useMotionValue(0);
@@ -54,10 +58,29 @@ const BentoBox: React.FC<{ icon: React.ReactNode, title: string, desc: string, i
 };
 
 const PlanPhilosophy: React.FC = () => {
+    const features = [
+        { icon: <Infinity className="w-6 h-6" />, title: "Unlimited Websites", desc: "Host as many projects as you need without any restrictions." },
+        { icon: <HardDrive className="w-6 h-6" />, title: "Unlimited SSD Webspace", desc: "All-NVMe storage cluster for extreme read/write speeds." },
+        { icon: <Activity className="w-6 h-6" />, title: "Unlimited Bandwidth", desc: "No data caps. Our edge network handles any volume of traffic." },
+        { icon: <Database className="w-6 h-6" />, title: "Unlimited MySQL", desc: "Deploy countless databases with optimized InnoDB engines." },
+        { icon: <Mail className="w-6 h-6" />, title: "Business Emails", desc: "Unlimited mailboxes with 10GB dedicated space per user." },
+        { icon: <ShieldCheck className="w-6 h-6" />, title: "FREE SSL Certificates", desc: "Automated Let's Encrypt Wildcard SSL for every domain." },
+        { icon: <Scaling className="w-6 h-6" />, title: "Autoscaling Hosting", desc: "Resources expand in real-time based on your traffic load." },
+        { icon: <Boxes className="w-6 h-6" />, title: "80+ One-Click Apps", desc: "Deploy WordPress, Magento, and more in a single click." },
+        { icon: <Zap className="w-6 h-6" />, title: "Acceleration Suite", desc: "Integrated optimizations for PHP, images, and delivery." },
+        { icon: <Globe className="w-6 h-6" />, title: "FREE CDN", desc: "Global edge presence to serve content from the nearest node." },
+        { icon: <Layers className="w-6 h-6" />, title: "Edge Caching", desc: "Lightning fast object and page caching at the edge level." },
+        { icon: <ShieldAlert className="w-6 h-6" />, title: "1 Tbps+ DDoS Protection", desc: "Enterprise-grade mitigation against the largest attacks." },
+        { icon: <Search className="w-6 h-6" />, title: "Malware Scans", desc: "Real-time file monitoring and automatic threat removal." },
+        { icon: <ShoppingBag className="w-6 h-6" />, title: "Ecommerce Optimised", desc: "Fine-tuned environments for WooCommerce and Magento." },
+        { icon: <Gauge className="w-6 h-6" />, title: "No LVE Limits", desc: "Full CPU/RAM access without legacy resource throttling." },
+        { icon: <Network className="w-6 h-6" />, title: "Edge Infrastructure", desc: "Global redundant network with 99.9% uptime guarantee." },
+    ];
+
     return (
         <section id="platform" className="w-full py-40 px-8 flex flex-col items-center">
             <div className="max-w-7xl w-full p-[1px] bg-gradient-to-br from-[#333333] via-[#1a1a1a] to-[#333333] rounded-[32px] overflow-hidden shadow-2xl">
-                <div className="p-16 md:p-24 bg-[#050505] rounded-[31px]">
+                <div className="p-10 md:p-20 bg-[#050505] rounded-[31px]">
                     <div className="text-center mb-20">
                         <motion.span
                             initial={{ opacity: 0 }}
@@ -70,41 +93,26 @@ const PlanPhilosophy: React.FC = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="text-5xl md:text-8xl font-bold mb-8 text-[#F2F2F2] leading-[0.9]"
+                            className="text-4xl md:text-7xl font-bold mb-8 text-[#F2F2F2] leading-[0.9]"
                         >
                             The Only Plan <br /> <span className="text-[#333333]">You'll Ever Need.</span>
                         </motion.h2>
-                        <p className="text-[#888888] max-w-2xl mx-auto text-xl font-medium leading-relaxed">
+                        <p className="text-[#888888] max-w-2xl mx-auto text-lg font-medium leading-relaxed">
                             We've stripped away the noise of tiered pricing. One industrial-grade architecture,
                             unlocked for every project you dream of.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <BentoBox
-                            index={0}
-                            icon={<Infinity className="w-6 h-6" />}
-                            title="Uncapped Bandwidth"
-                            desc="Scale your content globally without worrying about monthly transfer limits."
-                        />
-                        <BentoBox
-                            index={1}
-                            icon={<Zap className="w-6 h-6" />}
-                            title="Edge Caching"
-                            desc="Proprietary object caching stored on SSD nodes at the internet's edge."
-                        />
-                        <BentoBox
-                            index={2}
-                            icon={<Terminal className="w-6 h-6" />}
-                            title="WP/Linux Hybrid"
-                            desc="Optimized PHP runtimes alongside standard Linux environments."
-                        />
-                        <BentoBox
-                            index={3}
-                            icon={<Shield className="w-6 h-6" />}
-                            title="Fortified Stack"
-                            desc="Wildcard SSL and multi-layered CDN security provided out of the box."
-                        />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                        {features.map((feature, i) => (
+                            <BentoBox
+                                key={i}
+                                index={i}
+                                icon={feature.icon}
+                                title={feature.title}
+                                desc={feature.desc}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
