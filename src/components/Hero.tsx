@@ -146,34 +146,65 @@ const Hero: React.FC = () => {
                 </motion.div>
             </div>
 
-            {/* Premium Static Centerpiece with Breathing Animation */}
+            {/* --- MULTI-LAYERED CINEMATIC BACKGROUND --- */}
+
+            {/* Layer 1: Stealth Server Room Background */}
+            <motion.div
+                style={{ y: useTransform(scrollY, [0, 1000], [0, 200]) }}
+                className="absolute inset-0 z-0 pointer-events-none"
+            >
+                <img
+                    src="/images/Image_202601242350.jpeg"
+                    alt="Environment"
+                    className="w-full h-full object-cover opacity-30 mix-blend-luminosity brightness-50 contrast-125"
+                />
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        background: 'radial-gradient(circle at center, transparent 10%, black 90%)'
+                    }}
+                />
+            </motion.div>
+
+            {/* Layer 2: Functional Grid Overlay */}
+            <div
+                className="absolute inset-0 z-0 pointer-events-none opacity-[0.05]"
+                style={{
+                    backgroundImage: `
+                        linear-gradient(rgba(204,255,0,0.1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(204,255,0,0.1) 1px, transparent 1px)
+                    `,
+                    backgroundSize: '80px 80px',
+                }}
+            />
+
+            {/* Layer 3: Floating Transparent Orb with Orbital Animation */}
             <motion.div
                 style={{ y: yParallax }}
-                className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none"
+                className="absolute inset-0 z-1 flex items-center justify-center pointer-events-none"
             >
-                <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                <div className="relative w-full h-full flex items-center justify-center">
                     <motion.img
-                        src="/images/hero-centerpiece-v2.png"
+                        src="/images/center-orb.png"
                         alt="WPFYE Core"
-                        className="w-[90%] md:w-[65%] lg:w-[50%] h-auto object-contain mix-blend-screen"
-                        initial={{ scale: 0.9, opacity: 0 }}
+                        className="w-[85%] md:w-[60%] lg:w-[45%] h-auto object-contain z-20"
+                        initial={{ opacity: 0, scale: 0.8 }}
                         animate={{
-                            scale: [1, 1.03, 1],
-                            opacity: [0.4, 0.5, 0.4]
+                            opacity: 1,
+                            scale: [1, 1.05, 1],
+                            x: [0, 15, 0, -15, 0],
+                            y: [0, -10, 0, 10, 0],
+                            rotate: [0, 2, 0, -2, 0]
                         }}
                         transition={{
-                            scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-                            opacity: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-                            default: { duration: 1.5, ease: "easeOut" }
+                            duration: 12,
+                            repeat: Infinity,
+                            ease: "easeInOut"
                         }}
                     />
-                    {/* Radial Glow Overlay to blend black edges */}
-                    <div
-                        className="absolute inset-0 pointer-events-none"
-                        style={{
-                            background: 'radial-gradient(circle at center, transparent 20%, black 80%)'
-                        }}
-                    />
+
+                    {/* Focal Glow behind the orb */}
+                    <div className="absolute w-[60%] h-[60%] bg-[#CCFF00]/10 blur-[120px] rounded-full z-10 animate-pulse" />
                 </div>
             </motion.div>
 
