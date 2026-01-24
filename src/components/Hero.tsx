@@ -146,25 +146,32 @@ const Hero: React.FC = () => {
                 </motion.div>
             </div>
 
-            {/* Premium Static Centerpiece */}
+            {/* Premium Static Centerpiece with Breathing Animation */}
             <motion.div
                 style={{ y: yParallax }}
                 className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none"
             >
                 <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
                     <motion.img
-                        src="/images/hero-centerpiece.png"
+                        src="/images/hero-centerpiece-v2.png"
                         alt="WPFYE Core"
-                        className="w-[85%] md:w-[60%] lg:w-[45%] h-auto object-contain opacity-40 mix-blend-screen brightness-75 contrast-125"
+                        className="w-[90%] md:w-[65%] lg:w-[50%] h-auto object-contain mix-blend-screen"
                         initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 0.4 }}
-                        transition={{ duration: 1.5, ease: "easeOut" }}
+                        animate={{
+                            scale: [1, 1.03, 1],
+                            opacity: [0.4, 0.5, 0.4]
+                        }}
+                        transition={{
+                            scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                            opacity: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                            default: { duration: 1.5, ease: "easeOut" }
+                        }}
                     />
                     {/* Radial Glow Overlay to blend black edges */}
                     <div
                         className="absolute inset-0 pointer-events-none"
                         style={{
-                            background: 'radial-gradient(circle at center, transparent 30%, black 75%)'
+                            background: 'radial-gradient(circle at center, transparent 20%, black 80%)'
                         }}
                     />
                 </div>
