@@ -175,8 +175,8 @@ const ComparisonSection: React.FC = () => {
                                     exit={{ opacity: 0, scale: 0.95 }}
                                     transition={{ duration: 0.4, delay: idx * 0.03 }}
                                     className={`relative p-8 rounded-3xl border transition-all duration-500 overflow-hidden min-h-[180px] flex flex-col justify-center ${view === 'wpfye'
-                                            ? 'bg-[#050505] border-[#111] hover:border-[#CCFF00]/30'
-                                            : 'bg-[#080808] border-[#111] grayscale opacity-40'
+                                        ? 'bg-[#050505] border-[#111] hover:border-[#CCFF00]/30'
+                                        : 'bg-[#080808] border-[#111] grayscale opacity-40'
                                         }`}
                                 >
                                     <div className="flex items-start gap-5 mb-4">
@@ -187,21 +187,6 @@ const ComparisonSection: React.FC = () => {
                                             <h4 className={`text-xl font-bold font-['Clash_Display'] leading-none transition-colors ${view === 'wpfye' ? 'text-white' : 'text-[#444]'}`}>
                                                 {feature.name}
                                             </h4>
-                                            <div className="mt-1">
-                                                {view === 'wpfye' ? (
-                                                    typeof feature.wpfye === 'boolean' ? (
-                                                        <span className="text-[10px] font-black text-[#CCFF00] uppercase tracking-[0.2em]">Validated • Active</span>
-                                                    ) : (
-                                                        <span className="text-[#CCFF00] font-black uppercase text-[10px] tracking-[0.2em]">{feature.wpfye}</span>
-                                                    )
-                                                ) : (
-                                                    typeof feature.cpanel === 'boolean' ? (
-                                                        <span className="text-[#881111]/60 font-black uppercase text-[10px] tracking-[0.2em]">Incompatible • Legacy</span>
-                                                    ) : (
-                                                        <span className="text-[#444] font-black uppercase text-[10px] tracking-[0.2em]">{feature.cpanel}</span>
-                                                    )
-                                                )}
-                                            </div>
                                         </div>
                                     </div>
                                     <p className={`text-sm leading-relaxed transition-colors font-medium ${view === 'wpfye' ? 'text-[#888]' : 'text-[#222]'}`}>
