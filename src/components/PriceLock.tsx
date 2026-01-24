@@ -53,31 +53,57 @@ const PriceLock: React.FC = () => {
                         <span className="text-[#333333] text-sm uppercase tracking-[0.3em] mb-4 block">
                             {tier === 0 ? "Billed Annually" : `Billed every ${tier + 1} years`}
                         </span>
-                        <div className="flex items-end gap-2 mb-2">
+                        <div className="flex items-end justify-center gap-2 mb-2 relative">
+                            {/* Floating Gift Badge */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                className="absolute -right-24 top-0 hidden lg:flex flex-col items-start p-3 bg-[#CCFF00] rounded-lg rotate-12 shadow-[0_10px_30px_rgba(204,255,0,0.2)]"
+                            >
+                                <span className="text-[10px] font-black text-black uppercase leading-none mb-1">FREE Bonus</span>
+                                <span className="text-sm font-black text-black leading-none">Elementor Pro</span>
+                            </motion.div>
+
                             <span className="text-7xl font-bold text-[#F2F2F2]">₹{prices[tier]}</span>
                             <span className="text-[#888888] mb-3 text-xl">{tier === 0 ? "/yr" : ` for ${tier + 1} yrs`}</span>
                         </div>
                     </motion.div>
 
-                    <AnimatePresence mode="wait">
-                        {tier === 2 && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                                className="mt-10 flex flex-col items-center gap-2"
-                            >
-                                <div className="flex items-center gap-3 px-6 py-3 bg-[#CCFF00]/5 border border-[#CCFF00]/20 rounded-full">
-                                    <Lock className="w-4 h-4 text-[#CCFF00]" />
-                                    <span className="text-[#CCFF00] text-sm font-bold uppercase tracking-tight">3-Year Price Lock Active</span>
-                                    <ShieldCheck className="w-4 h-4 text-[#CCFF00]" />
+                    <div className="mt-12 flex flex-col items-center gap-6">
+                        {/* Universal Bonus Callout */}
+                        <div className="group relative">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-[#CCFF00]/0 via-[#CCFF00]/20 to-[#CCFF00]/0 blur-md opacity-0 group-hover:opacity-100 transition-all" />
+                            <div className="relative flex items-center gap-4 px-8 py-4 bg-[#111] border border-[#333] rounded-2xl">
+                                <div className="w-10 h-10 bg-[#CCFF00] rounded-xl flex items-center justify-center font-black text-black text-xl shadow-[0_0_20px_rgba(204,255,0,0.3)]">
+                                    E
                                 </div>
-                                <p className="text-[#888888] text-xs font-medium max-w-sm mt-2">
-                                    Exclusively for our 3-year partners: Your renewal price is fixed at ₹2697 every 3 years forever. While annual rates may increase, your legacy rate will never change.
-                                </p>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                                <div className="text-left">
+                                    <p className="text-[10px] font-bold text-[#CCFF00] uppercase tracking-widest mb-0.5">Free with any plan</p>
+                                    <p className="text-[#F2F2F2] font-bold">Elementor Pro License <span className="text-[#888] font-medium ml-1">(Worth ₹4000+)</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <AnimatePresence mode="wait">
+                            {tier === 2 && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    className="flex flex-col items-center gap-2"
+                                >
+                                    <div className="flex items-center gap-3 px-6 py-3 bg-[#CCFF00]/5 border border-[#CCFF00]/20 rounded-full">
+                                        <Lock className="w-4 h-4 text-[#CCFF00]" />
+                                        <span className="text-[#CCFF00] text-sm font-bold uppercase tracking-tight">3-Year Price Lock Active</span>
+                                        <ShieldCheck className="w-4 h-4 text-[#CCFF00]" />
+                                    </div>
+                                    <p className="text-[#888888] text-xs font-medium max-w-sm mt-1 text-center">
+                                        Your renewal price is fixed at ₹2697 every 3 years forever. Protect yourself from future inflation.
+                                    </p>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
                 </div>
             </div>
         </section>
