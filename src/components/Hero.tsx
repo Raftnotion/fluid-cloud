@@ -1,23 +1,27 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { motion, useTransform, useScroll } from 'framer-motion';
+import Image from 'next/image';
 
 // Enhanced particles for a richer atmospheric effect (50 particles)
-const FIXED_PARTICLES = Array.from({ length: 50 }).map((_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    size: Math.random() * 2 + 1,
-    duration: Math.random() * 10 + 10,
-    delay: Math.random() * 10,
-    drift: (Math.random() - 0.5) * 40 // Horizontal drift
-}));
-
 const Hero: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
-
     const { scrollY } = useScroll();
+
+    // Parallax & GPU Optimization
     const yParallax = useTransform(scrollY, [0, 1000], [0, 300]);
+    const bgParallax = useTransform(scrollY, [0, 1000], [0, 200]);
+
+    // Memoize particles to prevent re-generation on re-renders
+    const particles = useMemo(() => Array.from({ length: 50 }).map((_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        size: Math.random() * 2 + 1,
+        duration: Math.random() * 10 + 10,
+        delay: Math.random() * -10, // Randomized start position
+        drift: (Math.random() - 0.5) * 30
+    })), []);
 
     return (
         <section
@@ -29,20 +33,20 @@ const Hero: React.FC = () => {
 
             {/* 1. Static Grid Overlay */}
             <div
-                className="absolute inset-0 z-0 pointer-events-none"
+                className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]"
                 style={{
                     backgroundImage: `
-                        linear-gradient(rgba(204,255,0,0.03) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(204,255,0,0.03) 1px, transparent 1px)
+                        linear-gradient(#CCFF00 1px, transparent 1px),
+                        linear-gradient(90deg, #CCFF00 1px, transparent 1px)
                     `,
                     backgroundSize: '60px 60px',
-                    maskImage: 'radial-gradient(ellipse at center, black 20%, transparent 70%)',
-                    WebkitMaskImage: 'radial-gradient(ellipse at center, black 20%, transparent 70%)',
+                    maskImage: 'radial-gradient(circle at center, black 20%, transparent 80%)',
+                    WebkitMaskImage: 'radial-gradient(circle at center, black 20%, transparent 80%)',
                 }}
             />
 
-            {/* 2. Floating Particles - Enhanced Visibility & Drift */}
-            {FIXED_PARTICLES.map((particle) => (
+            {/* 2. Floating Particles - GPU Optimized */}
+            {particles.map((particle) => (
                 <motion.div
                     key={particle.id}
                     className="absolute rounded-full pointer-events-none"
@@ -50,15 +54,15 @@ const Hero: React.FC = () => {
                         left: `${particle.x}%`,
                         width: particle.size * 2,
                         height: particle.size * 2,
-                        background: 'rgba(204,255,0,0.95)',
-                        boxShadow: `0 0 ${particle.size * 10}px rgba(204,255,0,0.8), 0 0 ${particle.size * 20}px rgba(204,255,0,0.4)`,
+                        background: '#CCFF00',
+                        boxShadow: `0 0 ${particle.size * 10}px #CCFF00`,
                         willChange: 'transform, opacity',
-                        z: 6, // Above the centerpiece image layers
+                        z: 6,
                     }}
                     animate={{
                         y: ["110vh", "-10vh"],
-                        x: [`${particle.x}%`, `${particle.x + particle.drift}%`],
-                        opacity: [0, 1, 1, 0],
+                        x: [0, particle.drift],
+                        opacity: [0, 0.8, 0],
                     }}
                     transition={{
                         duration: particle.duration,
@@ -69,10 +73,8 @@ const Hero: React.FC = () => {
                 />
             ))}
 
-
-
             {/* === CONTENT SECTION === */}
-            <div className="max-w-6xl w-full text-center z-10">
+            <div className="max-w-6xl w-full text-center z-10 relative">
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -126,25 +128,29 @@ const Hero: React.FC = () => {
                 </motion.div>
             </div>
 
-            {/* Enhanced Contrast Mask (Stronger at center for readability) */}
+            {/* Contrast Enhancement Mask (GPU Optimized) */}
             <div
-                className="absolute inset-0 z-[5] pointer-events-none"
+                className="absolute inset-0 z-[5] pointer-events-none overflow-hidden"
                 style={{
-                    background: 'radial-gradient(circle at center, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 40%, transparent 80%)'
+                    background: 'radial-gradient(circle at center, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 40%, transparent 80%)',
+                    transform: 'translateZ(0)'
                 }}
             />
 
             {/* --- MULTI-LAYERED CINEMATIC BACKGROUND --- */}
 
-            {/* Layer 1: Stealth Server Room Background */}
+            {/* Layer 1: Stealth Server Room Background - Optimized LCP */}
             <motion.div
-                style={{ y: useTransform(scrollY, [0, 1000], [0, 200]) }}
+                style={{ y: bgParallax, transform: 'translateZ(0)' }}
                 className="absolute inset-0 z-0 pointer-events-none"
             >
-                <img
+                <Image
                     src="/images/Image_202601242350.jpeg"
-                    alt="Environment"
-                    className="w-full h-full object-cover opacity-50 mix-blend-luminosity brightness-75 contrast-110"
+                    alt="Infrastructure"
+                    fill
+                    priority
+                    className="object-cover opacity-50 mix-blend-luminosity brightness-75 contrast-110"
+                    sizes="100vw"
                 />
                 <div
                     className="absolute inset-0"
@@ -163,27 +169,31 @@ const Hero: React.FC = () => {
                         linear-gradient(90deg, rgba(204,255,0,0.1) 1px, transparent 1px)
                     `,
                     backgroundSize: '80px 80px',
+                    transform: 'translateZ(0)'
                 }}
             />
 
-            {/* Layer 3: Floating Transparent Orb with Orbital Animation */}
+            {/* Layer 3: Floating Transparent Orb - Priority Loaded */}
             <motion.div
-                style={{ y: yParallax }}
+                style={{ y: yParallax, transform: 'translateZ(0)' }}
                 className="absolute inset-0 z-1 flex items-center justify-center pointer-events-none"
             >
-                <div className="relative w-full h-full flex items-center justify-center">
-                    <motion.img
-                        src="/images/center-orb.png"
-                        alt="WPFYE Core"
-                        className="w-[85%] md:w-[60%] lg:w-[45%] h-auto object-contain z-20"
-                        initial={{ opacity: 1, scale: 1 }}
-                        animate={{
-                            rotate: 360
-                        }}
-                        transition={{
-                            rotate: { duration: 60, repeat: Infinity, ease: "linear" }
-                        }}
-                    />
+                <div className="relative w-[85%] md:w-[60%] lg:w-[45%] h-full flex items-center justify-center">
+                    <motion.div
+                        className="relative w-full aspect-square"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                        style={{ willChange: 'transform' }}
+                    >
+                        <Image
+                            src="/images/center-orb.png"
+                            alt="WPFYE Core"
+                            fill
+                            priority
+                            className="object-contain"
+                            sizes="(max-width: 768px) 85vw, (max-width: 1200px) 60vw, 45vw"
+                        />
+                    </motion.div>
                 </div>
             </motion.div>
 
