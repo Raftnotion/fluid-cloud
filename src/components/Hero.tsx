@@ -144,19 +144,19 @@ const Hero: React.FC = () => {
                     className="max-w-2xl mx-auto"
                 >
                     <p
-                        className="text-lg md:text-xl text-[#F2F2F2]/80 font-medium leading-relaxed tracking-tight mb-12"
-                        style={{ textShadow: '0 2px 10px rgba(0,0,0,0.9)' }}
+                        className="text-lg md:text-xl text-[#F2F2F2] font-semibold leading-relaxed tracking-tight mb-12"
+                        style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.6)' }}
                     >
                         Engineered for high-intensity workloads. Our cloud fabric expands organically with your traffic, delivering peak performance without manual intervention.
                     </p>
                 </motion.div>
             </div>
 
-            {/* Contrast Enhancement Mask (Sits between BG and Text) */}
+            {/* Enhanced Contrast Mask (Stronger at center for readability) */}
             <div
                 className="absolute inset-0 z-[5] pointer-events-none"
                 style={{
-                    background: 'radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, transparent 70%)'
+                    background: 'radial-gradient(circle at center, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 40%, transparent 80%)'
                 }}
             />
 
