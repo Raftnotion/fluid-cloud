@@ -10,6 +10,7 @@ import PlanPhilosophy from "@/components/PlanPhilosophy";
 import PriceLock from "@/components/PriceLock";
 import GiftSection from "@/components/GiftSection";
 import Footer from "@/components/Footer";
+import TrustCloud from "@/components/TrustCloud";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 export default function Home() {
@@ -33,6 +34,7 @@ export default function Home() {
 
             <main className="relative z-10">
                 <Hero />
+                <TrustCloud />
 
                 <AutoscaleDemo
                     trafficScale={trafficScale}
