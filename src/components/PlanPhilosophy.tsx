@@ -60,7 +60,7 @@ const BentoBox: React.FC<{ icon: React.ReactNode, title: string, desc: string, i
 const PlanPhilosophy: React.FC = () => {
     const features = [
         { icon: <Infinity className="w-6 h-6" />, title: "Unlimited Websites", desc: "Host as many projects as you need without any restrictions." },
-        { icon: <HardDrive className="w-6 h-6" />, title: "Unlimited SSD Webspace", desc: "All-NVMe storage cluster for extreme read/write speeds." },
+        { icon: <HardDrive className="w-6 h-6" />, title: "Unlimited SSD Webspace", desc: "High-performance SSD storage cluster for extreme read/write speeds." },
         { icon: <Activity className="w-6 h-6" />, title: "Unlimited Bandwidth", desc: "No data caps. Our edge network handles any volume of traffic." },
         { icon: <Database className="w-6 h-6" />, title: "Unlimited MySQL", desc: "Deploy countless databases with optimized InnoDB engines." },
         { icon: <Mail className="w-6 h-6" />, title: "Business Emails", desc: "Unlimited mailboxes with 10GB dedicated space per user." },
