@@ -41,32 +41,44 @@ const Testimonials: React.FC = () => {
                         </h2>
                     </div>
 
-                    {/* HostAdvice Badge Placeholder */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="bg-[#111] border border-[#222] p-6 rounded-2xl flex flex-col items-center gap-2 group hover:border-[#CCFF00]/30 transition-colors"
-                    >
-                        <div className="flex items-center gap-2 mb-1">
-                            <span className="text-white font-bold text-xl">HostAdvice</span>
-                            <div className="flex gap-0.5">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-3 h-3 fill-[#CCFF00] text-[#CCFF00]" />
-                                ))}
+                    {/* Badge and Logo Container */}
+                    <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-12">
+                        {/* HostAdvice Side Logo */}
+                        <motion.img
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            src="/images/HA-logo.png"
+                            alt="HostAdvice"
+                            className="h-12 md:h-16 w-auto opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                        />
+
+                        {/* HostAdvice Badge Placeholder */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            className="bg-[#111] border border-[#222] p-6 rounded-2xl flex flex-col items-center gap-2 group hover:border-[#CCFF00]/30 transition-colors"
+                        >
+                            <div className="flex items-center gap-2 mb-1">
+                                <span className="text-white font-bold text-xl">HostAdvice</span>
+                                <div className="flex gap-0.5">
+                                    {[...Array(5)].map((_, i) => (
+                                        <Star key={i} className="w-3 h-3 fill-[#CCFF00] text-[#CCFF00]" />
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <span className="text-3xl font-black text-[#CCFF00]">9.8</span>
-                            <div className="flex flex-col leading-none">
-                                <span className="text-[10px] text-[#888] uppercase tracking-widest font-bold">Overall</span>
-                                <span className="text-[10px] text-[#888] uppercase tracking-widest font-bold">Excellent</span>
+                            <div className="flex items-center gap-2">
+                                <span className="text-3xl font-black text-[#CCFF00]">9.8</span>
+                                <div className="flex flex-col leading-none">
+                                    <span className="text-[10px] text-[#888] uppercase tracking-widest font-bold">Overall</span>
+                                    <span className="text-[10px] text-[#888] uppercase tracking-widest font-bold">Excellent</span>
+                                </div>
                             </div>
-                        </div>
-                        <div className="mt-2 flex items-center gap-1.5 px-3 py-1 bg-[#CCFF00]/10 rounded-full">
-                            <CheckCircle2 className="w-3 h-3 text-[#CCFF00]" />
-                            <span className="text-[9px] text-[#CCFF00] font-bold uppercase tracking-widest">Verified 2024</span>
-                        </div>
-                    </motion.div>
+                            <div className="mt-2 flex items-center gap-1.5 px-3 py-1 bg-[#CCFF00]/10 rounded-full">
+                                <CheckCircle2 className="w-3 h-3 text-[#CCFF00]" />
+                                <span className="text-[9px] text-[#CCFF00] font-bold uppercase tracking-widest">Verified 2024</span>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
