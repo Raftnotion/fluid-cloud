@@ -43,14 +43,23 @@ const Testimonials: React.FC = () => {
 
                     {/* Badge and Logo Container */}
                     <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-12">
-                        {/* HostAdvice Side Logo */}
-                        <motion.img
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            src="/images/HA-logo.png"
-                            alt="HostAdvice"
-                            className="h-16 md:h-24 w-auto drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:scale-105 transition-transform duration-500"
-                        />
+                        {/* HostAdvice Side Logo with Grainy Texture Wrapper */}
+                        <div className="relative group">
+                            <motion.img
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                src="/images/HA-logo.png"
+                                alt="HostAdvice"
+                                className="h-16 md:h-24 w-auto drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:scale-105 transition-transform duration-500 relative z-10"
+                            />
+                            {/* In-element Noise Overlay for consistency */}
+                            <div
+                                className="absolute inset-0 z-20 pointer-events-none opacity-[0.15] mix-blend-overlay rounded-lg"
+                                style={{
+                                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+                                }}
+                            />
+                        </div>
 
                         {/* HostAdvice Badge Placeholder */}
                         <motion.div
