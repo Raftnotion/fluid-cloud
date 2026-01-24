@@ -49,7 +49,7 @@ const Testimonials: React.FC = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             src="/images/HA-logo.png"
                             alt="HostAdvice"
-                            className="h-12 md:h-16 w-auto opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                            className="h-16 md:h-24 w-auto drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:scale-105 transition-transform duration-500"
                         />
 
                         {/* HostAdvice Badge Placeholder */}
