@@ -156,7 +156,7 @@ const Hero: React.FC = () => {
                 <img
                     src="/images/Image_202601242350.jpeg"
                     alt="Environment"
-                    className="w-full h-full object-cover opacity-30 mix-blend-luminosity brightness-50 contrast-125"
+                    className="w-full h-full object-cover opacity-50 mix-blend-luminosity brightness-75 contrast-110"
                 />
                 <div
                     className="absolute inset-0"
