@@ -63,7 +63,7 @@ const PlanPhilosophy: React.FC = () => {
         { icon: <HardDrive className="w-6 h-6" />, title: "Unlimited SSD Webspace", desc: "High-performance SSD storage cluster for extreme read/write speeds." },
         { icon: <Activity className="w-6 h-6" />, title: "Unlimited Bandwidth", desc: "No data caps. Our edge network handles any volume of traffic." },
         { icon: <Database className="w-6 h-6" />, title: "Unlimited MySQL", desc: "Deploy countless databases with optimized InnoDB engines." },
-        { icon: <Mail className="w-6 h-6" />, title: "Business Emails", desc: "Unlimited mailboxes with 10GB dedicated space per user." },
+        { icon: <Mail className="w-6 h-6" />, title: "Business Emails", desc: "Create unlimited mailboxes with a 10GB storage limit per email account." },
         { icon: <ShieldCheck className="w-6 h-6" />, title: "FREE SSL Certificates", desc: "Automated Let's Encrypt Wildcard SSL for every domain." },
         { icon: <Scaling className="w-6 h-6" />, title: "Autoscaling Hosting", desc: "Resources expand in real-time based on your traffic load." },
         { icon: <Boxes className="w-6 h-6" />, title: "80+ One-Click Apps", desc: "Deploy WordPress, Magento, and more in a single click." },
