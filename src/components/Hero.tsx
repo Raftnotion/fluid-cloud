@@ -188,18 +188,15 @@ const Hero: React.FC = () => {
                         src="/images/center-orb.png"
                         alt="WPFYE Core"
                         className="w-[85%] md:w-[60%] lg:w-[45%] h-auto object-contain z-20"
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
                         animate={{
                             opacity: 1,
-                            scale: [1, 1.05, 1],
-                            x: [0, 15, 0, -15, 0],
-                            y: [0, -10, 0, 10, 0],
-                            rotate: [0, 2, 0, -2, 0]
+                            rotate: 360
                         }}
                         transition={{
-                            duration: 12,
-                            repeat: Infinity,
-                            ease: "easeInOut"
+                            rotate: { duration: 60, repeat: Infinity, ease: "linear" },
+                            opacity: { duration: 1.5, ease: "easeOut" },
+                            scale: { duration: 1.5, ease: "easeOut" }
                         }}
                     />
 
