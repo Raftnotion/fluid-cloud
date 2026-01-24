@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, X, Shield, Zap, Globe, Cpu, LayoutGrid, Terminal } from 'lucide-react';
+import { Check, X, Shield, Zap, Globe, Cpu, LayoutGrid, Terminal, ShieldAlert } from 'lucide-react';
 
 const features = [
     { name: "Disk space", wpfye: "Unlimited", cpanel: "Hardware restricted", icon: <Zap className="w-4 h-4" /> },
@@ -29,20 +29,37 @@ const ComparisonSection: React.FC = () => {
 
             <div className="max-w-6xl mx-auto relative z-10">
                 <div className="text-center mb-16">
-                    <motion.span
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        className="text-[#CCFF00] text-[10px] uppercase tracking-[0.3em] font-black mb-6 block"
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-2 px-3 py-1 border border-[#CCFF00]/30 rounded-full mb-8"
                     >
-                        Infrastructure Audit
-                    </motion.span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
+                        <span className="text-[#CCFF00] text-[10px] uppercase tracking-[0.3em] font-black">
+                            Engineering Report #042
+                        </span>
+                    </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl font-bold text-white leading-tight mb-8 font-['Clash_Display']"
+                        className="text-4xl md:text-7xl font-bold text-white leading-tight mb-8 font-['Clash_Display']"
                     >
                         Beyond the <span className="text-[#333]">cPanel Ceiling.</span>
                     </motion.h2>
+
+                    {/* The "Why" Narrative */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="max-w-3xl mx-auto p-6 border border-[#222] bg-[#111]/30 rounded-2xl mb-12 relative overflow-hidden group text-left sm:text-center"
+                    >
+                        <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+                            <ShieldAlert size={20} className="text-[#CCFF00]" />
+                        </div>
+                        <p className="text-sm md:text-base text-[#888] leading-relaxed">
+                            <span className="text-[#F2F2F2] font-bold">"Where is cPanel?"</span> It's a question we get often. The answer is simple: <span className="text-[#CCFF00]">Modern clouds shouldn't run on legacy software.</span> cPanel was built for single, static servers. To give you infinite autoscaling and ironclad security, we had to engineer a panel that speaks the language of the future.
+                        </p>
+                    </motion.div>
                 </div>
 
                 {/* --- Interactive Comparison Hub --- */}
@@ -103,7 +120,7 @@ const ComparisonSection: React.FC = () => {
                                             {view === 'wpfye' ? (
                                                 typeof feature.wpfye === 'boolean' ? (
                                                     <div className="flex items-center gap-1.5 text-[10px] font-black text-[#CCFF00] uppercase tracking-widest bg-[#CCFF00]/10 px-2 py-1 rounded">
-                                                        <Check size={12} strokeWidth={4} /> ENABLED
+                                                        <Check size={12} strokeWidth={4} /> FLUID
                                                     </div>
                                                 ) : (
                                                     <span className="text-[#CCFF00] font-black uppercase text-[10px] tracking-widest">{feature.wpfye}</span>
@@ -111,7 +128,7 @@ const ComparisonSection: React.FC = () => {
                                             ) : (
                                                 typeof feature.cpanel === 'boolean' ? (
                                                     <div className="flex items-center gap-1.5 text-[10px] font-black text-[#881111]/60 uppercase tracking-widest bg-[#881111]/5 px-2 py-1 rounded">
-                                                        <X size={12} strokeWidth={4} /> RESTRICTED
+                                                        <X size={12} strokeWidth={4} /> LEGACY
                                                     </div>
                                                 ) : (
                                                     <span className="text-[#444] font-black uppercase text-[10px] tracking-widest">{feature.cpanel}</span>
@@ -127,18 +144,27 @@ const ComparisonSection: React.FC = () => {
                         </AnimatePresence>
                     </div>
 
-                    {/* Bottom Industrial Note */}
-                    <div className="mt-12 flex items-center justify-between p-8 rounded-2xl border border-[#1a1a1a] bg-[#050505]/50">
-                        <div className="flex items-center gap-4">
-                            <div className={`w-2 h-2 rounded-full transition-all duration-1000 ${view === 'wpfye' ? 'bg-[#CCFF00] shadow-[0_0_10px_#CCFF00] scale-125' : 'bg-[#333]'}`} />
-                            <span className="text-[10px] font-mono text-[#444] uppercase tracking-[0.3em]">
-                                {view === 'wpfye' ? 'System Status: Optimal' : 'System Status: Legacy constraints active'}
-                            </span>
+                    {/* Bottom Industrial Note & Verdict */}
+                    <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="md:col-span-2 p-8 rounded-2xl border border-[#1a1a1a] bg-[#050505]/50 flex flex-col justify-center">
+                            <div className="flex items-center gap-4 mb-4">
+                                <div className={`w-2 h-2 rounded-full transition-all duration-1000 ${view === 'wpfye' ? 'bg-[#CCFF00] shadow-[0_0_10px_#CCFF00] scale-125' : 'bg-[#333]'}`} />
+                                <span className="text-[10px] font-mono text-[#444] uppercase tracking-[0.3em]">
+                                    {view === 'wpfye' ? 'System Integrity: Optimal' : 'System Integrity: Legacy Constraints Active'}
+                                </span>
+                            </div>
+                            <p className="text-xs font-mono text-[#555] uppercase tracking-widest leading-loose">
+                                {view === 'wpfye'
+                                    ? "WPFYE Panel is architected to handle 1,000% traffic spikes in seconds. No resource throttling, no legacy bottlenecks."
+                                    : "cPanel uses LVE limits that throttle your CPU/RAM when you need it most. Built for static hosts, not dynamic clouds."}
+                            </p>
                         </div>
-                        <div className="hidden md:flex gap-1">
-                            {[...Array(8)].map((_, i) => (
-                                <div key={i} className={`w-1 h-3 rounded-full transition-colors duration-500 ${view === 'wpfye' ? 'bg-[#CCFF00]/20' : 'bg-[#1a1a1a]'}`} />
-                            ))}
+
+                        <div className={`p-8 rounded-2xl border transition-all duration-500 flex flex-col items-center justify-center text-center ${view === 'wpfye' ? 'bg-[#CCFF00] text-black border-transparent shadow-[0_0_30px_rgba(204,255,0,0.2)]' : 'bg-[#111] text-[#444] border-[#222]'}`}>
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] mb-2">The Verdict</span>
+                            <span className="text-2xl font-bold font-['Clash_Display'] leading-none">
+                                {view === 'wpfye' ? "Engineered to Lead." : "Designed to Limit."}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -148,4 +174,3 @@ const ComparisonSection: React.FC = () => {
 };
 
 export default ComparisonSection;
-
