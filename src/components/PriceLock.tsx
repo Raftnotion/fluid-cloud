@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, ShieldCheck } from 'lucide-react';
+import { Lock, ShieldCheck, ArrowRight } from 'lucide-react';
 
 const PriceLock: React.FC = () => {
     const [tier, setTier] = useState<number>(2); // 0, 1, 2 corresponds to 1, 2, 3 years
@@ -54,32 +54,34 @@ const PriceLock: React.FC = () => {
                             {tier === 0 ? "Billed Annually" : `Billed every ${tier + 1} years`}
                         </span>
                         <div className="flex items-end justify-center gap-2 mb-2 relative">
-                            {/* Floating Gift Badge */}
-                            <motion.div
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                className="absolute -right-24 top-0 hidden lg:flex flex-col items-start p-3 bg-[#CCFF00] rounded-lg rotate-12 shadow-[0_10px_30px_rgba(204,255,0,0.2)]"
-                            >
-                                <span className="text-[10px] font-black text-black uppercase leading-none mb-1">FREE Bonus</span>
-                                <span className="text-sm font-black text-black leading-none">Elementor Pro</span>
-                            </motion.div>
-
                             <span className="text-7xl font-bold text-[#F2F2F2]">₹{prices[tier]}</span>
                             <span className="text-[#888888] mb-3 text-xl">{tier === 0 ? "/yr" : ` for ${tier + 1} yrs`}</span>
                         </div>
                     </motion.div>
 
                     <div className="mt-12 flex flex-col items-center gap-6">
-                        {/* Universal Bonus Callout */}
+                        {/* Enhanced Universal Bonus Callout */}
                         <div className="group relative">
                             <div className="absolute -inset-1 bg-gradient-to-r from-[#CCFF00]/0 via-[#CCFF00]/20 to-[#CCFF00]/0 blur-md opacity-0 group-hover:opacity-100 transition-all" />
-                            <div className="relative flex items-center gap-4 px-8 py-4 bg-[#111] border border-[#333] rounded-2xl">
-                                <div className="w-10 h-10 bg-[#CCFF00] rounded-xl flex items-center justify-center overflow-hidden shadow-[0_0_20px_rgba(204,255,0,0.3)]">
-                                    <img src="/images/elemntor.png" alt="Elementor" className="w-8 h-8 object-contain" />
-                                </div>
+                            <div className="relative flex items-center gap-5 px-10 py-5 bg-[#0a0a0a] border border-[#222] rounded-3xl shadow-2xl">
+                                <motion.div
+                                    animate={{
+                                        boxShadow: ["0 0 0px rgba(204,255,0,0)", "0 0 20px rgba(204,255,0,0.2)", "0 0 0px rgba(204,255,0,0)"]
+                                    }}
+                                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                    className="w-12 h-12 bg-[#CCFF00] rounded-2xl flex items-center justify-center overflow-hidden"
+                                >
+                                    <img src="/images/elemntor.png" alt="Elementor" className="w-9 h-9 object-contain" />
+                                </motion.div>
                                 <div className="text-left">
-                                    <p className="text-[10px] font-bold text-[#CCFF00] uppercase tracking-widest mb-0.5">Free with your plan</p>
-                                    <p className="text-[#F2F2F2] font-bold">Elementor Pro License <span className="text-[#888] font-medium ml-1">(Worth ₹4000+)</span></p>
+                                    <div className="flex items-center gap-2 mb-1.5">
+                                        <span className="text-[10px] font-black text-[#CCFF00] uppercase tracking-[0.2em] px-2 py-0.5 bg-[#CCFF00]/10 rounded-md">Bonus Included</span>
+                                        <span className="text-[11px] font-black text-black uppercase tracking-wider px-2 py-0.5 bg-[#CCFF00] rounded-md shadow-[0_0_15px_rgba(204,255,0,0.4)]">
+                                            Worth ₹7,500+
+                                        </span>
+                                    </div>
+                                    <p className="text-[#F2F2F2] font-bold text-lg leading-tight">Elementor Pro License</p>
+                                    <p className="text-[#888] text-xs mt-0.5">Automated deployment on your domain</p>
                                 </div>
                             </div>
                         </div>
@@ -103,6 +105,21 @@ const PriceLock: React.FC = () => {
                                 </motion.div>
                             )}
                         </AnimatePresence>
+
+                        <motion.button
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="group relative mt-4 px-12 py-5 bg-[#CCFF00] rounded-2xl flex items-center gap-3 overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.15)] hover:shadow-[0_25px_50px_rgba(204,255,0,0.25)] transition-all duration-300"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
+                            <span className="text-black font-black text-xl uppercase tracking-wider">Get Fluid Cloud now</span>
+                            <ArrowRight className="w-6 h-6 text-black group-hover:translate-x-1 transition-transform" />
+                        </motion.button>
+
+                        <div className="flex items-center gap-2 mt-4 text-[#444] text-[10px] uppercase tracking-widest font-bold">
+                            <Lock className="w-3 h-3" />
+                            <span>Secure Encrypted Checkout</span>
+                        </div>
                     </div>
                 </div>
             </div>
