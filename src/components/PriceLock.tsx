@@ -74,11 +74,11 @@ const PriceLock: React.FC = () => {
                         <div className="group relative">
                             <div className="absolute -inset-1 bg-gradient-to-r from-[#CCFF00]/0 via-[#CCFF00]/20 to-[#CCFF00]/0 blur-md opacity-0 group-hover:opacity-100 transition-all" />
                             <div className="relative flex items-center gap-4 px-8 py-4 bg-[#111] border border-[#333] rounded-2xl">
-                                <div className="w-10 h-10 bg-[#CCFF00] rounded-xl flex items-center justify-center font-black text-black text-xl shadow-[0_0_20px_rgba(204,255,0,0.3)]">
-                                    E
+                                <div className="w-10 h-10 bg-[#CCFF00] rounded-xl flex items-center justify-center overflow-hidden shadow-[0_0_20px_rgba(204,255,0,0.3)]">
+                                    <img src="/images/elemntor.png" alt="Elementor" className="w-8 h-8 object-contain" />
                                 </div>
                                 <div className="text-left">
-                                    <p className="text-[10px] font-bold text-[#CCFF00] uppercase tracking-widest mb-0.5">Free with any plan</p>
+                                    <p className="text-[10px] font-bold text-[#CCFF00] uppercase tracking-widest mb-0.5">Free with your plan</p>
                                     <p className="text-[#F2F2F2] font-bold">Elementor Pro License <span className="text-[#888] font-medium ml-1">(Worth ₹4000+)</span></p>
                                 </div>
                             </div>
