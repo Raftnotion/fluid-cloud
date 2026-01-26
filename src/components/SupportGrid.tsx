@@ -90,9 +90,9 @@ export default function SupportGrid() {
                                 {feature.description}
                             </p>
 
-                            <button className="mt-auto flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-[#555] group-hover:text-[#CCFF00] transition-all duration-300">
-                                {feature.cta}
-                                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-300" />
+                            <button className="mt-auto flex items-center justify-between w-full px-5 py-3 bg-[#111] border border-[#222] rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-[#F2F2F2] group-hover:border-[#CCFF00]/40 transition-all duration-300">
+                                <span>{feature.cta}</span>
+                                <ArrowRight className="w-3.5 h-3.5 text-[#555] group-hover:text-[#CCFF00] group-hover:translate-x-1 transition-transform duration-300" />
                             </button>
                         </motion.div>
                     ))}
