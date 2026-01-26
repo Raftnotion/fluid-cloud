@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
                             <h5 className="text-[#F2F2F2] font-bold text-sm mb-4 uppercase tracking-widest">Support</h5>
                             <ul className="space-y-3 text-sm text-[#888888]">
                                 <li><a href="#" className="hover:text-[#CCFF00] transition-colors">Help Center</a></li>
-                                <li><a href="#" className="hover:text-[#CCFF00] transition-colors">Contact</a></li>
+                                <li><a href="/contact" className="hover:text-[#CCFF00] transition-colors">Contact</a></li>
                                 <li><a href="#" className="hover:text-[#CCFF00] transition-colors">Privacy</a></li>
                             </ul>
                         </div>
