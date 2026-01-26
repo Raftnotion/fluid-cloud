@@ -44,7 +44,7 @@ const FEATURES = [
 
 export default function SupportGrid() {
     return (
-        <section className="w-full py-24 px-8 bg-[#050505] border-t border-[#111]">
+        <section id="support" className="w-full py-24 px-8 bg-[#050505] border-t border-[#111]">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
                     <div className="max-w-2xl">

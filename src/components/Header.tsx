@@ -19,7 +19,7 @@ const Header: React.FC = () => {
             </div>
 
             <nav className="hidden md:flex items-center gap-8">
-                {['Platform', 'Pricing', 'Infrastructure', 'Support'].map((item) => (
+                {['Infrastructure', 'Pricing', 'Support', 'FAQ'].map((item) => (
                     <a
                         key={item}
                         href={`#${item.toLowerCase()}`}
