@@ -33,17 +33,23 @@ const Footer: React.FC = () => {
                         <div>
                             <h5 className="text-[#F2F2F2] font-bold text-sm mb-4 uppercase tracking-widest">Company</h5>
                             <ul className="space-y-3 text-sm text-[#888888]">
-                                <li><a href="#" className="hover:text-[#CCFF00] transition-colors">About</a></li>
+                                <li><a href="/contact" className="hover:text-[#CCFF00] transition-colors">Contact</a></li>
                                 <li><a href="#" className="hover:text-[#CCFF00] transition-colors">Blog</a></li>
-                                <li><a href="#" className="hover:text-[#CCFF00] transition-colors">System Status</a></li>
+                                <li><a href="/status" className="hover:text-[#CCFF00] transition-colors">System Status</a></li>
                             </ul>
                         </div>
                         <div>
                             <h5 className="text-[#F2F2F2] font-bold text-sm mb-4 uppercase tracking-widest">Support</h5>
                             <ul className="space-y-3 text-sm text-[#888888]">
                                 <li><a href="#" className="hover:text-[#CCFF00] transition-colors">Help Center</a></li>
-                                <li><a href="#" className="hover:text-[#CCFF00] transition-colors">Contact</a></li>
-                                <li><a href="#" className="hover:text-[#CCFF00] transition-colors">Privacy</a></li>
+                                <li><a href="/contact" className="hover:text-[#CCFF00] transition-colors">Contact</a></li>
+                                <li><a href="/legal#privacy" className="hover:text-[#CCFF00] transition-colors">Privacy Policy</a></li>
+                                <li><a href="/legal#terms" className="hover:text-[#CCFF00] transition-colors">Terms of Service</a></li>
+                                <li><a href="/legal#aup" className="hover:text-[#CCFF00] transition-colors">Acceptable Use</a></li>
+                                <li><a href="/legal#refund" className="hover:text-[#CCFF00] transition-colors">Refund Policy</a></li>
+                                <li><a href="/legal#sla" className="hover:text-[#CCFF00] transition-colors">SLA Guarantee</a></li>
+                                <li><a href="/legal#dmca" className="hover:text-[#CCFF00] transition-colors">Abuse & DMCA</a></li>
+                                <li><a href="/legal#disclaimer" className="hover:text-[#CCFF00] transition-colors">Disclaimer</a></li>
                             </ul>
                         </div>
                     </div>
