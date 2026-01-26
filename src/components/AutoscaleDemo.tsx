@@ -28,7 +28,7 @@ const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficS
                             <Users className="w-8 h-8 text-[#CCFF00]" />
                             <div>
                                 <h4 className="font-bold text-xl text-[#F2F2F2] mb-1">Dynamic Capacity</h4>
-                                <p className="text-[#888888] leading-relaxed">From 10 visitors to 10 Million+. Absolute stability during massive viral spikes. No manual upgrades required.</p>
+                                <p className="text-[#888888] leading-relaxed">Handles every visitor automatically. Whether you have a few users or a huge crowd, your site stays online 24/7.</p>
                             </div>
                         </div>
                         <div className="p-8 border border-[#333333] rounded-xl bg-[#0a0a0a]/50 flex items-start gap-6 group hover:border-[#CCFF00]/30 transition-colors">
