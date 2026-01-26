@@ -24,6 +24,14 @@ const FAQS = [
     {
         question: "How does the '10 Million+' scaling really work?",
         answer: "It's automatic. Our Adaptive Pulse technology detects incoming traffic spikes in milliseconds and auto-injects CPU and RAM. Your site expands organically as your success grows, then contracts when things quiet down—all without you lifting a finger."
+    },
+    {
+        question: "Why don't you offer cPanel?",
+        answer: "cPanel is legacy technology that creates unnecessary overhead. To deliver our 'Fluid' autoscaling speed, we've built a custom, lightweight control environment. It’s cleaner, faster, and allows our infrastructure to breathe without the constraints of 20-year-old software."
+    },
+    {
+        question: "Where are your servers located? Do I need a local data center?",
+        answer: "Our core clusters are US-based for maximum security and hardware power. However, distance is irrelevant with our built-in Global Edge CDN. With 20+ edge locations—including Tokyo, Singapore, London, and Frankfurt—your site is served from the user's nearest city automatically. No extra setup, no Cloudflare needed."
     }
 ];
 
