@@ -50,8 +50,8 @@ const Footer: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-between items-center pt-12 border-t border-[#1a1a1a] gap-6 text-[10px] text-[#333333] uppercase tracking-[0.3em]">
-                    <p>© 2024 WPFYE Technology Group. All Rights Reserved.</p>
-                    <p>Powered by 20i Global Edge Network</p>
+                    <p>© 2026 WPFYE Technologies Pvt Ltd. All Rights Reserved.</p>
+                    <p>Internal Global Edge Network Infrastructure</p>
                     <div className="flex gap-4">
                         <a href="#" className="hover:text-[#888888] transition-colors">Twitter</a>
                         <a href="#" className="hover:text-[#888888] transition-colors">GitHub</a>

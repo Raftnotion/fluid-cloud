@@ -75,7 +75,7 @@ const Testimonials: React.FC = () => {
                             </div>
                             <div className="mt-2 flex items-center gap-1.5 px-3 py-1 bg-[#CCFF00]/10 rounded-full">
                                 <CheckCircle2 className="w-3 h-3 text-[#CCFF00]" />
-                                <span className="text-[9px] text-[#CCFF00] font-bold uppercase tracking-widest">Verified 2024</span>
+                                <span className="text-[9px] text-[#CCFF00] font-bold uppercase tracking-widest">Verified 2026</span>
                             </div>
                         </motion.div>
                     </div>
