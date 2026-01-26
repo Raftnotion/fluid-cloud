@@ -2,38 +2,43 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, Ticket, PlaneTakeoff, BookOpen, Mail, Activity } from 'lucide-react';
+import { MessageCircle, Ticket, PlaneTakeoff, BookOpen, Mail, Activity, ArrowRight } from 'lucide-react';
 
 const FEATURES = [
     {
         icon: <MessageCircle className="w-8 h-8 text-[#CCFF00]" />,
         title: "24/7 Live Chat",
         description: "Instant response times from human engineers who understand your infrastructure.",
-        badge: "Average wait: 30s"
+        badge: "Average wait: 30s",
+        cta: "Start Chat"
     },
     {
         icon: <Ticket className="w-8 h-8 text-[#CCFF00]" />,
         title: "Expert Ticket Support",
         description: "Deep technical assistance for complex architectural inquiries, available around the clock.",
-        badge: "24/7 Coverage"
+        badge: "24/7 Coverage",
+        cta: "Open Ticket"
     },
     {
         icon: <PlaneTakeoff className="w-8 h-8 text-[#CCFF00]" />,
         title: "Free Migration",
         description: "Zero-downtime white-glove migration. We move your entire stack while you sleep.",
-        badge: "Included Free"
+        badge: "Included Free",
+        cta: "Request Move"
     },
     {
         icon: <BookOpen className="w-8 h-8 text-[#CCFF00]" />,
         title: "Knowledgebase",
         description: "Deep documentation, tutorials, and architectural best practices at your fingertips.",
-        badge: "Self-Service"
+        badge: "Self-Service",
+        cta: "Browse Docs"
     },
     {
         icon: <Mail className="w-8 h-8 text-[#CCFF00]" />,
         title: "Email Support",
         description: "For less urgent inquiries, our team provides detailed responses via direct mail.",
-        badge: "24h Response"
+        badge: "24h Response",
+        cta: "Send Email"
     }
 ];
 
@@ -81,9 +86,14 @@ export default function SupportGrid() {
                             <h3 className="text-xl font-bold text-[#F2F2F2] mb-3 group-hover:text-[#CCFF00] transition-colors uppercase tracking-wide">
                                 {feature.title}
                             </h3>
-                            <p className="text-[#888] leading-relaxed">
+                            <p className="text-[#888] leading-relaxed mb-8">
                                 {feature.description}
                             </p>
+
+                            <button className="mt-auto flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#CCFF00] border border-[#CCFF00]/20 px-4 py-2 rounded-lg group-hover:bg-[#CCFF00] group-hover:text-black transition-all duration-300">
+                                {feature.cta}
+                                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                            </button>
                         </motion.div>
                     ))}
 
