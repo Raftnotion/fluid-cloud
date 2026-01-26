@@ -34,9 +34,9 @@ const Header: React.FC = () => {
                 <button className="text-sm font-medium text-[#F2F2F2] hover:text-[#CCFF00] transition-colors">
                     Login
                 </button>
-                <button className="px-6 py-2 bg-[#CCFF00] text-black text-sm font-bold rounded-md hover:bg-[#b8e600] transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(204,255,0,0.3)]">
-                    Deploy Server
-                </button>
+                <a href="#pricing" className="px-6 py-2 bg-[#CCFF00] text-black text-sm font-bold rounded-md hover:bg-[#b8e600] transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(204,255,0,0.3)] inline-block">
+                    Get Started
+                </a>
             </div>
         </motion.header>
     );
