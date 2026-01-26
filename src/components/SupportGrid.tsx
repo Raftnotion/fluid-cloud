@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, Ticket, PlaneTakeoff, ShieldCheck } from 'lucide-react';
+import { MessageCircle, Ticket, PlaneTakeoff, BookOpen, Mail } from 'lucide-react';
 
 const FEATURES = [
     {
@@ -22,6 +22,18 @@ const FEATURES = [
         title: "Free Migration",
         description: "Zero-downtime white-glove migration. We move your entire stack while you sleep.",
         badge: "Included Free"
+    },
+    {
+        icon: <BookOpen className="w-8 h-8 text-[#CCFF00]" />,
+        title: "Knowledgebase",
+        description: "Deep documentation, tutorials, and architectural best practices at your fingertips.",
+        badge: "Self-Service"
+    },
+    {
+        icon: <Mail className="w-8 h-8 text-[#CCFF00]" />,
+        title: "Email Support",
+        description: "For less urgent inquiries, our team provides detailed responses via direct mail.",
+        badge: "24h Response"
     }
 ];
 
@@ -45,7 +57,7 @@ export default function SupportGrid() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {FEATURES.map((feature, idx) => (
                         <motion.div
                             key={feature.title}
