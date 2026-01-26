@@ -6,24 +6,24 @@ import { Plus, Minus } from 'lucide-react';
 
 const FAQS = [
     {
-        question: "How does the autoscaling actually work?",
-        answer: "Our system monitors your CPU and RAM usage every millisecond. When it detects a spike, it instantly injects additional resources into your container. You don't have to click anything; it's completely 'fluid'."
+        question: "Why do you only offer a single plan?",
+        answer: "Because luxury shouldn't be complicated. Our single 'Fluid' plan is engineered to scale from zero to millions of visitors without you ever having to click 'upgrade'. You get our best performance from day one, with no artificial limits or tiered features."
+    },
+    {
+        question: "Is this shared hosting? Do I get a dedicated IP?",
+        answer: "This is next-gen containerized infrastructure. Unlike shared hosting where neighbors drain your power, your resources are isolated and guaranteed. We use a high-performance shared IP pool—the industry standard for modern cloud scaling—to ensure your site remains agile and protected under our global edge network."
+    },
+    {
+        question: "Do you offer call support?",
+        answer: "We prioritize deep technical resolution over hold music. By focusing on Live Chat and Expert Tickets, our senior engineers can analyze logs and share code in real-time. This ensures you're always talking to a specialist who can actually fix your stack, not just a service agent on a phone."
     },
     {
         question: "Is the 'Free Migration' truly zero-downtime?",
-        answer: "Yes. Our migration experts setup a staging environment first, sync your data, and only when everything is perfect do we flip the DNS. Your visitors won't notice a thing."
+        answer: "Every single time. Our experts handle the heavy lifting while you sleep. We setup a staging environment, sync your data, and only flip the switch when performance is 100% verified. Your visitors will never see a flicker."
     },
     {
-        question: "What happens if I need help at 3 AM?",
-        answer: "We don't go to sleep. Our senior engineers are available 24/7/365 via live chat and tickets. You'll always talk to a human, never a bot."
-    },
-    {
-        question: "Can I upgrade or downgrade my plan later?",
-        answer: "Of course. Fluid Cloud is built for flexibility. You can adjust your plan or commitment period anytime through your dashboard with pro-rated adjustments."
-    },
-    {
-        question: "What kind of hardware do you use?",
-        answer: "We only use Tier-4 data centers with latest Gen NVMe storage and high-frequency processors to ensure your site is always fast, no matter the load."
+        question: "How does the '10 Million+' scaling really work?",
+        answer: "It's automatic. Our Adaptive Pulse technology detects incoming traffic spikes in milliseconds and auto-injects CPU and RAM. Your site expands organically as your success grows, then contracts when things quiet down—all without you lifting a finger."
     }
 ];
 
