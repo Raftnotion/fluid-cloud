@@ -9,6 +9,7 @@ import Testimonials from "@/components/Testimonials";
 import PlanPhilosophy from "@/components/PlanPhilosophy";
 import PriceLock from "@/components/PriceLock";
 import SupportGrid from "@/components/SupportGrid";
+import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import TrustCloud from "@/components/TrustCloud";
 import { motion, useScroll, useSpring } from "framer-motion";
@@ -48,6 +49,7 @@ export default function Home() {
                 <PlanPhilosophy />
 
                 <ComparisonSection />
+                <FAQ />
             </main>
 
             <Footer />
