@@ -1,0 +1,81 @@
+"use client";
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { MessageCircle, Ticket, PlaneTakeoff, ShieldCheck } from 'lucide-react';
+
+const FEATURES = [
+    {
+        icon: <MessageCircle className="w-8 h-8 text-[#CCFF00]" />,
+        title: "24/7 Live Chat",
+        description: "Instant response times from human engineers who understand your infrastructure.",
+        badge: "Average wait: 30s"
+    },
+    {
+        icon: <Ticket className="w-8 h-8 text-[#CCFF00]" />,
+        title: "Expert Ticket Support",
+        description: "Deep technical assistance for complex architectural inquiries, available around the clock.",
+        badge: "24/7 Coverage"
+    },
+    {
+        icon: <PlaneTakeoff className="w-8 h-8 text-[#CCFF00]" />,
+        title: "Free Migration",
+        description: "Zero-downtime white-glove migration. We move your entire stack while you sleep.",
+        badge: "Included Free"
+    }
+];
+
+export default function SupportGrid() {
+    return (
+        <section className="w-full py-24 px-8 bg-[#050505] border-t border-[#111]">
+            <div className="max-w-7xl mx-auto">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+                    <div className="max-w-2xl">
+                        <h2 className="text-4xl md:text-5xl font-bold text-[#F2F2F2] mb-4">
+                            Human Intelligence. <br />
+                            <span className="text-[#CCFF00]">Always Online.</span>
+                        </h2>
+                        <p className="text-[#888] text-lg">
+                            We don't believe in support bots. Every interaction is with a senior infrastructure engineer focused on your uptime.
+                        </p>
+                    </div>
+                    <div className="flex items-center gap-3 px-6 py-3 bg-[#111] border border-[#222] rounded-full">
+                        <div className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
+                        <span className="text-[10px] font-black uppercase tracking-widest text-[#F2F2F2]">Global Network Operational</span>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {FEATURES.map((feature, idx) => (
+                        <motion.div
+                            key={feature.title}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.1 }}
+                            whileHover={{ y: -5 }}
+                            className="group p-8 bg-[#0a0a0a] border border-[#222] rounded-3xl hover:border-[#CCFF00]/30 transition-all duration-300 relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 p-4">
+                                <span className="text-[9px] font-black uppercase tracking-widest text-[#555] group-hover:text-[#CCFF00] transition-colors">
+                                    {feature.badge}
+                                </span>
+                            </div>
+
+                            <div className="mb-6 p-4 bg-[#111] rounded-2xl w-fit group-hover:bg-[#CCFF00]/10 transition-colors">
+                                {feature.icon}
+                            </div>
+
+                            <h3 className="text-xl font-bold text-[#F2F2F2] mb-3 group-hover:text-[#CCFF00] transition-colors uppercase tracking-tight">
+                                {feature.title}
+                            </h3>
+                            <p className="text-[#888] leading-relaxed">
+                                {feature.description}
+                            </p>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
