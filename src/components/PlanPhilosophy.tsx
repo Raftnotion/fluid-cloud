@@ -78,7 +78,7 @@ const PlanPhilosophy: React.FC = () => {
     ];
 
     return (
-        <section id="platform" className="w-full py-40 px-8 flex flex-col items-center">
+        <section id="features" className="w-full py-40 px-8 flex flex-col items-center">
             <div className="max-w-7xl w-full p-[1px] bg-gradient-to-br from-[#333333] via-[#1a1a1a] to-[#333333] rounded-[32px] overflow-hidden shadow-2xl">
                 <div className="p-10 md:p-20 bg-[#050505] rounded-[31px]">
                     <div className="text-center mb-20">
