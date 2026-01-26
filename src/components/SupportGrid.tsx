@@ -34,17 +34,6 @@ const FEATURES = [
         title: "Email Support",
         description: "For less urgent inquiries, our team provides detailed responses via direct mail.",
         badge: "24h Response"
-    },
-    {
-        icon: (
-            <div className="relative">
-                <div className="absolute inset-0 bg-[#CCFF00]/40 rounded-full animate-ping scale-150" />
-                <Activity className="w-8 h-8 text-[#CCFF00] relative z-10" />
-            </div>
-        ),
-        title: "Proactive Guard",
-        description: "Automated systems monitor your stack every second, fixing issues before they impact users.",
-        badge: "Active 24/7"
     }
 ];
 
@@ -97,6 +86,34 @@ export default function SupportGrid() {
                             </p>
                         </motion.div>
                     ))}
+
+                    {/* 6th Visual Card */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 }}
+                        whileHover={{ y: -5 }}
+                        className="group relative min-h-[300px] md:min-h-full rounded-3xl overflow-hidden border border-[#222] hover:border-[#CCFF00]/30 transition-all duration-300"
+                    >
+                        <img
+                            src="/images/support-visual.png"
+                            alt="Monitoring"
+                            className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+
+                        <div className="absolute bottom-0 left-0 p-8 w-full">
+                            <div className="flex items-center gap-2 mb-3">
+                                <div className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#CCFF00]">Live Monitoring</span>
+                            </div>
+                            <h3 className="text-2xl font-bold text-[#F2F2F2] uppercase tracking-wide mb-2">Proactive Guard</h3>
+                            <p className="text-[#888] text-sm leading-relaxed max-w-[240px]">
+                                Automated systems scanning your stack 24/7 for zero-day vulnerabilities.
+                            </p>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
