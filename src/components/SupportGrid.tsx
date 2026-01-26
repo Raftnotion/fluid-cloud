@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, Ticket, PlaneTakeoff, BookOpen, Mail } from 'lucide-react';
+import { MessageCircle, Ticket, PlaneTakeoff, BookOpen, Mail, Activity } from 'lucide-react';
 
 const FEATURES = [
     {
@@ -34,6 +34,17 @@ const FEATURES = [
         title: "Email Support",
         description: "For less urgent inquiries, our team provides detailed responses via direct mail.",
         badge: "24h Response"
+    },
+    {
+        icon: (
+            <div className="relative">
+                <div className="absolute inset-0 bg-[#CCFF00]/40 rounded-full animate-ping scale-150" />
+                <Activity className="w-8 h-8 text-[#CCFF00] relative z-10" />
+            </div>
+        ),
+        title: "Proactive Guard",
+        description: "Automated systems monitor your stack every second, fixing issues before they impact users.",
+        badge: "Active 24/7"
     }
 ];
 
