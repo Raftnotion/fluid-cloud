@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Send, MessageSquare, ShieldCheck, Globe, Building2, Fingerprint, MessageCircle, Ticket, PlaneTakeoff, BookOpen, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const ContactPage = () => {
     const [formState, setFormState] = useState({
@@ -266,10 +267,10 @@ const ContactPage = () => {
                                 <p className="text-[#555] text-sm leading-relaxed mb-8 group-hover:text-[#888] transition-colors">
                                     {channel.description}
                                 </p>
-                                <button className="flex items-center justify-between w-full px-4 py-3 bg-[#111] border border-white/5 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] text-[#F2F2F2] group-hover:border-[#CCFF00]/40 transition-all">
+                                <Link href="/kb" className="flex items-center justify-between w-full px-4 py-3 bg-[#111] border border-white/5 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] text-[#F2F2F2] group-hover:border-[#CCFF00]/40 transition-all">
                                     <span>{channel.cta}</span>
                                     <ArrowRight className="w-3 h-3 text-[#333] group-hover:text-[#CCFF00] group-hover:translate-x-1 transition-transform" />
-                                </button>
+                                </Link>
                             </motion.div>
                         ))}
                     </div>
