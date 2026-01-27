@@ -61,9 +61,9 @@ const AboutPage = () => {
                                 className="relative rounded-[40px] overflow-hidden border border-white/5 aspect-square lg:aspect-video group"
                             >
                                 <img
-                                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc4b?auto=format&fit=crop&q=80&w=2034"
+                                    src="/images/about-hero.png"
                                     alt="Global Infrastructure"
-                                    className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-700"
+                                    className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
 
