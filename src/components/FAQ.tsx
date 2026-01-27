@@ -11,7 +11,7 @@ const FAQS = [
     },
     {
         question: "Is it shared hosting?",
-        answer: "Wpfye is a bit different from traditional dedicated, VPS, or shared hosting providers since every site on our platform runs in an isolated software container that contains all of the software resources required to run the site (Linux, NGINX, PHP, MySQL). The resources are 100% private and not shared even between your own sites"
+        answer: "Wpfye is a bit different from traditional dedicated, VPS, or shared hosting providers since every site on our platform runs in an isolated software container that contains all of the software resources required to run the site (Linux, PHP, MySQL). The resources are 100% private and not shared even between your own sites"
     },
     {
         question: "Will I get a dedicated IP?",
