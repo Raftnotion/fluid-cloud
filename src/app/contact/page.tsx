@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Send, MessageSquare, ShieldCheck, Globe, Building2, Fingerprint } from 'lucide-react';
+import { Mail, MapPin, Send, MessageSquare, ShieldCheck, Globe, Building2, Fingerprint, MessageCircle, Ticket, PlaneTakeoff, BookOpen, ArrowRight } from 'lucide-react';
 
 const ContactPage = () => {
     const [formState, setFormState] = useState({
@@ -15,6 +15,37 @@ const ContactPage = () => {
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const SUPPORT_CHANNELS = [
+        {
+            icon: <MessageCircle className="w-5 h-5 text-[#CCFF00]" />,
+            title: "24/7 Live Chat",
+            description: "Instant response times from human engineers.",
+            badge: "Avg: 30s",
+            cta: "Start Chat"
+        },
+        {
+            icon: <Ticket className="w-5 h-5 text-[#CCFF00]" />,
+            title: "Expert Tickets",
+            description: "Deep technical assistance for complex setups.",
+            badge: "24/7 Live",
+            cta: "Open Ticket"
+        },
+        {
+            icon: <PlaneTakeoff className="w-5 h-5 text-[#CCFF00]" />,
+            title: "Free Migration",
+            description: "Zero-downtime white-glove migration services.",
+            badge: "Free",
+            cta: "Request Move"
+        },
+        {
+            icon: <BookOpen className="w-5 h-5 text-[#CCFF00]" />,
+            title: "Knowledgebase",
+            description: "Documentation and architectural best practices.",
+            badge: "Docs",
+            cta: "Browse"
+        }
+    ];
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -193,6 +224,54 @@ const ContactPage = () => {
                             <span className="text-white/10 text-[10px] uppercase tracking-[0.5em] font-medium italic">End of Ingress Channel</span>
                             <div className="h-[1px] w-12 bg-[#111]" />
                         </div>
+                    </div>
+                </div>
+
+                {/* Unified Support Channels Grid */}
+                <div className="mt-32">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+                        <div>
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="h-[1px] w-12 bg-[#CCFF00]" />
+                                <span className="text-[#CCFF00] text-[10px] uppercase tracking-[0.4em] font-medium font-['Satoshi']">Operational Channels</span>
+                            </div>
+                            <h2 className="text-4xl md:text-5xl font-bold text-[#F2F2F2] font-['Clash_Display']">
+                                Support <span className="text-white/20">Protocols.</span>
+                            </h2>
+                        </div>
+                        <div className="flex items-center gap-3 px-6 py-3 bg-[#111] border border-[#222] rounded-full">
+                            <div className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
+                            <span className="text-[10px] font-black uppercase tracking-widest text-[#F2F2F2]">Engineers Online</span>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {SUPPORT_CHANNELS.map((channel, idx) => (
+                            <motion.div
+                                key={channel.title}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4 + (idx * 0.1) }}
+                                className="group p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl hover:border-[#CCFF00]/20 transition-all duration-500 relative overflow-hidden"
+                            >
+                                <div className="absolute top-0 right-0 p-4">
+                                    <span className="text-[8px] font-black uppercase tracking-widest text-[#333] group-hover:text-[#CCFF00] transition-colors">
+                                        {channel.badge}
+                                    </span>
+                                </div>
+                                <div className="mb-6 p-3 bg-[#111] rounded-xl w-fit group-hover:bg-[#CCFF00]/10 transition-colors">
+                                    {channel.icon}
+                                </div>
+                                <h3 className="text-lg font-bold text-[#F2F2F2] mb-3 uppercase tracking-wide">{channel.title}</h3>
+                                <p className="text-[#555] text-sm leading-relaxed mb-8 group-hover:text-[#888] transition-colors">
+                                    {channel.description}
+                                </p>
+                                <button className="flex items-center justify-between w-full px-4 py-3 bg-[#111] border border-white/5 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] text-[#F2F2F2] group-hover:border-[#CCFF00]/40 transition-all">
+                                    <span>{channel.cta}</span>
+                                    <ArrowRight className="w-3 h-3 text-[#333] group-hover:text-[#CCFF00] group-hover:translate-x-1 transition-transform" />
+                                </button>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </main>
