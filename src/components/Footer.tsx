@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
                     {/* Links Grid */}
                     <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-12">
                         <div>
-                            <h5 className="text-[#F2F2F2] font-black text-[10px] uppercase tracking-[0.3em] mb-8">Platform</h5>
+                            <h5 className="text-[#F2F2F2] font-black text-xs uppercase tracking-[0.3em] mb-8">Platform</h5>
                             <ul className="space-y-4">
                                 <li><Link href="/#infrastructure" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors flex items-center gap-1 group">Infrastructure <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
                                 <li><Link href="/#features" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors flex items-center gap-1 group">Features <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
                             </ul>
                         </div>
                         <div>
-                            <h5 className="text-[#F2F2F2] font-black text-[10px] uppercase tracking-[0.3em] mb-8">Company</h5>
+                            <h5 className="text-[#F2F2F2] font-black text-xs uppercase tracking-[0.3em] mb-8">Company</h5>
                             <ul className="space-y-4">
                                 <li><Link href="/about" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">About Story</Link></li>
                                 <li><Link href="/contact" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">Contact Hub</Link></li>
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
                             </ul>
                         </div>
                         <div className="col-span-2 md:col-span-1">
-                            <h5 className="text-[#F2F2F2] font-black text-[10px] uppercase tracking-[0.3em] mb-8">Support</h5>
+                            <h5 className="text-[#F2F2F2] font-black text-xs uppercase tracking-[0.3em] mb-8">Support</h5>
                             <ul className="space-y-4">
                                 <li><Link href="/kb" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">Knowledgebase</Link></li>
                                 <li><Link href="/#faq" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">Technical FAQ</Link></li>
