@@ -25,13 +25,33 @@ body {
   overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Clash Display', sans-serif;
+  color: var(--mist-white);
+}
+
+h1 {
+  @apply text-6xl md:text-8xl font-black uppercase tracking-tight leading-[0.9];
+}
+
+h2 {
+  @apply text-4xl md:text-5xl font-bold uppercase tracking-normal leading-tight;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl font-bold leading-snug;
+}
+
+h4 {
+  @apply text-xl font-bold tracking-tight;
+}
+
+h5 {
+  @apply text-sm font-bold uppercase tracking-widest text-[#F2F2F2];
+}
+
+h6 {
+  @apply text-[10px] font-black uppercase tracking-[0.2em] text-[#888];
 }
 
 /* Noise Texture Overlay */
