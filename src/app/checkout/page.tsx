@@ -26,6 +26,37 @@ const CheckoutPage = () => {
         paymentMethod: 'razorpay'
     });
 
+    // Persistence: Load from localStorage
+    useEffect(() => {
+        const savedData = localStorage.getItem('checkout_form');
+        const savedStep = localStorage.getItem('checkout_step');
+        if (savedData) {
+            try {
+                setFormData(JSON.parse(savedData));
+            } catch (e) {
+                console.error("Failed to parse saved checkout data", e);
+            }
+        }
+        if (savedStep) {
+            setStep(parseInt(savedStep));
+        }
+    }, []);
+
+    // Persistence: Save to localStorage
+    useEffect(() => {
+        localStorage.setItem('checkout_form', JSON.stringify(formData));
+        localStorage.setItem('checkout_step', step.toString());
+    }, [formData, step]);
+
+    const handleStepClick = (targetStep: number) => {
+        // Only allow jumping back or to steps already "reached"
+        // For simplicity, we can allow jumping to any step if data exists, 
+        // but it's safer to only allow jumping back to edit.
+        if (targetStep < step) {
+            setStep(targetStep);
+        }
+    };
+
     const plans = {
         '1': { name: '1 Year Plan', price: 899, term: 'Annually' },
         '2': { name: '2 Year Plan', price: 1798, term: 'every 2 years' },
@@ -59,12 +90,16 @@ const CheckoutPage = () => {
                         <div className="flex items-center gap-4 mb-16 overflow-x-auto pb-4 no-scrollbar">
                             {steps.map((s, idx) => (
                                 <React.Fragment key={s.id}>
-                                    <div className={`flex items-center gap-3 shrink-0 ${step >= s.id ? 'text-[#CCFF00]' : 'text-[#333]'}`}>
+                                    <button
+                                        onClick={() => handleStepClick(s.id)}
+                                        disabled={step < s.id}
+                                        className={`flex items-center gap-3 shrink-0 transition-all ${step >= s.id ? 'text-[#CCFF00]' : 'text-[#333]'} ${step > s.id ? 'hover:opacity-70' : ''}`}
+                                    >
                                         <div className={`w-8 h-8 rounded-lg border flex items-center justify-center transition-colors duration-500 ${step >= s.id ? 'border-[#CCFF00] bg-[#CCFF00]/10' : 'border-[#222]'}`}>
                                             {step > s.id ? <CheckCircle2 className="w-5 h-5" /> : s.icon}
                                         </div>
                                         <span className="text-[10px] font-black uppercase tracking-[0.2em]">{s.title}</span>
-                                    </div>
+                                    </button>
                                     {idx < steps.length - 1 && (
                                         <div className={`h-px w-8 ${step > s.id ? 'bg-[#CCFF00]' : 'bg-[#222]'}`} />
                                     )}
