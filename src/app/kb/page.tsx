@@ -4,49 +4,97 @@ import React, { useState } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Book, Shield, Zap, CreditCard, ArrowRight, ExternalLink, HelpCircle, FileText, ChevronRight } from 'lucide-react';
+import { Search, Book, Shield, Zap, CreditCard, ArrowRight, ExternalLink, HelpCircle, FileText, ChevronRight, Mail, Server, Globe, Database, Fingerprint } from 'lucide-react';
 import Link from 'next/link';
 
 const CATEGORIES = [
     {
-        id: "getting-started",
-        title: "Getting Started",
-        icon: <Zap className="w-6 h-6" />,
-        description: "Protocols for initial deployment and account synchronization.",
-        articleCount: 5,
+        id: "email",
+        title: "Email",
+        icon: <Mail className="w-6 h-6" />,
+        description: "Protocols for migrations, account setup, and client configuration.",
+        articleCount: 34,
         color: "#CCFF00"
     },
     {
-        id: "infrastructure",
-        title: "Infrastructure",
-        icon: <Book className="w-6 h-6" />,
-        description: "Deep dive into the Fluid Fabric, Edge Nodes, and scaling logic.",
-        articleCount: 12,
+        id: "hosting",
+        title: "Hosting",
+        icon: <Server className="w-6 h-6" />,
+        description: "Site management, file systems, and backups.",
+        articleCount: 16,
         color: "#333"
     },
     {
-        id: "security",
-        title: "Security & Privacy",
-        icon: <Shield className="w-6 h-6" />,
-        description: "Encryption standards, DDoS mitigation, and data integrity.",
+        id: "domain-names",
+        title: "Domain Names",
+        icon: <Globe className="w-6 h-6" />,
+        description: "DNS management, nameservers, and propagation.",
+        articleCount: 11,
+        color: "#CCFF00"
+    },
+    {
+        id: "wordpress",
+        title: "WordPress",
+        icon: <Zap className="w-6 h-6" />,
+        description: "Platform features, CLI tools, and password recovery.",
+        articleCount: 11,
+        color: "#333"
+    },
+    {
+        id: "databases",
+        title: "Databases",
+        icon: <Database className="w-6 h-6" />,
+        description: "MySQL, MariaDB, and remote connection protocols.",
         articleCount: 8,
         color: "#CCFF00"
     },
     {
-        id: "billing",
-        title: "Account & Billing",
-        icon: <CreditCard className="w-6 h-6" />,
-        description: "Pricing structure, 3-year lock policy, and invoice management.",
+        id: "programming",
+        title: "Development",
+        icon: <FileText className="w-6 h-6" />,
+        description: "PHP versions, functions, and language settings.",
+        articleCount: 8,
+        color: "#333"
+    },
+    {
+        id: "ssh",
+        title: "SSH Access",
+        icon: <Fingerprint className="w-6 h-6" />,
+        description: "Command-line operations and secure shell protocols.",
+        articleCount: 7,
+        color: "#CCFF00"
+    },
+    {
+        id: "ssl",
+        title: "SSL Certificates",
+        icon: <Shield className="w-6 h-6" />,
+        description: "Activation, installation, and HTTPS protocols.",
+        articleCount: 7,
+        color: "#333"
+    },
+    {
+        id: "ftp",
+        title: "FTP Access",
+        icon: <ArrowRight className="w-6 h-6" />,
+        description: "File transfer protocols and client configurations.",
+        articleCount: 6,
+        color: "#CCFF00"
+    },
+    {
+        id: "cdn",
+        title: "CDN & Edge",
+        icon: <Zap className="w-6 h-6" />,
+        description: "Website acceleration and global edge caching suite.",
         articleCount: 4,
         color: "#333"
     }
 ];
 
 const RECENT_ARTICLES = [
-    { title: "Configuring Edge Caching Protocols", category: "Infrastructure", slug: "edge-caching-protocols" },
-    { title: "Zero-Downtime Migration Guide", category: "Getting Started", slug: "migration-guide" },
-    { title: "Hardening your CMS deployment", category: "Security", slug: "hardening-deployment" },
-    { title: "Understanding the Fluid Scaling Mesh", category: "Infrastructure", slug: "scaling-mesh" }
+    { title: "How do I migrate emails?", category: "Email", slug: "how-do-i-migrate-emails" },
+    { title: "How do I connect via SSH?", category: "SSH Access", slug: "how-do-i-connect-via-ssh" },
+    { title: "How do I use the CDN?", category: "CDN & Edge", slug: "how-do-i-use-the-cdn" },
+    { title: "How do I create a MySQL database?", category: "Databases", slug: "how-do-i-create-a-mysql-database" }
 ];
 
 const KBHub = () => {
