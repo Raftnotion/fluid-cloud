@@ -73,29 +73,29 @@ const CheckoutPage = () => {
                                     className="space-y-12"
                                 >
                                     <section>
-                                        <h2 className="text-4xl font-bold font-['Clash_Display'] mb-4 uppercase tracking-tight">Domain Configuration</h2>
-                                        <p className="text-[#888] mb-8">Enter the domain you wish to point to WPFYE Fluid platform.</p>
-                                        <div className="relative group max-w-xl">
+                                        <h2 className="text-2xl md:text-3xl font-bold font-['Clash_Display'] mb-3 uppercase tracking-wider">Domain Configuration</h2>
+                                        <p className="text-sm text-[#888] mb-10">Enter the domain you wish to point to WPFYE Fluid platform.</p>
+                                        <div className="relative group max-w-lg">
                                             <div className="absolute -inset-0.5 bg-gradient-to-r from-[#CCFF00]/0 via-[#CCFF00]/20 to-[#CCFF00]/0 rounded-2xl blur opacity-0 group-focus-within:opacity-100 transition-all" />
                                             <input
                                                 type="text"
                                                 placeholder="yourdomain.com"
                                                 value={formData.domain}
                                                 onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
-                                                className="w-full bg-[#0a0a0a] border border-[#222] rounded-2xl p-6 text-xl font-bold text-[#F2F2F2] outline-none focus:border-[#CCFF00]/50 transition-all relative z-10"
+                                                className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-5 text-lg font-bold text-[#F2F2F2] outline-none focus:border-[#CCFF00]/50 transition-all relative z-10"
                                             />
-                                            <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none">
-                                                <Globe className="w-6 h-6 text-[#333] group-focus-within:text-[#CCFF00] transition-colors" />
+                                            <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
+                                                <Globe className="w-5 h-5 text-[#333] group-focus-within:text-[#CCFF00] transition-colors" />
                                             </div>
                                         </div>
-                                        <p className="mt-4 text-[10px] text-[#444] uppercase tracking-widest font-bold">
+                                        <p className="mt-4 text-[9px] text-[#444] uppercase tracking-widest font-bold">
                                             * You can also configure this later in the dashboard
                                         </p>
                                     </section>
 
                                     <button
                                         onClick={() => setStep(2)}
-                                        className="flex items-center gap-3 px-10 py-5 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+                                        className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Next Protocol <ArrowRight className="w-4 h-4" />
                                     </button>
@@ -115,36 +115,36 @@ const CheckoutPage = () => {
                                             <button onClick={() => setStep(1)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] transition-colors">
                                                 <ArrowLeft className="w-4 h-4" />
                                             </button>
-                                            <h2 className="text-4xl font-bold font-['Clash_Display'] uppercase tracking-tight">Identity Setup</h2>
+                                            <h2 className="text-2xl md:text-3xl font-bold font-['Clash_Display'] uppercase tracking-wider">Identity Setup</h2>
                                         </div>
-                                        <p className="text-[#888] mb-12">Create your administrator account for the WPFYE Control Panel.</p>
+                                        <p className="text-sm text-[#888] mb-10">Create your administrator account for the WPFYE Control Panel.</p>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
                                             <div className="space-y-2">
-                                                <label className="text-[10px] font-black uppercase tracking-widest text-[#555]">Full Name</label>
+                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Full Name</label>
                                                 <input
                                                     type="text"
                                                     value={formData.name}
                                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 font-bold outline-none focus:border-[#CCFF00]/30 transition-all"
+                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[10px] font-black uppercase tracking-widest text-[#555]">Email Address</label>
+                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Email Address</label>
                                                 <input
                                                     type="email"
                                                     value={formData.email}
                                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 font-bold outline-none focus:border-[#CCFF00]/30 transition-all"
+                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
                                             <div className="space-y-2 md:col-span-2">
-                                                <label className="text-[10px] font-black uppercase tracking-widest text-[#555]">Master Password</label>
+                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Master Password</label>
                                                 <input
                                                     type="password"
                                                     value={formData.password}
                                                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 font-bold outline-none focus:border-[#CCFF00]/30 transition-all"
+                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
                                         </div>
@@ -152,7 +152,7 @@ const CheckoutPage = () => {
 
                                     <button
                                         onClick={() => setStep(3)}
-                                        className="flex items-center gap-3 px-10 py-5 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+                                        className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Confirm Identity <ArrowRight className="w-4 h-4" />
                                     </button>
@@ -172,30 +172,30 @@ const CheckoutPage = () => {
                                             <button onClick={() => setStep(2)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] transition-colors">
                                                 <ArrowLeft className="w-4 h-4" />
                                             </button>
-                                            <h2 className="text-4xl font-bold font-['Clash_Display'] uppercase tracking-tight">Payment Verification</h2>
+                                            <h2 className="text-2xl md:text-3xl font-bold font-['Clash_Display'] uppercase tracking-wider">Payment Verification</h2>
                                         </div>
-                                        <p className="text-[#888] mb-12">Select your preferred transaction protocol. All transmissions are encrypted.</p>
+                                        <p className="text-sm text-[#888] mb-10">Select your preferred transaction protocol. All transmissions are encrypted.</p>
 
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl">
                                             <button
                                                 onClick={() => setFormData({ ...formData, paymentMethod: 'upi' })}
-                                                className={`p-6 border rounded-2xl text-left transition-all group ${formData.paymentMethod === 'upi' ? 'border-[#CCFF00] bg-[#CCFF00]/5' : 'border-[#222] hover:border-[#333]'}`}
+                                                className={`p-6 border rounded-2xl text-left transition-all group ${formData.paymentMethod === 'upi' ? 'border-[#CCFF00] bg-[#CCFF00]/5 shadow-[0_0_30px_rgba(204,255,0,0.05)]' : 'border-[#222] hover:border-[#333]'}`}
                                             >
                                                 <div className="flex justify-between items-center mb-4">
                                                     <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-2">
-                                                        <img src="/images/upi.png" alt="UPI" className="w-full h-full object-contain" />
+                                                        <img src="/images/upi.png" alt="UPI" className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all" />
                                                     </div>
                                                     <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${formData.paymentMethod === 'upi' ? 'border-[#CCFF00]' : 'border-[#333]'}`}>
                                                         {formData.paymentMethod === 'upi' && <div className="w-2 h-2 bg-[#CCFF00] rounded-full" />}
                                                     </div>
                                                 </div>
                                                 <h4 className="font-bold text-lg">UPI Interface</h4>
-                                                <p className="text-[#555] text-xs mt-1">GPay, PhonePe, Paytm, etc.</p>
+                                                <p className="text-[#555] text-[10px] font-bold uppercase tracking-widest mt-1">GPay, PhonePe, Paytm</p>
                                             </button>
 
                                             <button
                                                 onClick={() => setFormData({ ...formData, paymentMethod: 'card' })}
-                                                className={`p-6 border rounded-2xl text-left transition-all group ${formData.paymentMethod === 'card' ? 'border-[#CCFF00] bg-[#CCFF00]/5' : 'border-[#222] hover:border-[#333]'}`}
+                                                className={`p-6 border rounded-2xl text-left transition-all group ${formData.paymentMethod === 'card' ? 'border-[#CCFF00] bg-[#CCFF00]/5 shadow-[0_0_30px_rgba(204,255,0,0.05)]' : 'border-[#222] hover:border-[#333]'}`}
                                             >
                                                 <div className="flex justify-between items-center mb-4">
                                                     <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-[#CCFF00]">
@@ -206,14 +206,14 @@ const CheckoutPage = () => {
                                                     </div>
                                                 </div>
                                                 <h4 className="font-bold text-lg">Card Network</h4>
-                                                <p className="text-[#555] text-xs mt-1">Visa, Mastercard, Amex</p>
+                                                <p className="text-[#555] text-[10px] font-bold uppercase tracking-widest mt-1">Visa, Mastercard, Amex</p>
                                             </button>
                                         </div>
                                     </section>
 
                                     <div className="flex flex-col gap-6">
                                         <button
-                                            className="group relative flex items-center justify-center gap-3 w-full max-w-2xl px-12 py-6 bg-[#CCFF00] text-black font-black uppercase tracking-[0.2em] text-sm rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.1)] hover:scale-[1.01] active:scale-[0.99] transition-all"
+                                            className="group relative flex items-center justify-center gap-3 w-full max-w-2xl px-12 py-5 bg-[#CCFF00] text-black font-black uppercase tracking-[0.2em] text-xs rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.1)] hover:scale-[1.01] active:scale-[0.98] transition-all"
                                         >
                                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
                                             <Lock className="w-4 h-4" />
@@ -221,13 +221,13 @@ const CheckoutPage = () => {
                                             <ArrowRight className="w-4 h-4" />
                                         </button>
 
-                                        <div className="flex items-center gap-6 text-[#444] text-[9px] font-black uppercase tracking-[0.3em]">
+                                        <div className="flex items-center gap-6 text-[#333] text-[8px] font-black uppercase tracking-[0.3em]">
                                             <div className="flex items-center gap-2">
-                                                <ShieldCheck className="w-3 h-3 text-[#CCFF00]" />
+                                                <ShieldCheck className="w-2.5 h-2.5 text-[#CCFF00]" />
                                                 PCI-DSS COMPLIANT
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <Lock className="w-3 h-3 text-[#CCFF00]" />
+                                                <Lock className="w-2.5 h-2.5 text-[#CCFF00]" />
                                                 256-BIT ENCRYPTION
                                             </div>
                                         </div>
