@@ -10,8 +10,12 @@ const FAQS = [
         answer: "Because luxury shouldn't be complicated. Our single 'Fluid' plan is engineered to scale from zero to millions of visitors without you ever having to click 'upgrade'. You get our best performance from day one, with no artificial limits or tiered features."
     },
     {
-        question: "Is this shared hosting? Do I get a dedicated IP?",
-        answer: "This is next-gen containerized infrastructure. Unlike shared hosting where neighbors drain your power, your resources are isolated and guaranteed. We use a high-performance shared IP pool—the industry standard for modern cloud scaling—to ensure your site remains agile and protected under our global edge network."
+        question: "Is it shared hosting?",
+        answer: "Wpfye is a bit different from traditional dedicated, VPS, or shared hosting providers since every site on our platform runs in an isolated software container that contains all of the software resources required to run the site (Linux, NGINX, PHP, MySQL). The resources are 100% private and not shared even between your own sites"
+    },
+    {
+        question: "Will I get a dedicated IP?",
+        answer: "We do not offer dedicated IP addresses. All of our standard plans come with a shared IP address. Note however that we have found that in 99% of cases it is not necessary to have a dedicated IP address except in highly specialized situations. A main reason for this is the high level of privacy and security you will get from the isolated containers on the Wpfye fluid platform."
     },
     {
         question: "Do you offer call support?",
