@@ -106,7 +106,7 @@ const CheckoutPage = () => {
                                         onClick={() => setStep(2)}
                                         className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
-                                        Next Protocol <ArrowRight className="w-4 h-4" />
+                                        Next <ArrowRight className="w-4 h-4" />
                                     </button>
                                 </motion.div>
                             )}
@@ -276,8 +276,8 @@ const CheckoutPage = () => {
                                         <div className="p-8 border border-[#CCFF00]/20 bg-[#CCFF00]/5 rounded-2xl max-w-2xl">
                                             <div className="flex items-center justify-between mb-8">
                                                 <div className="flex items-center gap-4">
-                                                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center p-2">
-                                                        <img src="/images/upi.png" alt="Razorpay" className="w-full h-full object-contain" />
+                                                    <div className="w-16 h-12 bg-white rounded-xl flex items-center justify-center p-2 border border-white/10 shadow-sm">
+                                                        <img src="/images/rzp.png" alt="Razorpay" className="w-full h-full object-contain" />
                                                     </div>
                                                     <div>
                                                         <h4 className="font-bold text-lg">Razorpay Secured</h4>
@@ -294,7 +294,7 @@ const CheckoutPage = () => {
                                             >
                                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
                                                 <Lock className="w-4 h-4" />
-                                                AUTHORIZE & PAY NOW
+                                                PAY NOW
                                                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                             </button>
                                         </div>
