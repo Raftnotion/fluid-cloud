@@ -27,6 +27,8 @@ const CheckoutPage = () => {
     };
 
     const selectedPlan = plans[planParam as keyof typeof plans] || plans['3'];
+    const taxAmount = Math.round(selectedPlan.price * 0.18);
+    const totalAmount = selectedPlan.price + taxAmount;
 
     const steps = [
         { id: 1, title: 'Configuration', icon: <Globe className="w-4 h-4" /> },
@@ -274,16 +276,16 @@ const CheckoutPage = () => {
 
                             <div className="space-y-4">
                                 <div className="flex justify-between items-center">
-                                    <span className="text-xs text-[#555] font-bold uppercase tracking-widest">Subtotal</span>
+                                    <span className="text-xs text-[#555] font-bold uppercase tracking-widest">Base Price</span>
                                     <span className="text-sm font-bold text-[#F2F2F2]">₹{selectedPlan.price}.00</span>
                                 </div>
                                 <div className="flex justify-between items-center">
-                                    <span className="text-xs text-[#555] font-bold uppercase tracking-widest">Tax / Fees</span>
-                                    <span className="text-sm font-bold text-[#F2F2F2]">₹0.00</span>
+                                    <span className="text-xs text-[#555] font-bold uppercase tracking-widest">GST (18%)</span>
+                                    <span className="text-sm font-bold text-[#F2F2F2]">₹{taxAmount}.00</span>
                                 </div>
                                 <div className="pt-6 border-t border-[#222] flex justify-between items-center">
                                     <span className="text-lg font-black text-[#F2F2F2] uppercase tracking-[0.2em]">Total</span>
-                                    <span className="text-3xl font-black text-[#CCFF00]">₹{selectedPlan.price}</span>
+                                    <span className="text-3xl font-black text-[#CCFF00]">₹{totalAmount}</span>
                                 </div>
                             </div>
 
