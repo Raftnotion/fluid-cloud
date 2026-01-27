@@ -4,7 +4,7 @@ import React from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from 'framer-motion';
-import { Globe, Shield, Zap, Cpu, ArrowRight, Building2, History } from 'lucide-react';
+import { Globe, Shield, Zap, Cpu, ArrowRight, Building2, History, Layers, Activity, Lock, Cloud } from 'lucide-react';
 
 const AboutPage = () => {
     return (
@@ -37,7 +37,7 @@ const AboutPage = () => {
                                     <span className="text-white/20">Power.</span>
                                 </h1>
                                 <p className="text-[#888] text-xl leading-relaxed max-w-xl mb-12">
-                                    Founded in <strong>2024</strong>, WPFYE was built on a single obsession: removing the friction between code and global deployment.
+                                    Founded in <strong>2024</strong>, WPFYE was built on a single obsession: removing the friction between code and global deployment. We don't just provide hosting; we provide the **Fluid Fabric** for the digital future.
                                 </p>
                                 <div className="flex items-center gap-8">
                                     <div className="flex flex-col">
@@ -61,8 +61,8 @@ const AboutPage = () => {
                                 className="relative rounded-[40px] overflow-hidden border border-white/5 aspect-square lg:aspect-video group"
                             >
                                 <img
-                                    src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070"
-                                    alt="Industrial Server Room"
+                                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc4b?auto=format&fit=crop&q=80&w=2034"
+                                    alt="Global Infrastructure"
                                     className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-700"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
@@ -79,34 +79,59 @@ const AboutPage = () => {
                     </div>
                 </section>
 
-                {/* Core Philosophy */}
+                {/* The Fluid Mesh Section */}
                 <section className="px-8 max-w-7xl mx-auto mb-40">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-1px bg-white/5 border border-white/5 rounded-[40px] overflow-hidden">
+                    <div className="flex flex-col md:flex-row gap-20">
+                        <div className="md:w-1/3">
+                            <h2 className="text-3xl font-bold font-['Clash_Display'] uppercase mb-8">The Fluid <br /><span className="text-white/20">Mesh.</span></h2>
+                            <p className="text-[#555] leading-relaxed">
+                                Our infrastructure is not a collection of individual servers. It is a unified, self-healing mesh that identifies the most efficient path for every request.
+                            </p>
+                        </div>
+                        <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            <div className="p-8 bg-[#080808] border border-white/5 rounded-3xl group hover:border-[#CCFF00]/20 transition-all">
+                                <Layers className="w-6 h-6 text-[#333] group-hover:text-[#CCFF00] mb-6 transition-colors" />
+                                <h4 className="font-bold mb-4 uppercase text-sm tracking-widest">Multi-Layer Caching</h4>
+                                <p className="text-xs text-[#555] leading-relaxed">Content is stored at the edge, in regional hubs, and core data centers to ensure zero latency.</p>
+                            </div>
+                            <div className="p-8 bg-[#080808] border border-white/5 rounded-3xl group hover:border-[#CCFF00]/20 transition-all">
+                                <Activity className="w-6 h-6 text-[#333] group-hover:text-[#CCFF00] mb-6 transition-colors" />
+                                <h4 className="font-bold mb-4 uppercase text-sm tracking-widest">Real-time Optimization</h4>
+                                <p className="text-xs text-[#555] leading-relaxed">Our AI-driven mesh reroutes traffic instantly if a node experiences even a millisecond of lag.</p>
+                            </div>
+                            <div className="p-8 bg-[#080808] border border-white/5 rounded-3xl group hover:border-[#CCFF00]/20 transition-all">
+                                <Lock className="w-6 h-6 text-[#333] group-hover:text-[#CCFF00] mb-6 transition-colors" />
+                                <h4 className="font-bold mb-4 uppercase text-sm tracking-widest">Quantum Security</h4>
+                                <p className="text-xs text-[#555] leading-relaxed">DDoS mitigation and encryption layers that anticipate threats before they reach your app.</p>
+                            </div>
+                            <div className="p-8 bg-[#080808] border border-white/5 rounded-3xl group hover:border-[#CCFF00]/20 transition-all">
+                                <Cloud className="w-6 h-6 text-[#333] group-hover:text-[#CCFF00] mb-6 transition-colors" />
+                                <h4 className="font-bold mb-4 uppercase text-sm tracking-widest">Cloud-Agnostic Core</h4>
+                                <p className="text-xs text-[#555] leading-relaxed">Built to integrate with any major provider while maintaining the premium WPFYE edge experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Milestones / Timeline */}
+                <section className="px-8 max-w-7xl mx-auto mb-40">
+                    <div className="flex items-center gap-3 mb-16">
+                        <div className="h-[1px] w-12 bg-[#CCFF00]" />
+                        <h2 className="text-2xl font-bold font-['Clash_Display'] uppercase">Brand Evolution</h2>
+                    </div>
+                    <div className="space-y-1px bg-white/5 rounded-[40px] border border-white/5 overflow-hidden">
                         {[
-                            {
-                                icon: <Cpu className="w-6 h-6" />,
-                                title: "Technical Precision",
-                                description: "Every line of our fabric is optimized for latency. We don't settle for 'fast enough'."
-                            },
-                            {
-                                icon: <Shield className="w-6 h-6" />,
-                                title: "Stealth Security",
-                                description: "Protection that works in the background, invisible but impenetrable."
-                            },
-                            {
-                                icon: <Zap className="w-6 h-6" />,
-                                title: "Fluid Scaling",
-                                description: "Infrastructure that breathes with your traffic. No human intervention required."
-                            }
-                        ].map((item, idx) => (
-                            <div key={idx} className="bg-[#080808] p-12 hover:bg-[#0a0a0a] transition-all group">
-                                <div className="mb-8 p-4 rounded-2xl bg-[#111] w-fit group-hover:bg-[#CCFF00]/10 transition-all text-[#333] group-hover:text-[#CCFF00]">
-                                    {item.icon}
+                            { year: "2024 (Q1)", event: "WPFYE Protocol Concept", detail: "Initial architecture design for the Fluid Fabric in Bengaluru." },
+                            { year: "2024 (Q3)", event: "Alpha Deployment", detail: "First 5 global edge nodes go live (London, Virginia, Mumbai, Singapore, Frankfurt)." },
+                            { year: "2025 (Q2)", event: "The Fluid Cloud launch", detail: "WPFYE transitions from internal tool to public cloud provider." },
+                            { year: "2026 (Now)", event: "Global Scale", detail: "Expanded to 20+ nodes with 100% operational integrity record." }
+                        ].map((m, i) => (
+                            <div key={i} className="flex flex-col md:flex-row items-baseline gap-8 p-10 bg-[#080808] hover:bg-[#0a0a0a] transition-all group">
+                                <span className="text-[#CCFF00] font-bold text-xl font-['Clash_Display'] min-w-[120px]">{m.year}</span>
+                                <div className="space-y-2">
+                                    <h4 className="font-bold uppercase tracking-wider text-[#F2F2F2]">{m.event}</h4>
+                                    <p className="text-[#555] text-sm group-hover:text-[#888] transition-colors">{m.detail}</p>
                                 </div>
-                                <h3 className="text-xl font-bold uppercase tracking-wide mb-6">{item.title}</h3>
-                                <p className="text-[#555] leading-relaxed group-hover:text-[#888] transition-colors">
-                                    {item.description}
-                                </p>
                             </div>
                         ))}
                     </div>
@@ -123,20 +148,20 @@ const AboutPage = () => {
                             transition={{ duration: 0.8 }}
                         >
                             <h2 className="text-4xl md:text-6xl font-bold font-['Clash_Display'] mb-8">
-                                Our vision is simple: <br />
-                                <span className="text-white/20 italic">Cloud without complexity.</span>
+                                Complexity <br />
+                                <span className="text-white/20 italic">is the enemy of scale.</span>
                             </h2>
                             <p className="text-[#888] text-lg leading-relaxed mb-12 max-w-2xl mx-auto">
-                                We believe that the best technology is the kind you never have to think about. It just works, global and resilient, from day one.
+                                We believe that the best technology is the kind you never have to think about. At WPFYE, we build the bridges so you can build the future.
                             </p>
                             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                                 <div className="flex items-center gap-3 px-8 py-4 bg-[#111] border border-white/5 rounded-2xl">
                                     <Building2 className="w-4 h-4 text-[#CCFF00]" />
-                                    <span className="text-[10px] uppercase font-black tracking-widest">Global HQ: Bengaluru, KA</span>
+                                    <span className="text-[10px] uppercase font-black tracking-widest text-[#F2F2F2]">Global HQ: Bengaluru, KA</span>
                                 </div>
-                                <div className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black rounded-2xl hover:scale-105 transition-all cursor-pointer">
-                                    <span className="text-[10px] uppercase font-black tracking-widest">Partner with us</span>
-                                    <ArrowRight className="w-4 h-4" />
+                                <div className="flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-[#555] rounded-2xl">
+                                    <Globe className="w-4 h-4" />
+                                    <span className="text-[10px] uppercase font-black tracking-widest">Global Node Network active</span>
                                 </div>
                             </div>
                         </motion.div>
