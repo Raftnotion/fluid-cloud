@@ -285,7 +285,10 @@ const CheckoutPage = () => {
                                 </div>
                                 <div className="pt-6 border-t border-[#222] flex justify-between items-center">
                                     <span className="text-lg font-black text-[#F2F2F2] uppercase tracking-[0.2em]">Total</span>
-                                    <span className="text-3xl font-black text-[#CCFF00]">₹{totalAmount.toFixed(2)}</span>
+                                    <div className="text-3xl font-black text-[#CCFF00] flex items-baseline">
+                                        <span>₹{Math.floor(totalAmount)}</span>
+                                        <span className="text-sm">.{totalAmount.toFixed(2).split('.')[1]}</span>
+                                    </div>
                                 </div>
                             </div>
 
