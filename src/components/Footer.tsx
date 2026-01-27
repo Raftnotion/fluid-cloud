@@ -1,7 +1,31 @@
+"use client";
+
 import Link from 'next/link';
 import { Mail, Github, Twitter, Linkedin, ShieldCheck, Activity, ArrowUpRight } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 const Footer: React.FC = () => {
+    const pathname = usePathname();
+
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
+        if (href.startsWith('/#') && pathname === '/') {
+            e.preventDefault();
+            const id = href.replace('/#', '');
+            const element = document.getElementById(id);
+            if (element) {
+                const navHeight = 80; // Compensate for fixed header
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+
+                window.history.pushState(null, '', href);
+            }
+        }
+    };
     return (
         <footer id="support" className="w-full pt-40 pb-12 px-8 flex flex-col items-center border-t border-white/5 bg-[#050505] relative overflow-hidden">
             {/* Background Glow */}
@@ -31,9 +55,9 @@ const Footer: React.FC = () => {
                         <div>
                             <h5 className="text-[#F2F2F2] font-bold text-sm uppercase tracking-widest mb-4">Platform</h5>
                             <ul className="space-y-4">
-                                <li><Link href="/#infrastructure" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors flex items-center gap-1 group">Infrastructure <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
-                                <li><Link href="/#features" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors flex items-center gap-1 group">Features <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
-                                <li><Link href="/#pricing" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors flex items-center gap-1 group">Pricing <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
+                                <li><Link href="/#infrastructure" onClick={(e) => handleScroll(e, '/#infrastructure')} className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors flex items-center gap-1 group">Infrastructure <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
+                                <li><Link href="/#features" onClick={(e) => handleScroll(e, '/#features')} className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors flex items-center gap-1 group">Features <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
+                                <li><Link href="/#pricing" onClick={(e) => handleScroll(e, '/#pricing')} className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors flex items-center gap-1 group">Pricing <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
                             </ul>
                         </div>
                         <div>
@@ -48,7 +72,7 @@ const Footer: React.FC = () => {
                             <h5 className="text-[#F2F2F2] font-bold text-sm uppercase tracking-widest mb-4">Support</h5>
                             <ul className="space-y-4">
                                 <li><Link href="/kb" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">Knowledgebase</Link></li>
-                                <li><Link href="/#faq" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">Technical FAQ</Link></li>
+                                <li><Link href="/#faq" onClick={(e) => handleScroll(e, '/#faq')} className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">Technical FAQ</Link></li>
                                 <li><Link href="/legal" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">Legal Protocol</Link></li>
                             </ul>
                         </div>
