@@ -27,7 +27,7 @@ const CheckoutPage = () => {
     };
 
     const selectedPlan = plans[planParam as keyof typeof plans] || plans['3'];
-    const taxAmount = Math.round(selectedPlan.price * 0.18);
+    const taxAmount = selectedPlan.price * 0.18;
     const totalAmount = selectedPlan.price + taxAmount;
 
     const steps = [
@@ -281,11 +281,11 @@ const CheckoutPage = () => {
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <span className="text-xs text-[#555] font-bold uppercase tracking-widest">GST (18%)</span>
-                                    <span className="text-sm font-bold text-[#F2F2F2]">₹{taxAmount}.00</span>
+                                    <span className="text-sm font-bold text-[#F2F2F2]">₹{taxAmount.toFixed(2)}</span>
                                 </div>
                                 <div className="pt-6 border-t border-[#222] flex justify-between items-center">
                                     <span className="text-lg font-black text-[#F2F2F2] uppercase tracking-[0.2em]">Total</span>
-                                    <span className="text-3xl font-black text-[#CCFF00]">₹{totalAmount}</span>
+                                    <span className="text-3xl font-black text-[#CCFF00]">₹{totalAmount.toFixed(2)}</span>
                                 </div>
                             </div>
 
