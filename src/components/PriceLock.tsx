@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, ShieldCheck, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const PriceLock: React.FC = () => {
     const [tier, setTier] = useState<number>(2); // 0, 1, 2 corresponds to 1, 2, 3 years
@@ -106,15 +107,14 @@ const PriceLock: React.FC = () => {
                             )}
                         </AnimatePresence>
 
-                        <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
+                        <Link
+                            href={`/checkout?plan=${tier + 1}`}
                             className="group relative mt-4 px-12 py-5 bg-[#CCFF00] rounded-2xl flex items-center gap-3 overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.15)] hover:shadow-[0_25px_50px_rgba(204,255,0,0.25)] transition-all duration-300"
                         >
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
                             <span className="text-black font-black text-xl uppercase tracking-wider">BUY NOW</span>
                             <ArrowRight className="w-6 h-6 text-black group-hover:translate-x-1 transition-transform" />
-                        </motion.button>
+                        </Link>
 
                         <div className="flex items-center gap-2 mt-4 text-[#444] text-[10px] uppercase tracking-widest font-bold">
                             <Lock className="w-3 h-3" />
