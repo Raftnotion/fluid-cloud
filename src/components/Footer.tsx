@@ -1,68 +1,89 @@
-import React from 'react';
+import Link from 'next/link';
+import { Mail, Github, Twitter, Linkedin, ShieldCheck, Activity, ArrowUpRight } from 'lucide-react';
 
 const Footer: React.FC = () => {
     return (
-        <footer id="support" className="w-full pt-32 pb-12 px-8 flex flex-col items-center border-t border-[#1a1a1a]">
-            <div className="max-w-6xl w-full">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-20">
-                    <div className="space-y-6">
-                        <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 bg-[#CCFF00] rounded-sm flex items-center justify-center">
-                                <span className="text-black font-bold text-xs">W</span>
+        <footer id="support" className="w-full pt-40 pb-12 px-8 flex flex-col items-center border-t border-white/5 bg-[#050505] relative overflow-hidden">
+            {/* Background Glow */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] bg-[#CCFF00]/5 blur-[120px] rounded-full pointer-events-none" />
+
+            <div className="max-w-7xl w-full relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-32">
+                    {/* Brand Column */}
+                    <div className="lg:col-span-4 space-y-8">
+                        <Link href="/" className="flex items-center gap-3">
+                            <div className="w-8 h-8 bg-[#CCFF00] rounded-sm flex items-center justify-center">
+                                <span className="text-black font-black text-lg">W</span>
                             </div>
-                            <span className="text-xl font-bold font-['Clash_Display']">WPFYE</span>
-                        </div>
-                        <p className="text-[#888888] max-w-sm text-sm">
-                            Complexity Removed. Power Unlimited. The world's first fluid cloud infrastructure built for the next generation of digital creators.
+                            <span className="text-2xl font-bold font-['Clash_Display'] tracking-tight">WPFYE</span>
+                        </Link>
+                        <p className="text-[#555] max-w-sm text-sm leading-relaxed">
+                            Complexity Removed. Power Unlimited. The world&apos;s first fluid cloud infrastructure built for the next generation of digital creators.
                         </p>
-                        <div className="flex items-center gap-3">
-                            <div className="w-2 h-2 bg-[#CCFF00] rounded-full animate-pulse" />
-                            <span className="text-[10px] text-[#888888] uppercase tracking-[0.3em]">Operational — Global Edge Network</span>
+                        <div className="flex items-center gap-3 p-4 bg-white/5 border border-white/5 rounded-2xl w-fit">
+                            <div className="w-2 h-2 bg-[#CCFF00] rounded-full animate-pulse shadow-[0_0_10px_#CCFF00]" />
+                            <span className="text-[10px] text-[#888] font-bold uppercase tracking-[0.2em]">Operational — Global Edge Network</span>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
+                    {/* Links Grid */}
+                    <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-12">
                         <div>
-                            <h5 className="text-[#F2F2F2] font-bold text-sm mb-4 uppercase tracking-widest">Platform</h5>
-                            <ul className="space-y-3 text-sm text-[#888888]">
-                                <li><a href="#" className="hover:text-[#CCFF00] transition-colors">Managed WP</a></li>
-                                <li><a href="#" className="hover:text-[#CCFF00] transition-colors">Linux Servers</a></li>
-                                <li><a href="#" className="hover:text-[#CCFF00] transition-colors">Pricing</a></li>
+                            <h5 className="text-[#F2F2F2] font-black text-[10px] uppercase tracking-[0.3em] mb-8">Platform</h5>
+                            <ul className="space-y-4">
+                                <li><Link href="/#infrastructure" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors flex items-center gap-1 group">Infrastructure <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
+                                <li><Link href="/#features" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors flex items-center gap-1 group">Features <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
+                                <li><Link href="/#pricing" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors flex items-center gap-1 group">Pricing <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-all" /></Link></li>
                             </ul>
                         </div>
                         <div>
-                            <h5 className="text-[#F2F2F2] font-bold text-sm mb-4 uppercase tracking-widest">Company</h5>
-                            <ul className="space-y-3 text-sm text-[#888888]">
-                                <li><a href="/contact" className="hover:text-[#CCFF00] transition-colors">Contact</a></li>
-                                <li><a href="#" className="hover:text-[#CCFF00] transition-colors">Blog</a></li>
-                                <li><a href="/status" className="hover:text-[#CCFF00] transition-colors">System Status</a></li>
+                            <h5 className="text-[#F2F2F2] font-black text-[10px] uppercase tracking-[0.3em] mb-8">Company</h5>
+                            <ul className="space-y-4">
+                                <li><Link href="/about" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">About Story</Link></li>
+                                <li><Link href="/contact" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">Contact Hub</Link></li>
+                                <li><Link href="/status" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors flex items-center gap-2">System Status <Activity className="w-3 h-3 text-[#CCFF00]" /></Link></li>
                             </ul>
                         </div>
-                        <div>
-                            <h5 className="text-[#F2F2F2] font-bold text-sm mb-4 uppercase tracking-widest">Support</h5>
-                            <ul className="space-y-3 text-sm text-[#888888]">
-                                <li><a href="#" className="hover:text-[#CCFF00] transition-colors">Help Center</a></li>
-                                <li><a href="/contact" className="hover:text-[#CCFF00] transition-colors">Contact</a></li>
-                                <li><a href="/legal#privacy" className="hover:text-[#CCFF00] transition-colors">Privacy Policy</a></li>
-                                <li><a href="/legal#terms" className="hover:text-[#CCFF00] transition-colors">Terms of Service</a></li>
-                                <li><a href="/legal#aup" className="hover:text-[#CCFF00] transition-colors">Acceptable Use</a></li>
-                                <li><a href="/legal#refund" className="hover:text-[#CCFF00] transition-colors">Refund Policy</a></li>
-                                <li><a href="/legal#sla" className="hover:text-[#CCFF00] transition-colors">SLA Guarantee</a></li>
-                                <li><a href="/legal#dmca" className="hover:text-[#CCFF00] transition-colors">Abuse & DMCA</a></li>
-                                <li><a href="/legal#disclaimer" className="hover:text-[#CCFF00] transition-colors">Disclaimer</a></li>
+                        <div className="col-span-2 md:col-span-1">
+                            <h5 className="text-[#F2F2F2] font-black text-[10px] uppercase tracking-[0.3em] mb-8">Support</h5>
+                            <ul className="space-y-4">
+                                <li><Link href="/kb" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">Knowledgebase</Link></li>
+                                <li><Link href="/#faq" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">Technical FAQ</Link></li>
+                                <li><Link href="/legal" className="text-[#555] hover:text-[#CCFF00] text-sm transition-colors">Legal Protocol</Link></li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row justify-between items-center pt-12 border-t border-[#1a1a1a] gap-6 text-[10px] text-[#333333] uppercase tracking-[0.3em]">
-                    <p>© 2026 WPFYE TECHNOLOGY (OPC) Pvt Ltd. All Rights Reserved.</p>
-                    <p>Internal Global Edge Network Infrastructure</p>
-                    <div className="flex gap-4">
-                        <a href="#" className="hover:text-[#888888] transition-colors">Twitter</a>
-                        <a href="#" className="hover:text-[#888888] transition-colors">GitHub</a>
-                        <a href="#" className="hover:text-[#888888] transition-colors">LinkedIn</a>
+                {/* Bottom Bar */}
+                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                        <p className="text-[10px] text-[#333] uppercase font-bold tracking-[0.2em]">
+                            © 2026 WPFYE TECHNOLOGY (OPC) PVT LTD.
+                        </p>
+                        <div className="flex items-center gap-6">
+                            <Link href="/legal#privacy" className="text-[10px] text-[#333] hover:text-[#555] uppercase font-bold tracking-[0.2em] transition-colors">Privacy</Link>
+                            <Link href="/legal#terms" className="text-[10px] text-[#333] hover:text-[#555] uppercase font-bold tracking-[0.2em] transition-colors">Terms</Link>
+                        </div>
                     </div>
+
+                    <div className="flex items-center gap-6">
+                        <a href="#" className="p-2 bg-white/5 rounded-lg text-[#333] hover:text-[#CCFF00] hover:bg-white/10 transition-all">
+                            <Twitter className="w-4 h-4" />
+                        </a>
+                        <a href="#" className="p-2 bg-white/5 rounded-lg text-[#333] hover:text-[#CCFF00] hover:bg-white/10 transition-all">
+                            <Github className="w-4 h-4" />
+                        </a>
+                        <a href="#" className="p-2 bg-white/5 rounded-lg text-[#333] hover:text-[#CCFF00] hover:bg-white/10 transition-all">
+                            <Linkedin className="w-4 h-4" />
+                        </a>
+                    </div>
+                </div>
+
+                <div className="mt-12 text-center">
+                    <p className="text-[9px] text-[#111] uppercase font-black tracking-[1em] select-none">
+                        STEALTH LUXURY INFRASTRUCTURE
+                    </p>
                 </div>
             </div>
         </footer>

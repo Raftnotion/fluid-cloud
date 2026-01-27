@@ -95,7 +95,7 @@ const ComparisonSection: React.FC = () => {
     const [view, setView] = useState<'wpfye' | 'cpanel'>('wpfye');
 
     return (
-        <section className="w-full py-40 px-6 sm:px-8 bg-black relative overflow-hidden">
+        <section id="features" className="w-full py-40 px-6 sm:px-8 bg-black relative overflow-hidden">
             {/* Background Textures */}
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#CCFF00]/10 to-transparent" />
 
