@@ -266,7 +266,7 @@ const CheckoutPage = () => {
                                             <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center p-1.5 border border-[#222]">
                                                 <img src="/images/elemntor.png" alt="Elementor" className="w-full h-full object-contain" />
                                             </div>
-                                            <span className="text-xs font-bold text-[#888]">Elementor Pro (Life-time)</span>
+                                            <span className="text-xs font-bold text-[#888]">Elementor Pro ({selectedPlan.name.split(' ')[0]} Year)</span>
                                         </div>
                                     </div>
                                 </div>
