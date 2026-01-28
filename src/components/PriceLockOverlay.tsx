@@ -102,20 +102,28 @@ export const PriceLockOverlay: React.FC<PriceLockOverlayProps> = ({ isVisible, o
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: 0.6 }}
-                                    className="p-4 bg-white/5 border border-white/10 rounded-2xl text-left"
+                                    className="p-6 bg-white/5 border border-white/10 rounded-2xl text-left h-full flex flex-col justify-between"
                                 >
-                                    <ShieldCheck className="w-6 h-6 text-[#CCFF00] mb-3" />
-                                    <p className="text-xs font-black text-[#F2F2F2] uppercase tracking-wide">Forever Rate</p>
+                                    <div>
+                                        <div className="h-8 w-8 flex items-center justify-start mb-2">
+                                            <ShieldCheck className="w-6 h-6 text-[#CCFF00]" />
+                                        </div>
+                                        <p className="text-xs font-black text-[#F2F2F2] uppercase tracking-wide">Forever Rate</p>
+                                    </div>
                                     <p className="text-[10px] text-[#888] font-bold uppercase tracking-wider mt-1">Never pay more than ₹2,999</p>
                                 </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0, x: 20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: 0.8 }}
-                                    className="p-6 bg-white/5 border border-white/10 rounded-2xl text-left"
+                                    className="p-6 bg-white/5 border border-white/10 rounded-2xl text-left h-full flex flex-col justify-between"
                                 >
-                                    <Sparkles className="w-6 h-6 text-[#CCFF00] mb-3" />
-                                    <p className="text-xs font-black text-[#F2F2F2] uppercase tracking-wide">Max Bonuses</p>
+                                    <div>
+                                        <div className="h-8 w-8 flex items-center justify-start mb-2">
+                                            <Sparkles className="w-6 h-6 text-[#CCFF00]" />
+                                        </div>
+                                        <p className="text-xs font-black text-[#F2F2F2] uppercase tracking-wide">Max Bonuses</p>
+                                    </div>
                                     <p className="text-[10px] text-[#888] font-bold uppercase tracking-wider mt-1">Premium assets unlocked</p>
                                 </motion.div>
                             </div>
