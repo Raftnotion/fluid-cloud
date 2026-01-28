@@ -6,7 +6,7 @@ import { Lock, ShieldCheck, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 const PriceLock: React.FC = () => {
-    const [tier, setTier] = useState<number>(2); // 0, 1, 2 corresponds to 1, 2, 3 years
+    const [tier, setTier] = useState<number>(0); // 0, 1, 2 corresponds to 1, 2, 3 years
 
     const plans = [
         { price: 999, original: 1299, label: '1 Year', savings: 300, bonus: 7500 },
