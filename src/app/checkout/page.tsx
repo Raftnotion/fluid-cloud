@@ -334,7 +334,7 @@ const CheckoutContent = () => {
                                                 <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Street Address</label>
                                                 <input
                                                     type="text"
-                                                    placeholder="126 Franklin Ave"
+                                                    placeholder="Street Address"
                                                     value={formData.address}
                                                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                                                     className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
