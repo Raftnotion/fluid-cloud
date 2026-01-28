@@ -138,6 +138,12 @@ const CheckoutContent = () => {
         params.set('s', name);
         router.push(`${pathname}?${params.toString()}`, { scroll: false });
     };
+    const handlePlanChange = (p: string) => {
+        const params = new URLSearchParams(searchParams.toString());
+        params.set('plan', p);
+        router.push(`${pathname}?${params.toString()}`, { scroll: false });
+    };
+
     const [formData, setFormData] = useState({
         domain: '',
         firstName: '',
@@ -519,7 +525,20 @@ const CheckoutContent = () => {
                     <div className="lg:w-[400px] shrink-0">
                         <div className="p-8 bg-[#0a0a0a] border border-[#222] rounded-[32px] sticky top-32 space-y-8">
                             <div>
-                                <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#555] mb-6">Order Summary</h3>
+                                <div className="flex items-center justify-between mb-6">
+                                    <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#555]">Order Summary</h3>
+                                    <div className="flex bg-black border border-[#222] p-1 rounded-lg gap-1">
+                                        {['1', '2', '3'].map((p) => (
+                                            <button
+                                                key={p}
+                                                onClick={() => handlePlanChange(p)}
+                                                className={`px-3 py-1 text-[10px] font-black uppercase rounded-md transition-all ${planParam === p ? 'bg-[#CCFF00] text-black' : 'text-[#888] hover:text-[#F2F2F2]'}`}
+                                            >
+                                                {p}Y
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
                                 <div className="space-y-6">
                                     <div className="flex justify-between items-start">
                                         <div>
