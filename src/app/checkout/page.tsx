@@ -349,30 +349,30 @@ const CheckoutContent = () => {
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">First Name</label>
+                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">First Name</label>
                                                 <input
                                                     type="text"
                                                     value={formData.firstName}
                                                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Last Name</label>
+                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Last Name</label>
                                                 <input
                                                     type="text"
                                                     value={formData.lastName}
                                                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
                                             <div className="space-y-2 md:col-span-2">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Email Address</label>
+                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Email Address</label>
                                                 <input
                                                     type="email"
                                                     value={formData.email}
                                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
                                         </div>
@@ -406,7 +406,7 @@ const CheckoutContent = () => {
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
                                             <div className="md:col-span-2 mb-6">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555] block mb-4">Billing Type</label>
+                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555] block mb-4">Billing Type</label>
                                                 <div className="bg-[#0a0a0a] border border-[#222] p-1.5 rounded-xl inline-flex gap-1.5 w-full md:w-fit">
                                                     <button
                                                         type="button"
@@ -432,65 +432,65 @@ const CheckoutContent = () => {
                                                     className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 mb-2"
                                                 >
                                                     <div className="space-y-2">
-                                                        <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Company Name</label>
+                                                        <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Company Name</label>
                                                         <input
                                                             type="text"
                                                             value={formData.companyName}
                                                             onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                                                            className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                            className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                         />
                                                     </div>
                                                     <div className="space-y-2">
-                                                        <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">GSTIN</label>
+                                                        <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">GSTIN</label>
                                                         <input
                                                             type="text"
                                                             placeholder="29AADCW9345A1Z7"
                                                             value={formData.gstin}
                                                             onChange={(e) => setFormData({ ...formData, gstin: e.target.value })}
-                                                            className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                            className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                         />
                                                     </div>
                                                 </motion.div>
                                             )}
                                             <div className="space-y-2 md:col-span-2">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Street Address</label>
+                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Street Address</label>
                                                 <input
                                                     type="text"
                                                     placeholder="Street Address"
                                                     value={formData.address}
                                                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">City</label>
+                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">City</label>
                                                 <input
                                                     type="text"
                                                     value={formData.city}
                                                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">State / Province</label>
+                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">State / Province</label>
                                                 <input
                                                     type="text"
                                                     value={formData.state}
                                                     onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">ZIP / Postal Code</label>
+                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">ZIP / Postal Code</label>
                                                 <input
                                                     type="text"
                                                     value={formData.zip}
                                                     onChange={(e) => setFormData({ ...formData, zip: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
-                                            <div className="space-y-2">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Country</label>
+                                            <div className="md:col-span-2 space-y-2">
+                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Country / Region</label>
                                                 <SearchableCountrySelect
                                                     value={formData.country}
                                                     onChange={(val) => setFormData({ ...formData, country: val })}
