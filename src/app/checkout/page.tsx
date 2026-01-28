@@ -69,7 +69,10 @@ const SearchableCountrySelect = ({ value, onChange, options }: { value: string, 
                                 />
                             </div>
                         </div>
-                        <div className="max-h-[250px] overflow-y-auto no-scrollbar py-1">
+                        <div
+                            className="max-h-[250px] overflow-y-auto overscroll-contain py-1 custom-scrollbar"
+                            data-lenis-prevent
+                        >
                             {filteredOptions.length > 0 ? (
                                 filteredOptions.map((opt) => (
                                     <div
