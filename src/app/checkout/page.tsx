@@ -548,7 +548,7 @@ const CheckoutContent = () => {
                                                         <img src="/images/rzp.png" alt="Razorpay" className="w-full h-full object-contain" />
                                                     </div>
                                                     <div>
-                                                        <h4 className="font-bold text-lg">Razorpay Secured</h4>
+                                                        <h4 className="font-bold text-lg tracking-wide">Razorpay Secured</h4>
                                                         <p className="text-[#555] text-[11px] font-black uppercase tracking-widest">Global Payment Gateway</p>
                                                     </div>
                                                 </div>
