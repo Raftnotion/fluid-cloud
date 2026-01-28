@@ -200,9 +200,30 @@ const CheckoutContent = () => {
     };
 
     const plans = {
-        '1': { name: '1 Year Plan', price: 899, term: 'Annually' },
-        '2': { name: '2 Year Plan', price: 1798, term: 'every 2 years' },
-        '3': { name: '3 Year (Price Lock)', price: 2697, term: 'every 3 years' }
+        '1': {
+            name: '1 Year Plan',
+            price: 899,
+            renewal: 1299,
+            term: 'Annually',
+            savings: 400,
+            description: 'Introductory offer for new deployments.'
+        },
+        '2': {
+            name: '2 Year Plan',
+            price: 1798,
+            renewal: 2598,
+            term: 'every 2 years',
+            savings: 800,
+            description: 'Extended coverage with significant upfront discount.'
+        },
+        '3': {
+            name: '3 Year (Price Lock)',
+            price: 2697,
+            renewal: 2697,
+            term: 'every 3 years',
+            savings: 1200,
+            description: 'Guaranteed price protection for future cycles.'
+        }
     };
 
     const selectedPlan = plans[planParam as keyof typeof plans] || plans['3'];
@@ -509,8 +530,31 @@ const CheckoutContent = () => {
                                     </div>
 
                                     <div className="flex justify-between items-center py-4 border-y border-[#1a1a1a]">
-                                        <span className="text-xs text-[#888] font-bold uppercase tracking-widest">Billing cycle</span>
-                                        <span className="text-xs text-[#F2F2F2] font-black uppercase tracking-widest">Billed {selectedPlan.term}</span>
+                                        <div>
+                                            <span className="text-xs text-[#888] font-bold uppercase tracking-widest block mb-1">Billing cycle</span>
+                                            <span className="text-[10px] text-[#555] font-black uppercase tracking-widest">Billed {selectedPlan.term}</span>
+                                        </div>
+                                        <div className="text-right">
+                                            <span className="text-xs text-[#888] font-bold uppercase tracking-widest block mb-1">Renewal Price</span>
+                                            <span className="text-[10px] text-[#CCFF00] font-black uppercase tracking-widest">
+                                                {selectedPlan.price === selectedPlan.renewal ? (
+                                                    <span className="flex items-center gap-1 justify-end">
+                                                        <Lock className="w-2.5 h-2.5" /> PRICE LOCKED
+                                                    </span>
+                                                ) : (
+                                                    `₹${selectedPlan.renewal} after first term`
+                                                )}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* Savings Indicator */}
+                                    <div className="flex items-center justify-between p-3 bg-[#CCFF00]/10 border border-[#CCFF00]/10 rounded-xl">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-[#CCFF00]">Introductory Savings</span>
+                                        </div>
+                                        <span className="text-xs font-black text-[#CCFF00]">Save ₹{selectedPlan.savings}</span>
                                     </div>
 
                                     {/* Bonuses */}

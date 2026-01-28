@@ -8,8 +8,11 @@ import Link from 'next/link';
 const PriceLock: React.FC = () => {
     const [tier, setTier] = useState<number>(2); // 0, 1, 2 corresponds to 1, 2, 3 years
 
-    const prices = [899, 1798, 2697];
-    const labels = ['1 Year', '2 Years', '3 Years (Locked)'];
+    const plans = [
+        { price: 899, renewal: 1299, label: '1 Year', savings: 400 },
+        { price: 1798, renewal: 2598, label: '2 Years', savings: 800 },
+        { price: 2697, renewal: 2697, label: '3 Years (Locked)', savings: 1200 }
+    ];
 
     return (
         <section id="pricing" className="w-full py-32 px-8 flex flex-col items-center bg-[#050505] relative overflow-hidden">
@@ -20,14 +23,14 @@ const PriceLock: React.FC = () => {
                 <p className="text-[#888888] mb-12 text-lg">Hosting prices inflate every quarter. Lock your legacy rate with our 3-year plan.</p>
 
                 <div className="bg-[#0a0a0a] border border-[#333333] p-2 rounded-xl inline-flex gap-2 mb-16">
-                    {labels.map((label, idx) => (
+                    {plans.map((p, idx) => (
                         <button
-                            key={label}
+                            key={p.label}
                             onClick={() => setTier(idx)}
                             className={`relative px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${tier === idx ? 'text-black' : 'text-[#888888] hover:text-[#F2F2F2]'
                                 }`}
                         >
-                            <span className="relative z-10">{label}</span>
+                            <span className="relative z-10">{p.label}</span>
                             {tier === idx && (
                                 <motion.div
                                     layoutId="price-switch"
@@ -55,8 +58,22 @@ const PriceLock: React.FC = () => {
                             {tier === 0 ? "Billed Annually" : `Billed every ${tier + 1} years`}
                         </span>
                         <div className="flex items-end justify-center gap-2 mb-2 relative">
-                            <span className="text-7xl font-bold text-[#F2F2F2]">₹{prices[tier]}</span>
+                            <span className="text-7xl font-bold text-[#F2F2F2]">₹{plans[tier].price}</span>
                             <span className="text-[#888888] mb-3 text-xl">{tier === 0 ? "/yr" : ` for ${tier + 1} yrs`}</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 mt-2">
+                            <p className="text-[#CCFF00] text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 bg-[#CCFF00]/10 rounded-full border border-[#CCFF00]/10">
+                                Save ₹{plans[tier].savings} on first term
+                            </p>
+                            <p className="text-[#555] text-xs font-bold uppercase tracking-widest">
+                                {plans[tier].price === plans[tier].renewal ? (
+                                    <span className="flex items-center gap-1">
+                                        <Lock className="w-3 h-3" /> Price Locked Forever
+                                    </span>
+                                ) : (
+                                    `Renews at ₹${plans[tier].renewal}`
+                                )}
+                            </p>
                         </div>
                     </motion.div>
 
