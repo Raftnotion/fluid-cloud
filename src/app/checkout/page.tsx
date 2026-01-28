@@ -201,7 +201,7 @@ const CheckoutContent = () => {
 
     const plans = {
         '1': {
-            name: '1 Year Fluid Plan',
+            name: '1 Year Plan',
             price: 999,
             original: 1299,
             term: 'Annually',
@@ -209,7 +209,7 @@ const CheckoutContent = () => {
             bonus: 7500
         },
         '2': {
-            name: '2 Year Fluid Plan',
+            name: '2 Year Plan',
             price: 1998,
             original: 2598,
             term: 'every 2 years',
@@ -217,7 +217,7 @@ const CheckoutContent = () => {
             bonus: 15000
         },
         '3': {
-            name: '3 Year Fluid (Price Lock)',
+            name: '3 Year (Price Lock)',
             price: 2999,
             original: 3897,
             term: 'every 3 years',

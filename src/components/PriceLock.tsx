@@ -62,7 +62,7 @@ const PriceLock: React.FC = () => {
                             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-8 border-b border-[#1a1a1a]">
                                 <div className="text-left">
                                     <span className="text-[#CCFF00] text-[10px] font-black uppercase tracking-[0.3em] block mb-2">Selected Configuration</span>
-                                    <h3 className="text-3xl font-bold text-[#F2F2F2]">{plans[tier].label} Fluid Plan</h3>
+                                    <h3 className="text-3xl font-bold text-[#F2F2F2]">{plans[tier].label} Plan</h3>
                                     <p className="text-[#555] text-xs font-bold uppercase tracking-widest mt-1">Billed {tier === 0 ? "Annually" : `every ${tier + 1} years`}</p>
                                 </div>
                                 <div className="text-left md:text-right">
