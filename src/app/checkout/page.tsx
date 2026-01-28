@@ -489,7 +489,7 @@ const CheckoutContent = () => {
                                                     className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
-                                            <div className="md:col-span-2 space-y-2">
+                                            <div className="space-y-2">
                                                 <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Country / Region</label>
                                                 <SearchableCountrySelect
                                                     value={formData.country}
@@ -498,9 +498,9 @@ const CheckoutContent = () => {
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Phone Number</label>
+                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Phone Number</label>
                                                 <div className="flex gap-2">
-                                                    <div className="bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold text-[#555] min-w-[70px] flex items-center justify-center">
+                                                    <div className="bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold text-[#555] min-w-[70px] flex items-center justify-center">
                                                         {formData.countryCode}
                                                     </div>
                                                     <input
@@ -508,7 +508,7 @@ const CheckoutContent = () => {
                                                         value={formData.phone}
                                                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                                         placeholder="Phone Number"
-                                                        className="flex-1 bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                        className="flex-1 bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                     />
                                                 </div>
                                             </div>
