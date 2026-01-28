@@ -670,7 +670,7 @@ const CheckoutContent = () => {
                                     <Zap className="w-3 h-3 fill-current" /> Instant Deployment
                                 </p>
                                 <p className="text-[13px] text-[#555] leading-relaxed">
-                                    Your environment will be automatically provisioned within <span className="text-[#888] font-bold">10 minutes</span> of successful transaction authorization.
+                                    Your cloud hosting will be automatically provisioned within <span className="text-[#888] font-bold">10 minutes</span> of successful transaction authorization.
                                 </p>
                             </div>
                         </div>
