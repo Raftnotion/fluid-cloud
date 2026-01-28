@@ -102,7 +102,7 @@ const PriceLock: React.FC = () => {
                                         <img src="/images/elemntor.png" alt="Elementor" className="w-6 h-6 object-contain" />
                                     </div>
                                     <div className="text-left">
-                                        <span className="text-[10px] font-black text-[#CCFF00] uppercase tracking-widest block mb-0.5">Stealth Bonus</span>
+                                        <span className="text-[10px] font-black text-[#CCFF00] uppercase tracking-widest block mb-0.5">Bonus</span>
                                         <p className="text-sm font-bold text-[#F2F2F2]">Worth ₹{plans[tier].bonus.toLocaleString()}+</p>
                                         <p className="text-[10px] text-[#555] font-bold uppercase tracking-widest">Elementor Pro ({tier + 1} {tier === 0 ? 'Year' : 'Years'})</p>
                                     </div>

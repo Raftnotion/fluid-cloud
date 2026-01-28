@@ -533,7 +533,7 @@ const CheckoutContent = () => {
                                     {/* Bonuses */}
                                     <div className="space-y-4">
                                         <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest">
-                                            <span className="text-[#CCFF00]">Stealth Bonus Included</span>
+                                            <span className="text-[#CCFF00]">Bonus Included</span>
                                             <span className="px-2 py-0.5 bg-[#CCFF00] text-black rounded">Activated</span>
                                         </div>
                                         <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
