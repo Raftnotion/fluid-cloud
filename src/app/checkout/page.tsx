@@ -202,18 +202,18 @@ const CheckoutContent = () => {
     const plans = {
         '1': {
             name: '1 Year Plan',
-            price: 899,
+            price: 999,
             original: 1299,
             term: 'Annually',
-            savings: 400,
+            savings: 300,
             bonus: 7500
         },
         '2': {
             name: '2 Year Plan',
-            price: 1798,
+            price: 1998,
             original: 2598,
             term: 'every 2 years',
-            savings: 800,
+            savings: 600,
             bonus: 7500
         },
         '3': {
