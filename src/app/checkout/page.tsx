@@ -669,7 +669,7 @@ const CheckoutContent = () => {
                                 <p className="text-[11px] text-[#CCFF00] font-black uppercase tracking-widest flex items-center gap-2 mb-2">
                                     <Zap className="w-3 h-3 fill-current" /> Instant Deployment
                                 </p>
-                                <p className="text-[11px] text-[#555] leading-relaxed">
+                                <p className="text-[13px] text-[#555] leading-relaxed">
                                     Your environment will be automatically provisioned within <span className="text-[#888] font-bold">10 minutes</span> of successful transaction authorization.
                                 </p>
                             </div>
