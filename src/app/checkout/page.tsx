@@ -316,8 +316,8 @@ const CheckoutContent = () => {
                                                 <Globe className="w-5 h-5 text-[#333] group-focus-within:text-[#CCFF00] transition-colors" />
                                             </div>
                                         </div>
-                                        <p className="mt-4 text-[9px] text-[#444] uppercase tracking-widest font-bold">
-                                            * You can also configure this later in the dashboard
+                                        <p className="mt-4 text-[9px] text-[#444] uppercase tracking-widest font-bold leading-relaxed">
+                                            * We do not sell domains. Enter an existing domain to host. If you don't have one, please purchase from a registrar (e.g. GoDaddy, Namecheap) first.
                                         </p>
                                     </section>
 
