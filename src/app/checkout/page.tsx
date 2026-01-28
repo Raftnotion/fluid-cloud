@@ -111,11 +111,26 @@ const CheckoutContent = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
-    const planParam = searchParams.get('plan') || '3'; // Default to 3 years
+    const stepMap: Record<string, number> = {
+        'domain': 1,
+        'identity': 2,
+        'billing': 3,
+        'payment': 4
+    };
 
-    // Get initial step from URL or fallback to 1
-    const urlStep = parseInt(searchParams.get('s') || '1');
-    const [step, setStep] = useState(urlStep);
+    const reverseStepMap: Record<number, string> = {
+        1: 'domain',
+        2: 'identity',
+        3: 'billing',
+        4: 'payment'
+    };
+
+    const planParam = searchParams.get('plan') || '3';
+
+    // Get initial step from URL name or fallback to 1
+    const urlStepName = searchParams.get('s') || 'domain';
+    const initialStep = stepMap[urlStepName] || 1;
+    const [step, setStep] = useState(initialStep);
     const [formData, setFormData] = useState({
         domain: '',
         firstName: '',
@@ -154,15 +169,17 @@ const CheckoutContent = () => {
 
         // Update URL to match current step without full reload
         const params = new URLSearchParams(searchParams.toString());
-        if (params.get('s') !== step.toString()) {
-            params.set('s', step.toString());
+        const stepName = reverseStepMap[step] || 'domain';
+        if (params.get('s') !== stepName) {
+            params.set('s', stepName);
             router.push(`${pathname}?${params.toString()}`, { scroll: false });
         }
     }, [formData, step, searchParams, router, pathname]);
 
     // Handle browser back/forward buttons
     useEffect(() => {
-        const s = parseInt(searchParams.get('s') || '1');
+        const stepName = searchParams.get('s') || 'domain';
+        const s = stepMap[stepName] || 1;
         if (s !== step) {
             setStep(s);
         }
