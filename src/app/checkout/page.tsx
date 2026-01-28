@@ -550,7 +550,12 @@ const CheckoutContent = () => {
                             </div>
 
                             <div className="space-y-4">
-                                {selectedPlan.price !== selectedPlan.original && (
+                                {selectedPlan.name.includes('Price Lock') ? (
+                                    <div className="flex justify-between items-center text-[#CCFF00] mb-2">
+                                        <span className="text-[10px] font-black uppercase tracking-widest">Lifetime Price Lock Active</span>
+                                        <span className="text-[10px] font-black uppercase tracking-widest">₹{selectedPlan.price}.00 / 3 Years</span>
+                                    </div>
+                                ) : selectedPlan.price !== selectedPlan.original && (
                                     <div className="flex justify-between items-center text-[#555] mb-2">
                                         <span className="text-[10px] font-black uppercase tracking-widest">Future Renewal Price</span>
                                         <span className="text-[10px] font-black uppercase tracking-widest text-[#888]">₹{selectedPlan.original}.00 / {selectedPlan.name.split(' ')[0]} {parseInt(selectedPlan.name.split(' ')[0]) > 1 ? 'Years' : 'Year'}</span>
