@@ -547,8 +547,12 @@ const CheckoutContent = () => {
                                         <div className="absolute inset-0 bg-[#CCFF00] opacity-[0.03] group-hover:opacity-[0.05] transition-opacity" />
                                         <div className="relative p-4 border border-[#CCFF00]/20 rounded-2xl flex items-center justify-between">
                                             <div>
-                                                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#CCFF00] mb-1">Protocol Discount Active</p>
-                                                <p className="text-xs font-bold text-[#F2F2F2]">Instant Savings Applied</p>
+                                                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#CCFF00] mb-1">
+                                                    {selectedPlan.price === selectedPlan.original ? 'LIFETIME PRICE LOCK' : 'Protocol Discount Active'}
+                                                </p>
+                                                <p className="text-xs font-bold text-[#F2F2F2]">
+                                                    {selectedPlan.price === selectedPlan.original ? 'Renewal Rate Guaranteed' : 'Instant Savings Applied'}
+                                                </p>
                                             </div>
                                             <div className="text-right">
                                                 <p className="text-xl font-black text-[#CCFF00] tracking-tighter">-₹{selectedPlan.savings + selectedPlan.bonus}</p>

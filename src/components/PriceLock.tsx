@@ -76,9 +76,19 @@ const PriceLock: React.FC = () => {
                                 You Save ₹{plans[tier].savings + plans[tier].bonus} Total Value
                             </motion.div>
                             <div className="flex items-center gap-4 text-[#555] text-[10px] font-black uppercase tracking-[0.3em]">
-                                <span>Host Price Locked</span>
-                                <div className="w-1 h-1 rounded-full bg-[#222]" />
-                                <span>No Hidden Renewal Hikes</span>
+                                {tier === 2 ? (
+                                    <>
+                                        <span className="text-[#CCFF00]">Host Price Locked</span>
+                                        <div className="w-1 h-1 rounded-full bg-[#CCFF00]" />
+                                        <span className="text-[#CCFF00]">No Hidden Renewal Hikes</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span>Standard Renewal Price</span>
+                                        <div className="w-1 h-1 rounded-full bg-[#222]" />
+                                        <span>Limited Time Offer</span>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </motion.div>
