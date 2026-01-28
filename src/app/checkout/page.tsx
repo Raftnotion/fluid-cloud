@@ -282,7 +282,7 @@ const CheckoutContent = () => {
                                         <div className={`w-8 h-8 rounded-lg border flex items-center justify-center transition-colors duration-500 ${step >= s.id ? 'border-[#CCFF00] bg-[#CCFF00]/10' : 'border-[#222]'}`}>
                                             {step > s.id ? <CheckCircle2 className="w-5 h-5" /> : s.icon}
                                         </div>
-                                        <span className="text-[10px] font-black uppercase tracking-[0.2em]">{s.title}</span>
+                                        <span className="text-[11px] font-black uppercase tracking-[0.2em]">{s.title}</span>
                                     </button>
                                     {idx < steps.length - 1 && (
                                         <div className={`h-px w-8 ${step > s.id ? 'bg-[#CCFF00]' : 'bg-[#222]'}`} />
@@ -323,7 +323,7 @@ const CheckoutContent = () => {
 
                                     <button
                                         onClick={() => goToStep(2)}
-                                        className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
+                                        className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Next <ArrowRight className="w-4 h-4" />
                                     </button>
@@ -380,7 +380,7 @@ const CheckoutContent = () => {
 
                                     <button
                                         onClick={() => goToStep(3)}
-                                        className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
+                                        className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Proceed to Billing <ArrowRight className="w-4 h-4" />
                                     </button>
@@ -411,14 +411,14 @@ const CheckoutContent = () => {
                                                     <button
                                                         type="button"
                                                         onClick={() => setFormData({ ...formData, isCompany: false })}
-                                                        className={`flex-1 md:flex-none px-6 py-3 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all ${!formData.isCompany ? 'bg-[#CCFF00] text-black shadow-[0_4px_12px_rgba(204,255,0,0.15)]' : 'text-[#444] hover:text-[#666]'}`}
+                                                        className={`flex-1 md:flex-none px-6 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all ${!formData.isCompany ? 'bg-[#CCFF00] text-black shadow-[0_4px_12px_rgba(204,255,0,0.15)]' : 'text-[#444] hover:text-[#666]'}`}
                                                     >
                                                         Individual
                                                     </button>
                                                     <button
                                                         type="button"
                                                         onClick={() => setFormData({ ...formData, isCompany: true })}
-                                                        className={`flex-1 md:flex-none px-6 py-3 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all ${formData.isCompany ? 'bg-[#CCFF00] text-black shadow-[0_4px_12px_rgba(204,255,0,0.15)]' : 'text-[#444] hover:text-[#666]'}`}
+                                                        className={`flex-1 md:flex-none px-6 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all ${formData.isCompany ? 'bg-[#CCFF00] text-black shadow-[0_4px_12px_rgba(204,255,0,0.15)]' : 'text-[#444] hover:text-[#666]'}`}
                                                     >
                                                         Company
                                                     </button>
@@ -517,7 +517,7 @@ const CheckoutContent = () => {
 
                                     <button
                                         onClick={() => goToStep(4)}
-                                        className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
+                                        className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Review & Pay <ArrowRight className="w-4 h-4" />
                                     </button>
@@ -549,7 +549,7 @@ const CheckoutContent = () => {
                                                     </div>
                                                     <div>
                                                         <h4 className="font-bold text-lg">Razorpay Secured</h4>
-                                                        <p className="text-[#555] text-[10px] font-black uppercase tracking-widest">Global Payment Gateway</p>
+                                                        <p className="text-[#555] text-[11px] font-black uppercase tracking-widest">Global Payment Gateway</p>
                                                     </div>
                                                 </div>
                                                 <div className="w-6 h-6 rounded-full border-2 border-[#CCFF00] flex items-center justify-center">
@@ -558,7 +558,7 @@ const CheckoutContent = () => {
                                             </div>
 
                                             <button
-                                                className="group relative flex items-center justify-center gap-3 w-full px-12 py-5 bg-[#CCFF00] text-black font-black uppercase tracking-[0.2em] text-xs rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.1)] hover:scale-[1.01] active:scale-[0.98] transition-all"
+                                                className="group relative flex items-center justify-center gap-3 w-full px-12 py-5 bg-[#CCFF00] text-black font-black uppercase tracking-[0.2em] text-sm rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.1)] hover:scale-[1.01] active:scale-[0.98] transition-all"
                                             >
                                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
                                                 <Lock className="w-4 h-4" />
@@ -568,7 +568,7 @@ const CheckoutContent = () => {
                                         </div>
                                     </section>
 
-                                    <div className="flex items-center gap-6 text-[#333] text-[8px] font-black uppercase tracking-[0.3em]">
+                                    <div className="flex items-center gap-6 text-[#333] text-[10px] font-black uppercase tracking-[0.3em]">
                                         <div className="flex items-center gap-2">
                                             <ShieldCheck className="w-2.5 h-2.5 text-[#CCFF00]" />
                                             PCI-DSS COMPLIANT
@@ -588,13 +588,13 @@ const CheckoutContent = () => {
                         <div className="p-8 bg-[#0a0a0a] border border-[#222] rounded-[32px] sticky top-32 space-y-8">
                             <div>
                                 <div className="flex items-center justify-between mb-6">
-                                    <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#555]">Order Summary</h3>
+                                    <h3 className="text-xs font-black uppercase tracking-[0.3em] text-[#555]">Order Summary</h3>
                                     <div className="flex bg-black border border-[#222] p-1 rounded-lg gap-1">
                                         {['1', '2', '3'].map((p) => (
                                             <button
                                                 key={p}
                                                 onClick={() => handlePlanChange(p)}
-                                                className={`px-3 py-1 text-[10px] font-black uppercase rounded-md transition-all ${planParam === p ? 'bg-[#CCFF00] text-black' : 'text-[#888] hover:text-[#F2F2F2]'}`}
+                                                className={`px-3 py-1 text-xs font-black uppercase rounded-md transition-all ${planParam === p ? 'bg-[#CCFF00] text-black' : 'text-[#888] hover:text-[#F2F2F2]'}`}
                                             >
                                                 {p}Y
                                             </button>
@@ -612,10 +612,10 @@ const CheckoutContent = () => {
 
                                     {formData.isCompany && formData.companyName && (
                                         <div className="py-4 border-y border-[#1a1a1a]">
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-[#555] block mb-1">Billing Type</span>
+                                            <span className="text-[11px] font-black uppercase tracking-widest text-[#555] block mb-1">Billing Type</span>
                                             <div className="flex justify-between items-center text-xs font-bold text-[#F2F2F2]">
                                                 <span>{formData.companyName}</span>
-                                                {formData.gstin && <span className="text-[10px] text-[#CCFF00] font-black uppercase tracking-widest">GSTIN: {formData.gstin}</span>}
+                                                {formData.gstin && <span className="text-[11px] text-[#CCFF00] font-black uppercase tracking-widest">GSTIN: {formData.gstin}</span>}
                                             </div>
                                         </div>
                                     )}
@@ -623,7 +623,7 @@ const CheckoutContent = () => {
 
                                     {/* Bonuses */}
                                     <div className="space-y-4">
-                                        <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest">
+                                        <div className="flex items-center justify-between text-[11px] font-black uppercase tracking-widest">
                                             <span className="text-[#CCFF00]">Bonus Included</span>
                                             <span className="px-2 py-0.5 bg-[#CCFF00] text-black rounded">Activated</span>
                                         </div>
@@ -633,7 +633,7 @@ const CheckoutContent = () => {
                                             </div>
                                             <div className="flex flex-col">
                                                 <span className="text-xs font-bold text-[#F2F2F2]">Elementor Pro ({selectedPlan.name.split(' ')[0]} {parseInt(selectedPlan.name.split(' ')[0]) > 1 ? 'Years' : 'Year'})</span>
-                                                <span className="text-[10px] text-[#CCFF00] font-black uppercase tracking-widest mt-0.5">Worth ₹{selectedPlan.bonus.toLocaleString()}+ Included Free</span>
+                                                <span className="text-[11px] text-[#CCFF00] font-black uppercase tracking-widest mt-0.5">Worth ₹{selectedPlan.bonus.toLocaleString()}+ Included Free</span>
                                             </div>
                                         </div>
                                     </div>
@@ -643,13 +643,13 @@ const CheckoutContent = () => {
                             <div className="space-y-4">
                                 {selectedPlan.name.includes('Price Lock') ? (
                                     <div className="flex justify-between items-center text-[#CCFF00] mb-2">
-                                        <span className="text-[10px] font-black uppercase tracking-widest">Lifetime Price Lock Active</span>
-                                        <span className="text-[10px] font-black uppercase tracking-widest">₹{selectedPlan.price}.00 / 3 Years</span>
+                                        <span className="text-[11px] font-black uppercase tracking-widest">Lifetime Price Lock Active</span>
+                                        <span className="text-[11px] font-black uppercase tracking-widest">₹{selectedPlan.price}.00 / 3 Years</span>
                                     </div>
                                 ) : selectedPlan.price !== selectedPlan.original && (
                                     <div className="flex justify-between items-center text-[#555] mb-2">
-                                        <span className="text-[10px] font-black uppercase tracking-widest">Future Renewal Price</span>
-                                        <span className="text-[10px] font-black uppercase tracking-widest text-[#888]">₹{selectedPlan.original}.00 / {selectedPlan.name.split(' ')[0]} {parseInt(selectedPlan.name.split(' ')[0]) > 1 ? 'Years' : 'Year'}</span>
+                                        <span className="text-[11px] font-black uppercase tracking-widest">Future Renewal Price</span>
+                                        <span className="text-[11px] font-black uppercase tracking-widest text-[#888]">₹{selectedPlan.original}.00 / {selectedPlan.name.split(' ')[0]} {parseInt(selectedPlan.name.split(' ')[0]) > 1 ? 'Years' : 'Year'}</span>
                                     </div>
                                 )}
                                 <div className="flex justify-between items-center">
@@ -670,7 +670,7 @@ const CheckoutContent = () => {
                             </div>
 
                             <div className="p-4 bg-[#CCFF00]/5 border border-[#CCFF00]/10 rounded-2xl">
-                                <p className="text-[10px] text-[#CCFF00] font-black uppercase tracking-widest flex items-center gap-2 mb-2">
+                                <p className="text-[11px] text-[#CCFF00] font-black uppercase tracking-widest flex items-center gap-2 mb-2">
                                     <Zap className="w-3 h-3 fill-current" /> Instant Deployment
                                 </p>
                                 <p className="text-[11px] text-[#555] leading-relaxed">
