@@ -48,111 +48,107 @@ const PriceLock: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col items-center">
-                    <motion.div
-                        key={tier}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="text-center"
-                    >
-                        <span className="text-[#333333] text-sm uppercase tracking-[0.3em] mb-4 block">
-                            {tier === 0 ? "Billed Annually" : `Billed every ${tier + 1} years`}
-                        </span>
-                        <div className="flex flex-col items-center gap-1 mb-2 relative">
-                            <div className="flex items-center gap-3 text-[#333] mb-1">
-                                <span className="text-xl font-bold line-through opacity-50">₹{plans[tier].original}</span>
-                                <span className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 bg-[#FF3333]/10 text-[#FF3333] border border-[#FF3333]/20 rounded">-{Math.round((plans[tier].savings / plans[tier].original) * 100)}% Instant Off</span>
-                            </div>
-                            <div className="flex items-end justify-center gap-2">
-                                <span className="text-8xl font-black text-[#F2F2F2] tracking-tighter">₹{plans[tier].price}</span>
-                                <span className="text-[#888888] mb-4 text-xl font-bold">{tier === 0 ? "/yr" : ` for ${tier + 1} yrs`}</span>
-                            </div>
-                        </div>
-                        <div className="flex flex-col items-center gap-3 mt-4">
-                            <motion.div
-                                animate={{ scale: [1, 1.05, 1] }}
-                                transition={{ duration: 2, repeat: Infinity }}
-                                className="text-black text-[11px] font-black uppercase tracking-[0.2em] px-6 py-2 bg-[#CCFF00] rounded-full shadow-[0_0_20px_rgba(204,255,0,0.3)]"
-                            >
-                                You Save ₹{plans[tier].savings + plans[tier].bonus} Total Value
-                            </motion.div>
-                            <div className="flex items-center gap-4 text-[#555] text-[10px] font-black uppercase tracking-[0.3em]">
-                                {tier === 2 ? (
-                                    <>
-                                        <span className="text-[#CCFF00]">Host Price Locked</span>
-                                        <div className="w-1 h-1 rounded-full bg-[#CCFF00]" />
-                                        <span className="text-[#CCFF00]">No Hidden Renewal Hikes</span>
-                                    </>
-                                ) : (
-                                    <>
-                                        <span className="text-[#888]">Renews at ₹{plans[tier].original}</span>
-                                        <div className="w-1 h-1 rounded-full bg-[#222]" />
-                                        <span>Standard Renewal</span>
-                                    </>
-                                )}
-                            </div>
-                        </div>
-                    </motion.div>
+                    <div className="w-full max-w-2xl bg-[#0a0a0a] border border-[#222] rounded-[32px] p-8 md:p-12 relative overflow-hidden">
+                        {/* Decorative Background Glow */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#CCFF00]/5 blur-[80px] -mr-32 -mt-32 rounded-full" />
 
-                    <div className="mt-12 flex flex-col items-center gap-6">
-                        {/* Enhanced Universal Bonus Callout */}
-                        <div className="group relative">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-[#CCFF00]/0 via-[#CCFF00]/20 to-[#CCFF00]/0 blur-md opacity-0 group-hover:opacity-100 transition-all" />
-                            <div className="relative flex items-center gap-5 px-10 py-5 bg-[#0a0a0a] border border-[#222] rounded-3xl shadow-2xl">
-                                <motion.div
-                                    animate={{
-                                        boxShadow: ["0 0 0px rgba(204,255,0,0)", "0 0 20px rgba(204,255,0,0.2)", "0 0 0px rgba(204,255,0,0)"]
-                                    }}
-                                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                                    className="w-12 h-12 bg-[#CCFF00] rounded-2xl flex items-center justify-center overflow-hidden"
-                                >
-                                    <img src="/images/elemntor.png" alt="Elementor" className="w-9 h-9 object-contain" />
-                                </motion.div>
+                        <motion.div
+                            key={tier}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="relative z-10"
+                        >
+                            {/* Header Info */}
+                            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-8 border-b border-[#1a1a1a]">
                                 <div className="text-left">
-                                    <div className="flex items-center gap-2 mb-1.5">
-                                        <span className="text-[10px] font-black text-[#CCFF00] uppercase tracking-[0.2em] px-2 py-0.5 bg-[#CCFF00]/10 rounded-md">Bonus Included</span>
-                                        <span className="text-[11px] font-black text-black uppercase tracking-wider px-2 py-0.5 bg-[#CCFF00] rounded-md shadow-[0_0_15px_rgba(204,255,0,0.4)]">
-                                            Worth ₹{plans[tier].bonus.toLocaleString()}+
-                                        </span>
+                                    <span className="text-[#CCFF00] text-[10px] font-black uppercase tracking-[0.3em] block mb-2">Selected Configuration</span>
+                                    <h3 className="text-3xl font-bold text-[#F2F2F2]">{plans[tier].label} Pro Deployment</h3>
+                                    <p className="text-[#555] text-xs font-bold uppercase tracking-widest mt-1">Billed {tier === 0 ? "Annually" : `every ${tier + 1} years`}</p>
+                                </div>
+                                <div className="text-left md:text-right">
+                                    <div className="flex items-center md:justify-end gap-3 mb-1">
+                                        <span className="text-lg font-bold text-[#333] line-through">₹{plans[tier].original}</span>
+                                        <span className="px-2 py-0.5 bg-[#FF3333]/10 text-[#FF3333] text-[9px] font-black uppercase tracking-widest border border-[#FF3333]/20 rounded">-{Math.round((plans[tier].savings / plans[tier].original) * 100)}% Off</span>
                                     </div>
-                                    <p className="text-[#F2F2F2] font-bold text-lg leading-tight">Elementor Pro ({tier + 1} {tier === 0 ? 'Year' : 'Years'})</p>
-                                    <p className="text-[#888] text-xs mt-0.5">Automated deployment on your domain</p>
+                                    <div className="flex items-end md:justify-end gap-2">
+                                        <span className="text-6xl font-black text-[#F2F2F2] leading-none tracking-tighter">₹{plans[tier].price}</span>
+                                        <span className="text-[#555] text-lg font-bold mb-1">{tier === 0 ? "/yr" : `/${tier + 1}yr`}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <AnimatePresence mode="wait">
-                            {tier === 2 && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    className="flex flex-col items-center gap-2"
-                                >
-                                    <div className="flex items-center gap-3 px-6 py-3 bg-[#CCFF00]/5 border border-[#CCFF00]/20 rounded-full">
-                                        <Lock className="w-4 h-4 text-[#CCFF00]" />
-                                        <span className="text-[#CCFF00] text-sm font-bold uppercase tracking-tight">3-Year Price Lock Active</span>
-                                        <ShieldCheck className="w-4 h-4 text-[#CCFF00]" />
+                            {/* Values Stack */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+                                {/* Hosting Value */}
+                                <div className="p-5 bg-white/5 border border-white/5 rounded-2xl flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-black border border-[#222] flex items-center justify-center shrink-0">
+                                        <ShieldCheck className="w-5 h-5 text-[#CCFF00]" />
                                     </div>
-                                    <p className="text-[#888888] text-xs font-medium max-w-sm mt-1 text-center">
-                                        Your renewal price is fixed at ₹2999 every 3 years forever. Protect yourself from future inflation.
-                                    </p>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                                    <div className="text-left">
+                                        <span className="text-[10px] font-black text-[#CCFF00] uppercase tracking-widest block mb-0.5">Hosting Value</span>
+                                        <p className="text-sm font-bold text-[#F2F2F2]">₹{plans[tier].savings} Instant Savings</p>
+                                        <p className="text-[10px] text-[#555] font-bold uppercase tracking-widest">Applied to first term</p>
+                                    </div>
+                                </div>
 
-                        <Link
-                            href={`/checkout?plan=${tier + 1}`}
-                            className="group relative mt-4 px-12 py-5 bg-[#CCFF00] rounded-2xl flex items-center gap-3 overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.15)] hover:shadow-[0_25px_50px_rgba(204,255,0,0.25)] transition-all duration-300"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
-                            <span className="text-black font-black text-xl uppercase tracking-wider">BUY NOW</span>
-                            <ArrowRight className="w-6 h-6 text-black group-hover:translate-x-1 transition-transform" />
-                        </Link>
+                                {/* Elementor Bonus */}
+                                <div className="p-5 bg-white/5 border border-white/5 rounded-2xl flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-black border border-[#222] flex items-center justify-center shrink-0">
+                                        <img src="/images/elemntor.png" alt="Elementor" className="w-6 h-6 object-contain" />
+                                    </div>
+                                    <div className="text-left">
+                                        <span className="text-[10px] font-black text-[#CCFF00] uppercase tracking-widest block mb-0.5">Stealth Bonus</span>
+                                        <p className="text-sm font-bold text-[#F2F2F2]">Worth ₹{plans[tier].bonus.toLocaleString()}+</p>
+                                        <p className="text-[10px] text-[#555] font-bold uppercase tracking-widest">Elementor Pro ({tier + 1} {tier === 0 ? 'Year' : 'Years'})</p>
+                                    </div>
+                                </div>
 
-                        <div className="flex items-center gap-2 mt-4 text-[#444] text-[10px] uppercase tracking-widest font-bold">
-                            <Lock className="w-3 h-3" />
-                            <span>Secure Encrypted Checkout</span>
-                        </div>
+                                {/* Renewal/Lock Info */}
+                                <div className="md:col-span-2 p-5 bg-[#CCFF00]/5 border border-[#CCFF00]/10 rounded-2xl flex items-center justify-between">
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-10 h-10 rounded-xl bg-black border border-[#CCFF00]/20 flex items-center justify-center shrink-0">
+                                            <Lock className="w-5 h-5 text-[#CCFF00]" />
+                                        </div>
+                                        <div className="text-left">
+                                            <span className="text-[10px] font-black text-[#CCFF00] uppercase tracking-widest block mb-0.5">Renewal Protocol</span>
+                                            {tier === 2 ? (
+                                                <p className="text-sm font-bold text-[#F2F2F2]">Lifetime Price Locked at ₹2,999</p>
+                                            ) : (
+                                                <p className="text-sm font-bold text-[#F2F2F2]">Renews at Standard ₹{plans[tier].original}</p>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className="hidden sm:block">
+                                        <span className="px-3 py-1 bg-[#CCFF00] text-black text-[9px] font-black uppercase tracking-widest rounded-full">
+                                            {tier === 2 ? 'Guaranteed' : 'Transparent'}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Total Savings & Call to Action */}
+                            <div className="flex flex-col items-center gap-6">
+                                <div className="flex items-center gap-3">
+                                    <div className="h-px w-8 bg-[#222]" />
+                                    <span className="text-[11px] font-black text-[#888] uppercase tracking-[0.4em]">Total Value Unlocked: ₹{(plans[tier].savings + plans[tier].bonus).toLocaleString()}</span>
+                                    <div className="h-px w-8 bg-[#222]" />
+                                </div>
+
+                                <Link
+                                    href={`/checkout?plan=${tier + 1}`}
+                                    className="group relative w-full h-16 bg-[#CCFF00] rounded-2xl flex items-center justify-center gap-3 overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.15)] hover:shadow-[0_25px_50px_rgba(204,255,0,0.25)] transition-all duration-300"
+                                >
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
+                                    <span className="text-black font-black text-xl uppercase tracking-wider">DEPLOY NOW</span>
+                                    <ArrowRight className="w-6 h-6 text-black group-hover:translate-x-1 transition-transform" />
+                                </Link>
+
+                                <p className="text-[#444] text-[9px] font-black uppercase tracking-[0.3em] flex items-center gap-2">
+                                    <Lock className="w-3 h-3" />
+                                    Secure Industrial Payment Protocol
+                                </p>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>
