@@ -394,7 +394,7 @@ const CheckoutContent = () => {
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
                                             <div className="md:col-span-2 mb-6">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555] block mb-4">Billing Entity</label>
+                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555] block mb-4">Billing Type</label>
                                                 <div className="bg-[#0a0a0a] border border-[#222] p-1.5 rounded-xl inline-flex gap-1.5 w-full md:w-fit">
                                                     <button
                                                         type="button"
@@ -600,7 +600,7 @@ const CheckoutContent = () => {
 
                                     {formData.isCompany && formData.companyName && (
                                         <div className="py-4 border-y border-[#1a1a1a]">
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-[#555] block mb-1">Billing Entity</span>
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-[#555] block mb-1">Billing Type</span>
                                             <div className="flex justify-between items-center text-xs font-bold text-[#F2F2F2]">
                                                 <span>{formData.companyName}</span>
                                                 {formData.gstin && <span className="text-[10px] text-[#CCFF00] font-black uppercase tracking-widest">GSTIN: {formData.gstin}</span>}
