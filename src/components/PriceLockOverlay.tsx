@@ -91,7 +91,7 @@ export const PriceLockOverlay: React.FC<PriceLockOverlayProps> = ({ isVisible, o
                             className="space-y-6"
                         >
                             <div>
-                                <h1 className="text-4xl md:text-5xl font-black font-['Clash_Display'] text-[#F2F2F2] uppercase tracking-tighter mb-4 leading-none">
+                                <h1 className="text-4xl md:text-5xl font-black font-['Clash_Display'] text-[#F2F2F2] uppercase tracking-wide mb-4 leading-tight">
                                     LIFETIME PRICE <span className="text-[#CCFF00]">LOCKED</span>
                                 </h1>
                                 <p className="text-[#888] font-bold text-sm uppercase tracking-widest">Protocol Activation Complete</p>
@@ -104,19 +104,19 @@ export const PriceLockOverlay: React.FC<PriceLockOverlayProps> = ({ isVisible, o
                                     transition={{ delay: 0.6 }}
                                     className="p-4 bg-white/5 border border-white/10 rounded-2xl text-left"
                                 >
-                                    <ShieldCheck className="w-5 h-5 text-[#CCFF00] mb-2" />
-                                    <p className="text-[10px] font-black text-[#F2F2F2] uppercase">Forever Rate</p>
-                                    <p className="text-[8px] text-[#555] uppercase tracking-wider mt-1 italic">Never pays more than ₹2,999</p>
+                                    <ShieldCheck className="w-6 h-6 text-[#CCFF00] mb-3" />
+                                    <p className="text-xs font-black text-[#F2F2F2] uppercase tracking-wide">Forever Rate</p>
+                                    <p className="text-[10px] text-[#888] font-bold uppercase tracking-wider mt-1">Never pay more than ₹2,999</p>
                                 </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0, x: 20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: 0.8 }}
-                                    className="p-4 bg-white/5 border border-white/10 rounded-2xl text-left"
+                                    className="p-6 bg-white/5 border border-white/10 rounded-2xl text-left"
                                 >
-                                    <Sparkles className="w-5 h-5 text-[#CCFF00] mb-2" />
-                                    <p className="text-[10px] font-black text-[#F2F2F2] uppercase">Max Bonuses</p>
-                                    <p className="text-[8px] text-[#555] uppercase tracking-wider mt-1 italic">All premium assets unlocked</p>
+                                    <Sparkles className="w-6 h-6 text-[#CCFF00] mb-3" />
+                                    <p className="text-xs font-black text-[#F2F2F2] uppercase tracking-wide">Max Bonuses</p>
+                                    <p className="text-[10px] text-[#888] font-bold uppercase tracking-wider mt-1">All premium assets unlocked</p>
                                 </motion.div>
                             </div>
 
