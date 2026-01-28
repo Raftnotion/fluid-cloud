@@ -116,7 +116,7 @@ export const PriceLockOverlay: React.FC<PriceLockOverlayProps> = ({ isVisible, o
                                 >
                                     <Sparkles className="w-6 h-6 text-[#CCFF00] mb-3" />
                                     <p className="text-xs font-black text-[#F2F2F2] uppercase tracking-wide">Max Bonuses</p>
-                                    <p className="text-[10px] text-[#888] font-bold uppercase tracking-wider mt-1">All premium assets unlocked</p>
+                                    <p className="text-[10px] text-[#888] font-bold uppercase tracking-wider mt-1">Premium assets unlocked</p>
                                 </motion.div>
                             </div>
 
