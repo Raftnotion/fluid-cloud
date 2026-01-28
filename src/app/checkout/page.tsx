@@ -6,6 +6,7 @@ import { ShieldCheck, Lock, Globe, User, CreditCard, ArrowRight, ArrowLeft, Chec
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useSearchParams } from 'next/navigation';
+import { countries } from '@/utils/countries';
 
 const CheckoutPage = () => {
     const searchParams = useSearchParams();
@@ -23,6 +24,7 @@ const CheckoutPage = () => {
         state: '',
         zip: '',
         country: 'India',
+        countryCode: '+91',
         paymentMethod: 'razorpay'
     });
 
@@ -47,6 +49,14 @@ const CheckoutPage = () => {
         localStorage.setItem('checkout_form', JSON.stringify(formData));
         localStorage.setItem('checkout_step', step.toString());
     }, [formData, step]);
+
+    // Sync countryCode when country changes
+    useEffect(() => {
+        const found = countries.find(c => c.name === formData.country);
+        if (found) {
+            setFormData(prev => ({ ...prev, countryCode: found.dial_code }));
+        }
+    }, [formData.country]);
 
     const handleStepClick = (targetStep: number) => {
         // Only allow jumping back or to steps already "reached"
@@ -182,21 +192,12 @@ const CheckoutPage = () => {
                                                     className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
-                                            <div className="space-y-2">
+                                            <div className="space-y-2 md:col-span-2">
                                                 <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Email Address</label>
                                                 <input
                                                     type="email"
                                                     value={formData.email}
                                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
-                                                />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Phone Number</label>
-                                                <input
-                                                    type="tel"
-                                                    value={formData.phone}
-                                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                                     className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
                                                 />
                                             </div>
@@ -269,15 +270,35 @@ const CheckoutPage = () => {
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Country</label>
-                                                <select
-                                                    value={formData.country}
-                                                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2] appearance-none"
-                                                >
-                                                    <option value="India">India</option>
-                                                    <option value="USA">USA</option>
-                                                    <option value="UK">UK</option>
-                                                </select>
+                                                <div className="relative group">
+                                                    <select
+                                                        value={formData.country}
+                                                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                                                        className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2] appearance-none cursor-pointer"
+                                                    >
+                                                        {countries.map(c => (
+                                                            <option key={c.code} value={c.name}>{c.flag} {c.name}</option>
+                                                        ))}
+                                                    </select>
+                                                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#555]">
+                                                        <ChevronRight className="w-4 h-4 rotate-90" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Phone Number</label>
+                                                <div className="flex gap-2">
+                                                    <div className="bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold text-[#555] min-w-[70px] flex items-center justify-center">
+                                                        {formData.countryCode}
+                                                    </div>
+                                                    <input
+                                                        type="tel"
+                                                        value={formData.phone}
+                                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                                        placeholder="Phone Number"
+                                                        className="flex-1 bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
                                     </section>

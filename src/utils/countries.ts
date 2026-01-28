@@ -1,0 +1,51 @@
+export interface Country {
+    name: string;
+    code: string;
+    dial_code: string;
+    flag: string;
+}
+
+export const countries: Country[] = [
+    { name: "India", code: "IN", dial_code: "+91", flag: "🇮🇳" },
+    { name: "United States", code: "US", dial_code: "+1", flag: "🇺🇸" },
+    { name: "United Kingdom", code: "GB", dial_code: "+44", flag: "🇬🇧" },
+    { name: "United Arab Emirates", code: "AE", dial_code: "+971", flag: "🇦🇪" },
+    { name: "Australia", code: "AU", dial_code: "+61", flag: "🇦🇺" },
+    { name: "Canada", code: "CA", dial_code: "+1", flag: "🇨🇦" },
+    { name: "Germany", code: "DE", dial_code: "+49", flag: "🇩🇪" },
+    { name: "France", code: "FR", dial_code: "+33", flag: "🇫🇷" },
+    { name: "Singapore", code: "SG", dial_code: "+65", flag: "🇸🇬" },
+    { name: "Japan", code: "JP", dial_code: "+81", flag: "🇯🇵" },
+    { name: "Brazil", code: "BR", dial_code: "+55", flag: "🇧🇷" },
+    { name: "Russia", code: "RU", dial_code: "+7", flag: "🇷🇺" },
+    { name: "South Africa", code: "ZA", dial_code: "+27", flag: "🇿🇦" },
+    { name: "Netherlands", code: "NL", dial_code: "+31", flag: "🇳🇱" },
+    { name: "Switzerland", code: "CH", dial_code: "+41", flag: "🇨🇭" },
+    { name: "Sweden", code: "SE", dial_code: "+46", flag: "🇸🇪" },
+    { name: "Norway", code: "NO", dial_code: "+47", flag: "🇳🇴" },
+    { name: "Denmark", code: "DK", dial_code: "+45", flag: "🇩🇰" },
+    { name: "Finland", code: "FI", dial_code: "+358", flag: "🇫🇮" },
+    { name: "Italy", code: "IT", dial_code: "+39", flag: "🇮🇹" },
+    { name: "Spain", code: "ES", dial_code: "+34", flag: "🇪🇸" },
+    { name: "Portugal", code: "PT", dial_code: "+351", flag: "🇵🇹" },
+    { name: "Saudi Arabia", code: "SA", dial_code: "+966", flag: "🇸🇦" },
+    { name: "Qatar", code: "QA", dial_code: "+974", flag: "🇶🇦" },
+    { name: "Oman", code: "OM", dial_code: "+968", flag: "🇴🇲" },
+    { name: "Kuwait", code: "KW", dial_code: "+965", flag: "🇰🇼" },
+    { name: "Bahrain", code: "BH", dial_code: "+973", flag: "🇧🇭" },
+    { name: "Turkey", code: "TR", dial_code: "+90", flag: "🇹🇷" },
+    { name: "Israel", code: "IL", dial_code: "+972", flag: "🇮🇱" },
+    { name: "South Korea", code: "KR", dial_code: "+82", flag: "🇰🇷" },
+    { name: "Indonesia", code: "ID", dial_code: "+62", flag: "🇮🇩" },
+    { name: "Malaysia", code: "MY", dial_code: "+60", flag: "🇲🇾" },
+    { name: "Thailand", code: "TH", dial_code: "+66", flag: "🇹🇭" },
+    { name: "Vietnam", code: "VN", dial_code: "+84", flag: "🇻🇳" },
+    { name: "Philippines", code: "PH", dial_code: "+63", flag: "🇵🇭" },
+    { name: "New Zealand", code: "NZ", dial_code: "+64", flag: "🇳🇿" },
+    { name: "Ireland", code: "IE", dial_code: "+353", flag: "🇮🇪" },
+    { name: "Austria", code: "AT", dial_code: "+43", flag: "🇦🇹" },
+    { name: "Belgium", code: "BE", dial_code: "+32", flag: "🇧🇪" },
+    { name: "Greece", code: "GR", dial_code: "+30", flag: "🇬🇷" },
+    { name: "Czech Republic", code: "CZ", dial_code: "+420", flag: "🇨🇿" },
+    { name: "Poland", code: "PL", dial_code: "+48", flag: "🇵🇱" },
+];
