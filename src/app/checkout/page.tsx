@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Lock, Globe, User, CreditCard, ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Zap } from 'lucide-react';
 import Header from '@/components/Header';
@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 import { useSearchParams } from 'next/navigation';
 import { countries } from '@/utils/countries';
 
-const CheckoutPage = () => {
+const CheckoutContent = () => {
     const searchParams = useSearchParams();
     const planParam = searchParams.get('plan') || '3'; // Default to 3 years
 
@@ -440,6 +440,21 @@ const CheckoutPage = () => {
 
             <Footer />
         </div>
+    );
+};
+
+const CheckoutPage = () => {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-[#050505] flex items-center justify-center">
+                <div className="flex flex-col items-center gap-4">
+                    <div className="w-12 h-12 border-2 border-[#CCFF00]/20 border-t-[#CCFF00] rounded-full animate-spin" />
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#555]">Initializing Protocol...</p>
+                </div>
+            </div>
+        }>
+            <CheckoutContent />
+        </Suspense>
     );
 };
 
