@@ -84,9 +84,9 @@ const PriceLock: React.FC = () => {
                                     </>
                                 ) : (
                                     <>
-                                        <span>Standard Renewal Price</span>
+                                        <span className="text-[#888]">Renews at ₹{plans[tier].original}</span>
                                         <div className="w-1 h-1 rounded-full bg-[#222]" />
-                                        <span>Limited Time Offer</span>
+                                        <span>Standard Renewal</span>
                                     </>
                                 )}
                             </div>

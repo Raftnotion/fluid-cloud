@@ -578,6 +578,12 @@ const CheckoutContent = () => {
                             </div>
 
                             <div className="space-y-4">
+                                {selectedPlan.price !== selectedPlan.original && (
+                                    <div className="flex justify-between items-center text-[#555] mb-2">
+                                        <span className="text-[10px] font-black uppercase tracking-widest">Future Renewal Price</span>
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-[#888]">₹{selectedPlan.original}.00 / Term</span>
+                                    </div>
+                                )}
                                 <div className="flex justify-between items-center">
                                     <span className="text-xs text-[#555] font-bold uppercase tracking-widest">Base Price</span>
                                     <span className="text-sm font-bold text-[#F2F2F2]">₹{selectedPlan.price}.00</span>
