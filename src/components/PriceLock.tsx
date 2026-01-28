@@ -9,9 +9,9 @@ const PriceLock: React.FC = () => {
     const [tier, setTier] = useState<number>(2); // 0, 1, 2 corresponds to 1, 2, 3 years
 
     const plans = [
-        { price: 899, renewal: 1299, label: '1 Year', savings: 400 },
-        { price: 1798, renewal: 2598, label: '2 Years', savings: 800 },
-        { price: 2697, renewal: 2697, label: '3 Years (Locked)', savings: 1200 }
+        { price: 899, original: 1299, label: '1 Year', savings: 400, bonus: 7500 },
+        { price: 1798, original: 2598, label: '2 Years', savings: 800, bonus: 7500 },
+        { price: 2697, original: 3897, label: '3 Years (Locked)', savings: 1200, bonus: 7500 }
     ];
 
     return (
@@ -57,23 +57,29 @@ const PriceLock: React.FC = () => {
                         <span className="text-[#333333] text-sm uppercase tracking-[0.3em] mb-4 block">
                             {tier === 0 ? "Billed Annually" : `Billed every ${tier + 1} years`}
                         </span>
-                        <div className="flex items-end justify-center gap-2 mb-2 relative">
-                            <span className="text-7xl font-bold text-[#F2F2F2]">₹{plans[tier].price}</span>
-                            <span className="text-[#888888] mb-3 text-xl">{tier === 0 ? "/yr" : ` for ${tier + 1} yrs`}</span>
+                        <div className="flex flex-col items-center gap-1 mb-2 relative">
+                            <div className="flex items-center gap-3 text-[#333] mb-1">
+                                <span className="text-xl font-bold line-through opacity-50">₹{plans[tier].original}</span>
+                                <span className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 bg-[#FF3333]/10 text-[#FF3333] border border-[#FF3333]/20 rounded">-{Math.round((plans[tier].savings / plans[tier].original) * 100)}% Instant Off</span>
+                            </div>
+                            <div className="flex items-end justify-center gap-2">
+                                <span className="text-8xl font-black text-[#F2F2F2] tracking-tighter">₹{plans[tier].price}</span>
+                                <span className="text-[#888888] mb-4 text-xl font-bold">{tier === 0 ? "/yr" : ` for ${tier + 1} yrs`}</span>
+                            </div>
                         </div>
-                        <div className="flex flex-col items-center gap-2 mt-2">
-                            <p className="text-[#CCFF00] text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 bg-[#CCFF00]/10 rounded-full border border-[#CCFF00]/10">
-                                Save ₹{plans[tier].savings} on first term
-                            </p>
-                            <p className="text-[#555] text-xs font-bold uppercase tracking-widest">
-                                {plans[tier].price === plans[tier].renewal ? (
-                                    <span className="flex items-center gap-1">
-                                        <Lock className="w-3 h-3" /> Price Locked Forever
-                                    </span>
-                                ) : (
-                                    `Renews at ₹${plans[tier].renewal}`
-                                )}
-                            </p>
+                        <div className="flex flex-col items-center gap-3 mt-4">
+                            <motion.div
+                                animate={{ scale: [1, 1.05, 1] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                                className="text-black text-[11px] font-black uppercase tracking-[0.2em] px-6 py-2 bg-[#CCFF00] rounded-full shadow-[0_0_20px_rgba(204,255,0,0.3)]"
+                            >
+                                You Save ₹{plans[tier].savings + plans[tier].bonus} Total Value
+                            </motion.div>
+                            <div className="flex items-center gap-4 text-[#555] text-[10px] font-black uppercase tracking-[0.3em]">
+                                <span>Host Price Locked</span>
+                                <div className="w-1 h-1 rounded-full bg-[#222]" />
+                                <span>No Hidden Renewal Hikes</span>
+                            </div>
                         </div>
                     </motion.div>
 

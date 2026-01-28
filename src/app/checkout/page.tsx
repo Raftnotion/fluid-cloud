@@ -203,26 +203,26 @@ const CheckoutContent = () => {
         '1': {
             name: '1 Year Plan',
             price: 899,
-            renewal: 1299,
+            original: 1299,
             term: 'Annually',
             savings: 400,
-            description: 'Introductory offer for new deployments.'
+            bonus: 7500
         },
         '2': {
             name: '2 Year Plan',
             price: 1798,
-            renewal: 2598,
+            original: 2598,
             term: 'every 2 years',
             savings: 800,
-            description: 'Extended coverage with significant upfront discount.'
+            bonus: 7500
         },
         '3': {
             name: '3 Year (Price Lock)',
             price: 2697,
-            renewal: 2697,
+            original: 3897,
             term: 'every 3 years',
             savings: 1200,
-            description: 'Guaranteed price protection for future cycles.'
+            bonus: 7500
         }
     };
 
@@ -535,26 +535,26 @@ const CheckoutContent = () => {
                                             <span className="text-[10px] text-[#555] font-black uppercase tracking-widest">Billed {selectedPlan.term}</span>
                                         </div>
                                         <div className="text-right">
-                                            <span className="text-xs text-[#888] font-bold uppercase tracking-widest block mb-1">Renewal Price</span>
-                                            <span className="text-[10px] text-[#CCFF00] font-black uppercase tracking-widest">
-                                                {selectedPlan.price === selectedPlan.renewal ? (
-                                                    <span className="flex items-center gap-1 justify-end">
-                                                        <Lock className="w-2.5 h-2.5" /> PRICE LOCKED
-                                                    </span>
-                                                ) : (
-                                                    `₹${selectedPlan.renewal} after first term`
-                                                )}
+                                            <span className="text-xs text-[#888] font-bold uppercase tracking-widest block mb-1">Standard Price</span>
+                                            <span className="text-[10px] text-[#555] font-black uppercase tracking-widest line-through">
+                                                ₹{selectedPlan.original + selectedPlan.bonus}.00
                                             </span>
                                         </div>
                                     </div>
 
-                                    {/* Savings Indicator */}
-                                    <div className="flex items-center justify-between p-3 bg-[#CCFF00]/10 border border-[#CCFF00]/10 rounded-xl">
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
-                                            <span className="text-[10px] font-black uppercase tracking-widest text-[#CCFF00]">Introductory Savings</span>
+                                    {/* High Impact Savings Badge */}
+                                    <div className="relative overflow-hidden group">
+                                        <div className="absolute inset-0 bg-[#CCFF00] opacity-[0.03] group-hover:opacity-[0.05] transition-opacity" />
+                                        <div className="relative p-4 border border-[#CCFF00]/20 rounded-2xl flex items-center justify-between">
+                                            <div>
+                                                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#CCFF00] mb-1">Protocol Discount Active</p>
+                                                <p className="text-xs font-bold text-[#F2F2F2]">Instant Savings Applied</p>
+                                            </div>
+                                            <div className="text-right">
+                                                <p className="text-xl font-black text-[#CCFF00] tracking-tighter">-₹{selectedPlan.savings + selectedPlan.bonus}</p>
+                                                <p className="text-[8px] font-black text-[#555] uppercase tracking-widest">Total Value Unlocked</p>
+                                            </div>
                                         </div>
-                                        <span className="text-xs font-black text-[#CCFF00]">Save ₹{selectedPlan.savings}</span>
                                     </div>
 
                                     {/* Bonuses */}
