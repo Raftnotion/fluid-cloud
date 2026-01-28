@@ -214,7 +214,7 @@ const CheckoutContent = () => {
             original: 2598,
             term: 'every 2 years',
             savings: 600,
-            bonus: 7500
+            bonus: 15000
         },
         '3': {
             name: '3 Year (Price Lock)',
@@ -222,7 +222,7 @@ const CheckoutContent = () => {
             original: 3897,
             term: 'every 3 years',
             savings: 898,
-            bonus: 7500
+            bonus: 22500
         }
     };
 

@@ -10,8 +10,8 @@ const PriceLock: React.FC = () => {
 
     const plans = [
         { price: 999, original: 1299, label: '1 Year', savings: 300, bonus: 7500 },
-        { price: 1998, original: 2598, label: '2 Years', savings: 600, bonus: 7500 },
-        { price: 2999, original: 3897, label: '3 Years (Locked)', savings: 898, bonus: 7500 }
+        { price: 1998, original: 2598, label: '2 Years', savings: 600, bonus: 15000 },
+        { price: 2999, original: 3897, label: '3 Years (Locked)', savings: 898, bonus: 22500 }
     ];
 
     return (
