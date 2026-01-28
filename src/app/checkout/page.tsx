@@ -571,7 +571,10 @@ const CheckoutContent = () => {
                                             <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center p-1.5 border border-[#222]">
                                                 <img src="/images/elemntor.png" alt="Elementor" className="w-full h-full object-contain" />
                                             </div>
-                                            <span className="text-xs font-bold text-[#888]">Elementor Pro ({selectedPlan.name.split(' ')[0]} Year)</span>
+                                            <div className="flex flex-col">
+                                                <span className="text-xs font-bold text-[#F2F2F2]">Elementor Pro ({selectedPlan.name.split(' ')[0]} {parseInt(selectedPlan.name.split(' ')[0]) > 1 ? 'Years' : 'Year'})</span>
+                                                <span className="text-[10px] text-[#CCFF00] font-black uppercase tracking-widest mt-0.5">Worth ₹{selectedPlan.bonus.toLocaleString()}+ Included Free</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

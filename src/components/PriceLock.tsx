@@ -111,10 +111,10 @@ const PriceLock: React.FC = () => {
                                     <div className="flex items-center gap-2 mb-1.5">
                                         <span className="text-[10px] font-black text-[#CCFF00] uppercase tracking-[0.2em] px-2 py-0.5 bg-[#CCFF00]/10 rounded-md">Bonus Included</span>
                                         <span className="text-[11px] font-black text-black uppercase tracking-wider px-2 py-0.5 bg-[#CCFF00] rounded-md shadow-[0_0_15px_rgba(204,255,0,0.4)]">
-                                            Worth ₹7,500+
+                                            Worth ₹{plans[tier].bonus.toLocaleString()}+
                                         </span>
                                     </div>
-                                    <p className="text-[#F2F2F2] font-bold text-lg leading-tight">Elementor Pro License</p>
+                                    <p className="text-[#F2F2F2] font-bold text-lg leading-tight">Elementor Pro ({tier + 1} {tier === 0 ? 'Year' : 'Years'})</p>
                                     <p className="text-[#888] text-xs mt-0.5">Automated deployment on your domain</p>
                                 </div>
                             </div>
