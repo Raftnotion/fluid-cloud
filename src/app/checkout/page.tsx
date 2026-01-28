@@ -2,11 +2,107 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, Lock, Globe, User, CreditCard, ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Zap } from 'lucide-react';
+import { ShieldCheck, Lock, Globe, User, CreditCard, ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Zap, Search, Check } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useSearchParams } from 'next/navigation';
 import { countries } from '@/utils/countries';
+
+const SearchableCountrySelect = ({ value, onChange, options }: { value: string, onChange: (val: string) => void, options: any[] }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [search, setSearch] = useState("");
+    const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+    const filteredOptions = options.filter(opt =>
+        opt.name.toLowerCase().includes(search.toLowerCase())
+    );
+
+    const selectedOption = options.find(opt => opt.name === value);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    return (
+        <div className="relative" ref={dropdownRef}>
+            <div
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold flex items-center justify-between cursor-pointer hover:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+            >
+                <div className="flex items-center gap-2">
+                    {selectedOption ? (
+                        <>
+                            <span>{selectedOption.flag}</span>
+                            <span>{selectedOption.name}</span>
+                        </>
+                    ) : (
+                        <span className="text-[#555]">Select Country</span>
+                    )}
+                </div>
+                <ChevronRight className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-90' : ''} text-[#555]`} />
+            </div>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="absolute z-[100] top-full mt-2 w-full bg-[#0d0d0d] border border-[#222] rounded-xl overflow-hidden shadow-2xl"
+                    >
+                        <div className="p-3 border-b border-[#222] bg-[#0a0a0a]">
+                            <div className="relative">
+                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#555]" />
+                                <input
+                                    autoFocus
+                                    type="text"
+                                    placeholder="Search country..."
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    className="w-full bg-[#050505] border border-[#222] rounded-lg py-2 pl-9 pr-4 text-xs font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                />
+                            </div>
+                        </div>
+                        <div className="max-h-[250px] overflow-y-auto no-scrollbar py-1">
+                            {filteredOptions.length > 0 ? (
+                                filteredOptions.map((opt) => (
+                                    <div
+                                        key={opt.code}
+                                        onClick={() => {
+                                            onChange(opt.name);
+                                            setIsOpen(false);
+                                            setSearch("");
+                                        }}
+                                        className={`px-4 py-3 text-xs font-bold flex items-center justify-between cursor-pointer transition-colors ${value === opt.name ? 'bg-[#CCFF00] text-black' : 'text-[#888] hover:bg-[#CCFF00]/10 hover:text-[#F2F2F2]'}`}
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <span className="text-base leading-none">{opt.flag}</span>
+                                            <span>{opt.name}</span>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <span className={`text-[10px] font-black ${value === opt.name ? 'text-black/50' : 'text-[#444]'}`}>{opt.dial_code}</span>
+                                            {value === opt.name && <Check className="w-3.5 h-3.5" />}
+                                        </div>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="px-4 py-8 text-center text-[#555] text-[10px] font-black uppercase tracking-widest">
+                                    No territory found
+                                </div>
+                            )}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
 
 const CheckoutContent = () => {
     const searchParams = useSearchParams();
@@ -270,20 +366,11 @@ const CheckoutContent = () => {
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Country</label>
-                                                <div className="relative group">
-                                                    <select
-                                                        value={formData.country}
-                                                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                                                        className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2] appearance-none cursor-pointer"
-                                                    >
-                                                        {countries.map(c => (
-                                                            <option key={c.code} value={c.name}>{c.flag} {c.name}</option>
-                                                        ))}
-                                                    </select>
-                                                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#555]">
-                                                        <ChevronRight className="w-4 h-4 rotate-90" />
-                                                    </div>
-                                                </div>
+                                                <SearchableCountrySelect
+                                                    value={formData.country}
+                                                    onChange={(val) => setFormData({ ...formData, country: val })}
+                                                    options={countries}
+                                                />
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Phone Number</label>
