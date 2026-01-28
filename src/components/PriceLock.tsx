@@ -22,6 +22,11 @@ const PriceLock: React.FC = () => {
                 <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#F2F2F2]">Freeze Time.</h2>
                 <p className="text-[#888888] mb-12 text-lg">Hosting prices inflate every quarter. Lock your legacy rate with our 3-year plan.</p>
 
+                <div className="flex flex-col items-center mb-8">
+                    <p className="text-[#CCFF00] text-[10px] font-black uppercase tracking-[0.4em] mb-4">Uncompromising Value</p>
+                    <p className="text-[#888] text-sm font-bold">One powerful plan. Three ways to save. Every feature included in every term.</p>
+                </div>
+
                 <div className="bg-[#0a0a0a] border border-[#333333] p-2 rounded-xl inline-flex gap-2 mb-16">
                     {plans.map((p, idx) => (
                         <button
