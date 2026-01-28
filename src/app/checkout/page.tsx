@@ -623,10 +623,6 @@ const CheckoutContent = () => {
 
                                     {/* Bonuses */}
                                     <div className="space-y-4">
-                                        <div className="flex items-center justify-between text-[11px] font-black uppercase tracking-widest">
-                                            <span className="text-[#CCFF00]">Bonus Included</span>
-                                            <span className="px-2 py-0.5 bg-[#CCFF00] text-black rounded">Activated</span>
-                                        </div>
                                         <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
                                             <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center p-1.5 border border-[#222]">
                                                 <img src="/images/elemntor.png" alt="Elementor" className="w-full h-full object-contain" />
