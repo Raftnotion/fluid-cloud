@@ -17,11 +17,11 @@ export const PriceLockOverlay: React.FC<PriceLockOverlayProps> = ({ isVisible, o
             setStatus('locking');
             const timer = setTimeout(() => {
                 setStatus('unlocked');
-            }, 1200);
+            }, 2000);
 
             const closeTimer = setTimeout(() => {
                 onComplete();
-            }, 2800);
+            }, 6000);
 
             return () => {
                 clearTimeout(timer);
