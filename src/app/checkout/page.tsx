@@ -517,77 +517,73 @@ const CheckoutContent = () => {
 
                     {/* Right Side: Order Summary */}
                     <div className="lg:w-[400px] shrink-0">
-                        <div className="p-8 bg-[#0a0a0a] border border-[#222] rounded-[32px] sticky top-32">
-                            <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#555] mb-8">Order Summary</h3>
-
-                            <div className="space-y-8">
-                                {/* Plan Identity */}
-                                <div className="flex justify-between items-start">
-                                    <div>
-                                        <p className="font-black text-2xl text-[#F2F2F2] uppercase tracking-tight">{selectedPlan.name}</p>
-                                        <p className="text-[10px] text-[#555] font-black uppercase tracking-widest mt-1">Billed {selectedPlan.term}</p>
-                                    </div>
-                                    <div className="text-right">
-                                        <p className="font-black text-2xl text-[#F2F2F2]">₹{selectedPlan.price}</p>
-                                        <span className="text-[9px] text-[#FF3333] font-black uppercase tracking-widest line-through opacity-50">
-                                            ₹{selectedPlan.original + selectedPlan.bonus}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Value Locked Block - Consolidated */}
-                                <div className="p-5 bg-[#CCFF00]/5 border border-[#CCFF00]/10 rounded-2xl space-y-4">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] animate-pulse" />
-                                            <span className="text-[10px] font-black text-[#CCFF00] uppercase tracking-widest">Value Unlocked</span>
+                        <div className="p-8 bg-[#0a0a0a] border border-[#222] rounded-[32px] sticky top-32 space-y-8">
+                            <div>
+                                <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#555] mb-6">Order Summary</h3>
+                                <div className="space-y-6">
+                                    <div className="flex justify-between items-start">
+                                        <div>
+                                            <p className="font-black text-xl text-[#F2F2F2] uppercase">{selectedPlan.name}</p>
+                                            <p className="text-xs text-[#555] font-bold">Fluid Cloud Infrastructure</p>
                                         </div>
-                                        <span className="text-sm font-black text-[#CCFF00]">-₹{(selectedPlan.savings + selectedPlan.bonus).toLocaleString()}</span>
+                                        <p className="font-black text-xl text-[#F2F2F2]">₹{selectedPlan.price}</p>
                                     </div>
 
-                                    <div className="space-y-2 pt-2 border-t border-[#CCFF00]/10">
-                                        <div className="flex items-center justify-between text-[10px] font-bold text-[#888]">
-                                            <span className="uppercase tracking-widest italic">Hosting Discount</span>
-                                            <span>₹{selectedPlan.savings}</span>
+                                    <div className="py-4 border-y border-[#1a1a1a]">
+                                        <span className="text-xs text-[#888] font-bold uppercase tracking-widest block mb-1">Billing cycle</span>
+                                        <span className="text-[10px] text-[#555] font-black uppercase tracking-widest">Billed {selectedPlan.term}</span>
+                                    </div>
+
+                                    {/* Bonuses */}
+                                    <div className="space-y-4">
+                                        <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-widest">
+                                            <span className="text-[#CCFF00]">Stealth Bonus Included</span>
+                                            <span className="px-2 py-0.5 bg-[#CCFF00] text-black rounded">Activated</span>
                                         </div>
-                                        <div className="flex items-center justify-between text-[10px] font-bold text-[#888]">
-                                            <span className="uppercase tracking-widest italic">Elementor Pro Bonus</span>
-                                            <span>₹{selectedPlan.bonus.toLocaleString()}</span>
+                                        <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                                            <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center p-1.5 border border-[#222]">
+                                                <img src="/images/elemntor.png" alt="Elementor" className="w-full h-full object-contain" />
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <span className="text-xs font-bold text-[#F2F2F2]">Elementor Pro ({selectedPlan.name.split(' ')[0]} {parseInt(selectedPlan.name.split(' ')[0]) > 1 ? 'Years' : 'Year'})</span>
+                                                <span className="text-[10px] text-[#CCFF00] font-black uppercase tracking-widest mt-0.5">Worth ₹{selectedPlan.bonus.toLocaleString()}+ Included Free</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                {/* Billing Details */}
-                                <div className="space-y-3 pt-4 border-t border-[#1a1a1a]">
-                                    <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-[#555]">
-                                        <span>Standard Rate</span>
-                                        <span className="text-[#888]">₹{selectedPlan.price}.00</span>
+                            <div className="space-y-4">
+                                {selectedPlan.price !== selectedPlan.original && (
+                                    <div className="flex justify-between items-center text-[#555] mb-2">
+                                        <span className="text-[10px] font-black uppercase tracking-widest">Future Renewal Price</span>
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-[#888]">₹{selectedPlan.original}.00 / Term</span>
                                     </div>
-                                    <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-[#555]">
-                                        <span>GST (18%)</span>
-                                        <span className="text-[#888]">₹{taxAmount.toFixed(2)}</span>
-                                    </div>
-
-                                    <div className="flex justify-between items-center pt-4 mt-2 border-t border-[#222]">
-                                        <span className="text-lg font-black text-[#F2F2F2] uppercase tracking-[0.2em]">Total</span>
-                                        <div className="text-4xl font-black text-[#CCFF00] tracking-tighter">
-                                            <span className="text-2xl mr-1">₹</span>
-                                            <span>{Math.floor(totalAmount)}</span>
-                                            <span className="text-lg opacity-50">.{totalAmount.toFixed(2).split('.')[1]}</span>
-                                        </div>
+                                )}
+                                <div className="flex justify-between items-center">
+                                    <span className="text-xs text-[#555] font-bold uppercase tracking-widest">Base Price</span>
+                                    <span className="text-sm font-bold text-[#F2F2F2]">₹{selectedPlan.price}.00</span>
+                                </div>
+                                <div className="flex justify-between items-center">
+                                    <span className="text-xs text-[#555] font-bold uppercase tracking-widest">GST (18%)</span>
+                                    <span className="text-sm font-bold text-[#F2F2F2]">₹{taxAmount.toFixed(2)}</span>
+                                </div>
+                                <div className="pt-6 border-t border-[#222] flex justify-between items-center">
+                                    <span className="text-lg font-black text-[#F2F2F2] uppercase tracking-[0.2em]">Total</span>
+                                    <div className="text-3xl font-black text-[#CCFF00] flex items-baseline">
+                                        <span>₹{Math.floor(totalAmount)}</span>
+                                        <span className="text-sm">.{totalAmount.toFixed(2).split('.')[1]}</span>
                                     </div>
                                 </div>
+                            </div>
 
-                                {/* Security/Deployment Info */}
-                                <div className="pt-4">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <ShieldCheck className="w-3 h-3 text-[#CCFF00]" />
-                                        <span className="text-[9px] font-black text-[#444] uppercase tracking-widest">Secure Industrial Encryption</span>
-                                    </div>
-                                    <p className="text-[10px] text-[#333] leading-relaxed italic">
-                                        Environment provisioning starts immediately after transaction authorization.
-                                    </p>
-                                </div>
+                            <div className="p-4 bg-[#CCFF00]/5 border border-[#CCFF00]/10 rounded-2xl">
+                                <p className="text-[10px] text-[#CCFF00] font-black uppercase tracking-widest flex items-center gap-2 mb-2">
+                                    <Zap className="w-3 h-3 fill-current" /> Instant Deployment
+                                </p>
+                                <p className="text-[11px] text-[#555] leading-relaxed">
+                                    Your environment will be automatically provisioned within <span className="text-[#888] font-bold">120 seconds</span> of successful transaction authorization.
+                                </p>
                             </div>
                         </div>
                     </div>
