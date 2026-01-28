@@ -24,7 +24,7 @@ const PriceLock: React.FC = () => {
 
                 <div className="flex flex-col items-center mb-8">
                     <p className="text-[#CCFF00] text-[10px] font-black uppercase tracking-[0.4em] mb-4">Uncompromising Value</p>
-                    <p className="text-[#888] text-sm font-bold">One powerful plan. Three ways to save. Every feature included in every term.</p>
+                    <p className="text-[#888] text-sm font-bold">One powerful plan. Three ways to save. Every feature included in every duration.</p>
                 </div>
 
                 <div className="bg-[#0a0a0a] border border-[#333333] p-2 rounded-xl inline-flex gap-2 mb-16">
@@ -92,7 +92,7 @@ const PriceLock: React.FC = () => {
                                     <div className="text-left">
                                         <span className="text-[10px] font-black text-[#CCFF00] uppercase tracking-widest block mb-0.5">Hosting Value</span>
                                         <p className="text-sm font-bold text-[#F2F2F2]">₹{plans[tier].savings} Instant Savings</p>
-                                        <p className="text-[10px] text-[#555] font-bold uppercase tracking-widest">Applied to first term</p>
+                                        <p className="text-[10px] text-[#555] font-bold uppercase tracking-widest">Applied to first {tier === 0 ? 'year' : `${tier + 1} years`}</p>
                                     </div>
                                 </div>
 
