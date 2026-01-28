@@ -46,7 +46,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }: { question: string, answ
                 onClick={onClick}
                 className="w-full py-8 flex items-center justify-between text-left group"
             >
-                <h3 className={`text-xl md:text-2xl font-bold transition-colors duration-300 ${isOpen ? 'text-[#CCFF00]' : 'text-[#F2F2F2] group-hover:text-[#CCFF00]/70'}`}>
+                <h3 className={`text-xl md:text-2xl font-bold tracking-wide transition-colors duration-300 ${isOpen ? 'text-[#CCFF00]' : 'text-[#F2F2F2] group-hover:text-[#CCFF00]/70'}`}>
                     {question}
                 </h3>
                 <div className={`flex-shrink-0 ml-4 p-2 rounded-full border transition-all duration-300 ${isOpen ? 'border-[#CCFF00] bg-[#CCFF00] text-black' : 'border-[#333] text-[#555] group-hover:border-[#555]'}`}>
