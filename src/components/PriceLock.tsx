@@ -144,7 +144,7 @@ const PriceLock: React.FC = () => {
                                     className="group relative w-full h-16 bg-[#CCFF00] rounded-2xl flex items-center justify-center gap-3 overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.15)] hover:shadow-[0_25px_50px_rgba(204,255,0,0.25)] transition-all duration-300"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
-                                    <span className="text-black font-black text-xl uppercase tracking-wider">DEPLOY NOW</span>
+                                    <span className="text-black font-black text-xl uppercase tracking-wider">BUY NOW</span>
                                     <ArrowRight className="w-6 h-6 text-black group-hover:translate-x-1 transition-transform" />
                                 </Link>
 
