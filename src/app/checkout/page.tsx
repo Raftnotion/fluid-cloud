@@ -218,10 +218,10 @@ const CheckoutContent = () => {
         },
         '3': {
             name: '3 Year (Price Lock)',
-            price: 2697,
+            price: 2999,
             original: 3897,
             term: 'every 3 years',
-            savings: 1200,
+            savings: 898,
             bonus: 7500
         }
     };

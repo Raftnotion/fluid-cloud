@@ -11,7 +11,7 @@ const PriceLock: React.FC = () => {
     const plans = [
         { price: 899, original: 1299, label: '1 Year', savings: 400, bonus: 7500 },
         { price: 1798, original: 2598, label: '2 Years', savings: 800, bonus: 7500 },
-        { price: 2697, original: 3897, label: '3 Years (Locked)', savings: 1200, bonus: 7500 }
+        { price: 2999, original: 3897, label: '3 Years (Locked)', savings: 898, bonus: 7500 }
     ];
 
     return (
@@ -134,7 +134,7 @@ const PriceLock: React.FC = () => {
                                         <ShieldCheck className="w-4 h-4 text-[#CCFF00]" />
                                     </div>
                                     <p className="text-[#888888] text-xs font-medium max-w-sm mt-1 text-center">
-                                        Your renewal price is fixed at ₹2697 every 3 years forever. Protect yourself from future inflation.
+                                        Your renewal price is fixed at ₹2999 every 3 years forever. Protect yourself from future inflation.
                                     </p>
                                 </motion.div>
                             )}
