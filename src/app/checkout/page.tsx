@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { countries } from '@/utils/countries';
+import { PriceLockOverlay } from '@/components/PriceLockOverlay';
 
 const SearchableCountrySelect = ({ value, onChange, options }: { value: string, onChange: (val: string) => void, options: any[] }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -138,7 +139,12 @@ const CheckoutContent = () => {
         params.set('s', name);
         router.push(`${pathname}?${params.toString()}`, { scroll: false });
     };
+    const [showPriceLockAnimation, setShowPriceLockAnimation] = useState(false);
+
     const handlePlanChange = (p: string) => {
+        if (p === '3' && planParam !== '3') {
+            setShowPriceLockAnimation(true);
+        }
         const params = new URLSearchParams(searchParams.toString());
         params.set('plan', p);
         router.push(`${pathname}?${params.toString()}`, { scroll: false });
@@ -248,6 +254,12 @@ const CheckoutContent = () => {
 
     return (
         <div className="relative min-h-screen bg-[#050505] text-[#F2F2F2] font-['Satoshi'] selection:bg-[#CCFF00] selection:text-black">
+            {showPriceLockAnimation && (
+                <PriceLockOverlay
+                    isVisible={showPriceLockAnimation}
+                    onComplete={() => setShowPriceLockAnimation(false)}
+                />
+            )}
             <Header />
 
             <main className="pt-32 pb-40 px-8 relative z-10">

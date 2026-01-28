@@ -4,9 +4,18 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, ShieldCheck, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { PriceLockOverlay } from './PriceLockOverlay';
 
 const PriceLock: React.FC = () => {
     const [tier, setTier] = useState<number>(0); // 0, 1, 2 corresponds to 1, 2, 3 years
+    const [showOverlay, setShowOverlay] = useState(false);
+
+    const handleTierChange = (idx: number) => {
+        if (idx === 2 && tier !== 2) {
+            setShowOverlay(true);
+        }
+        setTier(idx);
+    };
 
     const plans = [
         { price: 999, original: 1299, label: '1 Year', savings: 300, bonus: 7500 },
@@ -16,6 +25,12 @@ const PriceLock: React.FC = () => {
 
     return (
         <section id="pricing" className="w-full py-32 px-8 flex flex-col items-center bg-[#050505] relative overflow-hidden">
+            {showOverlay && (
+                <PriceLockOverlay
+                    isVisible={showOverlay}
+                    onComplete={() => setShowOverlay(false)}
+                />
+            )}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#CCFF00]/5 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="max-w-4xl w-full text-center relative z-10">
@@ -31,7 +46,7 @@ const PriceLock: React.FC = () => {
                     {plans.map((p, idx) => (
                         <button
                             key={p.label}
-                            onClick={() => setTier(idx)}
+                            onClick={() => handleTierChange(idx)}
                             className={`relative px-6 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${tier === idx ? 'text-black' : 'text-[#888888] hover:text-[#F2F2F2]'
                                 }`}
                         >
