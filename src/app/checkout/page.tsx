@@ -393,8 +393,8 @@ const CheckoutContent = () => {
                                         <p className="text-sm text-[#888] mb-10">Configure your professional billing address for compliance.</p>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
-                                            <div className="md:col-span-2 space-y-2 mb-2">
-                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Billing Entity</label>
+                                            <div className="md:col-span-2 mb-6">
+                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555] block mb-4">Billing Entity</label>
                                                 <div className="bg-[#0a0a0a] border border-[#222] p-1.5 rounded-xl inline-flex gap-1.5 w-full md:w-fit">
                                                     <button
                                                         type="button"
@@ -417,7 +417,7 @@ const CheckoutContent = () => {
                                                 <motion.div
                                                     initial={{ opacity: 0, y: -10 }}
                                                     animate={{ opacity: 1, y: 0 }}
-                                                    className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6"
+                                                    className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 mb-2"
                                                 >
                                                     <div className="space-y-2">
                                                         <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Company Name</label>
