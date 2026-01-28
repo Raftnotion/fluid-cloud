@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Lock, Globe, User, CreditCard, ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Zap, Search, Check } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { countries } from '@/utils/countries';
 
 const SearchableCountrySelect = ({ value, onChange, options }: { value: string, onChange: (val: string) => void, options: any[] }) => {
@@ -109,9 +109,13 @@ const SearchableCountrySelect = ({ value, onChange, options }: { value: string, 
 
 const CheckoutContent = () => {
     const searchParams = useSearchParams();
+    const router = useRouter();
+    const pathname = usePathname();
     const planParam = searchParams.get('plan') || '3'; // Default to 3 years
 
-    const [step, setStep] = useState(1);
+    // Get initial step from URL or fallback to 1
+    const urlStep = parseInt(searchParams.get('s') || '1');
+    const [step, setStep] = useState(urlStep);
     const [formData, setFormData] = useState({
         domain: '',
         firstName: '',
@@ -143,11 +147,26 @@ const CheckoutContent = () => {
         }
     }, []);
 
-    // Persistence: Save to localStorage
+    // Persistence: Save to localStorage and Sync with URL
     useEffect(() => {
         localStorage.setItem('checkout_form', JSON.stringify(formData));
         localStorage.setItem('checkout_step', step.toString());
-    }, [formData, step]);
+
+        // Update URL to match current step without full reload
+        const params = new URLSearchParams(searchParams.toString());
+        if (params.get('s') !== step.toString()) {
+            params.set('s', step.toString());
+            router.push(`${pathname}?${params.toString()}`, { scroll: false });
+        }
+    }, [formData, step, searchParams, router, pathname]);
+
+    // Handle browser back/forward buttons
+    useEffect(() => {
+        const s = parseInt(searchParams.get('s') || '1');
+        if (s !== step) {
+            setStep(s);
+        }
+    }, [searchParams]);
 
     // Sync countryCode when country changes
     useEffect(() => {
