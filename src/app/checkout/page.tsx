@@ -529,10 +529,6 @@ const CheckoutContent = () => {
                                         <p className="font-black text-xl text-[#F2F2F2]">₹{selectedPlan.price}</p>
                                     </div>
 
-                                    <div className="py-4 border-y border-[#1a1a1a]">
-                                        <span className="text-xs text-[#888] font-bold uppercase tracking-widest block mb-1">Billing cycle</span>
-                                        <span className="text-[10px] text-[#555] font-black uppercase tracking-widest">Billed {selectedPlan.term}</span>
-                                    </div>
 
                                     {/* Bonuses */}
                                     <div className="space-y-4">
