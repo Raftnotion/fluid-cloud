@@ -156,7 +156,10 @@ const CheckoutContent = () => {
         zip: '',
         country: 'India',
         countryCode: '+91',
-        paymentMethod: 'razorpay'
+        paymentMethod: 'razorpay',
+        isCompany: false,
+        companyName: '',
+        gstin: ''
     });
 
     // Load form data
@@ -390,6 +393,53 @@ const CheckoutContent = () => {
                                         <p className="text-sm text-[#888] mb-10">Configure your professional billing address for compliance.</p>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
+                                            <div className="md:col-span-2 space-y-2 mb-2">
+                                                <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Billing Entity</label>
+                                                <div className="bg-[#0a0a0a] border border-[#222] p-1.5 rounded-xl inline-flex gap-1.5 w-full md:w-fit">
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => setFormData({ ...formData, isCompany: false })}
+                                                        className={`flex-1 md:flex-none px-6 py-3 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all ${!formData.isCompany ? 'bg-[#CCFF00] text-black shadow-[0_4px_12px_rgba(204,255,0,0.15)]' : 'text-[#444] hover:text-[#666]'}`}
+                                                    >
+                                                        Individual
+                                                    </button>
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => setFormData({ ...formData, isCompany: true })}
+                                                        className={`flex-1 md:flex-none px-6 py-3 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all ${formData.isCompany ? 'bg-[#CCFF00] text-black shadow-[0_4px_12px_rgba(204,255,0,0.15)]' : 'text-[#444] hover:text-[#666]'}`}
+                                                    >
+                                                        Company
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            {formData.isCompany && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: -10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6"
+                                                >
+                                                    <div className="space-y-2">
+                                                        <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Company Name</label>
+                                                        <input
+                                                            type="text"
+                                                            value={formData.companyName}
+                                                            onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                                                            className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                        />
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">GSTIN</label>
+                                                        <input
+                                                            type="text"
+                                                            placeholder="29AADCW9345A1Z7"
+                                                            value={formData.gstin}
+                                                            onChange={(e) => setFormData({ ...formData, gstin: e.target.value })}
+                                                            className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-sm font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                        />
+                                                    </div>
+                                                </motion.div>
+                                            )}
                                             <div className="space-y-2 md:col-span-2">
                                                 <label className="text-[9px] font-black uppercase tracking-widest text-[#555]">Street Address</label>
                                                 <input
@@ -547,6 +597,16 @@ const CheckoutContent = () => {
                                         </div>
                                         <p className="font-black text-xl text-[#F2F2F2]">₹{selectedPlan.price}</p>
                                     </div>
+
+                                    {formData.isCompany && formData.companyName && (
+                                        <div className="py-4 border-y border-[#1a1a1a]">
+                                            <span className="text-[10px] font-black uppercase tracking-widest text-[#555] block mb-1">Billing Entity</span>
+                                            <div className="flex justify-between items-center text-xs font-bold text-[#F2F2F2]">
+                                                <span>{formData.companyName}</span>
+                                                {formData.gstin && <span className="text-[10px] text-[#CCFF00] font-black uppercase tracking-widest">GSTIN: {formData.gstin}</span>}
+                                            </div>
+                                        </div>
+                                    )}
 
 
                                     {/* Bonuses */}
