@@ -127,10 +127,17 @@ const CheckoutContent = () => {
 
     const planParam = searchParams.get('plan') || '3';
 
-    // Get initial step from URL name or fallback to 1
-    const urlStepName = searchParams.get('s') || 'domain';
-    const initialStep = stepMap[urlStepName] || 1;
-    const [step, setStep] = useState(initialStep);
+    // Derive step from URL
+    const stepName = searchParams.get('s') || 'domain';
+    const step = stepMap[stepName] || 1;
+
+    // Navigation Helper
+    const goToStep = (targetStep: number) => {
+        const params = new URLSearchParams(searchParams.toString());
+        const name = reverseStepMap[targetStep] || 'domain';
+        params.set('s', name);
+        router.push(`${pathname}?${params.toString()}`, { scroll: false });
+    };
     const [formData, setFormData] = useState({
         domain: '',
         firstName: '',
@@ -146,10 +153,9 @@ const CheckoutContent = () => {
         paymentMethod: 'razorpay'
     });
 
-    // Persistence: Load from localStorage
+    // Load form data
     useEffect(() => {
         const savedData = localStorage.getItem('checkout_form');
-        const savedStep = localStorage.getItem('checkout_step');
         if (savedData) {
             try {
                 setFormData(JSON.parse(savedData));
@@ -157,33 +163,24 @@ const CheckoutContent = () => {
                 console.error("Failed to parse saved checkout data", e);
             }
         }
-        if (savedStep) {
-            setStep(parseInt(savedStep));
-        }
     }, []);
 
-    // Persistence: Save to localStorage and Sync with URL
+    // Save form data to localStorage
     useEffect(() => {
         localStorage.setItem('checkout_form', JSON.stringify(formData));
         localStorage.setItem('checkout_step', step.toString());
+    }, [formData, step]);
 
-        // Update URL to match current step without full reload
-        const params = new URLSearchParams(searchParams.toString());
-        const stepName = reverseStepMap[step] || 'domain';
-        if (params.get('s') !== stepName) {
-            params.set('s', stepName);
-            router.push(`${pathname}?${params.toString()}`, { scroll: false });
-        }
-    }, [formData, step, searchParams, router, pathname]);
-
-    // Handle browser back/forward buttons
+    // Initial redirect if no step in URL but session exists
     useEffect(() => {
-        const stepName = searchParams.get('s') || 'domain';
-        const s = stepMap[stepName] || 1;
-        if (s !== step) {
-            setStep(s);
+        const hasStepInUrl = searchParams.get('s');
+        if (!hasStepInUrl) {
+            const savedStep = localStorage.getItem('checkout_step');
+            if (savedStep) {
+                goToStep(parseInt(savedStep));
+            }
         }
-    }, [searchParams]);
+    }, []);
 
     // Sync countryCode when country changes
     useEffect(() => {
@@ -198,7 +195,7 @@ const CheckoutContent = () => {
         // For simplicity, we can allow jumping to any step if data exists, 
         // but it's safer to only allow jumping back to edit.
         if (targetStep < step) {
-            setStep(targetStep);
+            goToStep(targetStep);
         }
     };
 
@@ -283,7 +280,7 @@ const CheckoutContent = () => {
                                     </section>
 
                                     <button
-                                        onClick={() => setStep(2)}
+                                        onClick={() => goToStep(2)}
                                         className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Next <ArrowRight className="w-4 h-4" />
@@ -301,7 +298,7 @@ const CheckoutContent = () => {
                                 >
                                     <section>
                                         <div className="flex items-center gap-4 mb-4">
-                                            <button onClick={() => setStep(1)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] transition-colors">
+                                            <button onClick={() => goToStep(1)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] transition-colors">
                                                 <ArrowLeft className="w-4 h-4" />
                                             </button>
                                             <h2 className="text-2xl md:text-3xl font-bold font-['Clash_Display'] uppercase tracking-wider">Personal Identity</h2>
@@ -340,7 +337,7 @@ const CheckoutContent = () => {
                                     </section>
 
                                     <button
-                                        onClick={() => setStep(3)}
+                                        onClick={() => goToStep(3)}
                                         className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Proceed to Billing <ArrowRight className="w-4 h-4" />
@@ -358,7 +355,7 @@ const CheckoutContent = () => {
                                 >
                                     <section>
                                         <div className="flex items-center gap-4 mb-4">
-                                            <button onClick={() => setStep(2)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] transition-colors">
+                                            <button onClick={() => goToStep(2)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] transition-colors">
                                                 <ArrowLeft className="w-4 h-4" />
                                             </button>
                                             <h2 className="text-2xl md:text-3xl font-bold font-['Clash_Display'] uppercase tracking-wider">Billing Console</h2>
@@ -430,7 +427,7 @@ const CheckoutContent = () => {
                                     </section>
 
                                     <button
-                                        onClick={() => setStep(4)}
+                                        onClick={() => goToStep(4)}
                                         className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-[10px] rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Review & Pay <ArrowRight className="w-4 h-4" />
@@ -448,7 +445,7 @@ const CheckoutContent = () => {
                                 >
                                     <section>
                                         <div className="flex items-center gap-4 mb-4">
-                                            <button onClick={() => setStep(3)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] transition-colors">
+                                            <button onClick={() => goToStep(3)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] transition-colors">
                                                 <ArrowLeft className="w-4 h-4" />
                                             </button>
                                             <h2 className="text-2xl md:text-3xl font-bold font-['Clash_Display'] uppercase tracking-wider">Payment Verification</h2>
