@@ -52,15 +52,35 @@ export const PriceLockOverlay: React.FC<PriceLockOverlayProps> = ({ isVisible, o
                                 transition={{ type: 'spring', damping: 12 }}
                                 className="relative z-10 w-32 h-32 flex items-center justify-center bg-[#CCFF00] rounded-full shadow-[0_0_80px_rgba(204,255,0,0.3)]"
                             >
-                                <motion.div
-                                    animate={{
-                                        scale: status === 'locking' ? [1, 1.2, 1] : 1,
-                                        rotate: status === 'locking' ? [0, 10, -10, 0] : 0
-                                    }}
-                                    transition={{ duration: 0.4 }}
-                                >
-                                    <Lock className="w-16 h-16 text-black fill-black" />
-                                </motion.div>
+                                <div className="relative w-16 h-16">
+                                    {/* Lock Body */}
+                                    <svg viewBox="0 0 24 24" className="w-full h-full text-black fill-black">
+                                        <path d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z" />
+                                    </svg>
+
+                                    {/* Animated Shackle */}
+                                    <motion.div
+                                        initial={{ y: -6 }}
+                                        animate={{ y: 0 }}
+                                        transition={{
+                                            duration: 0.4,
+                                            delay: 0.2, // Wait a bit before locking
+                                            type: "spring",
+                                            bounce: 0.4
+                                        }}
+                                        className="absolute top-0 left-0 w-full h-full pointer-events-none"
+                                    >
+                                        <svg viewBox="0 0 24 24" className="w-full h-full text-black">
+                                            <path
+                                                d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2.5"
+                                                strokeLinecap="round"
+                                            />
+                                        </svg>
+                                    </motion.div>
+                                </div>
                             </motion.div>
 
                             {/* Outer Rings */}
