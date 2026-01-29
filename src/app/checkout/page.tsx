@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { countries } from '@/utils/countries';
 import { PriceLockOverlay } from '@/components/PriceLockOverlay';
+import { useLenis } from '@/components/LenisProvider';
 
 const SearchableCountrySelect = ({ value, onChange, options }: { value: string, onChange: (val: string) => void, options: any[] }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -206,9 +207,14 @@ const CheckoutContent = () => {
     }, [formData.country]);
 
     // Scroll to top on step change
+    const lenis = useLenis();
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-    }, [step]);
+        if (lenis) {
+            lenis.scrollTo(0, { immediate: true });
+        } else {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+    }, [step, lenis]);
 
     const handleStepClick = (targetStep: number) => {
         // Only allow jumping back or to steps already "reached"

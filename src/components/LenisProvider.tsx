@@ -1,17 +1,21 @@
 "use client";
 
-import { useEffect, useRef, ReactNode } from "react";
+import { useEffect, useState, createContext, useContext, ReactNode } from "react";
 import Lenis from "lenis";
 
 interface LenisProviderProps {
     children: ReactNode;
 }
 
+const LenisContext = createContext<Lenis | null>(null);
+
+export const useLenis = () => useContext(LenisContext);
+
 export function LenisProvider({ children }: LenisProviderProps) {
-    const lenisRef = useRef<Lenis | null>(null);
+    const [lenis, setLenis] = useState<Lenis | null>(null);
 
     useEffect(() => {
-        lenisRef.current = new Lenis({
+        const lenisInstance = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: "vertical",
@@ -21,17 +25,24 @@ export function LenisProvider({ children }: LenisProviderProps) {
             touchMultiplier: 2,
         });
 
+        setLenis(lenisInstance);
+
         function raf(time: number) {
-            lenisRef.current?.raf(time);
+            lenisInstance.raf(time);
             requestAnimationFrame(raf);
         }
 
         requestAnimationFrame(raf);
 
         return () => {
-            lenisRef.current?.destroy();
+            lenisInstance.destroy();
+            setLenis(null);
         };
     }, []);
 
-    return <>{children}</>;
+    return (
+        <LenisContext.Provider value={lenis}>
+            {children}
+        </LenisContext.Provider>
+    );
 }
