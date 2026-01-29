@@ -106,6 +106,19 @@ const ContactPage = () => {
                                 </a>
                             </div>
 
+                            {/* Temporary Phone Support */}
+                            <div className="group p-6 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-[#CCFF00]/20 transition-all duration-500">
+                                <div className="flex items-center gap-4 mb-4">
+                                    <div className="w-10 h-10 rounded-xl bg-[#111] flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform">
+                                        <MessageSquare className="w-5 h-5 text-[#CCFF00]" />
+                                    </div>
+                                    <h3 className="text-sm font-bold uppercase tracking-widest text-[#F2F2F2]">Support Line</h3>
+                                </div>
+                                <a href="tel:+917042343498" className="text-[#888] hover:text-[#CCFF00] transition-colors text-lg font-medium">
+                                    +91 7042343498
+                                </a>
+                            </div>
+
                             {/* Corporate HQ Block */}
                             <div className="p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl relative overflow-hidden">
                                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
