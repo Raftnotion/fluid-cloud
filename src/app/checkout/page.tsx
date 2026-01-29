@@ -205,6 +205,11 @@ const CheckoutContent = () => {
         }
     }, [formData.country]);
 
+    // Scroll to top on step change
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, [step]);
+
     const handleStepClick = (targetStep: number) => {
         // Only allow jumping back or to steps already "reached"
         // For simplicity, we can allow jumping to any step if data exists, 
