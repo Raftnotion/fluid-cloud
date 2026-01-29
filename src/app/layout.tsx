@@ -11,6 +11,11 @@ export const metadata: Metadata = {
         description: "Infrastructure That Breathes. Engineered for high-intensity workloads.",
         type: "website",
     },
+    icons: {
+        icon: '/images/wpfye_favicon.svg',
+        shortcut: '/images/wpfye_favicon.svg',
+        apple: '/images/wpfye_favicon.svg',
+    },
 };
 
 export default function RootLayout({
