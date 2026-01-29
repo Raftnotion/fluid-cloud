@@ -114,7 +114,7 @@ const LegalPage = () => {
             content: `
                 WPFYE maintains a zero-tolerance policy towards infrastructure abuse. This section outlines how to report both copyright infringement and general service abuse.
 
-                REPORTING ABUSE: To report phishing, malware, spam, or any other violation of our Acceptable Use Policy (AUP), please email abuse@wpfye.com. Include the IP address or domain name involved, along with supporting evidence.
+                REPORTING ABUSE: To report phishing, malware, spam, or any other violation of our Acceptable Use Policy (AUP), please email report@wpfye.com. Include the IP address or domain name involved, along with supporting evidence.
 
                 DMCA & COPYRIGHT: If you believe content on our network infringes your copyright, send a formal DMCA notice to legal@wpfye.com. Include a signature, identification of the work, and your contact details.
 
