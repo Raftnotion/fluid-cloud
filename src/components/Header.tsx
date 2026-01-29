@@ -37,9 +37,7 @@ const Header: React.FC = () => {
             className="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center backdrop-blur-sm"
         >
             <Link href="/" className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-[#CCFF00] rounded-sm flex items-center justify-center">
-                    <span className="text-black font-bold text-lg">W</span>
-                </div>
+                <img src="/images/wpfye_favicon.svg" alt="WPFYE Logo" className="w-8 h-8" />
                 <span className="text-xl font-bold font-['Clash_Display']">WPFYE</span>
             </Link>
 
