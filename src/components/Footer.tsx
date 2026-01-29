@@ -36,9 +36,7 @@ const Footer: React.FC = () => {
                     {/* Brand Column */}
                     <div className="lg:col-span-4 space-y-8">
                         <Link href="/" className="flex items-center gap-3">
-                            <div className="w-8 h-8 bg-[#CCFF00] rounded-sm flex items-center justify-center">
-                                <span className="text-black font-black text-lg">W</span>
-                            </div>
+                            <img src="/images/wpfye_favicon.svg" alt="WPFYE Logo" className="w-8 h-8" />
                             <span className="text-2xl font-bold font-['Clash_Display'] tracking-tight">WPFYE</span>
                         </Link>
                         <p className="text-[#555] max-w-sm text-sm leading-relaxed">
