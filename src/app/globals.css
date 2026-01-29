@@ -1,11 +1,54 @@
 @import "tailwindcss";
 
 :root {
+  /* Colors */
   --void-black: #050505;
   --acid-volt: #CCFF00;
   --tungsten: #333333;
   --mist-white: #F2F2F2;
   --muted-steel: #888888;
+
+  /* ========================================
+     Satoshi Typography Scale
+     ======================================== */
+
+  /* Font Sizes - Perfect Fourth Scale (1.333) */
+  --text-micro: 0.625rem;
+  /* 10px - Labels, badges */
+  --text-tiny: 0.6875rem;
+  /* 11px - Helper text, hints */
+  --text-xs: 0.75rem;
+  /* 12px - Captions, metadata */
+  --text-sm: 0.875rem;
+  /* 14px - Body small, secondary */
+  --text-base: 1rem;
+  /* 16px - Body default */
+  --text-lg: 1.125rem;
+  /* 18px - Lead paragraphs */
+  --text-xl: 1.25rem;
+  /* 20px - Subheadings */
+  --text-2xl: 1.5rem;
+  /* 24px - Section titles */
+  --text-3xl: 1.875rem;
+  /* 30px - Page titles */
+  --text-4xl: 2.25rem;
+  /* 36px - Hero subheads */
+  --text-display: 3rem;
+  /* 48px - Display headlines */
+
+  /* Font Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+  --font-black: 900;
+
+  /* Letter Spacing */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+  --tracking-ultra: 0.15em;
 }
 
 * {
@@ -141,4 +184,72 @@ html.lenis body {
 
 .animate-shimmer {
   animation: shimmer 1.5s infinite;
+}
+
+/* ========================================
+   Satoshi Typography Utility Classes
+   ======================================== */
+
+/* Micro Labels (Badges, Tags, Status) */
+.text-label {
+  font-family: 'Satoshi', sans-serif;
+  font-size: var(--text-micro);
+  font-weight: var(--font-black);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+}
+
+/* Helper/Hint Text */
+.text-helper {
+  font-family: 'Satoshi', sans-serif;
+  font-size: var(--text-tiny);
+  font-weight: var(--font-bold);
+  color: var(--muted-steel);
+  line-height: 1.5;
+}
+
+/* Form Input Labels */
+.text-input-label {
+  font-family: 'Satoshi', sans-serif;
+  font-size: var(--text-tiny);
+  font-weight: var(--font-black);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--tungsten);
+}
+
+/* Body Text (Default) */
+.text-body {
+  font-family: 'Satoshi', sans-serif;
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  line-height: 1.6;
+  color: var(--mist-white);
+}
+
+/* Body Small */
+.text-body-sm {
+  font-family: 'Satoshi', sans-serif;
+  font-size: var(--text-sm);
+  font-weight: var(--font-normal);
+  line-height: 1.5;
+  color: var(--muted-steel);
+}
+
+/* Button Text */
+.text-button {
+  font-family: 'Satoshi', sans-serif;
+  font-size: var(--text-xs);
+  font-weight: var(--font-black);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-ultra);
+}
+
+/* Caption/Metadata */
+.text-caption {
+  font-family: 'Satoshi', sans-serif;
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  color: var(--muted-steel);
+  letter-spacing: var(--tracking-wide);
 }
