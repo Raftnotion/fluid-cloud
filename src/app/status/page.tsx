@@ -6,42 +6,32 @@ import Footer from "@/components/Footer";
 import { motion } from 'framer-motion';
 import { Activity, Globe, Zap, Database, Server, Timer, ShieldCheck, AlertCircle } from 'lucide-react';
 
+const systems = [
+    { name: "Fluid Fabric Network", status: "Operational", uptime: "99.99%" },
+    { name: "Google Public DNS", status: "Operational", uptime: "100%" },
+    { name: "API & Control Plane", status: "Operational", uptime: "99.98%" },
+    { name: "Object Storage Cluster", status: "Operational", uptime: "99.99%" },
+    { name: "Database Nodes (SQL)", status: "Operational", uptime: "99.95%" },
+    { name: "Edge Caching Layers", status: "Operational", uptime: "100%" },
+];
+
+const regions = [
+    { code: "US-VA", location: "Virginia (Core HQ)", status: "Operational" },
+    { code: "EU-LN", location: "London (Edge Node)", status: "Operational" },
+    { code: "AS-MB", location: "Mumbai (Edge Node)", status: "Operational" },
+    { code: "AS-SG", location: "Singapore (Edge Node)", status: "Operational" },
+    { code: "EU-FR", location: "Frankfurt (Edge Node)", status: "Operational" },
+    { code: "JP-TY", location: "Tokyo (Edge Node)", status: "Operational" },
+];
+
+// Perfect 90-day uptime grid
+const days = Array.from({ length: 90 }, (_, i) => ({
+    id: i,
+    status: 'up'
+}));
+
 const StatusPage = () => {
     const [lastUpdated, setLastUpdated] = useState<string | null>(null);
-
-    useEffect(() => {
-        // Set initial time on mount to avoid hydration mismatch
-        setLastUpdated(new Date().toLocaleTimeString());
-
-        const interval = setInterval(() => {
-            setLastUpdated(new Date().toLocaleTimeString());
-        }, 1000); // Sync every second for "heartbeat" feel
-        return () => clearInterval(interval);
-    }, []);
-
-    const systems = [
-        { name: "Fluid Fabric Network", status: "Operational", uptime: "99.99%" },
-        { name: "Google Public DNS", status: "Operational", uptime: "100%" },
-        { name: "API & Control Plane", status: "Operational", uptime: "99.98%" },
-        { name: "Object Storage Cluster", status: "Operational", uptime: "99.99%" },
-        { name: "Database Nodes (SQL)", status: "Operational", uptime: "99.95%" },
-        { name: "Edge Caching Layers", status: "Operational", uptime: "100%" },
-    ];
-
-    const regions = [
-        { code: "US-VA", location: "Virginia (Core HQ)", status: "Operational" },
-        { code: "EU-LN", location: "London (Edge Node)", status: "Operational" },
-        { code: "AS-MB", location: "Mumbai (Edge Node)", status: "Operational" },
-        { code: "AS-SG", location: "Singapore (Edge Node)", status: "Operational" },
-        { code: "EU-FR", location: "Frankfurt (Edge Node)", status: "Operational" },
-        { code: "JP-TY", location: "Tokyo (Edge Node)", status: "Operational" },
-    ];
-
-    // Perfect 90-day uptime grid
-    const days = Array.from({ length: 90 }, (_, i) => ({
-        id: i,
-        status: 'up'
-    }));
 
     return (
         <div className="relative min-h-screen selection:bg-[#CCFF00] selection:text-black bg-[#050505] text-[#F2F2F2] font-['Satoshi']">

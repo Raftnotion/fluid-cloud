@@ -7,6 +7,37 @@ import { motion } from 'framer-motion';
 import { Mail, MapPin, Send, MessageSquare, ShieldCheck, Globe, Building2, Fingerprint, MessageCircle, Ticket, PlaneTakeoff, BookOpen, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
+const SUPPORT_CHANNELS = [
+    {
+        icon: <MessageCircle className="w-5 h-5 text-[#CCFF00]" />,
+        title: "24/7 Live Chat",
+        description: "Instant response times from human engineers.",
+        badge: "Avg: 30s",
+        cta: "Start Chat"
+    },
+    {
+        icon: <Ticket className="w-5 h-5 text-[#CCFF00]" />,
+        title: "Expert Tickets",
+        description: "Deep technical assistance for complex setups.",
+        badge: "24/7 Live",
+        cta: "Open Ticket"
+    },
+    {
+        icon: <PlaneTakeoff className="w-5 h-5 text-[#CCFF00]" />,
+        title: "Free Migration",
+        description: "Zero-downtime white-glove migration services.",
+        badge: "Free",
+        cta: "Request Move"
+    },
+    {
+        icon: <BookOpen className="w-5 h-5 text-[#CCFF00]" />,
+        title: "Knowledgebase",
+        description: "Documentation and architectural best practices.",
+        badge: "Docs",
+        cta: "Browse"
+    }
+];
+
 const ContactPage = () => {
     const [formState, setFormState] = useState({
         name: '',
@@ -16,37 +47,6 @@ const ContactPage = () => {
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
-
-    const SUPPORT_CHANNELS = [
-        {
-            icon: <MessageCircle className="w-5 h-5 text-[#CCFF00]" />,
-            title: "24/7 Live Chat",
-            description: "Instant response times from human engineers.",
-            badge: "Avg: 30s",
-            cta: "Start Chat"
-        },
-        {
-            icon: <Ticket className="w-5 h-5 text-[#CCFF00]" />,
-            title: "Expert Tickets",
-            description: "Deep technical assistance for complex setups.",
-            badge: "24/7 Live",
-            cta: "Open Ticket"
-        },
-        {
-            icon: <PlaneTakeoff className="w-5 h-5 text-[#CCFF00]" />,
-            title: "Free Migration",
-            description: "Zero-downtime white-glove migration services.",
-            badge: "Free",
-            cta: "Request Move"
-        },
-        {
-            icon: <BookOpen className="w-5 h-5 text-[#CCFF00]" />,
-            title: "Knowledgebase",
-            description: "Documentation and architectural best practices.",
-            badge: "Docs",
-            cta: "Browse"
-        }
-    ];
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

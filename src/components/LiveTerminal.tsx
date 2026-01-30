@@ -88,15 +88,17 @@ const generateLogs = (scale: number, nodeId: number): TerminalLog[] => {
 };
 
 const LiveTerminal: React.FC<LiveTerminalProps> = ({ trafficScale }) => {
+  // Use deferred value for the traffic scale to prevent excessive log regeneration
+  // during rapid slider movement (Best practice: rerender-transitions)
+  const deferredScale = React.useDeferredValue(trafficScale);
+
   const [logs, setLogs] = useState<TerminalLog[]>([]);
-  const [nodeId, setNodeId] = useState(42);
+  const nodeIdRef = useRef(Math.floor(Math.random() * 50) + 40);
   const terminalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Generate new node ID occasionally
-    setNodeId(Math.floor(Math.random() * 50) + 40);
-    setLogs(generateLogs(trafficScale, nodeId));
-  }, [trafficScale]);
+    setLogs(generateLogs(deferredScale, nodeIdRef.current));
+  }, [deferredScale]);
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -116,7 +118,7 @@ const LiveTerminal: React.FC<LiveTerminalProps> = ({ trafficScale }) => {
         </div>
         <span className="text-[#666666] text-xs ml-2">wpfye-cluster-monitor</span>
         <div className="ml-auto flex items-center gap-2">
-          <motion.div 
+          <motion.div
             className="w-2 h-2 rounded-full bg-[#CCFF00]"
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 1, repeat: Infinity }}
@@ -126,7 +128,7 @@ const LiveTerminal: React.FC<LiveTerminalProps> = ({ trafficScale }) => {
       </div>
 
       {/* Terminal Body */}
-      <div 
+      <div
         ref={terminalRef}
         className="p-4 h-[280px] overflow-y-auto scrollbar-thin scrollbar-thumb-[#333] scrollbar-track-transparent"
       >

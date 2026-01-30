@@ -11,6 +11,10 @@ interface AutoscaleDemoProps {
 }
 
 const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficScale }) => {
+    const cpuPercentage = (10 + trafficScale * 85).toFixed(0);
+    const ramPercentage = (5 + trafficScale * 90).toFixed(0);
+    const trafficLoad = (trafficScale * 100).toFixed(0);
+
     return (
         <section id="infrastructure" className="w-full py-40 px-8 flex flex-col items-center bg-[#050505]">
             <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -19,7 +23,7 @@ const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficS
                     <h2 className="text-4xl md:text-6xl font-bold mb-8 text-[#F2F2F2] font-['Clash_Display'] leading-[0.9]">
                         Adaptive Pulse <br />Technology
                     </h2>
-                    <p className="text-[#888888] text-xl mb-12 leading-relaxed font-medium">
+                    <p className="text-[#888] text-xl mb-12 leading-relaxed font-medium">
                         Watch how our infrastructure reacts to a massive traffic influx. Instead of failing, the core expands to accommodate every single user.
                     </p>
 
@@ -28,14 +32,14 @@ const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficS
                             <Users className="w-8 h-8 text-[#CCFF00]" />
                             <div>
                                 <h4 className="font-bold text-xl text-[#F2F2F2] mb-1">Dynamic Capacity</h4>
-                                <p className="text-[#888888] leading-relaxed">Handles every visitor automatically. Whether you have a few users or a huge crowd, your site stays online 24/7.</p>
+                                <p className="text-[#888] leading-relaxed">Handles every visitor automatically. Whether you have a few users or a huge crowd, your site stays online 24/7.</p>
                             </div>
                         </div>
                         <div className="p-8 border border-[#333333] rounded-xl bg-[#0a0a0a]/50 flex items-start gap-6 group hover:border-[#CCFF00]/30 transition-colors">
                             <Zap className="w-8 h-8 text-[#CCFF00]" />
                             <div>
                                 <h4 className="font-bold text-xl text-[#F2F2F2] mb-1">Instant Mitigation</h4>
-                                <p className="text-[#888888] leading-relaxed">Auto-injection of RAM and CPU resources in milliseconds as traffic scales.</p>
+                                <p className="text-[#888] leading-relaxed">Auto-injection of RAM and CPU resources in milliseconds as traffic scales.</p>
                             </div>
                         </div>
                     </div>
@@ -73,7 +77,7 @@ const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficS
                             />
                             <div className="flex justify-between mt-3">
                                 <span className="text-[10px] font-bold text-[#444] uppercase">Idle</span>
-                                <span className="text-lg font-black text-[#CCFF00] font-['Clash_Display']">{(trafficScale * 100).toFixed(0)}% Load</span>
+                                <span className="text-lg font-black text-[#CCFF00] font-['Clash_Display']">{trafficLoad}% Load</span>
                                 <span className="text-[10px] font-bold text-[#444] uppercase">Peak</span>
                             </div>
                         </div>
@@ -82,7 +86,7 @@ const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficS
                             <div className="space-y-2">
                                 <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider">
                                     <span className="text-[#888888]">CPU</span>
-                                    <span className="text-[#CCFF00]">{(10 + trafficScale * 85).toFixed(0)}%</span>
+                                    <span className="text-[#CCFF00]">{cpuPercentage}%</span>
                                 </div>
                                 <div className="h-2 bg-[#1a1a1a] rounded-full overflow-hidden border border-[#333]">
                                     <motion.div
@@ -95,7 +99,7 @@ const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficS
                             <div className="space-y-2">
                                 <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider">
                                     <span className="text-[#888888]">RAM</span>
-                                    <span className="text-[#CCFF00]">{(5 + trafficScale * 90).toFixed(0)}%</span>
+                                    <span className="text-[#CCFF00]">{ramPercentage}%</span>
                                 </div>
                                 <div className="h-2 bg-[#1a1a1a] rounded-full overflow-hidden border border-[#333]">
                                     <motion.div

@@ -51,7 +51,7 @@ const SearchableCountrySelect = ({ value, onChange, options }: { value: string, 
             </div>
 
             <AnimatePresence>
-                {isOpen && (
+                {isOpen ? (
                     <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -92,7 +92,7 @@ const SearchableCountrySelect = ({ value, onChange, options }: { value: string, 
                                         </div>
                                         <div className="flex items-center gap-3">
                                             <span className={`text-[10px] font-black ${value === opt.name ? 'text-black/50' : 'text-[#444]'}`}>{opt.dial_code}</span>
-                                            {value === opt.name && <Check className="w-3.5 h-3.5" />}
+                                            {value === opt.name ? <Check className="w-3.5 h-3.5" /> : null}
                                         </div>
                                     </div>
                                 ))
@@ -103,29 +103,65 @@ const SearchableCountrySelect = ({ value, onChange, options }: { value: string, 
                             )}
                         </div>
                     </motion.div>
-                )}
+                ) : null}
             </AnimatePresence>
         </div>
     );
 };
 
+// Hoisted static data
+const stepMap: Record<string, number> = {
+    'domain': 1,
+    'identity': 2,
+    'billing': 3,
+    'payment': 4
+};
+
+const reverseStepMap: Record<number, string> = {
+    1: 'domain',
+    2: 'identity',
+    3: 'billing',
+    4: 'payment'
+};
+
+const plans = {
+    '1': {
+        name: '1 Year Plan',
+        price: 999,
+        original: 1299,
+        term: 'Annually',
+        savings: 300,
+        bonus: 7500
+    },
+    '2': {
+        name: '2 Year Plan',
+        price: 1998,
+        original: 2598,
+        term: 'every 2 years',
+        savings: 600,
+        bonus: 15000
+    },
+    '3': {
+        name: '3 Year (Price Lock)',
+        price: 2999,
+        original: 3897,
+        term: 'every 3 years',
+        savings: 898,
+        bonus: 22500
+    }
+};
+
+const steps = [
+    { id: 1, title: 'Domain', icon: <Globe className="w-4 h-4" /> },
+    { id: 2, title: 'Identity', icon: <User className="w-4 h-4" /> },
+    { id: 3, title: 'Billing', icon: <ShieldCheck className="w-4 h-4" /> },
+    { id: 4, title: 'Payment', icon: <CreditCard className="w-4 h-4" /> }
+];
+
 const CheckoutContent = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
-    const stepMap: Record<string, number> = {
-        'domain': 1,
-        'identity': 2,
-        'billing': 3,
-        'payment': 4
-    };
-
-    const reverseStepMap: Record<number, string> = {
-        1: 'domain',
-        2: 'identity',
-        3: 'billing',
-        4: 'payment'
-    };
 
     const planParam = searchParams.get('plan') || '3';
 
@@ -265,12 +301,12 @@ const CheckoutContent = () => {
 
     return (
         <div className="relative min-h-screen bg-[#050505] text-[#F2F2F2] font-['Satoshi'] selection:bg-[#CCFF00] selection:text-black">
-            {showPriceLockAnimation && (
+            {showPriceLockAnimation ? (
                 <PriceLockOverlay
                     isVisible={showPriceLockAnimation}
                     onComplete={() => setShowPriceLockAnimation(false)}
                 />
-            )}
+            ) : null}
             <Header />
 
             <main className="pt-32 pb-40 px-8 relative z-10">
@@ -626,7 +662,7 @@ const CheckoutContent = () => {
                                             <span className="text-[11px] font-black uppercase tracking-widest text-[#555] block mb-1">Billing Type</span>
                                             <div className="flex justify-between items-center text-xs font-bold text-[#F2F2F2]">
                                                 <span>{formData.companyName}</span>
-                                                {formData.gstin && <span className="text-[11px] text-[#CCFF00] font-black uppercase tracking-widest">GSTIN: {formData.gstin}</span>}
+                                                {formData.gstin ? <span className="text-[11px] text-[#CCFF00] font-black uppercase tracking-widest">GSTIN: {formData.gstin}</span> : null}
                                             </div>
                                         </div>
                                     )}

@@ -57,25 +57,26 @@ const BentoBox: React.FC<{ icon: React.ReactNode, title: string, desc: string, i
     );
 };
 
+const FEATURES = [
+    { icon: <Infinity className="w-6 h-6" />, title: "Unlimited Websites", desc: "Host as many projects as you need without any restrictions." },
+    { icon: <HardDrive className="w-6 h-6" />, title: "Unlimited SSD Webspace", desc: "High-performance SSD storage cluster for extreme read/write speeds." },
+    { icon: <Activity className="w-6 h-6" />, title: "Unlimited Bandwidth", desc: "No data caps. Our edge network handles any volume of traffic." },
+    { icon: <Database className="w-6 h-6" />, title: "Unlimited MySQL", desc: "Deploy countless databases with optimized InnoDB engines." },
+    { icon: <Mail className="w-6 h-6" />, title: "Business Emails", desc: "Create unlimited mailboxes with a 10GB storage limit per email account." },
+    { icon: <ShieldCheck className="w-6 h-6" />, title: "FREE SSL Certificates", desc: "Automated Let's Encrypt Wildcard SSL for every domain." },
+    { icon: <Scaling className="w-6 h-6" />, title: "Autoscaling Hosting", desc: "Resources expand in real-time based on your traffic load." },
+    { icon: <Boxes className="w-6 h-6" />, title: "80+ One-Click Apps", desc: "Deploy WordPress, Magento, and more in a single click." },
+    { icon: <Zap className="w-6 h-6" />, title: "Acceleration Suite", desc: "Integrated optimizations for PHP, images, and delivery." },
+    { icon: <Globe className="w-6 h-6" />, title: "FREE CDN", desc: "Global edge presence to serve content from the nearest node." },
+    { icon: <Layers className="w-6 h-6" />, title: "Edge Caching", desc: "Lightning fast object and page caching at the edge level." },
+    { icon: <ShieldAlert className="w-6 h-6" />, title: "1 Tbps+ DDoS Protection", desc: "Enterprise-grade mitigation against the largest attacks." },
+    { icon: <Search className="w-6 h-6" />, title: "Malware Scans", desc: "Real-time file monitoring and automatic threat removal." },
+    { icon: <ShoppingBag className="w-6 h-6" />, title: "Ecommerce Optimised", desc: "Fine-tuned environments for WooCommerce and Magento." },
+    { icon: <Gauge className="w-6 h-6" />, title: "No LVE Limits", desc: "Full CPU/RAM access without legacy resource throttling." },
+    { icon: <Network className="w-6 h-6" />, title: "Edge Infrastructure", desc: "Global redundant network with 99.9% uptime guarantee." },
+];
+
 const PlanPhilosophy: React.FC = () => {
-    const features = [
-        { icon: <Infinity className="w-6 h-6" />, title: "Unlimited Websites", desc: "Host as many projects as you need without any restrictions." },
-        { icon: <HardDrive className="w-6 h-6" />, title: "Unlimited SSD Webspace", desc: "High-performance SSD storage cluster for extreme read/write speeds." },
-        { icon: <Activity className="w-6 h-6" />, title: "Unlimited Bandwidth", desc: "No data caps. Our edge network handles any volume of traffic." },
-        { icon: <Database className="w-6 h-6" />, title: "Unlimited MySQL", desc: "Deploy countless databases with optimized InnoDB engines." },
-        { icon: <Mail className="w-6 h-6" />, title: "Business Emails", desc: "Create unlimited mailboxes with a 10GB storage limit per email account." },
-        { icon: <ShieldCheck className="w-6 h-6" />, title: "FREE SSL Certificates", desc: "Automated Let's Encrypt Wildcard SSL for every domain." },
-        { icon: <Scaling className="w-6 h-6" />, title: "Autoscaling Hosting", desc: "Resources expand in real-time based on your traffic load." },
-        { icon: <Boxes className="w-6 h-6" />, title: "80+ One-Click Apps", desc: "Deploy WordPress, Magento, and more in a single click." },
-        { icon: <Zap className="w-6 h-6" />, title: "Acceleration Suite", desc: "Integrated optimizations for PHP, images, and delivery." },
-        { icon: <Globe className="w-6 h-6" />, title: "FREE CDN", desc: "Global edge presence to serve content from the nearest node." },
-        { icon: <Layers className="w-6 h-6" />, title: "Edge Caching", desc: "Lightning fast object and page caching at the edge level." },
-        { icon: <ShieldAlert className="w-6 h-6" />, title: "1 Tbps+ DDoS Protection", desc: "Enterprise-grade mitigation against the largest attacks." },
-        { icon: <Search className="w-6 h-6" />, title: "Malware Scans", desc: "Real-time file monitoring and automatic threat removal." },
-        { icon: <ShoppingBag className="w-6 h-6" />, title: "Ecommerce Optimised", desc: "Fine-tuned environments for WooCommerce and Magento." },
-        { icon: <Gauge className="w-6 h-6" />, title: "No LVE Limits", desc: "Full CPU/RAM access without legacy resource throttling." },
-        { icon: <Network className="w-6 h-6" />, title: "Edge Infrastructure", desc: "Global redundant network with 99.9% uptime guarantee." },
-    ];
 
     return (
         <section id="features" className="w-full py-40 px-8 flex flex-col items-center">
@@ -104,7 +105,7 @@ const PlanPhilosophy: React.FC = () => {
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                        {features.map((feature, i) => (
+                        {FEATURES.map((feature, i) => (
                             <BentoBox
                                 key={i}
                                 index={i}

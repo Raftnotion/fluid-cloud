@@ -1,17 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import AutoscaleDemo from "@/components/AutoscaleDemo";
-import ComparisonSection from "@/components/ComparisonSection";
-import Testimonials from "@/components/Testimonials";
 import PlanPhilosophy from "@/components/PlanPhilosophy";
 import PriceLock from "@/components/PriceLock";
 import SupportGrid from "@/components/SupportGrid";
-import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import TrustCloud from "@/components/TrustCloud";
+
+const ComparisonSection = dynamic(() => import("@/components/ComparisonSection"), { ssr: false });
+const FAQ = dynamic(() => import("@/components/FAQ"), { ssr: false });
+const Testimonials = dynamic(() => import("@/components/Testimonials"), { ssr: false });
 import { motion, useScroll, useSpring } from "framer-motion";
 
 export default function Home() {

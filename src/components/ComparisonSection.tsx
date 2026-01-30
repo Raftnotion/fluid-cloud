@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, X, Shield, Zap, Globe, Cpu, LayoutGrid, Terminal, ShieldAlert } from 'lucide-react';
 
-const features = [
+const FEATURES = [
     {
         name: "Disk space",
         wpfye: "Unlimited",
@@ -67,20 +67,6 @@ const features = [
         cpanel: false,
         desc: "Dedicated IO paths for storage, FTP, and MySQL.",
         icon: <Cpu className="w-5 h-5" />
-    },
-    {
-        name: "Offloaded Email",
-        wpfye: true,
-        cpanel: false,
-        desc: "Emails run on separate clusters to protect performance.",
-        icon: <Globe className="w-5 h-5" />
-    },
-    {
-        name: "WP Optimised stack",
-        wpfye: true,
-        cpanel: false,
-        desc: "Fine-tuned runtimes specifically for WordPress core.",
-        icon: <Zap className="w-5 h-5" />
     },
     {
         name: "Isolated Kernels",
@@ -167,7 +153,7 @@ const ComparisonSection: React.FC = () => {
                     {/* Feature Matrix Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
                         <AnimatePresence mode="popLayout">
-                            {features.map((feature, idx) => (
+                            {FEATURES.map((feature, idx) => (
                                 <motion.div
                                     key={`${view}-${feature.name}`}
                                     initial={{ opacity: 0, y: 10, scale: 0.98 }}

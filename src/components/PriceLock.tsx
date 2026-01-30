@@ -6,6 +6,12 @@ import { Lock, ShieldCheck, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { PriceLockOverlay } from './PriceLockOverlay';
 
+const plans = [
+    { price: 999, original: 1299, label: '1 Year', savings: 300, bonus: 7500 },
+    { price: 1998, original: 2598, label: '2 Years', savings: 600, bonus: 15000 },
+    { price: 2999, original: 3897, label: '3 Years (Locked)', savings: 898, bonus: 22500 }
+];
+
 const PriceLock: React.FC = () => {
     const [tier, setTier] = useState<number>(0); // 0, 1, 2 corresponds to 1, 2, 3 years
     const [showOverlay, setShowOverlay] = useState(false);
@@ -16,12 +22,6 @@ const PriceLock: React.FC = () => {
         }
         setTier(idx);
     };
-
-    const plans = [
-        { price: 999, original: 1299, label: '1 Year', savings: 300, bonus: 7500 },
-        { price: 1998, original: 2598, label: '2 Years', savings: 600, bonus: 15000 },
-        { price: 2999, original: 3897, label: '3 Years (Locked)', savings: 898, bonus: 22500 }
-    ];
 
     return (
         <section id="pricing" className="w-full py-32 px-8 flex flex-col items-center bg-[#050505] relative overflow-hidden">

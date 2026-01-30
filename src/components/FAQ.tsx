@@ -54,7 +54,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }: { question: string, answ
                 </div>
             </button>
             <AnimatePresence>
-                {isOpen && (
+                {isOpen ? (
                     <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
@@ -66,7 +66,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }: { question: string, answ
                             {answer}
                         </p>
                     </motion.div>
-                )}
+                ) : null}
             </AnimatePresence>
         </div>
     );
