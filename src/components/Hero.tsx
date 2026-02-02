@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
     return (
         <section
             ref={containerRef}
-            className="relative w-full min-h-screen flex flex-col items-center justify-center px-8 pt-20 overflow-hidden bg-black"
+            className="relative w-full min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center px-6 md:px-8 pt-24 md:pt-20 overflow-hidden bg-black"
             style={{ willChange: 'transform' }}
         >
             {/* === OPTIMIZED BACKGROUND EFFECTS === */}
@@ -40,19 +40,19 @@ const Hero: React.FC = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="mb-10 flex flex-col items-center"
+                    className="mb-8 md:mb-10 flex flex-col items-center"
                 >
-                    <div className="flex items-center gap-4 mb-4">
-                        <div className="h-[1px] w-8 bg-[#CCFF00]/50" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#CCFF00]">
+                    <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
+                        <div className="h-[1px] w-6 md:w-8 bg-[#CCFF00]/50" />
+                        <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-[#CCFF00]">
                             built for peak performance
                         </span>
-                        <div className="h-[1px] w-8 bg-[#CCFF00]/50" />
+                        <div className="h-[1px] w-6 md:w-8 bg-[#CCFF00]/50" />
                     </div>
                 </motion.div>
 
                 <h1
-                    className="text-[12vw] md:text-[7.5vw] font-bold font-['Clash_Display'] leading-[0.8] mb-12 text-[#F2F2F2] relative"
+                    className="text-[11vw] sm:text-[12vw] md:text-[7.5vw] font-bold font-['Clash_Display'] leading-[0.9] md:leading-[0.8] mb-8 md:mb-12 text-[#F2F2F2] relative"
                     style={{ textShadow: '0 10px 40px rgba(0,0,0,0.8)' }}
                 >
                     <motion.span
@@ -78,10 +78,10 @@ const Hero: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="max-w-2xl mx-auto"
+                    className="max-w-xl md:max-w-2xl mx-auto px-4 md:px-0"
                 >
                     <p
-                        className="text-lg md:text-xl text-[#F2F2F2] font-semibold leading-relaxed tracking-tight mb-12"
+                        className="text-base md:text-xl text-[#F2F2F2]/90 md:text-[#F2F2F2] font-medium md:font-semibold leading-relaxed tracking-tight mb-10 md:mb-12"
                         style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.6)' }}
                     >
                         Engineered for high-intensity workloads. Our cloud fabric expands organically with your traffic, delivering peak performance without manual intervention.
@@ -139,7 +139,7 @@ const Hero: React.FC = () => {
                 style={{ y: yParallax, transform: 'translateZ(0)' }}
                 className="absolute inset-0 z-1 flex items-center justify-center pointer-events-none"
             >
-                <div className="relative w-[85%] md:w-[60%] lg:w-[45%] h-full flex items-center justify-center">
+                <div className="relative w-[110%] sm:w-[85%] md:w-[60%] lg:w-[45%] h-full flex items-center justify-center">
                     <motion.div
                         className="relative w-full aspect-square"
                         animate={{ rotate: 360 }}
