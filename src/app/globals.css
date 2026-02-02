@@ -148,6 +148,7 @@ html.lenis body {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -155,4 +156,172 @@ html.lenis body {
 
 .animate-marquee {
   animation: marquee 20s linear infinite;
+}
+
+/* React Tilt Button Styles (from react-tilt-button package) */
+.soft-btn {
+  --button-raise-level: 14px;
+  --press-inset: 5px;
+  --button-hover-pressure: 2;
+  --transform-speed: .16s;
+  --radius: 14px;
+  --surface-color: #f3f4f6;
+  --side-color: #d1d5db;
+  --text-color: #111827;
+  --border-color: rgba(0, 0, 0, .35);
+  --border-width: 2px;
+  --glare-rgb: 255, 255, 255;
+  --glare-alpha: 0;
+  --glare-width: 0;
+  --edge-aa: 0px;
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none
+}
+
+.soft-btn__wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d
+}
+
+.soft-btn__wrapper:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(100% - var(--button-raise-level));
+  background: var(--side-color);
+  border-radius: var(--radius);
+  z-index: 1
+}
+
+.soft-btn--active .soft-btn__wrapper:before {
+  border-radius: var(--radius)
+}
+
+.soft-btn__content {
+  position: relative;
+  width: 100%;
+  height: calc(100% - var(--button-raise-level));
+  background: var(--surface-color);
+  color: var(--text-color);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  transform: translateY(0);
+  transition: transform var(--transform-speed) ease-out;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-origin: center;
+  z-index: 2;
+  box-shadow: inset 0 0 0 var(--border-width) var(--border-color), 0 0 var(--edge-aa) #00000073
+}
+
+.soft-btn__inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 4;
+  width: 100%;
+  height: 100%
+}
+
+.soft-btn--middle .soft-btn__content {
+  transform: translateY(calc(1px * var(--button-hover-pressure)))
+}
+
+.soft-btn--left .soft-btn__content {
+  transform: skewY(calc(-1deg * var(--button-hover-pressure)))
+}
+
+.soft-btn--right .soft-btn__content {
+  transform: skewY(calc(1deg * var(--button-hover-pressure)))
+}
+
+.soft-btn--left,
+.soft-btn--right {
+  --edge-aa: 1px
+}
+
+.soft-btn--active .soft-btn__content {
+  transform: translateY(var(--press-inset));
+  transition: transform calc(var(--transform-speed) * .8) ease-out
+}
+
+.soft-btn--disabled {
+  opacity: .6;
+  pointer-events: none
+}
+
+.soft-btn--disabled .soft-btn__content:after {
+  opacity: 0
+}
+
+.soft-btn__content:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(var(--glare-rgb), 0) calc(50% - var(--glare-width) * 1%), rgba(var(--glare-rgb), calc(var(--glare-alpha) * .5)) calc(50% - var(--glare-width) * .5%), rgba(var(--glare-rgb), var(--glare-alpha)) 50%, rgba(var(--glare-rgb), calc(var(--glare-alpha) * .5)) calc(50% + var(--glare-width) * .5%), rgba(var(--glare-rgb), 0) calc(50% + var(--glare-width) * 1%));
+  background-size: 200% 100%;
+  background-position: 50% 50%;
+  opacity: 0;
+  transition: opacity .16s ease, background-position var(--transform-speed) ease;
+  z-index: 3
+}
+
+.soft-btn--right .soft-btn__content:after {
+  opacity: 1;
+  background-position: 0% 50%
+}
+
+.soft-btn--middle .soft-btn__content:after {
+  opacity: 1;
+  background-position: 50% 50%
+}
+
+.soft-btn--left .soft-btn__content:after {
+  opacity: 1;
+  background-position: 100% 50%
+}
+
+.soft-btn--active .soft-btn__content:after {
+  opacity: 1;
+  background: rgba(var(--glare-rgb), var(--glare-alpha));
+  background-position: 50% 50%
+}
+
+@supports (-moz-appearance: none) {
+
+  .soft-btn--left,
+  .soft-btn--right {
+    --edge-aa: 1.25px
+  }
+}
+
+/* Default left-pressed state for pricing button - same as hovering on left side */
+/* Only apply when not interacting */
+.pricing-tilt-btn .soft-btn:not(:hover):not(.soft-btn--left):not(.soft-btn--middle):not(.soft-btn--right):not(.soft-btn--active) {
+  --edge-aa: 1px;
+}
+
+.pricing-tilt-btn .soft-btn:not(:hover):not(.soft-btn--left):not(.soft-btn--middle):not(.soft-btn--right):not(.soft-btn--active) .soft-btn__content {
+  transform: skewY(calc(-1deg * var(--button-hover-pressure)));
+}
+
+.pricing-tilt-btn .soft-btn:not(:hover):not(.soft-btn--left):not(.soft-btn--middle):not(.soft-btn--right):not(.soft-btn--active) .soft-btn__content:after {
+  opacity: 1;
+  background-position: 100% 50%;
 }

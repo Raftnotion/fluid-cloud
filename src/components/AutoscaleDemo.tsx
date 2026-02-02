@@ -69,7 +69,7 @@ const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficS
                         {/* Terminal Header */}
                         <div className="flex justify-between items-center mb-3 md:mb-4">
                             <div className="flex flex-col">
-                                <span className="text-[8px] md:text-[10px] uppercase tracking-[0.25em] md:tracking-[0.3em] text-[#555] font-bold">Cluster Monitor</span>
+                                <span className="text-[10px] md:text-[10px] uppercase tracking-[0.25em] md:tracking-[0.3em] text-[#555] font-bold">Cluster Monitor</span>
                                 <span className="text-[#F2F2F2] font-bold text-sm md:text-base">WPFYE-LON-042</span>
                             </div>
                             <TrendingUp className={`w-5 h-5 md:w-6 md:h-6 transition-colors duration-500 ${trafficScale > 0.8 ? 'text-red-500 animate-pulse' : 'text-[#CCFF00]'}`} />
@@ -98,9 +98,9 @@ const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficS
                                     style={{ WebkitAppearance: 'none' }}
                                 />
                                 <div className="flex justify-between mt-2 md:mt-3">
-                                    <span className="text-[9px] md:text-[10px] font-bold text-[#444] uppercase">Idle</span>
+                                    <span className="text-[10px] md:text-[10px] font-bold text-[#444] uppercase">Idle</span>
                                     <span className="text-base md:text-lg font-black text-[#CCFF00] font-['Clash_Display']">{trafficLoad}% Load</span>
-                                    <span className="text-[9px] md:text-[10px] font-bold text-[#444] uppercase">Peak</span>
+                                    <span className="text-[10px] md:text-[10px] font-bold text-[#444] uppercase">Peak</span>
                                 </div>
                             </div>
 

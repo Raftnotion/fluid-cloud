@@ -181,7 +181,7 @@ const ComparisonSection: React.FC = () => {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.3, delay: idx * 0.02 }}
-                                className={`p-3 rounded-xl border transition-all ${view === 'wpfye'
+                                className={`p-4 rounded-xl border transition-all ${view === 'wpfye'
                                     ? 'bg-[#050505] border-[#222]'
                                     : 'bg-[#080808] border-[#111] opacity-40'
                                     }`}
@@ -189,10 +189,10 @@ const ComparisonSection: React.FC = () => {
                                 <div className={`mb-2 ${view === 'wpfye' ? 'text-[#CCFF00]' : 'text-[#333]'}`}>
                                     {React.cloneElement(feature.icon, { className: "w-4 h-4" })}
                                 </div>
-                                <h4 className={`text-xs font-bold mb-1 ${view === 'wpfye' ? 'text-white' : 'text-[#444]'}`}>
+                                <h4 className={`text-sm font-bold mb-1.5 ${view === 'wpfye' ? 'text-white' : 'text-[#444]'}`}>
                                     {feature.name}
                                 </h4>
-                                <p className={`text-[9px] leading-relaxed line-clamp-2 ${view === 'wpfye' ? 'text-[#666]' : 'text-[#333]'}`}>
+                                <p className={`text-xs leading-relaxed ${view === 'wpfye' ? 'text-[#666]' : 'text-[#333]'}`}>
                                     {view === 'wpfye' ? feature.desc : "Limited by legacy software."}
                                 </p>
                             </motion.div>

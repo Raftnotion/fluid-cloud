@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, ShieldCheck, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { PriceLockOverlay } from './PriceLockOverlay';
+import { TiltButton } from 'react-tilt-button';
 
 const plans = [
     { price: 999, original: 1299, label: '1 Year', savings: 300, bonus: 7500 },
@@ -153,16 +154,31 @@ const PriceLock: React.FC = () => {
                                     <div className="h-px w-6 md:w-8 bg-[#222]" />
                                 </div>
 
-                                <Link
-                                    href={`/checkout?plan=${tier + 1}`}
-                                    className="group relative w-full h-14 md:h-16 bg-[#CCFF00] rounded-2xl flex items-center justify-center gap-2 md:gap-3 overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.15)] hover:shadow-[0_25px_50px_rgba(204,255,0,0.25)] transition-all duration-300 active:scale-[0.98]"
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
-                                    <span className="text-black font-black text-lg md:text-xl uppercase tracking-wider">BUY NOW</span>
-                                    <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-black group-hover:translate-x-1 transition-transform" />
-                                </Link>
+                                <div className="flex justify-center w-full">
+                                    <Link href={`/checkout?plan=${tier + 1}`} className="block pricing-tilt-btn">
+                                        <TiltButton
+                                            variant="solid"
+                                            surfaceColor="#CCFF00"
+                                            sideColor="#5A7A00"
+                                            textColor="#000000"
+                                            width={280}
+                                            height={56}
+                                            elevation={12}
+                                            pressInset={6}
+                                            tilt={1.8}
+                                            radius={14}
+                                            borderColor="rgba(0,0,0,0.15)"
+                                            borderWidth={1}
+                                        >
+                                            <span className="flex items-center justify-center gap-2 font-black text-base uppercase tracking-wider w-full">
+                                                BUY NOW
+                                                <ArrowRight className="w-5 h-5" />
+                                            </span>
+                                        </TiltButton>
+                                    </Link>
+                                </div>
 
-                                <p className="text-[#444] text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] flex items-center gap-2">
+                                <p className="text-[#444] text-[10px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] flex items-center gap-2">
                                     <Lock className="w-2.5 h-2.5 md:w-3 md:h-3" />
                                     Secure Payment
                                 </p>

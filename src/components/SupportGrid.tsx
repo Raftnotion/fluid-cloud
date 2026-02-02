@@ -81,7 +81,7 @@ export default function SupportGrid() {
                                     <div className="p-2.5 bg-[#111] rounded-xl">
                                         {React.cloneElement(feature.icon, { className: "w-6 h-6 text-[#CCFF00]" })}
                                     </div>
-                                    <span className="text-[8px] font-black uppercase tracking-wider text-[#CCFF00] bg-[#CCFF00]/10 px-2.5 py-1 rounded-full">
+                                    <span className="text-[10px] font-black uppercase tracking-wider text-[#CCFF00] bg-[#CCFF00]/10 px-2.5 py-1 rounded-full">
                                         {feature.badge}
                                     </span>
                                 </div>
@@ -97,7 +97,7 @@ export default function SupportGrid() {
 
                                 <Link
                                     href={feature.link || "/contact"}
-                                    className="flex items-center justify-between w-full px-4 py-2.5 bg-[#111] border border-[#222] rounded-xl text-[9px] font-black uppercase tracking-wider text-[#F2F2F2] active:scale-[0.98]"
+                                    className="flex items-center justify-between w-full px-4 py-2.5 bg-[#111] border border-[#222] rounded-xl text-[11px] font-black uppercase tracking-wider text-[#F2F2F2] active:scale-[0.98]"
                                 >
                                     <span>{feature.cta}</span>
                                     <ArrowRight className="w-3 h-3 text-[#CCFF00]" />
@@ -118,7 +118,7 @@ export default function SupportGrid() {
                                     {React.cloneElement(feature.icon, { className: "w-5 h-5 text-[#CCFF00]" })}
                                 </div>
                                 <h3 className="text-sm font-bold text-[#F2F2F2] mb-1">{feature.title}</h3>
-                                <span className="text-[9px] font-bold text-[#CCFF00] uppercase">{feature.badge}</span>
+                                <span className="text-[10px] font-bold text-[#CCFF00] uppercase">{feature.badge}</span>
                             </Link>
                         ))}
                     </div>

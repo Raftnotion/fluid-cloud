@@ -113,15 +113,15 @@ const PlanPhilosophy: React.FC = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: i * 0.03 }}
-                                className="p-4 border border-[#222] bg-[#0a0a0a] rounded-xl"
+                                className="p-5 border border-[#222] bg-[#0a0a0a] rounded-xl"
                             >
                                 <div className="w-9 h-9 flex items-center justify-center border border-[#333] bg-black/50 rounded-lg mb-3">
                                     <div className="text-[#CCFF00]">
                                         {React.cloneElement(feature.icon, { className: "w-4 h-4" })}
                                     </div>
                                 </div>
-                                <h3 className="text-sm font-bold text-[#F2F2F2] mb-1">{feature.title}</h3>
-                                <p className="text-[10px] text-[#666] leading-relaxed line-clamp-2">{feature.desc}</p>
+                                <h3 className="text-base font-bold text-[#F2F2F2] mb-1.5">{feature.title}</h3>
+                                <p className="text-xs text-[#666] leading-relaxed">{feature.desc}</p>
                             </motion.div>
                         ))}
                     </div>

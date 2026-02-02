@@ -170,7 +170,7 @@ const Testimonials: React.FC = () => {
                                         </div>
                                         <div>
                                             <p className="text-[#F2F2F2] font-bold text-base">{t.name}</p>
-                                            <p className="text-[#555] text-[10px] uppercase tracking-wider font-semibold">{t.role.split(',')[0]}</p>
+                                            <p className="text-[11px] text-[#555] uppercase tracking-wider font-semibold">{t.role.split(',')[0]}</p>
                                         </div>
                                     </div>
                                     <div className="flex gap-0.5">
@@ -215,7 +215,7 @@ const Testimonials: React.FC = () => {
                         <div className="flex items-center gap-3 px-4 py-2 bg-[#111] border border-[#222] rounded-2xl">
                             <div className="flex flex-col items-center">
                                 <span className="text-2xl font-black text-[#CCFF00]">9.8</span>
-                                <span className="text-[8px] text-[#666] uppercase tracking-wider font-bold">Rating</span>
+                                <span className="text-[10px] text-[#666] uppercase tracking-wider font-bold">Rating</span>
                             </div>
                             <div className="w-px h-8 bg-[#222]" />
                             <div className="flex flex-col gap-1">
@@ -224,7 +224,7 @@ const Testimonials: React.FC = () => {
                                         <Star key={i} className="w-3 h-3 fill-[#CCFF00] text-[#CCFF00]" />
                                     ))}
                                 </div>
-                                <span className="text-[9px] text-[#888] font-semibold">Verified on HostAdvice</span>
+                                <span className="text-[10px] text-[#888] font-semibold">Verified on HostAdvice</span>
                             </div>
                         </div>
                     </div>
