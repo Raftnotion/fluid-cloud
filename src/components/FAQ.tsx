@@ -44,13 +44,13 @@ const FAQItem = ({ question, answer, isOpen, onClick }: { question: string, answ
         <div className="border-b border-[#222]">
             <button
                 onClick={onClick}
-                className="w-full py-8 flex items-center justify-between text-left group"
+                className="w-full py-5 md:py-8 flex items-center justify-between text-left group active:scale-[0.995] transition-transform"
             >
-                <h3 className={`text-xl md:text-2xl font-bold tracking-wide transition-colors duration-300 ${isOpen ? 'text-[#CCFF00]' : 'text-[#F2F2F2] group-hover:text-[#CCFF00]/70'}`}>
+                <h3 className={`text-base md:text-2xl font-bold tracking-wide transition-colors duration-300 pr-4 ${isOpen ? 'text-[#CCFF00]' : 'text-[#F2F2F2] group-hover:text-[#CCFF00]/70'}`}>
                     {question}
                 </h3>
-                <div className={`flex-shrink-0 ml-4 p-2 rounded-full border transition-all duration-300 ${isOpen ? 'border-[#CCFF00] bg-[#CCFF00] text-black' : 'border-[#333] text-[#555] group-hover:border-[#555]'}`}>
-                    {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                <div className={`flex-shrink-0 p-1.5 md:p-2 rounded-full border transition-all duration-300 ${isOpen ? 'border-[#CCFF00] bg-[#CCFF00] text-black' : 'border-[#333] text-[#555] group-hover:border-[#555]'}`}>
+                    {isOpen ? <Minus className="w-4 h-4 md:w-5 md:h-5" /> : <Plus className="w-4 h-4 md:w-5 md:h-5" />}
                 </div>
             </button>
             <AnimatePresence>
@@ -62,7 +62,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }: { question: string, answ
                         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                     >
-                        <p className="pb-8 text-[#888] text-lg leading-relaxed max-w-4xl">
+                        <p className="pb-5 md:pb-8 text-[#888] text-sm md:text-lg leading-relaxed max-w-4xl">
                             {answer}
                         </p>
                     </motion.div>
@@ -76,16 +76,18 @@ export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section id="faq" className="w-full py-32 px-8 bg-[#050505]">
+        <section id="faq" className="w-full py-16 md:py-32 px-4 md:px-8 bg-[#050505]">
             <div className="max-w-4xl mx-auto">
-                <div className="mb-16">
-                    <span className="text-[#CCFF00] text-[10px] uppercase tracking-[0.4em] font-black mb-4 block">Common Inquiries</span>
-                    <h2 className="text-5xl md:text-6xl font-bold text-[#F2F2F2] font-['Clash_Display'] leading-none">
-                        Questions? <br />
+                {/* Header - Mobile Optimized */}
+                <div className="mb-8 md:mb-16">
+                    <span className="text-[#CCFF00] text-[9px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.4em] font-black mb-3 md:mb-4 block">Common Inquiries</span>
+                    <h2 className="text-3xl md:text-6xl font-bold text-[#F2F2F2] font-['Clash_Display'] leading-none">
+                        Questions?<br />
                         <span className="text-[#333]">Answers.</span>
                     </h2>
                 </div>
 
+                {/* FAQ Items */}
                 <div className="flex flex-col">
                     {FAQS.map((faq, idx) => (
                         <FAQItem
@@ -98,12 +100,13 @@ export default function FAQ() {
                     ))}
                 </div>
 
-                <div className="mt-16 p-8 bg-[#0a0a0a] border border-[#111] rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div>
-                        <h4 className="text-[#F2F2F2] font-bold text-xl mb-1">Still have questions?</h4>
-                        <p className="text-[#555]">Our engineers are standing by 24/7 to help you out.</p>
+                {/* Bottom CTA - Mobile Optimized */}
+                <div className="mt-8 md:mt-16 p-5 md:p-8 bg-[#0a0a0a] border border-[#111] rounded-2xl md:rounded-3xl flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
+                    <div className="text-center md:text-left">
+                        <h4 className="text-[#F2F2F2] font-bold text-base md:text-xl mb-1">Still have questions?</h4>
+                        <p className="text-[#555] text-sm md:text-base">Our engineers are standing by 24/7.</p>
                     </div>
-                    <button className="px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-105 transition-transform">
+                    <button className="w-full md:w-auto px-6 md:px-8 py-3 md:py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-[10px] md:text-xs rounded-xl hover:scale-105 active:scale-[0.98] transition-transform">
                         Chat With Us
                     </button>
                 </div>
