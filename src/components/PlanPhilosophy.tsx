@@ -79,14 +79,15 @@ const FEATURES = [
 const PlanPhilosophy: React.FC = () => {
 
     return (
-        <section id="features" className="w-full py-40 px-8 flex flex-col items-center">
-            <div className="max-w-7xl w-full p-[1px] bg-gradient-to-br from-[#333333] via-[#1a1a1a] to-[#333333] rounded-[32px] overflow-hidden shadow-2xl">
-                <div className="p-10 md:p-20 bg-[#050505] rounded-[31px]">
-                    <div className="text-center mb-20">
+        <section id="features" className="w-full py-16 md:py-40 px-4 md:px-8 flex flex-col items-center">
+            <div className="max-w-7xl w-full p-[1px] bg-gradient-to-br from-[#333333] via-[#1a1a1a] to-[#333333] rounded-3xl md:rounded-[32px] overflow-hidden shadow-2xl">
+                <div className="p-5 md:p-20 bg-[#050505] rounded-[23px] md:rounded-[31px]">
+                    {/* Header - Mobile Optimized */}
+                    <div className="text-center mb-8 md:mb-20">
                         <motion.span
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            className="text-[#CCFF00] text-[10px] uppercase tracking-[0.3em] font-black mb-6 block"
+                            className="text-[#CCFF00] text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-black mb-3 md:mb-6 block"
                         >
                             The Paradigm Shift
                         </motion.span>
@@ -94,17 +95,39 @@ const PlanPhilosophy: React.FC = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="text-4xl md:text-7xl font-bold mb-8 text-[#F2F2F2] leading-[0.9]"
+                            className="text-3xl md:text-7xl font-bold mb-4 md:mb-8 text-[#F2F2F2] leading-[0.95] md:leading-[0.9]"
                         >
-                            The Only Plan <br /> <span className="text-[#333333]">You'll Ever Need.</span>
+                            The Only Plan<br /><span className="text-[#333333]">You'll Ever Need.</span>
                         </motion.h2>
-                        <p className="text-[#888888] max-w-2xl mx-auto text-lg font-medium leading-relaxed">
-                            We've stripped away the noise of tiered pricing. One industrial-grade architecture,
-                            unlocked for every project you dream of.
+                        <p className="text-[#888888] max-w-2xl mx-auto text-sm md:text-lg font-medium leading-relaxed">
+                            One industrial-grade architecture, unlocked for every project.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                    {/* Mobile: Compact 2-column grid */}
+                    <div className="md:hidden grid grid-cols-2 gap-2">
+                        {FEATURES.map((feature, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.03 }}
+                                className="p-4 border border-[#222] bg-[#0a0a0a] rounded-xl"
+                            >
+                                <div className="w-9 h-9 flex items-center justify-center border border-[#333] bg-black/50 rounded-lg mb-3">
+                                    <div className="text-[#CCFF00]">
+                                        {React.cloneElement(feature.icon, { className: "w-4 h-4" })}
+                                    </div>
+                                </div>
+                                <h3 className="text-sm font-bold text-[#F2F2F2] mb-1">{feature.title}</h3>
+                                <p className="text-[10px] text-[#666] leading-relaxed line-clamp-2">{feature.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Desktop: Original Bento Grid */}
+                    <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
                         {FEATURES.map((feature, i) => (
                             <BentoBox
                                 key={i}

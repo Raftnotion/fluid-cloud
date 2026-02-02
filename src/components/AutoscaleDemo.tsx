@@ -33,15 +33,15 @@ const AutoscaleDemo: React.FC<AutoscaleDemoProps> = ({ trafficScale, setTrafficS
                             Watch how our infrastructure reacts to a massive traffic influx. Instead of failing, the core expands to accommodate every single user.
                         </p>
 
-                        {/* Mobile: Horizontal scroll pills | Desktop: Stacked cards */}
-                        <div className="md:hidden flex gap-3 overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide">
-                            <div className="flex-shrink-0 px-4 py-3 border border-[#222] rounded-2xl bg-[#0a0a0a]/80 flex items-center gap-3">
-                                <Users className="w-5 h-5 text-[#CCFF00]" />
-                                <span className="text-sm font-semibold text-[#F2F2F2] whitespace-nowrap">Dynamic Capacity</span>
+                        {/* Mobile: Static 2-column grid | Desktop: Stacked cards */}
+                        <div className="md:hidden grid grid-cols-2 gap-2 mb-4">
+                            <div className="px-3 py-2.5 border border-[#222] rounded-xl bg-[#0a0a0a]/80 flex items-center gap-2">
+                                <Users className="w-4 h-4 text-[#CCFF00] shrink-0" />
+                                <span className="text-xs font-semibold text-[#F2F2F2]">Dynamic Capacity</span>
                             </div>
-                            <div className="flex-shrink-0 px-4 py-3 border border-[#222] rounded-2xl bg-[#0a0a0a]/80 flex items-center gap-3">
-                                <Zap className="w-5 h-5 text-[#CCFF00]" />
-                                <span className="text-sm font-semibold text-[#F2F2F2] whitespace-nowrap">Instant Mitigation</span>
+                            <div className="px-3 py-2.5 border border-[#222] rounded-xl bg-[#0a0a0a]/80 flex items-center gap-2">
+                                <Zap className="w-4 h-4 text-[#CCFF00] shrink-0" />
+                                <span className="text-xs font-semibold text-[#F2F2F2]">Instant Mitigation</span>
                             </div>
                         </div>
 
