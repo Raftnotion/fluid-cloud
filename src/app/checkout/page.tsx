@@ -309,30 +309,30 @@ const CheckoutContent = () => {
             ) : null}
             <Header />
 
-            <main className="pt-32 pb-40 px-8 relative z-10">
+            <main className="pt-20 md:pt-32 pb-24 md:pb-40 px-4 md:px-8 relative z-10" style={{ paddingBottom: 'max(6rem, env(safe-area-inset-bottom))' }}>
                 {/* Background Accent */}
                 <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-[#CCFF00]/5 blur-[120px] rounded-full pointer-events-none" />
 
-                <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16">
+                <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 lg:gap-16">
 
                     {/* Left Side: Checkout Flow */}
                     <div className="flex-1">
                         {/* Progress Stepper */}
-                        <div className="flex items-center gap-4 mb-16 overflow-x-auto pb-4 no-scrollbar">
+                        <div className="flex items-center gap-2 md:gap-4 mb-8 md:mb-16 overflow-x-auto pb-2 no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
                             {steps.map((s, idx) => (
                                 <React.Fragment key={s.id}>
                                     <button
                                         onClick={() => handleStepClick(s.id)}
                                         disabled={step < s.id}
-                                        className={`flex items-center gap-3 shrink-0 transition-all ${step >= s.id ? 'text-[#CCFF00]' : 'text-[#333]'} ${step > s.id ? 'hover:opacity-70' : ''}`}
+                                        className={`flex items-center gap-2 md:gap-3 shrink-0 transition-all active:scale-95 ${step >= s.id ? 'text-[#CCFF00]' : 'text-[#333]'} ${step > s.id ? 'hover:opacity-70' : ''}`}
                                     >
-                                        <div className={`w-8 h-8 rounded-lg border flex items-center justify-center transition-colors duration-500 ${step >= s.id ? 'border-[#CCFF00] bg-[#CCFF00]/10' : 'border-[#222]'}`}>
-                                            {step > s.id ? <CheckCircle2 className="w-5 h-5" /> : s.icon}
+                                        <div className={`w-7 h-7 md:w-8 md:h-8 rounded-lg border flex items-center justify-center transition-colors duration-500 ${step >= s.id ? 'border-[#CCFF00] bg-[#CCFF00]/10' : 'border-[#222]'}`}>
+                                            {step > s.id ? <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> : s.icon}
                                         </div>
-                                        <span className="text-[11px] font-black uppercase tracking-[0.2em]">{s.title}</span>
+                                        <span className="text-[11px] md:text-xs font-bold uppercase tracking-[0.1em] md:tracking-[0.15em]">{s.title}</span>
                                     </button>
                                     {idx < steps.length - 1 && (
-                                        <div className={`h-px w-8 ${step > s.id ? 'bg-[#CCFF00]' : 'bg-[#222]'}`} />
+                                        <div className={`h-px w-4 md:w-8 ${step > s.id ? 'bg-[#CCFF00]' : 'bg-[#222]'}`} />
                                     )}
                                 </React.Fragment>
                             ))}
@@ -348,8 +348,8 @@ const CheckoutContent = () => {
                                     className="space-y-12"
                                 >
                                     <section>
-                                        <h2 className="text-2xl md:text-3xl font-bold font-['Clash_Display'] mb-3 uppercase tracking-wider">Domain Configuration</h2>
-                                        <p className="text-sm text-[#888] mb-10">Enter the domain you wish to point to WPFYE Fluid platform.</p>
+                                        <h2 className="text-xl md:text-3xl font-bold font-['Clash_Display'] mb-2 md:mb-3 uppercase tracking-wider">Domain Configuration</h2>
+                                        <p className="text-sm text-[#888] mb-6 md:mb-10">Enter your domain to point to WPFYE Fluid.</p>
                                         <div className="relative group max-w-lg">
                                             <div className="absolute -inset-0.5 bg-gradient-to-r from-[#CCFF00]/0 via-[#CCFF00]/20 to-[#CCFF00]/0 rounded-2xl blur opacity-0 group-focus-within:opacity-100 transition-all" />
                                             <input
@@ -357,20 +357,20 @@ const CheckoutContent = () => {
                                                 placeholder="yourdomain.com"
                                                 value={formData.domain}
                                                 onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
-                                                className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-5 text-lg font-bold text-[#F2F2F2] outline-none focus:border-[#CCFF00]/50 transition-all relative z-10"
+                                                className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 md:p-5 text-base md:text-lg font-bold text-[#F2F2F2] outline-none focus:border-[#CCFF00]/50 transition-all relative z-10"
                                             />
                                             <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
                                                 <Globe className="w-5 h-5 text-[#333] group-focus-within:text-[#CCFF00] transition-colors" />
                                             </div>
                                         </div>
-                                        <p className="mt-4 text-[9px] text-[#444] uppercase tracking-widest font-bold leading-relaxed">
-                                            * We do not sell domains. Enter an existing domain to host. If you don't have one, please purchase from a registrar (e.g. GoDaddy, Namecheap) first.
+                                        <p className="mt-3 md:mt-4 text-[11px] md:text-xs text-[#666] uppercase tracking-wide font-bold leading-relaxed">
+                                            * Enter an existing domain. Purchase from GoDaddy or Namecheap first.
                                         </p>
                                     </section>
 
                                     <button
                                         onClick={() => goToStep(2)}
-                                        className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
+                                        className="w-full md:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-[1.02] active:scale-[0.97] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Next <ArrowRight className="w-4 h-4" />
                                     </button>
@@ -386,17 +386,17 @@ const CheckoutContent = () => {
                                     className="space-y-10"
                                 >
                                     <section>
-                                        <div className="flex items-center gap-4 mb-4">
-                                            <button onClick={() => goToStep(1)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] transition-colors">
+                                        <div className="flex items-center gap-3 md:gap-4 mb-2 md:mb-4">
+                                            <button onClick={() => goToStep(1)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] active:scale-95 transition-all">
                                                 <ArrowLeft className="w-4 h-4" />
                                             </button>
-                                            <h2 className="text-2xl md:text-3xl font-bold font-['Clash_Display'] uppercase tracking-wider">Personal Identity</h2>
+                                            <h2 className="text-xl md:text-3xl font-bold font-['Clash_Display'] uppercase tracking-wider">Personal Identity</h2>
                                         </div>
-                                        <p className="text-sm text-[#888] mb-10">Provide your contact details for system orchestration.</p>
+                                        <p className="text-sm text-[#888] mb-6 md:mb-10">Your contact details for system orchestration.</p>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-2xl">
                                             <div className="space-y-2">
-                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">First Name</label>
+                                                <label className="text-xs font-bold uppercase tracking-wider text-[#777]">First Name</label>
                                                 <input
                                                     type="text"
                                                     value={formData.firstName}
@@ -405,7 +405,7 @@ const CheckoutContent = () => {
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Last Name</label>
+                                                <label className="text-xs font-bold uppercase tracking-wider text-[#777]">Last Name</label>
                                                 <input
                                                     type="text"
                                                     value={formData.lastName}
@@ -414,7 +414,7 @@ const CheckoutContent = () => {
                                                 />
                                             </div>
                                             <div className="space-y-2 md:col-span-2">
-                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Email Address</label>
+                                                <label className="text-xs font-bold uppercase tracking-wider text-[#777]">Email Address</label>
                                                 <input
                                                     type="email"
                                                     value={formData.email}
@@ -427,9 +427,9 @@ const CheckoutContent = () => {
 
                                     <button
                                         onClick={() => goToStep(3)}
-                                        className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
+                                        className="w-full md:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-[1.02] active:scale-[0.97] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
-                                        Proceed to Billing <ArrowRight className="w-4 h-4" />
+                                        Billing <ArrowRight className="w-4 h-4" />
                                     </button>
                                 </motion.div>
                             )}
@@ -443,29 +443,29 @@ const CheckoutContent = () => {
                                     className="space-y-10"
                                 >
                                     <section>
-                                        <div className="flex items-center gap-4 mb-4">
-                                            <button onClick={() => goToStep(2)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] transition-colors">
+                                        <div className="flex items-center gap-3 md:gap-4 mb-2 md:mb-4">
+                                            <button onClick={() => goToStep(2)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] active:scale-95 transition-all">
                                                 <ArrowLeft className="w-4 h-4" />
                                             </button>
-                                            <h2 className="text-2xl md:text-3xl font-bold font-['Clash_Display'] uppercase tracking-wider">Billing Console</h2>
+                                            <h2 className="text-xl md:text-3xl font-bold font-['Clash_Display'] uppercase tracking-wider">Billing Console</h2>
                                         </div>
-                                        <p className="text-sm text-[#888] mb-10">Configure your professional billing address for compliance.</p>
+                                        <p className="text-sm text-[#888] mb-6 md:mb-10">Your billing address for compliance.</p>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
-                                            <div className="md:col-span-2 mb-6">
-                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555] block mb-4">Billing Type</label>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-2xl">
+                                            <div className="md:col-span-2 mb-4 md:mb-6">
+                                                <label className="text-xs font-bold uppercase tracking-wider text-[#777] block mb-3 md:mb-4">Billing Type</label>
                                                 <div className="bg-[#0a0a0a] border border-[#222] p-1.5 rounded-xl inline-flex gap-1.5 w-full md:w-fit">
                                                     <button
                                                         type="button"
                                                         onClick={() => setFormData({ ...formData, isCompany: false })}
-                                                        className={`flex-1 md:flex-none px-6 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all ${!formData.isCompany ? 'bg-[#CCFF00] text-black shadow-[0_4px_12px_rgba(204,255,0,0.15)]' : 'text-[#444] hover:text-[#666]'}`}
+                                                        className={`flex-1 md:flex-none px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all active:scale-95 ${!formData.isCompany ? 'bg-[#CCFF00] text-black shadow-[0_4px_12px_rgba(204,255,0,0.15)]' : 'text-[#555] hover:text-[#888]'}`}
                                                     >
                                                         Individual
                                                     </button>
                                                     <button
                                                         type="button"
                                                         onClick={() => setFormData({ ...formData, isCompany: true })}
-                                                        className={`flex-1 md:flex-none px-6 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all ${formData.isCompany ? 'bg-[#CCFF00] text-black shadow-[0_4px_12px_rgba(204,255,0,0.15)]' : 'text-[#444] hover:text-[#666]'}`}
+                                                        className={`flex-1 md:flex-none px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all active:scale-95 ${formData.isCompany ? 'bg-[#CCFF00] text-black shadow-[0_4px_12px_rgba(204,255,0,0.15)]' : 'text-[#555] hover:text-[#888]'}`}
                                                     >
                                                         Company
                                                     </button>
@@ -479,7 +479,7 @@ const CheckoutContent = () => {
                                                     className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 mb-2"
                                                 >
                                                     <div className="space-y-2">
-                                                        <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Company Name</label>
+                                                        <label className="text-xs font-bold uppercase tracking-wider text-[#777]">Company Name</label>
                                                         <input
                                                             type="text"
                                                             value={formData.companyName}
@@ -488,7 +488,7 @@ const CheckoutContent = () => {
                                                         />
                                                     </div>
                                                     <div className="space-y-2">
-                                                        <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">GSTIN</label>
+                                                        <label className="text-xs font-bold uppercase tracking-wider text-[#777]">GSTIN</label>
                                                         <input
                                                             type="text"
                                                             placeholder="29AADCW9345A1Z7"
@@ -500,7 +500,7 @@ const CheckoutContent = () => {
                                                 </motion.div>
                                             )}
                                             <div className="space-y-2 md:col-span-2">
-                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Street Address</label>
+                                                <label className="text-xs font-bold uppercase tracking-wider text-[#777]">Street Address</label>
                                                 <input
                                                     type="text"
                                                     placeholder="Street Address"
@@ -510,7 +510,7 @@ const CheckoutContent = () => {
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">City</label>
+                                                <label className="text-xs font-bold uppercase tracking-wider text-[#777]">City</label>
                                                 <input
                                                     type="text"
                                                     value={formData.city}
@@ -519,7 +519,7 @@ const CheckoutContent = () => {
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">State / Province</label>
+                                                <label className="text-xs font-bold uppercase tracking-wider text-[#777]">State / Province</label>
                                                 <input
                                                     type="text"
                                                     value={formData.state}
@@ -528,7 +528,7 @@ const CheckoutContent = () => {
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">ZIP / Postal Code</label>
+                                                <label className="text-xs font-bold uppercase tracking-wider text-[#777]">ZIP / Postal Code</label>
                                                 <input
                                                     type="text"
                                                     value={formData.zip}
@@ -537,7 +537,7 @@ const CheckoutContent = () => {
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Country / Region</label>
+                                                <label className="text-xs font-bold uppercase tracking-wider text-[#777]">Country / Region</label>
                                                 <SearchableCountrySelect
                                                     value={formData.country}
                                                     onChange={(val) => setFormData({ ...formData, country: val })}
@@ -545,7 +545,7 @@ const CheckoutContent = () => {
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-[11px] font-black uppercase tracking-widest text-[#555]">Phone Number</label>
+                                                <label className="text-xs font-bold uppercase tracking-wider text-[#777]">Phone Number</label>
                                                 <div className="flex gap-2">
                                                     <div className="bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold text-[#555] min-w-[70px] flex items-center justify-center">
                                                         {formData.countryCode}
@@ -564,7 +564,7 @@ const CheckoutContent = () => {
 
                                     <button
                                         onClick={() => goToStep(4)}
-                                        className="flex items-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
+                                        className="w-full md:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-[1.02] active:scale-[0.97] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Review & Pay <ArrowRight className="w-4 h-4" />
                                     </button>
@@ -580,32 +580,32 @@ const CheckoutContent = () => {
                                     className="space-y-10"
                                 >
                                     <section>
-                                        <div className="flex items-center gap-4 mb-4">
-                                            <button onClick={() => goToStep(3)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] transition-colors">
+                                        <div className="flex items-center gap-3 md:gap-4 mb-2 md:mb-4">
+                                            <button onClick={() => goToStep(3)} className="p-2 border border-[#222] rounded-lg text-[#555] hover:text-[#CCFF00] active:scale-95 transition-all">
                                                 <ArrowLeft className="w-4 h-4" />
                                             </button>
-                                            <h2 className="text-2xl md:text-3xl font-bold font-['Clash_Display'] uppercase tracking-wider">Payment Verification</h2>
+                                            <h2 className="text-xl md:text-3xl font-bold font-['Clash_Display'] uppercase tracking-wider">Payment</h2>
                                         </div>
-                                        <p className="text-sm text-[#888] mb-10">Select your preferred transaction protocol. Secure via Razorpay.</p>
+                                        <p className="text-sm text-[#888] mb-6 md:mb-10">Secure payment via Razorpay.</p>
 
-                                        <div className="p-8 border border-[#CCFF00]/20 bg-[#CCFF00]/5 rounded-2xl max-w-2xl">
-                                            <div className="flex items-center justify-between mb-8">
-                                                <div className="flex items-center gap-4">
-                                                    <div className="w-16 h-12 bg-white rounded-xl flex items-center justify-center p-2 border border-white/10 shadow-sm">
+                                        <div className="p-5 md:p-8 border border-[#CCFF00]/20 bg-[#CCFF00]/5 rounded-xl md:rounded-2xl max-w-2xl">
+                                            <div className="flex items-center justify-between mb-6 md:mb-8">
+                                                <div className="flex items-center gap-3 md:gap-4">
+                                                    <div className="w-12 h-10 md:w-16 md:h-12 bg-white rounded-lg md:rounded-xl flex items-center justify-center p-1.5 md:p-2 border border-white/10 shadow-sm">
                                                         <img src="/images/rzp.png" alt="Razorpay" className="w-full h-full object-contain" />
                                                     </div>
                                                     <div>
-                                                        <h4 className="font-bold text-lg tracking-wide">Razorpay Secured</h4>
-                                                        <p className="text-[#555] text-[11px] font-black uppercase tracking-widest">Global Payment Gateway</p>
+                                                        <h4 className="font-bold text-base md:text-lg tracking-wide">Razorpay Secured</h4>
+                                                        <p className="text-[#666] text-[10px] md:text-[11px] font-black uppercase tracking-wider">Global Gateway</p>
                                                     </div>
                                                 </div>
-                                                <div className="w-6 h-6 rounded-full border-2 border-[#CCFF00] flex items-center justify-center">
-                                                    <div className="w-3 h-3 bg-[#CCFF00] rounded-full" />
+                                                <div className="w-5 h-5 md:w-6 md:h-6 rounded-full border-2 border-[#CCFF00] flex items-center justify-center">
+                                                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 bg-[#CCFF00] rounded-full" />
                                                 </div>
                                             </div>
 
                                             <button
-                                                className="group relative flex items-center justify-center gap-3 w-full px-12 py-5 bg-[#CCFF00] text-black font-black uppercase tracking-[0.2em] text-sm rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.1)] hover:scale-[1.01] active:scale-[0.98] transition-all"
+                                                className="group relative flex items-center justify-center gap-2 md:gap-3 w-full px-6 md:px-12 py-4 md:py-5 bg-[#CCFF00] text-black font-black uppercase tracking-[0.15em] md:tracking-[0.2em] text-sm rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.1)] hover:scale-[1.01] active:scale-[0.97] transition-all"
                                             >
                                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
                                                 <Lock className="w-4 h-4" />
@@ -615,14 +615,14 @@ const CheckoutContent = () => {
                                         </div>
                                     </section>
 
-                                    <div className="flex items-center gap-6 text-[#333] text-[10px] font-black uppercase tracking-[0.3em]">
+                                    <div className="flex flex-wrap items-center gap-4 md:gap-6 text-[#444] text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em]">
                                         <div className="flex items-center gap-2">
-                                            <ShieldCheck className="w-2.5 h-2.5 text-[#CCFF00]" />
-                                            PCI-DSS COMPLIANT
+                                            <ShieldCheck className="w-3 h-3 text-[#CCFF00]" />
+                                            PCI-DSS
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <Lock className="w-2.5 h-2.5 text-[#CCFF00]" />
-                                            256-BIT ENCRYPTION
+                                            <Lock className="w-3 h-3 text-[#CCFF00]" />
+                                            256-BIT SSL
                                         </div>
                                     </div>
                                 </motion.div>
@@ -631,38 +631,38 @@ const CheckoutContent = () => {
                     </div>
 
                     {/* Right Side: Order Summary */}
-                    <div className="lg:w-[400px] shrink-0">
-                        <div className="p-8 bg-[#0a0a0a] border border-[#222] rounded-[32px] sticky top-32 space-y-8">
+                    <div className="lg:w-[400px] shrink-0 order-first lg:order-last">
+                        <div className="p-5 md:p-8 bg-[#0a0a0a] border border-[#222] rounded-2xl md:rounded-[32px] lg:sticky lg:top-32 space-y-6 md:space-y-8">
                             <div>
-                                <div className="flex items-center justify-between mb-6">
-                                    <h3 className="text-xs font-black uppercase tracking-[0.3em] text-[#555]">Order Summary</h3>
+                                <div className="flex items-center justify-between mb-4 md:mb-6">
+                                    <h3 className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[#666]">Order Summary</h3>
                                     <div className="flex bg-black border border-[#222] p-1 rounded-lg gap-1">
                                         {['1', '2', '3'].map((p) => (
                                             <button
                                                 key={p}
                                                 onClick={() => handlePlanChange(p)}
-                                                className={`px-3 py-1 text-xs font-black uppercase rounded-md transition-all ${planParam === p ? 'bg-[#CCFF00] text-black' : 'text-[#888] hover:text-[#F2F2F2]'}`}
+                                                className={`px-2.5 md:px-3 py-1 text-[10px] md:text-xs font-black uppercase rounded-md transition-all active:scale-95 ${planParam === p ? 'bg-[#CCFF00] text-black' : 'text-[#888] hover:text-[#F2F2F2]'}`}
                                             >
                                                 {p}Y
                                             </button>
                                         ))}
                                     </div>
                                 </div>
-                                <div className="space-y-6">
+                                <div className="space-y-4 md:space-y-6">
                                     <div className="flex justify-between items-start">
                                         <div>
-                                            <p className="font-black text-xl text-[#F2F2F2] uppercase">{selectedPlan.name}</p>
-                                            <p className="text-xs text-[#555] font-bold">Fluid Cloud Infrastructure</p>
+                                            <p className="font-black text-lg md:text-xl text-[#F2F2F2] uppercase">{selectedPlan.name}</p>
+                                            <p className="text-xs md:text-sm text-[#777] font-bold">Fluid Cloud</p>
                                         </div>
-                                        <p className="font-black text-xl text-[#F2F2F2]">₹{selectedPlan.price}</p>
+                                        <p className="font-black text-lg md:text-xl text-[#F2F2F2]">₹{selectedPlan.price}</p>
                                     </div>
 
                                     {formData.isCompany && formData.companyName && (
-                                        <div className="py-4 border-y border-[#1a1a1a]">
-                                            <span className="text-[11px] font-black uppercase tracking-widest text-[#555] block mb-1">Billing Type</span>
+                                        <div className="py-3 md:py-4 border-y border-[#1a1a1a]">
+                                            <span className="text-xs font-bold uppercase tracking-wider text-[#777] block mb-1">Billing Type</span>
                                             <div className="flex justify-between items-center text-xs font-bold text-[#F2F2F2]">
                                                 <span>{formData.companyName}</span>
-                                                {formData.gstin ? <span className="text-[11px] text-[#CCFF00] font-black uppercase tracking-widest">GSTIN: {formData.gstin}</span> : null}
+                                                {formData.gstin ? <span className="text-xs text-[#CCFF00] font-bold uppercase tracking-wider">GSTIN: {formData.gstin}</span> : null}
                                             </div>
                                         </div>
                                     )}
@@ -675,8 +675,8 @@ const CheckoutContent = () => {
                                                 <img src="/images/elemntor.png" alt="Elementor" className="w-full h-full object-contain" />
                                             </div>
                                             <div className="flex flex-col">
-                                                <span className="text-xs font-bold text-[#F2F2F2]">Elementor Pro ({selectedPlan.name.split(' ')[0]} {parseInt(selectedPlan.name.split(' ')[0]) > 1 ? 'Years' : 'Year'})</span>
-                                                <span className="text-[11px] text-[#CCFF00] font-black uppercase tracking-widest mt-0.5">Worth ₹{selectedPlan.bonus.toLocaleString()}+ Included Free</span>
+                                                <span className="text-xs font-bold text-[#F2F2F2]">Elementor Pro</span>
+                                                <span className="text-[11px] md:text-xs text-[#CCFF00] font-bold uppercase tracking-wider mt-0.5">₹{selectedPlan.bonus.toLocaleString()}+ Free</span>
                                             </div>
                                         </div>
                                     </div>
@@ -686,8 +686,8 @@ const CheckoutContent = () => {
                             <div className="space-y-4">
                                 {selectedPlan.name.includes('Price Lock') ? (
                                     <div className="flex justify-between items-center text-[#CCFF00] mb-2">
-                                        <span className="text-[11px] font-black uppercase tracking-widest">Lifetime Price Lock Active</span>
-                                        <span className="text-[11px] font-black uppercase tracking-widest">₹{selectedPlan.price}.00 / 3 Years</span>
+                                        <span className="text-xs font-bold uppercase tracking-wider">Price Lock Active</span>
+                                        <span className="text-xs font-bold uppercase tracking-wider">₹{selectedPlan.price}/3Y</span>
                                     </div>
                                 ) : selectedPlan.price !== selectedPlan.original && (
                                     <div className="flex justify-between items-center text-[#555] mb-2">
@@ -703,21 +703,21 @@ const CheckoutContent = () => {
                                     <span className="text-xs text-[#555] font-bold uppercase tracking-widest">GST (18%)</span>
                                     <span className="text-sm font-bold text-[#F2F2F2]">₹{taxAmount.toFixed(2)}</span>
                                 </div>
-                                <div className="pt-6 border-t border-[#222] flex justify-between items-center">
-                                    <span className="text-lg font-black text-[#F2F2F2] uppercase tracking-[0.2em]">Total</span>
-                                    <div className="text-3xl font-black text-[#CCFF00] flex items-baseline">
+                                <div className="pt-4 md:pt-6 border-t border-[#222] flex justify-between items-center">
+                                    <span className="text-base md:text-lg font-black text-[#F2F2F2] uppercase tracking-[0.15em] md:tracking-[0.2em]">Total</span>
+                                    <div className="text-2xl md:text-3xl font-black text-[#CCFF00] flex items-baseline">
                                         <span>₹{Math.floor(totalAmount)}</span>
-                                        <span className="text-sm">.{totalAmount.toFixed(2).split('.')[1]}</span>
+                                        <span className="text-xs md:text-sm">.{totalAmount.toFixed(2).split('.')[1]}</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="p-4 bg-[#CCFF00]/5 border border-[#CCFF00]/10 rounded-2xl">
-                                <p className="text-[11px] text-[#CCFF00] font-black uppercase tracking-widest flex items-center gap-2 mb-2">
-                                    <Zap className="w-3 h-3 fill-current" /> Instant Deployment
+                            <div className="p-3 md:p-4 bg-[#CCFF00]/5 border border-[#CCFF00]/10 rounded-xl md:rounded-2xl">
+                                <p className="text-xs text-[#CCFF00] font-bold uppercase tracking-wider flex items-center gap-2 mb-1 md:mb-2">
+                                    <Zap className="w-3 h-3 fill-current" /> Instant Deploy
                                 </p>
-                                <p className="text-[13px] text-[#555] leading-relaxed">
-                                    Your cloud hosting will be automatically provisioned within <span className="text-[#888] font-bold">10 minutes</span> of successful transaction authorization.
+                                <p className="text-xs md:text-sm text-[#777] leading-relaxed">
+                                    Auto-provisioned in <span className="text-[#999] font-bold">10 minutes</span>.
                                 </p>
                             </div>
                         </div>

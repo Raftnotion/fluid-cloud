@@ -59,7 +59,7 @@ const AboutPage = () => {
                             >
                                 <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-8">
                                     <div className="h-[1px] w-6 md:w-12 bg-[#CCFF00]" />
-                                    <span className="text-[#CCFF00] text-[10px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] font-black">Brand Genesis</span>
+                                    <span className="text-[#CCFF00] text-[11px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.4em] font-black">Brand Genesis</span>
                                 </div>
                                 <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold font-['Clash_Display'] leading-[0.9] text-[#F2F2F2] mb-6 md:mb-12">
                                     Invisible <br />
@@ -74,7 +74,7 @@ const AboutPage = () => {
                                         whileTap={{ scale: 0.95 }}
                                     >
                                         <span className="text-2xl md:text-4xl font-bold text-white tracking-tight">2024</span>
-                                        <span className="text-[10px] md:text-[10px] uppercase tracking-widest text-[#666] font-black">Foundation</span>
+                                        <span className="text-[11px] md:text-xs uppercase tracking-wider text-[#777] font-bold">Foundation</span>
                                     </motion.div>
                                     <div className="w-[1px] h-10 md:h-12 bg-white/10" />
                                     <motion.div
@@ -82,7 +82,7 @@ const AboutPage = () => {
                                         whileTap={{ scale: 0.95 }}
                                     >
                                         <span className="text-2xl md:text-4xl font-bold text-white tracking-tight">100%</span>
-                                        <span className="text-[10px] md:text-[10px] uppercase tracking-widest text-[#666] font-black">Uptime</span>
+                                        <span className="text-[11px] md:text-xs uppercase tracking-wider text-[#777] font-bold">Uptime</span>
                                     </motion.div>
                                 </div>
                             </motion.div>
@@ -151,8 +151,8 @@ const AboutPage = () => {
                                     className="p-4 md:p-8 bg-[#080808] border border-white/5 rounded-xl md:rounded-3xl group active:bg-[#0a0a0a] hover:border-[#CCFF00]/20 transition-all cursor-pointer"
                                 >
                                     <item.icon className="w-5 h-5 md:w-6 md:h-6 text-[#555] group-hover:text-[#CCFF00] group-active:text-[#CCFF00] mb-3 md:mb-6 transition-colors" />
-                                    <h4 className="font-bold mb-1 md:mb-4 uppercase text-[11px] md:text-sm tracking-wide md:tracking-widest">{item.title}</h4>
-                                    <p className="text-[10px] md:text-xs text-[#666] leading-relaxed">{item.desc}</p>
+                                    <h4 className="font-bold mb-1.5 md:mb-4 uppercase text-[13px] md:text-sm tracking-wide md:tracking-widest">{item.title}</h4>
+                                    <p className="text-xs md:text-sm text-[#777] leading-relaxed">{item.desc}</p>
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -185,9 +185,9 @@ const AboutPage = () => {
                                 className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-8 p-4 md:p-10 bg-[#080808] active:bg-[#0c0c0c] transition-all cursor-pointer"
                             >
                                 <span className="text-[#CCFF00] font-bold text-base md:text-xl font-['Clash_Display'] md:min-w-[120px]">{m.year}</span>
-                                <div className="space-y-0.5 md:space-y-2">
+                                <div className="space-y-1 md:space-y-2">
                                     <h4 className="font-bold uppercase tracking-wider text-[#F2F2F2] text-sm md:text-base">{m.event}</h4>
-                                    <p className="text-[#666] text-[11px] md:text-sm">{m.detail}</p>
+                                    <p className="text-[#777] text-xs md:text-sm">{m.detail}</p>
                                 </div>
                             </motion.div>
                         ))}
