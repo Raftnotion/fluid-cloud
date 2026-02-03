@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Shield, Cookie, RefreshCcw, ArrowRight, Hash, AlertTriangle, Database, Mail, Globe, Clock, Copyright, Gavel, Box, Key } from 'lucide-react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { FileText, Shield, Cookie, RefreshCcw, ArrowRight, Hash, AlertTriangle, Database, Globe, Clock, Copyright, Gavel, Box, Key, ChevronDown, ChevronUp, Mail } from 'lucide-react';
 
 const SECTIONS = [
     {
         id: "terms",
         title: "Terms of Service",
+        shortTitle: "Terms",
         icon: <FileText className="w-4 h-4" />,
         docId: "WPF-TOS-2026.01",
         version: "v2.4.0",
@@ -17,12 +18,13 @@ const SECTIONS = [
         content: `
             Welcome to WPFYE. These terms and conditions outline the rules and regulations for the use of WPFYE TECHNOLOGY (OPC) Pvt Ltd's Website, located at wpfye.com. By accessing this website we assume you accept these terms and conditions. Do not continue to use WPFYE if you do not agree to take all of the terms and conditions stated on this page.
 
-            The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company.
+            The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company.
         `
     },
     {
         id: "aup",
         title: "Acceptable Use Policy",
+        shortTitle: "AUP",
         icon: <AlertTriangle className="w-4 h-4" />,
         docId: "WPF-AUP-2026.01",
         version: "v1.0.0",
@@ -42,6 +44,7 @@ const SECTIONS = [
     {
         id: "privacy",
         title: "Privacy Policy",
+        shortTitle: "Privacy",
         icon: <Shield className="w-4 h-4" />,
         docId: "WPF-PP-2026.01",
         version: "v1.8.2",
@@ -49,14 +52,15 @@ const SECTIONS = [
         content: `
             Your privacy is important to us. It is WPFYE's policy to respect your privacy regarding any information we may collect from you across our website, https://wpfye.com, and other sites we own and operate.
 
-            We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.
+            We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we're collecting it and how it will be used.
 
-            We only retain collected information for as long as necessary to provide you with your requested service. What data we store, we’ll protect within commercially acceptable means to prevent loss and theft, as well as unauthorized access, disclosure, copying, use or modification.
+            We only retain collected information for as long as necessary to provide you with your requested service. What data we store, we'll protect within commercially acceptable means to prevent loss and theft, as well as unauthorized access, disclosure, copying, use or modification.
         `
     },
     {
         id: "cookies",
         title: "Cookie Policy",
+        shortTitle: "Cookies",
         icon: <Cookie className="w-4 h-4" />,
         docId: "WPF-CP-2026.01",
         version: "v1.2.0",
@@ -70,6 +74,7 @@ const SECTIONS = [
     {
         id: "refund",
         title: "Refund Policy",
+        shortTitle: "Refunds",
         icon: <RefreshCcw className="w-4 h-4" />,
         docId: "WPF-RP-2026.01",
         version: "v1.1.0",
@@ -87,6 +92,7 @@ const SECTIONS = [
     {
         id: "sla",
         title: "Service Level Agreement",
+        shortTitle: "SLA",
         icon: <Clock className="w-4 h-4" />,
         docId: "WPF-SLA-2026.01",
         version: "v1.0.0",
@@ -104,6 +110,7 @@ const SECTIONS = [
     {
         id: "dmca",
         title: "Abuse & DMCA",
+        shortTitle: "DMCA",
         icon: <Copyright className="w-4 h-4" />,
         docId: "WPF-ADM-2026.01",
         version: "v1.1.0",
@@ -121,6 +128,7 @@ const SECTIONS = [
     {
         id: "disclaimer",
         title: "Disclaimer",
+        shortTitle: "Disclaimer",
         icon: <Gavel className="w-4 h-4" />,
         docId: "WPF-DL-2026.01",
         version: "v1.0.0",
@@ -136,6 +144,7 @@ const SECTIONS = [
     {
         id: "governing-law",
         title: "Governing Law",
+        shortTitle: "Law",
         icon: <Globe className="w-4 h-4" />,
         docId: "WPF-GL-2026.01",
         version: "v1.0.0",
@@ -155,6 +164,7 @@ const SECTIONS = [
     {
         id: "data-policy",
         title: "Data & Backups",
+        shortTitle: "Data",
         icon: <Database className="w-4 h-4" />,
         docId: "WPF-DBP-2026.01",
         version: "v1.0.0",
@@ -170,6 +180,7 @@ const SECTIONS = [
     {
         id: "third-party",
         title: "Third-Party Software",
+        shortTitle: "3rd Party",
         icon: <Box className="w-4 h-4" />,
         docId: "WPF-TPS-2026.01",
         version: "v1.0.0",
@@ -185,6 +196,7 @@ const SECTIONS = [
     {
         id: "account-security",
         title: "Account Security",
+        shortTitle: "Security",
         icon: <Key className="w-4 h-4" />,
         docId: "WPF-SEC-2026.01",
         version: "v1.0.0",
@@ -201,11 +213,27 @@ const SECTIONS = [
 
 const LegalPage = () => {
     const [activeSection, setActiveSection] = useState("terms");
+    const [expandedSections, setExpandedSections] = useState<string[]>(["terms"]);
+    const [showStickyNav, setShowStickyNav] = useState(false);
+    const chipContainerRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+
+    // Scroll progress
+    const { scrollYProgress } = useScroll();
+    const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowStickyNav(window.scrollY > 300);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useEffect(() => {
         const observerOptions = {
             root: null,
-            rootMargin: '-15% 0px -75% 0px', // Detects section when it enters the top 15% of the viewport
+            rootMargin: '-20% 0px -70% 0px',
             threshold: 0
         };
 
@@ -230,7 +258,7 @@ const LegalPage = () => {
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
-            const offset = 120;
+            const offset = 140;
             const elementPosition = element.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -238,12 +266,65 @@ const LegalPage = () => {
                 top: offsetPosition,
                 behavior: "smooth"
             });
+
+            // Auto-expand section when navigating
+            if (!expandedSections.includes(id)) {
+                setExpandedSections([...expandedSections, id]);
+            }
         }
     };
+
+    const toggleSection = (id: string) => {
+        if (expandedSections.includes(id)) {
+            setExpandedSections(expandedSections.filter(s => s !== id));
+        } else {
+            setExpandedSections([...expandedSections, id]);
+        }
+    };
+
+    // Scroll chip into view when active section changes
+    useEffect(() => {
+        if (chipContainerRef.current) {
+            const activeChip = chipContainerRef.current.querySelector(`[data-section="${activeSection}"]`);
+            if (activeChip) {
+                activeChip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        }
+    }, [activeSection]);
+
+    const currentSection = SECTIONS.find(s => s.id === activeSection);
 
     return (
         <div className="relative min-h-screen selection:bg-[#CCFF00] selection:text-black bg-[#050505] text-[#F2F2F2] font-['Satoshi']">
             <Header />
+
+            {/* Scroll Progress Bar */}
+            <motion.div
+                className="fixed top-0 left-0 right-0 h-1 bg-[#CCFF00] z-[60] origin-left"
+                style={{ scaleX: scrollYProgress }}
+            />
+
+            {/* Sticky Section Indicator - Mobile */}
+            <AnimatePresence>
+                {showStickyNav && (
+                    <motion.div
+                        initial={{ y: -100, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -100, opacity: 0 }}
+                        className="lg:hidden fixed top-16 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/5"
+                    >
+                        <div className="px-4 py-3 flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-lg bg-[#CCFF00]/10 flex items-center justify-center shrink-0">
+                                {currentSection?.icon}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                                <p className="text-sm font-bold text-[#F2F2F2] truncate">{currentSection?.title}</p>
+                                <p className="text-[10px] text-[#555] font-mono">{currentSection?.docId}</p>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Background Grid Accent */}
             <div className="fixed inset-0 pointer-events-none opacity-20">
@@ -251,7 +332,55 @@ const LegalPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
             </div>
 
-            <main className="relative z-10 pt-24 md:pt-40 pb-20 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+            <main className="relative z-10 pt-24 md:pt-40 pb-32 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+
+                {/* Mobile Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="mb-6 md:mb-12"
+                >
+                    <h1 className="text-3xl md:text-7xl font-bold font-['Clash_Display'] leading-none text-[#F2F2F2] mb-3">
+                        Legal <span className="text-white/20">Protocols</span>
+                    </h1>
+                    <p className="text-[#666] text-sm md:text-base">
+                        Terms, policies, and compliance documentation
+                    </p>
+                </motion.div>
+
+                {/* GDPR Badge - Mobile */}
+                <div className="lg:hidden mb-6 flex items-center gap-3 p-3 bg-[#0a0a0a] border border-white/5 rounded-xl">
+                    <div className="w-10 h-10 rounded-full bg-[#CCFF00]/10 flex items-center justify-center">
+                        <Shield className="w-5 h-5 text-[#CCFF00]" />
+                    </div>
+                    <div>
+                        <p className="text-xs text-[#888] font-medium">Global Standard</p>
+                        <p className="text-sm font-bold text-[#F2F2F2]">GDPR Compliant</p>
+                    </div>
+                </div>
+
+                {/* Horizontal Scrollable Section Chips - Mobile */}
+                <div
+                    ref={chipContainerRef}
+                    className="lg:hidden flex gap-2 overflow-x-auto pb-4 mb-6 -mx-4 px-4 no-scrollbar"
+                >
+                    {SECTIONS.map((section) => (
+                        <button
+                            key={section.id}
+                            data-section={section.id}
+                            onClick={() => scrollToSection(section.id)}
+                            className={`shrink-0 flex items-center gap-2 px-3 py-2 rounded-full text-xs font-bold transition-all active:scale-95 ${activeSection === section.id
+                                    ? 'bg-[#CCFF00] text-black'
+                                    : 'bg-[#111] text-[#888] border border-white/5'
+                                }`}
+                        >
+                            {section.icon}
+                            <span>{section.shortTitle}</span>
+                        </button>
+                    ))}
+                </div>
+
                 <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
 
                     {/* Desktop Side Navigation */}
@@ -293,71 +422,105 @@ const LegalPage = () => {
                     </aside>
 
                     {/* Content Area */}
-                    <div className="flex-1">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="mb-12 md:mb-24"
-                        >
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="h-[1px] w-12 bg-[#CCFF00]" />
-                                <span className="text-[#CCFF00] text-[11px] uppercase tracking-[0.4em] font-medium font-['Satoshi']">Contractual Framework</span>
-                            </div>
-                            <h1 className="text-4xl md:text-8xl font-bold font-['Clash_Display'] leading-none text-[#F2F2F2]">
-                                Legal <br />
-                                <span className="text-white/20">Protocols.</span>
-                            </h1>
-                        </motion.div>
+                    <div className="flex-1" ref={contentRef}>
 
-                        <div className="space-y-16 md:space-y-32">
+                        {/* Accordion Sections - Mobile | Full Sections - Desktop */}
+                        <div className="space-y-4 md:space-y-16">
                             {SECTIONS.map((section, index) => (
                                 <motion.section
                                     key={section.id}
                                     id={section.id}
-                                    initial={{ opacity: 0, y: 40 }}
+                                    initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, margin: "-100px" }}
-                                    transition={{ duration: 0.7 }}
-                                    className="relative scroll-mt-40"
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ duration: 0.5 }}
+                                    className="scroll-mt-36"
                                 >
-                                    {/* Section Header with Metadata */}
-                                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-8 md:mb-12 pb-4 md:pb-6 border-b border-[#111]">
-                                        <div>
-                                            <div className="flex items-center gap-2 text-[#CCFF00] mb-2">
-                                                <Hash className="w-3 h-3" />
-                                                <span className="text-[11px] uppercase tracking-widest font-mono font-bold">{section.docId}</span>
+                                    {/* Mobile: Card Accordion */}
+                                    <div className="lg:hidden bg-[#0a0a0a] border border-white/5 rounded-2xl overflow-hidden">
+                                        <button
+                                            onClick={() => toggleSection(section.id)}
+                                            className="w-full p-4 flex items-center justify-between active:bg-[#0c0c0c] transition-colors"
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${expandedSections.includes(section.id) ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'bg-[#111] text-[#555]'
+                                                    }`}>
+                                                    {section.icon}
+                                                </div>
+                                                <div className="text-left">
+                                                    <p className="text-sm font-bold text-[#F2F2F2]">{section.title}</p>
+                                                    <p className="text-[10px] text-[#555] font-mono">{section.docId} • {section.version}</p>
+                                                </div>
                                             </div>
-                                            <h2 className="text-2xl md:text-5xl font-bold font-['Clash_Display'] text-[#F2F2F2]">
-                                                {section.title}
-                                            </h2>
-                                        </div>
-                                        <div className="flex gap-6 md:gap-8 font-mono text-[11px] text-[#555] uppercase tracking-wider">
-                                            <div>
-                                                <p className="mb-1 text-[#333]">Version</p>
-                                                <p className="text-[#888]">{section.version}</p>
-                                            </div>
-                                            <div>
-                                                <p className="mb-1 text-[#333]">Last Audit</p>
-                                                <p className="text-[#888]">{section.lastRevised}</p>
-                                            </div>
-                                        </div>
+                                            <motion.div
+                                                animate={{ rotate: expandedSections.includes(section.id) ? 180 : 0 }}
+                                                transition={{ duration: 0.2 }}
+                                            >
+                                                <ChevronDown className="w-5 h-5 text-[#444]" />
+                                            </motion.div>
+                                        </button>
+
+                                        <AnimatePresence>
+                                            {expandedSections.includes(section.id) && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.3 }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <div className="px-4 pb-4 pt-2 border-t border-white/5">
+                                                        <div className="flex gap-4 mb-4 text-[10px] font-mono text-[#555]">
+                                                            <span>Updated: {section.lastRevised}</span>
+                                                        </div>
+                                                        <div className="text-[#888] text-sm leading-relaxed space-y-3">
+                                                            {section.content.trim().split('\n\n').map((paragraph, i) => (
+                                                                <p key={i}>{paragraph.trim()}</p>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </div>
 
-                                    {/* Text Content */}
-                                    <div className="font-['Satoshi'] text-[#888] text-sm md:text-lg leading-relaxed space-y-4 md:space-y-6 max-w-3xl">
-                                        {section.content.trim().split('\n\n').map((paragraph, i) => (
-                                            <p key={i} className="font-medium text-[#888]">
-                                                {paragraph.trim()}
-                                            </p>
-                                        ))}
-                                    </div>
+                                    {/* Desktop: Full Section */}
+                                    <div className="hidden lg:block">
+                                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-8 pb-6 border-b border-[#111]">
+                                            <div>
+                                                <div className="flex items-center gap-2 text-[#CCFF00] mb-2">
+                                                    <Hash className="w-3 h-3" />
+                                                    <span className="text-[11px] uppercase tracking-widest font-mono font-bold">{section.docId}</span>
+                                                </div>
+                                                <h2 className="text-4xl font-bold font-['Clash_Display'] text-[#F2F2F2]">
+                                                    {section.title}
+                                                </h2>
+                                            </div>
+                                            <div className="flex gap-8 font-mono text-[11px] text-[#555] uppercase tracking-wider">
+                                                <div>
+                                                    <p className="mb-1 text-[#333]">Version</p>
+                                                    <p className="text-[#888]">{section.version}</p>
+                                                </div>
+                                                <div>
+                                                    <p className="mb-1 text-[#333]">Last Audit</p>
+                                                    <p className="text-[#888]">{section.lastRevised}</p>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    {/* Footer Section Accent */}
-                                    <div className="mt-12 flex items-center gap-4 text-[#333]">
-                                        <div className="h-[1px] flex-1 bg-[#111]" />
-                                        <span className="text-[11px] tracking-[0.2em] uppercase font-mono italic">End of Section {index + 1}</span>
-                                        <div className="h-[1px] w-12 bg-[#111]" />
+                                        <div className="font-['Satoshi'] text-[#888] text-lg leading-relaxed space-y-6 max-w-3xl">
+                                            {section.content.trim().split('\n\n').map((paragraph, i) => (
+                                                <p key={i} className="font-medium text-[#888]">
+                                                    {paragraph.trim()}
+                                                </p>
+                                            ))}
+                                        </div>
+
+                                        <div className="mt-12 flex items-center gap-4 text-[#333]">
+                                            <div className="h-[1px] flex-1 bg-[#111]" />
+                                            <span className="text-[11px] tracking-[0.2em] uppercase font-mono italic">End of Section {index + 1}</span>
+                                            <div className="h-[1px] w-12 bg-[#111]" />
+                                        </div>
                                     </div>
                                 </motion.section>
                             ))}
@@ -367,16 +530,28 @@ const LegalPage = () => {
                         <motion.div
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            className="mt-20 md:mt-40 p-6 md:p-12 bg-[#080808] border border-[#111] rounded-2xl md:rounded-3xl relative overflow-hidden group"
+                            className="mt-12 md:mt-40 p-5 md:p-12 bg-[#080808] border border-[#111] rounded-2xl md:rounded-3xl relative overflow-hidden"
                         >
                             <div className="absolute top-0 right-0 w-64 h-64 bg-[#CCFF00]/5 blur-[100px] -translate-y-1/2 translate-x-1/2" />
 
                             <div className="relative z-10">
-                                <h3 className="text-[#F2F2F2] font-bold text-3xl mb-4 font-['Clash_Display']">Legal Inquiries</h3>
-                                <p className="text-[#555] mb-6 max-w-xl text-lg">
-                                    Our documentation is designed for transparency. If you require clarification on specific clauses or data processing protocols, our legal team is available.
+                                <h3 className="text-[#F2F2F2] font-bold text-xl md:text-3xl mb-3 font-['Clash_Display']">Legal Inquiries</h3>
+                                <p className="text-[#666] mb-6 text-sm md:text-base max-w-xl">
+                                    Questions about our policies? Our legal team is available to help.
                                 </p>
-                                <div className="mb-10 p-6 bg-white/5 border border-white/10 rounded-2xl inline-block">
+
+                                {/* Compact HQ Info - Mobile */}
+                                <div className="md:hidden mb-6 p-4 bg-white/5 border border-white/10 rounded-xl">
+                                    <p className="text-[11px] text-[#CCFF00] uppercase tracking-wider font-bold mb-2">Registered HQ</p>
+                                    <p className="text-sm text-[#888]">WeWork Cinnabar Hills, Bengaluru, KA 560071</p>
+                                    <div className="mt-3 pt-3 border-t border-white/10 grid grid-cols-2 gap-2 text-[10px] font-mono">
+                                        <div><span className="text-[#444]">CIN:</span> <span className="text-[#888]">U63112KA2024OPC193341</span></div>
+                                        <div><span className="text-[#444]">GSTIN:</span> <span className="text-[#888]">29AADCW9345A1Z7</span></div>
+                                    </div>
+                                </div>
+
+                                {/* Desktop HQ Info */}
+                                <div className="hidden md:block mb-10 p-6 bg-white/5 border border-white/10 rounded-2xl inline-block">
                                     <p className="text-xs text-[#CCFF00] uppercase tracking-widest font-bold mb-3 font-['Satoshi']">Registered HQ & Identity</p>
                                     <p className="text-base text-[#F2F2F2]/90 leading-relaxed max-w-[400px] mb-4 font-medium">
                                         HD-105 WeWork Cinnabar Hills, Embassy Golf Links Business Park, Challaghatta, Bengaluru, Karnataka 560071, India
@@ -386,19 +561,31 @@ const LegalPage = () => {
                                         <p className="flex justify-between gap-8"><span>GSTIN</span> <span className="text-[#F2F2F2]">29AADCW9345A1Z7</span></p>
                                     </div>
                                 </div>
-                                <br />
+
                                 <a
                                     href="mailto:legal@wpfye.com"
-                                    className="inline-flex items-center gap-4 px-10 py-5 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-105 transition-all shadow-[0_0_30px_rgba(204,255,0,0.15)] group"
+                                    className="inline-flex items-center gap-3 px-6 md:px-10 py-4 md:py-5 bg-[#CCFF00] text-black font-bold uppercase tracking-wider text-xs rounded-xl active:scale-95 hover:scale-105 transition-all shadow-[0_0_30px_rgba(204,255,0,0.15)]"
                                 >
-                                    Contact Compliance
-                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                    <Mail className="w-4 h-4" />
+                                    Contact Legal
+                                    <ArrowRight className="w-4 h-4" />
                                 </a>
                             </div>
                         </motion.div>
                     </div>
                 </div>
             </main>
+
+            {/* Sticky Legal Help CTA - Mobile */}
+            <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent z-40">
+                <a
+                    href="mailto:legal@wpfye.com"
+                    className="flex items-center justify-center gap-3 w-full py-4 bg-[#111] border border-white/10 rounded-xl text-sm font-bold text-[#F2F2F2] active:scale-[0.98] transition-all"
+                >
+                    <Mail className="w-4 h-4 text-[#CCFF00]" />
+                    Need help? Contact Legal Team
+                </a>
+            </div>
 
             <Footer />
         </div>

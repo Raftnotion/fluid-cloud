@@ -131,7 +131,7 @@ const ContactPage = () => {
                                     <p className="text-[11px] text-[#555]">Verified Business Entity</p>
                                 </div>
                             </div>
-                            
+
                             <div className="space-y-4">
                                 <div className="flex gap-3">
                                     <MapPin className="w-4 h-4 text-[#444] shrink-0 mt-0.5" />
@@ -367,16 +367,7 @@ const ContactPage = () => {
                 </div>
             </main>
 
-            {/* Floating Chat Button - Mobile Only */}
-            <motion.button
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1, type: "spring", damping: 10 }}
-                className="md:hidden fixed bottom-6 right-4 w-14 h-14 bg-[#CCFF00] rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(204,255,0,0.3)] active:scale-95 transition-transform z-50"
-                style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
-            >
-                <MessageCircle className="w-6 h-6 text-black" />
-            </motion.button>
+
 
             <Footer />
         </div>
