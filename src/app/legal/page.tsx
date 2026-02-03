@@ -559,7 +559,7 @@ const LegalPage = () => {
                                 </div>
 
                                 {/* Desktop HQ Info */}
-                                <div className="hidden md:block mb-10 p-6 bg-white/5 border border-white/10 rounded-2xl inline-block">
+                                <div className="hidden md:block mb-10 p-6 bg-white/5 border border-white/10 rounded-2xl">
                                     <p className="text-xs text-[#CCFF00] uppercase tracking-widest font-bold mb-3 font-['Satoshi']">Registered HQ & Identity</p>
                                     <p className="text-base text-[#F2F2F2]/90 leading-relaxed max-w-[400px] mb-4 font-medium">
                                         HD-105 WeWork Cinnabar Hills, Embassy Golf Links Business Park, Challaghatta, Bengaluru, Karnataka 560071, India
