@@ -3,6 +3,8 @@
 import React, { useRef } from 'react';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import Image from 'next/image';
+import { TiltButton } from 'react-tilt-button';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -15,7 +17,7 @@ const Hero: React.FC = () => {
     return (
         <section
             ref={containerRef}
-            className="relative w-full min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center px-6 md:px-8 pt-24 md:pt-20 overflow-hidden bg-black"
+            className="relative w-full min-h-[100svh] md:min-h-screen flex flex-col items-center justify-center px-4 md:px-8 pt-16 pb-8 md:pt-20 md:pb-0 overflow-hidden bg-black"
             style={{ willChange: 'transform' }}
         >
             {/* === OPTIMIZED BACKGROUND EFFECTS === */}
@@ -40,19 +42,19 @@ const Hero: React.FC = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="mb-8 md:mb-10 flex flex-col items-center"
+                    className="mb-4 md:mb-10 flex flex-col items-center"
                 >
-                    <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
-                        <div className="h-[1px] w-6 md:w-8 bg-[#CCFF00]/50" />
-                        <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-[#CCFF00]">
+                    <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-4">
+                        <div className="h-[1px] w-4 md:w-8 bg-[#CCFF00]/50" />
+                        <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[#CCFF00]">
                             built for peak performance
                         </span>
-                        <div className="h-[1px] w-6 md:w-8 bg-[#CCFF00]/50" />
+                        <div className="h-[1px] w-4 md:w-8 bg-[#CCFF00]/50" />
                     </div>
                 </motion.div>
 
                 <h1
-                    className="text-[11vw] sm:text-[12vw] md:text-[7.5vw] font-bold font-['Clash_Display'] leading-[0.9] md:leading-[0.8] mb-8 md:mb-12 text-[#F2F2F2] relative"
+                    className="text-[10vw] sm:text-[11vw] md:text-[7.5vw] font-bold font-['Clash_Display'] leading-[0.9] md:leading-[0.8] mb-6 md:mb-12 text-[#F2F2F2] relative"
                     style={{ textShadow: '0 10px 40px rgba(0,0,0,0.8)' }}
                 >
                     <motion.span
@@ -78,18 +80,60 @@ const Hero: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="max-w-xl md:max-w-2xl mx-auto px-4 md:px-0"
+                    className="max-w-xl md:max-w-2xl mx-auto px-2 md:px-0"
                 >
                     <p
-                        className="text-base md:text-xl text-[#F2F2F2]/90 md:text-[#F2F2F2] font-medium md:font-semibold leading-relaxed tracking-tight mb-10 md:mb-12"
+                        className="text-sm md:text-xl text-[#F2F2F2]/90 md:text-[#F2F2F2] font-medium md:font-semibold leading-relaxed tracking-tight mb-6 md:mb-10"
                         style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.6)' }}
                     >
-                        Engineered for high-intensity workloads. Our cloud fabric expands organically with your traffic, delivering peak performance without manual intervention.
+                        Cloud infrastructure that expands with your traffic. Peak performance without manual intervention.
                     </p>
+
+                    {/* Get Started CTA Button */}
+                    <div
+                        className="flex justify-center pricing-tilt-btn cursor-pointer"
+                        onClick={() => {
+                            document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                    >
+                        <TiltButton
+                            variant="solid"
+                            surfaceColor="#CCFF00"
+                            sideColor="#5A7A00"
+                            textColor="#000000"
+                            width={280}
+                            height={56}
+                            elevation={12}
+                            pressInset={6}
+                            tilt={1.8}
+                            radius={14}
+                            borderColor="rgba(0,0,0,0.15)"
+                            borderWidth={1}
+                        >
+                            <span className="flex items-center justify-center gap-2 font-black text-base uppercase tracking-wider w-full">
+                                GET STARTED NOW
+                                <ArrowRight className="w-5 h-5" />
+                            </span>
+                        </TiltButton>
+                    </div>
                 </motion.div>
             </div>
 
-            {/* Contrast Enhancement Mask (GPU Optimized) */}
+            {/* Scroll Indicator - Mobile Only */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, y: [0, 8, 0] }}
+                transition={{
+                    opacity: { delay: 1, duration: 0.5 },
+                    y: { delay: 1.5, duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+                }}
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 md:hidden"
+            >
+                <div className="flex flex-col items-center gap-1">
+                    <span className="text-[8px] font-bold uppercase tracking-widest text-[#F2F2F2]/50">Scroll</span>
+                    <ChevronDown className="w-5 h-5 text-[#CCFF00]/70" />
+                </div>
+            </motion.div>
             <div
                 className="absolute inset-0 z-[5] pointer-events-none overflow-hidden"
                 style={{
@@ -139,7 +183,7 @@ const Hero: React.FC = () => {
                 style={{ y: yParallax, transform: 'translateZ(0)' }}
                 className="absolute inset-0 z-1 flex items-center justify-center pointer-events-none"
             >
-                <div className="relative w-[110%] sm:w-[85%] md:w-[60%] lg:w-[45%] h-full flex items-center justify-center">
+                <div className="relative w-[90%] sm:w-[85%] md:w-[60%] lg:w-[45%] h-full flex items-center justify-center">
                     <motion.div
                         className="relative w-full aspect-square"
                         animate={{ rotate: 360 }}

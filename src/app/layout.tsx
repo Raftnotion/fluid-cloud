@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { LenisProvider } from "@/components/LenisProvider";
+import { HashScroller } from "@/components/HashScroller";
 
 export const metadata: Metadata = {
     title: "WPFYE | The Fluid Cloud",
@@ -33,6 +34,7 @@ export default function RootLayout({
             </head>
             <body>
                 <LenisProvider>
+                    <HashScroller />
                     {children}
                 </LenisProvider>
                 <div className="noise-texture" />
