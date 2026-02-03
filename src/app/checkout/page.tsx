@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, Lock, Globe, User, CreditCard, ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Zap, Search, Check } from 'lucide-react';
+import { ShieldCheck, Lock, Globe, User, CreditCard, ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Zap, Search, Check, Loader2 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { countries } from '@/utils/countries';
 import { PriceLockOverlay } from '@/components/PriceLockOverlay';
 import { useLenis } from '@/components/LenisProvider';
+import { useRazorpay } from '@/hooks/useRazorpay';
 
 const SearchableCountrySelect = ({ value, onChange, options }: { value: string, onChange: (val: string) => void, options: any[] }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -162,6 +163,7 @@ const CheckoutContent = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
+    const { isLoading: isPaymentLoading, error: paymentError, initiatePayment } = useRazorpay();
 
     const planParam = searchParams.get('plan') || '3';
 
@@ -338,10 +340,10 @@ const CheckoutContent = () => {
                                             onClick={() => handleStepClick(s.id)}
                                             disabled={step < s.id}
                                             className={`w-2.5 h-2.5 rounded-full transition-all active:scale-90 ${step === s.id
-                                                    ? 'bg-[#CCFF00] w-6'
-                                                    : step > s.id
-                                                        ? 'bg-[#CCFF00]/50'
-                                                        : 'bg-[#222]'
+                                                ? 'bg-[#CCFF00] w-6'
+                                                : step > s.id
+                                                    ? 'bg-[#CCFF00]/50'
+                                                    : 'bg-[#222]'
                                                 }`}
                                         />
                                     ))}
@@ -620,6 +622,12 @@ const CheckoutContent = () => {
                                         </div>
                                         <p className="text-sm text-[#888] mb-6 md:mb-10">Secure payment via Razorpay.</p>
 
+                                        {paymentError && (
+                                            <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
+                                                {paymentError}
+                                            </div>
+                                        )}
+
                                         <div className="p-5 md:p-8 border border-[#CCFF00]/20 bg-[#CCFF00]/5 rounded-xl md:rounded-2xl max-w-2xl">
                                             <div className="flex items-center justify-between mb-6 md:mb-8">
                                                 <div className="flex items-center gap-3 md:gap-4">
@@ -637,12 +645,43 @@ const CheckoutContent = () => {
                                             </div>
 
                                             <button
-                                                className="group relative flex items-center justify-center gap-2 md:gap-3 w-full px-6 md:px-12 py-4 md:py-5 bg-[#CCFF00] text-black font-black uppercase tracking-[0.15em] md:tracking-[0.2em] text-sm rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.1)] hover:scale-[1.01] active:scale-[0.97] transition-all"
+                                                onClick={async () => {
+                                                    const success = await initiatePayment({
+                                                        amount: totalAmount,
+                                                        currency: 'INR',
+                                                        name: `${formData.firstName} ${formData.lastName}`,
+                                                        email: formData.email,
+                                                        phone: `${formData.countryCode}${formData.phone}`,
+                                                        description: `WPFYE Fluid Cloud - ${selectedPlan.name}`,
+                                                        notes: {
+                                                            domain: formData.domain,
+                                                            plan: selectedPlan.name,
+                                                            billingType: formData.isCompany ? 'Company' : 'Individual',
+                                                        },
+                                                    });
+                                                    if (success) {
+                                                        localStorage.removeItem('checkout_step');
+                                                        router.push(`/checkout/success?plan=${planParam}`);
+                                                    } else {
+                                                        router.push(`/checkout/failed?plan=${planParam}`);
+                                                    }
+                                                }}
+                                                disabled={isPaymentLoading}
+                                                className="group relative flex items-center justify-center gap-2 md:gap-3 w-full px-6 md:px-12 py-4 md:py-5 bg-[#CCFF00] text-black font-black uppercase tracking-[0.15em] md:tracking-[0.2em] text-sm rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(204,255,0,0.1)] hover:scale-[1.01] active:scale-[0.97] transition-all disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
                                             >
                                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer" />
-                                                <Lock className="w-4 h-4" />
-                                                PAY NOW
-                                                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                                {isPaymentLoading ? (
+                                                    <>
+                                                        <Loader2 className="w-4 h-4 animate-spin" />
+                                                        PROCESSING...
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <Lock className="w-4 h-4" />
+                                                        PAY NOW
+                                                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                                    </>
+                                                )}
                                             </button>
                                         </div>
                                     </section>
