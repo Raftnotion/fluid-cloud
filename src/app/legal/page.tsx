@@ -552,9 +552,9 @@ const LegalPage = () => {
                                 <div className="md:hidden mb-6 p-4 bg-white/5 border border-white/10 rounded-xl">
                                     <p className="text-[11px] text-[#CCFF00] uppercase tracking-wider font-bold mb-2">Registered HQ</p>
                                     <p className="text-sm text-[#888]">WeWork Cinnabar Hills, Bengaluru, KA 560071</p>
-                                    <div className="mt-3 pt-3 border-t border-white/10 grid grid-cols-2 gap-2 text-[10px] font-mono">
-                                        <div><span className="text-[#444]">CIN:</span> <span className="text-[#888]">U63112KA2024OPC193341</span></div>
-                                        <div><span className="text-[#444]">GSTIN:</span> <span className="text-[#888]">29AADCW9345A1Z7</span></div>
+                                    <div className="mt-3 pt-3 border-t border-white/10 space-y-2 text-[10px] font-mono">
+                                        <div className="flex justify-between"><span className="text-[#444]">CIN:</span> <span className="text-[#888]">U63112KA2024OPC193341</span></div>
+                                        <div className="flex justify-between"><span className="text-[#444]">GSTIN:</span> <span className="text-[#888]">29AADCW9345A1Z7</span></div>
                                     </div>
                                 </div>
 
