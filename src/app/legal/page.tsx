@@ -256,22 +256,25 @@ const LegalPage = () => {
     }, []);
 
     const scrollToSection = (id: string) => {
-        const element = document.getElementById(id);
-        if (element) {
-            const offset = 140;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
-
-            // Auto-expand section when navigating
-            if (!expandedSections.includes(id)) {
-                setExpandedSections([...expandedSections, id]);
-            }
+        // Auto-expand section first
+        if (!expandedSections.includes(id)) {
+            setExpandedSections(prev => [...prev, id]);
         }
+
+        // Small delay to allow accordion to expand, then scroll
+        setTimeout(() => {
+            const element = document.getElementById(id);
+            if (element) {
+                const headerOffset = 150;
+                const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        }, 100);
     };
 
     const toggleSection = (id: string) => {
@@ -282,12 +285,17 @@ const LegalPage = () => {
         }
     };
 
-    // Scroll chip into view when active section changes
+    // Scroll chip into view when active section changes - use horizontal scroll only
     useEffect(() => {
         if (chipContainerRef.current) {
-            const activeChip = chipContainerRef.current.querySelector(`[data-section="${activeSection}"]`);
+            const activeChip = chipContainerRef.current.querySelector(`[data-section="${activeSection}"]`) as HTMLElement;
             if (activeChip) {
-                activeChip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                const container = chipContainerRef.current;
+                const chipLeft = activeChip.offsetLeft;
+                const chipWidth = activeChip.offsetWidth;
+                const containerWidth = container.offsetWidth;
+                const scrollLeft = chipLeft - (containerWidth / 2) + (chipWidth / 2);
+                container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
             }
         }
     }, [activeSection]);
@@ -371,8 +379,8 @@ const LegalPage = () => {
                             data-section={section.id}
                             onClick={() => scrollToSection(section.id)}
                             className={`shrink-0 flex items-center gap-2 px-3 py-2 rounded-full text-xs font-bold transition-all active:scale-95 ${activeSection === section.id
-                                    ? 'bg-[#CCFF00] text-black'
-                                    : 'bg-[#111] text-[#888] border border-white/5'
+                                ? 'bg-[#CCFF00] text-black'
+                                : 'bg-[#111] text-[#888] border border-white/5'
                                 }`}
                         >
                             {section.icon}
