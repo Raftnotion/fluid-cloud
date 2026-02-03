@@ -325,3 +325,17 @@ html.lenis body {
   opacity: 1;
   background-position: 100% 50%;
 }
+
+/* Prevent long-press context menu on mobile */
+.pricing-tilt-btn {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.pricing-tilt-btn a {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
