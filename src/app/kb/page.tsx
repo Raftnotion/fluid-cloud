@@ -110,17 +110,17 @@ const KBHub = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
             </div>
 
-            <main className="relative z-10 pt-40 pb-32 px-8 max-w-7xl mx-auto">
+            <main className="relative z-10 pt-24 md:pt-40 pb-20 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto">
 
                 {/* Search Hero */}
-                <div className="max-w-4xl mx-auto text-center mb-24">
+                <div className="max-w-4xl mx-auto text-center mb-12 md:mb-24">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
                         <span className="text-[#CCFF00] text-[11px] uppercase tracking-[0.4em] font-black mb-6 block">Central Intelligence Hub</span>
-                        <h1 className="text-6xl md:text-8xl font-bold font-['Clash_Display'] leading-none mb-12">
+                        <h1 className="text-4xl md:text-8xl font-bold font-['Clash_Display'] leading-none mb-6 md:mb-12">
                             Knowledge <br />
                             <span className="text-white/20">Base.</span>
                         </h1>
@@ -133,8 +133,8 @@ const KBHub = () => {
                                 </div>
                                 <input
                                     type="text"
-                                    placeholder="Search protocols, infrastructure, or billing..."
-                                    className="w-full bg-transparent py-4 text-lg focus:outline-none placeholder:text-[#333]"
+                                    placeholder="Search protocols..."
+                                    className="w-full bg-transparent py-3 md:py-4 text-base md:text-lg focus:outline-none placeholder:text-[#333]"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                 />
@@ -148,7 +148,7 @@ const KBHub = () => {
                 </div>
 
                 {/* Categories Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-32">
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-16 md:mb-32">
                     {CATEGORIES.map((category, idx) => (
                         <motion.div
                             key={category.id}
@@ -156,18 +156,18 @@ const KBHub = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
                             whileHover={{ y: -5 }}
-                            className="group p-8 bg-[#0a0a0a] border border-white/5 rounded-[32px] hover:border-[#CCFF00]/20 transition-all cursor-pointer relative overflow-hidden"
+                            className="group p-4 md:p-8 bg-[#0a0a0a] border border-white/5 rounded-2xl md:rounded-[32px] active:bg-[#0c0c0c] hover:border-[#CCFF00]/20 transition-all cursor-pointer relative overflow-hidden"
                         >
                             <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <ArrowRight className="w-5 h-5 text-[#CCFF00]" />
                             </div>
 
-                            <div className={`mb-8 p-4 rounded-2xl w-fit transition-colors ${category.color === "#CCFF00" ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'bg-[#111] text-[#555] group-hover:text-[#CCFF00] group-hover:bg-[#CCFF00]/10'}`}>
+                            <div className={`mb-4 md:mb-8 p-3 md:p-4 rounded-xl md:rounded-2xl w-fit transition-colors ${category.color === "#CCFF00" ? 'bg-[#CCFF00]/10 text-[#CCFF00]' : 'bg-[#111] text-[#555] group-hover:text-[#CCFF00] group-hover:bg-[#CCFF00]/10'}`}>
                                 {category.icon}
                             </div>
 
-                            <h3 className="text-xl font-bold uppercase tracking-wide mb-4 text-[#F2F2F2]">{category.title}</h3>
-                            <p className="text-[#555] text-sm leading-relaxed mb-8 group-hover:text-[#888] transition-colors">
+                            <h3 className="text-sm md:text-xl font-bold uppercase tracking-wide mb-2 md:mb-4 text-[#F2F2F2]">{category.title}</h3>
+                            <p className="hidden md:block text-[#555] text-sm leading-relaxed mb-8 group-hover:text-[#888] transition-colors">
                                 {category.description}
                             </p>
 
@@ -180,7 +180,7 @@ const KBHub = () => {
                 </div>
 
                 {/* Bottom Sections: Recent & Popular */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-20">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-20">
 
                     {/* Recent Protocols */}
                     <div className="lg:col-span-2">
@@ -189,12 +189,12 @@ const KBHub = () => {
                             <h2 className="text-2xl font-bold font-['Clash_Display'] uppercase">Recent Protocols</h2>
                         </div>
 
-                        <div className="space-y-4">
+                        <div className="space-y-3 md:space-y-4">
                             {RECENT_ARTICLES.map((article) => (
                                 <Link
                                     key={article.slug}
                                     href={`/kb/${article.slug}`}
-                                    className="block p-6 bg-[#080808] border border-white/5 rounded-2xl hover:bg-[#0c0c0c] hover:border-[#CCFF00]/20 transition-all group"
+                                    className="block p-4 md:p-6 bg-[#080808] border border-white/5 rounded-xl md:rounded-2xl active:bg-[#0c0c0c] hover:border-[#CCFF00]/20 transition-all group"
                                 >
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-6">

@@ -215,21 +215,21 @@ const KBArticle = ({ params }: { params: { slug: string } }) => {
         <div className="relative min-h-screen selection:bg-[#CCFF00] selection:text-black bg-[#050505] text-[#F2F2F2] font-['Satoshi']">
             <Header />
 
-            <main className="relative z-10 pt-40 pb-32 px-8 max-w-5xl mx-auto">
+            <main className="relative z-10 pt-24 md:pt-40 pb-20 md:pb-32 px-4 md:px-8 max-w-5xl mx-auto">
 
                 {/* Back to Hub */}
                 <motion.div
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="mb-12"
+                    className="mb-6 md:mb-12"
                 >
                     <Link href="/kb" className="inline-flex items-center gap-2 text-[#555] hover:text-[#CCFF00] transition-colors group">
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                        <span className="text-[11px] font-black uppercase tracking-widest text-inherit">Back to Intelligence Hub</span>
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-inherit">Back to Intelligence Hub</span>
                     </Link>
                 </motion.div>
 
-                <div className="flex flex-col lg:flex-row gap-20">
+                <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
 
                     {/* Article Content */}
                     <div className="flex-1">
@@ -237,7 +237,7 @@ const KBArticle = ({ params }: { params: { slug: string } }) => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                         >
-                            <div className="flex items-center gap-4 mb-6">
+                            <div className="flex flex-wrap items-center gap-3 md:gap-4 mb-4 md:mb-6">
                                 <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[11px] font-black uppercase tracking-widest text-[#CCFF00]">
                                     {article.category}
                                 </span>
@@ -247,11 +247,11 @@ const KBArticle = ({ params }: { params: { slug: string } }) => {
                                 </div>
                             </div>
 
-                            <h1 className="text-4xl md:text-6xl font-bold font-['Clash_Display'] leading-[1.1] mb-8">
+                            <h1 className="text-2xl md:text-6xl font-bold font-['Clash_Display'] leading-[1.1] mb-6 md:mb-8">
                                 {article.title}
                             </h1>
 
-                            <div className="flex items-center gap-6 mb-16 pb-8 border-b border-white/5">
+                            <div className="flex items-center gap-4 md:gap-6 mb-8 md:mb-16 pb-6 md:pb-8 border-b border-white/5">
                                 <div className="flex items-center gap-3">
                                     <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#111] to-[#222] border border-white/10" />
                                     <div>
@@ -272,18 +272,18 @@ const KBArticle = ({ params }: { params: { slug: string } }) => {
                                 dangerouslySetInnerHTML={{ __html: article.content }}
                             />
 
-                            <div className="mt-20 p-10 bg-[#080808] border border-white/5 rounded-3xl text-center">
-                                <h4 className="text-xl font-bold mb-4">Did this resolve your inquiry?</h4>
+                            <div className="mt-12 md:mt-20 p-6 md:p-10 bg-[#080808] border border-white/5 rounded-2xl md:rounded-3xl text-center">
+                                <h4 className="text-lg md:text-xl font-bold mb-4">Did this resolve your inquiry?</h4>
                                 <div className="flex items-center justify-center gap-4">
-                                    <button className="px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all">Yes</button>
-                                    <button className="px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all">No</button>
+                                    <button className="px-6 md:px-8 py-3 bg-white/5 hover:bg-white/10 active:bg-white/15 border border-white/10 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all">Yes</button>
+                                    <button className="px-6 md:px-8 py-3 bg-white/5 hover:bg-white/10 active:bg-white/15 border border-white/10 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all">No</button>
                                 </div>
                             </div>
                         </motion.div>
                     </div>
 
                     {/* Sidebar: Related & Actions */}
-                    <aside className="lg:w-1/4 space-y-12">
+                    <aside className="lg:w-1/4 space-y-8 md:space-y-12">
                         <div>
                             <h3 className="text-[11px] font-black uppercase tracking-[0.3em] text-[#333] mb-8">Related Protocols</h3>
                             <div className="space-y-6">
@@ -296,7 +296,7 @@ const KBArticle = ({ params }: { params: { slug: string } }) => {
                             </div>
                         </div>
 
-                        <div className="p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl">
+                        <div className="p-6 md:p-8 bg-[#0a0a0a] border border-white/5 rounded-2xl md:rounded-3xl">
                             <h4 className="text-[#F2F2F2] font-bold text-lg mb-4">Unresolved?</h4>
                             <p className="text-[#555] text-xs leading-relaxed mb-8">
                                 If the technical documentation is insufficient, contact our core team.

@@ -317,25 +317,57 @@ const CheckoutContent = () => {
 
                     {/* Left Side: Checkout Flow */}
                     <div className="flex-1">
-                        {/* Progress Stepper */}
-                        <div className="flex items-center gap-2 md:gap-4 mb-8 md:mb-16 overflow-x-auto pb-2 no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
-                            {steps.map((s, idx) => (
-                                <React.Fragment key={s.id}>
-                                    <button
-                                        onClick={() => handleStepClick(s.id)}
-                                        disabled={step < s.id}
-                                        className={`flex items-center gap-2 md:gap-3 shrink-0 transition-all active:scale-95 ${step >= s.id ? 'text-[#CCFF00]' : 'text-[#333]'} ${step > s.id ? 'hover:opacity-70' : ''}`}
-                                    >
-                                        <div className={`w-7 h-7 md:w-8 md:h-8 rounded-lg border flex items-center justify-center transition-colors duration-500 ${step >= s.id ? 'border-[#CCFF00] bg-[#CCFF00]/10' : 'border-[#222]'}`}>
-                                            {step > s.id ? <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> : s.icon}
-                                        </div>
-                                        <span className="text-[11px] md:text-xs font-bold uppercase tracking-[0.1em] md:tracking-[0.15em]">{s.title}</span>
-                                    </button>
-                                    {idx < steps.length - 1 && (
-                                        <div className={`h-px w-4 md:w-8 ${step > s.id ? 'bg-[#CCFF00]' : 'bg-[#222]'}`} />
-                                    )}
-                                </React.Fragment>
-                            ))}
+                        {/* Progress Stepper - Mobile: Compact Pills | Desktop: Full */}
+                        <div className="mb-8 md:mb-16">
+                            {/* Mobile Stepper: Compact current step + progress dots */}
+                            <div className="md:hidden flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                    <div className={`w-10 h-10 rounded-xl border-2 flex items-center justify-center ${step >= 1 ? 'border-[#CCFF00] bg-[#CCFF00]/10 text-[#CCFF00]' : 'border-[#222] text-[#333]'}`}>
+                                        {steps[step - 1]?.icon}
+                                    </div>
+                                    <div>
+                                        <p className="text-[11px] uppercase tracking-wider text-[#777] font-bold">Step {step} of 4</p>
+                                        <p className="text-sm font-bold text-[#F2F2F2]">{steps[step - 1]?.title}</p>
+                                    </div>
+                                </div>
+                                {/* Progress dots */}
+                                <div className="flex items-center gap-2">
+                                    {steps.map((s) => (
+                                        <button
+                                            key={s.id}
+                                            onClick={() => handleStepClick(s.id)}
+                                            disabled={step < s.id}
+                                            className={`w-2.5 h-2.5 rounded-full transition-all active:scale-90 ${step === s.id
+                                                    ? 'bg-[#CCFF00] w-6'
+                                                    : step > s.id
+                                                        ? 'bg-[#CCFF00]/50'
+                                                        : 'bg-[#222]'
+                                                }`}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Desktop Stepper: Full horizontal layout */}
+                            <div className="hidden md:flex items-center gap-4">
+                                {steps.map((s, idx) => (
+                                    <React.Fragment key={s.id}>
+                                        <button
+                                            onClick={() => handleStepClick(s.id)}
+                                            disabled={step < s.id}
+                                            className={`flex items-center gap-3 shrink-0 transition-all active:scale-95 ${step >= s.id ? 'text-[#CCFF00]' : 'text-[#333]'} ${step > s.id ? 'hover:opacity-70' : ''}`}
+                                        >
+                                            <div className={`w-8 h-8 rounded-lg border flex items-center justify-center transition-colors duration-500 ${step >= s.id ? 'border-[#CCFF00] bg-[#CCFF00]/10' : 'border-[#222]'}`}>
+                                                {step > s.id ? <CheckCircle2 className="w-5 h-5" /> : s.icon}
+                                            </div>
+                                            <span className="text-xs font-bold uppercase tracking-[0.15em]">{s.title}</span>
+                                        </button>
+                                        {idx < steps.length - 1 && (
+                                            <div className={`h-px w-8 ${step > s.id ? 'bg-[#CCFF00]' : 'bg-[#222]'}`} />
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </div>
                         </div>
 
                         <AnimatePresence mode="wait">

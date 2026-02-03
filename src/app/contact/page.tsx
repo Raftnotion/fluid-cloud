@@ -69,8 +69,8 @@ const ContactPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
             </div>
 
-            <main className="relative z-10 pt-40 pb-32 px-8 max-w-7xl mx-auto">
-                <div className="flex flex-col lg:flex-row gap-20">
+            <main className="relative z-10 pt-24 md:pt-40 pb-20 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+                <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
 
                     {/* Left Sidebar: Contact Info & Corporate HQ */}
                     <aside className="lg:w-1/3 flex flex-col gap-12">
@@ -81,20 +81,20 @@ const ContactPage = () => {
                         >
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="h-[1px] w-12 bg-[#CCFF00]" />
-                                <span className="text-[#CCFF00] text-[10px] uppercase tracking-[0.4em] font-medium font-['Satoshi']">Communication Hub</span>
+                                <span className="text-[#CCFF00] text-[11px] uppercase tracking-[0.3em] font-bold font-['Satoshi']">Communication Hub</span>
                             </div>
-                            <h1 className="text-6xl md:text-7xl font-bold font-['Clash_Display'] leading-none text-[#F2F2F2] mb-8">
+                            <h1 className="text-4xl md:text-7xl font-bold font-['Clash_Display'] leading-none text-[#F2F2F2] mb-4 md:mb-8">
                                 Get In <br />
                                 <span className="text-white/20">Touch.</span>
                             </h1>
-                            <p className="text-[#888] text-lg max-w-sm leading-relaxed mb-12">
-                                For deployment inquiries, infrastructure support, or corporate partnerships, reach out to our global edge team.
+                            <p className="text-[#888] text-sm md:text-lg max-w-sm leading-relaxed mb-8 md:mb-12">
+                                For deployment inquiries, infrastructure support, or corporate partnerships.
                             </p>
                         </motion.div>
 
                         <div className="space-y-8">
                             {/* Contact Method */}
-                            <div className="group p-6 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-[#CCFF00]/20 transition-all duration-500">
+                            <div className="group p-4 md:p-6 bg-[#0a0a0a] border border-white/5 rounded-2xl active:bg-[#0c0c0c] hover:border-[#CCFF00]/20 transition-all duration-300">
                                 <div className="flex items-center gap-4 mb-4">
                                     <div className="w-10 h-10 rounded-xl bg-[#111] flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform">
                                         <Mail className="w-5 h-5 text-[#CCFF00]" />
@@ -107,7 +107,7 @@ const ContactPage = () => {
                             </div>
 
                             {/* Temporary Phone Support */}
-                            <div className="group p-6 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-[#CCFF00]/20 transition-all duration-500">
+                            <div className="group p-4 md:p-6 bg-[#0a0a0a] border border-white/5 rounded-2xl active:bg-[#0c0c0c] hover:border-[#CCFF00]/20 transition-all duration-300">
                                 <div className="flex items-center gap-4 mb-4">
                                     <div className="w-10 h-10 rounded-xl bg-[#111] flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform">
                                         <MessageSquare className="w-5 h-5 text-[#CCFF00]" />
@@ -124,7 +124,7 @@ const ContactPage = () => {
                                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                                     <Building2 className="w-24 h-24" />
                                 </div>
-                                <h3 className="text-[#CCFF00] text-[10px] uppercase tracking-[0.3em] font-medium font-['Satoshi'] mb-6">Corporate Headquarters</h3>
+                                <h3 className="text-[#CCFF00] text-[11px] uppercase tracking-[0.2em] font-bold font-['Satoshi'] mb-4 md:mb-6">Corporate Headquarters</h3>
 
                                 <div className="space-y-6">
                                     <div className="flex gap-4">
@@ -136,7 +136,7 @@ const ContactPage = () => {
                                         </p>
                                     </div>
 
-                                    <div className="pt-6 border-t border-white/5 grid grid-cols-1 gap-4 font-mono text-[10px] text-[#555] uppercase tracking-widest">
+                                    <div className="pt-4 md:pt-6 border-t border-white/5 grid grid-cols-1 gap-3 md:gap-4 font-mono text-[11px] text-[#666] uppercase tracking-wider">
                                         <div className="flex flex-col gap-1">
                                             <span className="text-[#333]">Company ID (CIN)</span>
                                             <span className="text-[#888] selection:bg-[#CCFF00] selection:text-black">U63112KA2024OPC193341</span>
@@ -164,7 +164,7 @@ const ContactPage = () => {
                             <form onSubmit={handleSubmit} className="space-y-8">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="space-y-2">
-                                        <label className="text-[10px] uppercase tracking-[0.2em] text-[#555] font-bold px-1">Full Name</label>
+                                        <label className="text-[11px] uppercase tracking-wider text-[#666] font-bold px-1">Full Name</label>
                                         <input
                                             type="text"
                                             required
@@ -175,7 +175,7 @@ const ContactPage = () => {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-[10px] uppercase tracking-[0.2em] text-[#555] font-bold px-1">Email Address</label>
+                                        <label className="text-[11px] uppercase tracking-wider text-[#666] font-bold px-1">Email Address</label>
                                         <input
                                             type="email"
                                             required
@@ -188,7 +188,7 @@ const ContactPage = () => {
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-[10px] uppercase tracking-[0.2em] text-[#555] font-bold px-1">Subject</label>
+                                    <label className="text-[11px] uppercase tracking-wider text-[#666] font-bold px-1">Subject</label>
                                     <input
                                         type="text"
                                         required
@@ -200,7 +200,7 @@ const ContactPage = () => {
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-[10px] uppercase tracking-[0.2em] text-[#555] font-bold px-1">Message</label>
+                                    <label className="text-[11px] uppercase tracking-wider text-[#666] font-bold px-1">Message</label>
                                     <textarea
                                         required
                                         rows={6}
@@ -223,11 +223,11 @@ const ContactPage = () => {
                                 <div className="pt-6 flex items-center justify-center gap-6 text-[#333]">
                                     <div className="flex items-center gap-2">
                                         <ShieldCheck className="w-4 h-4" />
-                                        <span className="text-[10px] uppercase tracking-widest">Secure TLS 1.3</span>
+                                        <span className="text-[11px] uppercase tracking-wider">Secure TLS 1.3</span>
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <Globe className="w-4 h-4" />
-                                        <span className="text-[10px] uppercase tracking-widest">Global Edge Nodes</span>
+                                        <span className="text-[11px] uppercase tracking-wider">Global Edge Nodes</span>
                                     </div>
                                 </div>
                             </form>
@@ -235,7 +235,7 @@ const ContactPage = () => {
 
                         <div className="mt-12 flex items-center gap-4 text-[#333]">
                             <div className="h-[1px] flex-1 bg-[#111]" />
-                            <span className="text-white/10 text-[10px] uppercase tracking-[0.5em] font-medium italic">End of Ingress Channel</span>
+                            <span className="text-white/10 text-[11px] uppercase tracking-[0.3em] font-medium italic">End of Ingress Channel</span>
                             <div className="h-[1px] w-12 bg-[#111]" />
                         </div>
                     </div>
@@ -247,7 +247,7 @@ const ContactPage = () => {
                         <div>
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="h-[1px] w-12 bg-[#CCFF00]" />
-                                <span className="text-[#CCFF00] text-[10px] uppercase tracking-[0.4em] font-medium font-['Satoshi']">Operational Channels</span>
+                                <span className="text-[#CCFF00] text-[11px] uppercase tracking-[0.3em] font-bold font-['Satoshi']">Operational Channels</span>
                             </div>
                             <h2 className="text-4xl md:text-5xl font-bold text-[#F2F2F2] font-['Clash_Display']">
                                 Support <span className="text-white/20">Protocols.</span>
@@ -255,32 +255,32 @@ const ContactPage = () => {
                         </div>
                         <div className="flex items-center gap-3 px-6 py-3 bg-[#111] border border-[#222] rounded-full">
                             <div className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-                            <span className="text-[10px] font-black uppercase tracking-widest text-[#F2F2F2]">Engineers Online</span>
+                            <span className="text-[11px] font-bold uppercase tracking-wider text-[#F2F2F2]">Engineers Online</span>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
                         {SUPPORT_CHANNELS.map((channel, idx) => (
                             <motion.div
                                 key={channel.title}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 + (idx * 0.1) }}
-                                className="group p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl hover:border-[#CCFF00]/20 transition-all duration-500 relative overflow-hidden"
+                                className="group p-4 md:p-8 bg-[#0a0a0a] border border-white/5 rounded-2xl md:rounded-3xl active:bg-[#0c0c0c] hover:border-[#CCFF00]/20 transition-all duration-300 relative overflow-hidden"
                             >
-                                <div className="absolute top-0 right-0 p-4">
-                                    <span className="text-[8px] font-black uppercase tracking-widest text-[#333] group-hover:text-[#CCFF00] transition-colors">
+                                <div className="absolute top-0 right-0 p-2 md:p-4">
+                                    <span className="text-[9px] md:text-[11px] font-bold uppercase tracking-wider text-[#444] group-hover:text-[#CCFF00] transition-colors">
                                         {channel.badge}
                                     </span>
                                 </div>
-                                <div className="mb-6 p-3 bg-[#111] rounded-xl w-fit group-hover:bg-[#CCFF00]/10 transition-colors">
+                                <div className="mb-3 md:mb-6 p-2 md:p-3 bg-[#111] rounded-xl w-fit group-hover:bg-[#CCFF00]/10 transition-colors">
                                     {channel.icon}
                                 </div>
-                                <h3 className="text-lg font-bold text-[#F2F2F2] mb-3 uppercase tracking-wide">{channel.title}</h3>
-                                <p className="text-[#555] text-sm leading-relaxed mb-8 group-hover:text-[#888] transition-colors">
+                                <h3 className="text-sm md:text-lg font-bold text-[#F2F2F2] mb-1 md:mb-3 uppercase tracking-wide">{channel.title}</h3>
+                                <p className="hidden md:block text-[#555] text-sm leading-relaxed mb-8 group-hover:text-[#888] transition-colors">
                                     {channel.description}
                                 </p>
-                                <Link href="/kb" className="flex items-center justify-between w-full px-4 py-3 bg-[#111] border border-white/5 rounded-xl text-[9px] font-black uppercase tracking-[0.2em] text-[#F2F2F2] group-hover:border-[#CCFF00]/40 transition-all">
+                                <Link href="/kb" className="hidden md:flex items-center justify-between w-full px-4 py-3 bg-[#111] border border-white/5 rounded-xl text-[11px] font-bold uppercase tracking-wider text-[#F2F2F2] group-hover:border-[#CCFF00]/40 transition-all">
                                     <span>{channel.cta}</span>
                                     <ArrowRight className="w-3 h-3 text-[#333] group-hover:text-[#CCFF00] group-hover:translate-x-1 transition-transform" />
                                 </Link>

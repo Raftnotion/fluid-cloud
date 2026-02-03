@@ -43,23 +43,23 @@ const StatusPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
             </div>
 
-            <main className="relative z-10 pt-40 pb-32 px-8 max-w-7xl mx-auto">
+            <main className="relative z-10 pt-24 md:pt-40 pb-20 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto">
                 {/* Hero Status Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mb-20 text-center flex flex-col items-center"
+                    className="mb-10 md:mb-20 text-center flex flex-col items-center"
                 >
-                    <div className="inline-flex items-center gap-3 px-6 py-2 bg-[#CCFF00]/10 border border-[#CCFF00]/20 rounded-full mb-8">
+                    <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 bg-[#CCFF00]/10 border border-[#CCFF00]/20 rounded-full mb-4 md:mb-8">
                         <div className="w-2 h-2 bg-[#CCFF00] rounded-full animate-ping" />
                         <span className="text-[#CCFF00] text-[11px] uppercase tracking-[0.3em] font-bold">All Systems Operational</span>
                     </div>
 
-                    <h1 className="text-6xl md:text-8xl font-bold font-['Clash_Display'] leading-none text-[#F2F2F2] mb-6">
+                    <h1 className="text-4xl md:text-8xl font-bold font-['Clash_Display'] leading-none text-[#F2F2F2] mb-4 md:mb-6">
                         System <span className="text-white/20">Status.</span>
                     </h1>
 
-                    <p className="text-[#555] font-mono text-xs uppercase tracking-[0.2em] flex items-center justify-center gap-2">
+                    <p className="text-[#555] font-mono text-[11px] md:text-xs uppercase tracking-wider md:tracking-[0.2em] flex items-center justify-center gap-2">
                         System Heartbeat:
                         <span className="text-[#888] min-w-[100px] inline-block">
                             {lastUpdated || "--:--:--"}
@@ -68,23 +68,23 @@ const StatusPage = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
 
                     {/* Component Health List */}
                     <div className="lg:col-span-2 space-y-6">
-                        <div className="flex items-center justify-between mb-8">
-                            <h2 className="text-xl font-bold font-['Clash_Display'] flex items-center gap-3">
+                        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-4 md:mb-8 gap-2">
+                            <h2 className="text-lg md:text-xl font-bold font-['Clash_Display'] flex items-center gap-2 md:gap-3">
                                 <Server className="w-5 h-5 text-[#CCFF00]" />
                                 Core Infrastructure
                             </h2>
                             <span className="text-[11px] text-[#666] font-mono uppercase tracking-wider">Global Standard Health</span>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 gap-3 md:gap-4">
                             {systems.map((system) => (
-                                <div key={system.name} className="p-6 bg-[#0a0a0a] border border-white/5 rounded-2xl group hover:border-[#CCFF00]/20 transition-all">
-                                    <div className="flex justify-between items-center mb-4">
-                                        <h3 className="text-sm font-bold text-[#F2F2F2]">{system.name}</h3>
+                                <div key={system.name} className="p-4 md:p-6 bg-[#0a0a0a] border border-white/5 rounded-xl md:rounded-2xl group active:bg-[#0c0c0c] hover:border-[#CCFF00]/20 transition-all">
+                                    <div className="flex justify-between items-center mb-2 md:mb-4">
+                                        <h3 className="text-xs md:text-sm font-bold text-[#F2F2F2]">{system.name}</h3>
                                         <span className="text-[11px] text-[#CCFF00] uppercase font-bold tracking-wide">Operational</span>
                                     </div>
                                     <div className="flex justify-between items-end">

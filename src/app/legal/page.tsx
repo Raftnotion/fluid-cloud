@@ -251,8 +251,8 @@ const LegalPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
             </div>
 
-            <main className="relative z-10 pt-40 pb-32 px-8 max-w-7xl mx-auto">
-                <div className="flex flex-col lg:flex-row gap-20">
+            <main className="relative z-10 pt-24 md:pt-40 pb-20 md:pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+                <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
 
                     {/* Desktop Side Navigation */}
                     <aside className="hidden lg:block w-72 shrink-0">
@@ -298,19 +298,19 @@ const LegalPage = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="mb-24"
+                            className="mb-12 md:mb-24"
                         >
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="h-[1px] w-12 bg-[#CCFF00]" />
                                 <span className="text-[#CCFF00] text-[11px] uppercase tracking-[0.4em] font-medium font-['Satoshi']">Contractual Framework</span>
                             </div>
-                            <h1 className="text-6xl md:text-8xl font-bold font-['Clash_Display'] leading-none text-[#F2F2F2]">
+                            <h1 className="text-4xl md:text-8xl font-bold font-['Clash_Display'] leading-none text-[#F2F2F2]">
                                 Legal <br />
                                 <span className="text-white/20">Protocols.</span>
                             </h1>
                         </motion.div>
 
-                        <div className="space-y-32">
+                        <div className="space-y-16 md:space-y-32">
                             {SECTIONS.map((section, index) => (
                                 <motion.section
                                     key={section.id}
@@ -322,17 +322,17 @@ const LegalPage = () => {
                                     className="relative scroll-mt-40"
                                 >
                                     {/* Section Header with Metadata */}
-                                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-[#111]">
+                                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-8 md:mb-12 pb-4 md:pb-6 border-b border-[#111]">
                                         <div>
                                             <div className="flex items-center gap-2 text-[#CCFF00] mb-2">
                                                 <Hash className="w-3 h-3" />
                                                 <span className="text-[11px] uppercase tracking-widest font-mono font-bold">{section.docId}</span>
                                             </div>
-                                            <h2 className="text-4xl md:text-5xl font-bold font-['Clash_Display'] text-[#F2F2F2]">
+                                            <h2 className="text-2xl md:text-5xl font-bold font-['Clash_Display'] text-[#F2F2F2]">
                                                 {section.title}
                                             </h2>
                                         </div>
-                                        <div className="flex gap-8 font-mono text-[11px] text-[#555] uppercase tracking-widest">
+                                        <div className="flex gap-6 md:gap-8 font-mono text-[11px] text-[#555] uppercase tracking-wider">
                                             <div>
                                                 <p className="mb-1 text-[#333]">Version</p>
                                                 <p className="text-[#888]">{section.version}</p>
@@ -345,7 +345,7 @@ const LegalPage = () => {
                                     </div>
 
                                     {/* Text Content */}
-                                    <div className="font-['Satoshi'] text-[#888] text-lg leading-relaxed space-y-6 max-w-3xl">
+                                    <div className="font-['Satoshi'] text-[#888] text-sm md:text-lg leading-relaxed space-y-4 md:space-y-6 max-w-3xl">
                                         {section.content.trim().split('\n\n').map((paragraph, i) => (
                                             <p key={i} className="font-medium text-[#888]">
                                                 {paragraph.trim()}
@@ -367,7 +367,7 @@ const LegalPage = () => {
                         <motion.div
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            className="mt-40 p-12 bg-[#080808] border border-[#111] rounded-3xl relative overflow-hidden group"
+                            className="mt-20 md:mt-40 p-6 md:p-12 bg-[#080808] border border-[#111] rounded-2xl md:rounded-3xl relative overflow-hidden group"
                         >
                             <div className="absolute top-0 right-0 w-64 h-64 bg-[#CCFF00]/5 blur-[100px] -translate-y-1/2 translate-x-1/2" />
 
