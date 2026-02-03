@@ -264,8 +264,8 @@ const KBHub = () => {
                                 key={cat.id}
                                 onClick={() => scrollToCategory(cat.id)}
                                 className={`shrink-0 flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all active:scale-95 ${selectedCategory === cat.id
-                                        ? 'bg-[#CCFF00] text-black'
-                                        : 'bg-[#111] border border-white/5 text-[#888]'
+                                    ? 'bg-[#CCFF00] text-black'
+                                    : 'bg-[#111] border border-white/5 text-[#888]'
                                     }`}
                             >
                                 {cat.icon}
@@ -476,18 +476,8 @@ const KBHub = () => {
                     </p>
                 </div>
 
-            </main>
 
-            {/* Sticky Get Help CTA - Mobile */}
-            <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent z-40">
-                <Link
-                    href="/contact"
-                    className="flex items-center justify-center gap-3 w-full py-4 bg-[#CCFF00] text-black rounded-xl font-bold text-sm active:scale-[0.98] transition-all shadow-[0_0_30px_rgba(204,255,0,0.2)]"
-                >
-                    <MessageSquare className="w-4 h-4" />
-                    Get Live Help
-                </Link>
-            </div>
+            </main>
 
             <Footer />
         </div>

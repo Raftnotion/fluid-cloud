@@ -385,8 +385,8 @@ const StatusPage = () => {
                                     transition={{ delay: day.id * 0.003 }}
                                     onClick={() => setSelectedDay(selectedDay === day.id ? null : day.id)}
                                     className={`w-[calc((100%-89*4px)/90)] min-w-[6px] md:min-w-[10px] h-8 md:h-12 rounded-[2px] transition-all active:scale-110 ${day.status === 'up' ? 'bg-[#CCFF00] opacity-30 hover:opacity-100' :
-                                            day.status === 'slow' ? 'bg-white/10 hover:bg-white/20' :
-                                                'bg-red-500/30 hover:bg-red-500/60'
+                                        day.status === 'slow' ? 'bg-white/10 hover:bg-white/20' :
+                                            'bg-red-500/30 hover:bg-red-500/60'
                                         } ${selectedDay === day.id ? 'opacity-100 ring-2 ring-[#CCFF00]' : ''}`}
                                 />
                             ))}
@@ -477,42 +477,7 @@ const StatusPage = () => {
                     </div>
                 </section>
 
-                {/* Subscribe to Alerts CTA */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    className="mt-12 md:mt-32 p-5 md:p-12 bg-[#080808] border border-[#111] rounded-2xl md:rounded-3xl relative overflow-hidden"
-                >
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#CCFF00]/5 blur-[100px] -translate-y-1/2 translate-x-1/2" />
-
-                    <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                        <div>
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="w-10 h-10 rounded-xl bg-[#CCFF00]/10 flex items-center justify-center">
-                                    <Bell className="w-5 h-5 text-[#CCFF00]" />
-                                </div>
-                                <h3 className="text-[#F2F2F2] font-bold text-xl md:text-2xl font-['Clash_Display']">Stay Updated</h3>
-                            </div>
-                            <p className="text-[#666] text-sm max-w-md">
-                                Get instant notifications about system status, maintenance windows, and incidents.
-                            </p>
-                        </div>
-
-                        <button className="w-full md:w-auto flex items-center justify-center gap-3 px-6 py-4 bg-[#CCFF00] text-black font-bold uppercase tracking-wider text-xs rounded-xl active:scale-95 hover:scale-105 transition-all shadow-[0_0_30px_rgba(204,255,0,0.15)]">
-                            <Bell className="w-4 h-4" />
-                            Get Alerts
-                        </button>
-                    </div>
-                </motion.div>
             </main>
-
-            {/* Sticky Get Alerts CTA - Mobile */}
-            <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent z-40">
-                <button className="flex items-center justify-center gap-3 w-full py-4 bg-[#CCFF00] text-black rounded-xl font-bold text-sm active:scale-[0.98] transition-all shadow-[0_0_30px_rgba(204,255,0,0.2)]">
-                    <Bell className="w-4 h-4" />
-                    Subscribe to Status Alerts
-                </button>
-            </div>
 
             <Footer />
         </div>

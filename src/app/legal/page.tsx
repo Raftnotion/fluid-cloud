@@ -584,17 +584,6 @@ const LegalPage = () => {
                 </div>
             </main>
 
-            {/* Sticky Legal Help CTA - Mobile */}
-            <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#050505] via-[#050505]/95 to-transparent z-40">
-                <a
-                    href="mailto:legal@wpfye.com"
-                    className="flex items-center justify-center gap-3 w-full py-4 bg-[#111] border border-white/10 rounded-xl text-sm font-bold text-[#F2F2F2] active:scale-[0.98] transition-all"
-                >
-                    <Mail className="w-4 h-4 text-[#CCFF00]" />
-                    Need help? Contact Legal Team
-                </a>
-            </div>
-
             <Footer />
         </div>
     );
