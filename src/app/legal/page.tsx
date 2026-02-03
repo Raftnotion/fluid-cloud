@@ -258,7 +258,7 @@ const LegalPage = () => {
                     <aside className="hidden lg:block w-72 shrink-0">
                         <div className="sticky top-40 space-y-8">
                             <div>
-                                <h3 className="text-[#CCFF00] text-[10px] uppercase tracking-[0.4em] font-medium font-['Satoshi'] mb-6">Directory</h3>
+                                <h3 className="text-[#CCFF00] text-[11px] uppercase tracking-[0.4em] font-medium font-['Satoshi'] mb-6">Directory</h3>
                                 <nav className="space-y-1">
                                     {SECTIONS.map((section) => (
                                         <button
@@ -284,7 +284,7 @@ const LegalPage = () => {
                                         <Shield className="w-5 h-5 text-[#CCFF00]" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] text-[#555] uppercase tracking-wider font-medium font-['Satoshi'] mb-1">Global Standard</p>
+                                        <p className="text-[11px] text-[#555] uppercase tracking-wider font-medium font-['Satoshi'] mb-1">Global Standard</p>
                                         <p className="text-xs font-bold text-[#F2F2F2]">GDPR Compliant</p>
                                     </div>
                                 </div>
@@ -302,7 +302,7 @@ const LegalPage = () => {
                         >
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="h-[1px] w-12 bg-[#CCFF00]" />
-                                <span className="text-[#CCFF00] text-[10px] uppercase tracking-[0.4em] font-medium font-['Satoshi']">Contractual Framework</span>
+                                <span className="text-[#CCFF00] text-[11px] uppercase tracking-[0.4em] font-medium font-['Satoshi']">Contractual Framework</span>
                             </div>
                             <h1 className="text-6xl md:text-8xl font-bold font-['Clash_Display'] leading-none text-[#F2F2F2]">
                                 Legal <br />
@@ -326,13 +326,13 @@ const LegalPage = () => {
                                         <div>
                                             <div className="flex items-center gap-2 text-[#CCFF00] mb-2">
                                                 <Hash className="w-3 h-3" />
-                                                <span className="text-[10px] uppercase tracking-widest font-mono font-bold">{section.docId}</span>
+                                                <span className="text-[11px] uppercase tracking-widest font-mono font-bold">{section.docId}</span>
                                             </div>
                                             <h2 className="text-4xl md:text-5xl font-bold font-['Clash_Display'] text-[#F2F2F2]">
                                                 {section.title}
                                             </h2>
                                         </div>
-                                        <div className="flex gap-8 font-mono text-[10px] text-[#555] uppercase tracking-widest">
+                                        <div className="flex gap-8 font-mono text-[11px] text-[#555] uppercase tracking-widest">
                                             <div>
                                                 <p className="mb-1 text-[#333]">Version</p>
                                                 <p className="text-[#888]">{section.version}</p>
@@ -356,7 +356,7 @@ const LegalPage = () => {
                                     {/* Footer Section Accent */}
                                     <div className="mt-12 flex items-center gap-4 text-[#333]">
                                         <div className="h-[1px] flex-1 bg-[#111]" />
-                                        <span className="text-[10px] tracking-[0.2em] uppercase font-mono italic">End of Section {index + 1}</span>
+                                        <span className="text-[11px] tracking-[0.2em] uppercase font-mono italic">End of Section {index + 1}</span>
                                         <div className="h-[1px] w-12 bg-[#111]" />
                                     </div>
                                 </motion.section>

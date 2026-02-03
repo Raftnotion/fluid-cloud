@@ -225,7 +225,7 @@ const KBArticle = ({ params }: { params: { slug: string } }) => {
                 >
                     <Link href="/kb" className="inline-flex items-center gap-2 text-[#555] hover:text-[#CCFF00] transition-colors group">
                         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                        <span className="text-[10px] font-black uppercase tracking-widest text-inherit">Back to Intelligence Hub</span>
+                        <span className="text-[11px] font-black uppercase tracking-widest text-inherit">Back to Intelligence Hub</span>
                     </Link>
                 </motion.div>
 
@@ -238,10 +238,10 @@ const KBArticle = ({ params }: { params: { slug: string } }) => {
                             animate={{ opacity: 1, y: 0 }}
                         >
                             <div className="flex items-center gap-4 mb-6">
-                                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-black uppercase tracking-widest text-[#CCFF00]">
+                                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[11px] font-black uppercase tracking-widest text-[#CCFF00]">
                                     {article.category}
                                 </span>
-                                <div className="flex items-center gap-2 text-[10px] text-[#333] font-bold uppercase tracking-widest">
+                                <div className="flex items-center gap-2 text-[11px] text-[#333] font-bold uppercase tracking-widest">
                                     <Clock className="w-3 h-3" />
                                     {article.readTime}
                                 </div>
@@ -255,8 +255,8 @@ const KBArticle = ({ params }: { params: { slug: string } }) => {
                                 <div className="flex items-center gap-3">
                                     <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#111] to-[#222] border border-white/10" />
                                     <div>
-                                        <p className="text-[10px] font-black uppercase tracking-widest text-[#F2F2F2]">Engineering Team</p>
-                                        <p className="text-[9px] text-[#333] uppercase">Last Updated {article.updated}</p>
+                                        <p className="text-[11px] font-black uppercase tracking-widest text-[#F2F2F2]">Engineering Team</p>
+                                        <p className="text-[11px] text-[#333] uppercase">Last Updated {article.updated}</p>
                                     </div>
                                 </div>
                                 <button className="ml-auto p-2 hover:bg-white/5 rounded-full transition-all text-[#333] hover:text-[#CCFF00]">
@@ -275,8 +275,8 @@ const KBArticle = ({ params }: { params: { slug: string } }) => {
                             <div className="mt-20 p-10 bg-[#080808] border border-white/5 rounded-3xl text-center">
                                 <h4 className="text-xl font-bold mb-4">Did this resolve your inquiry?</h4>
                                 <div className="flex items-center justify-center gap-4">
-                                    <button className="px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">Yes</button>
-                                    <button className="px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">No</button>
+                                    <button className="px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all">Yes</button>
+                                    <button className="px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all">No</button>
                                 </div>
                             </div>
                         </motion.div>
@@ -285,12 +285,12 @@ const KBArticle = ({ params }: { params: { slug: string } }) => {
                     {/* Sidebar: Related & Actions */}
                     <aside className="lg:w-1/4 space-y-12">
                         <div>
-                            <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#333] mb-8">Related Protocols</h3>
+                            <h3 className="text-[11px] font-black uppercase tracking-[0.3em] text-[#333] mb-8">Related Protocols</h3>
                             <div className="space-y-6">
                                 {[1, 2, 3].map((i) => (
                                     <div key={i} className="group cursor-pointer">
                                         <h4 className="text-sm font-bold text-[#F2F2F2] group-hover:text-[#CCFF00] transition-colors mb-2">Protocol ADM-Sync-{i}04</h4>
-                                        <p className="text-[10px] text-[#555] uppercase tracking-widest">Infrastructure / Cache</p>
+                                        <p className="text-[11px] text-[#555] uppercase tracking-widest">Infrastructure / Cache</p>
                                     </div>
                                 ))}
                             </div>
@@ -301,7 +301,7 @@ const KBArticle = ({ params }: { params: { slug: string } }) => {
                             <p className="text-[#555] text-xs leading-relaxed mb-8">
                                 If the technical documentation is insufficient, contact our core team.
                             </p>
-                            <Link href="/contact" className="flex items-center justify-between w-full p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-[9px] font-black uppercase tracking-widest text-[#CCFF00] transition-all group">
+                            <Link href="/contact" className="flex items-center justify-between w-full p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-[11px] font-black uppercase tracking-widest text-[#CCFF00] transition-all group">
                                 <span>Support Channel</span>
                                 <MessageSquare className="w-4 h-4 group-hover:scale-110 transition-transform" />
                             </Link>

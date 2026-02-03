@@ -52,7 +52,7 @@ const StatusPage = () => {
                 >
                     <div className="inline-flex items-center gap-3 px-6 py-2 bg-[#CCFF00]/10 border border-[#CCFF00]/20 rounded-full mb-8">
                         <div className="w-2 h-2 bg-[#CCFF00] rounded-full animate-ping" />
-                        <span className="text-[#CCFF00] text-[10px] uppercase tracking-[0.4em] font-black">All Systems Operational</span>
+                        <span className="text-[#CCFF00] text-[11px] uppercase tracking-[0.3em] font-bold">All Systems Operational</span>
                     </div>
 
                     <h1 className="text-6xl md:text-8xl font-bold font-['Clash_Display'] leading-none text-[#F2F2F2] mb-6">
@@ -77,7 +77,7 @@ const StatusPage = () => {
                                 <Server className="w-5 h-5 text-[#CCFF00]" />
                                 Core Infrastructure
                             </h2>
-                            <span className="text-[10px] text-[#333] font-mono uppercase tracking-widest">Global Standard Health</span>
+                            <span className="text-[11px] text-[#666] font-mono uppercase tracking-wider">Global Standard Health</span>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -85,11 +85,11 @@ const StatusPage = () => {
                                 <div key={system.name} className="p-6 bg-[#0a0a0a] border border-white/5 rounded-2xl group hover:border-[#CCFF00]/20 transition-all">
                                     <div className="flex justify-between items-center mb-4">
                                         <h3 className="text-sm font-bold text-[#F2F2F2]">{system.name}</h3>
-                                        <span className="text-[10px] text-[#CCFF00] uppercase font-bold tracking-tighter">Operational</span>
+                                        <span className="text-[11px] text-[#CCFF00] uppercase font-bold tracking-wide">Operational</span>
                                     </div>
                                     <div className="flex justify-between items-end">
                                         <div className="space-y-1">
-                                            <p className="text-[10px] text-[#333] uppercase font-bold tracking-widest">Global Uptime</p>
+                                            <p className="text-[11px] text-[#666] uppercase font-bold tracking-wider">Global Uptime</p>
                                             <p className="text-sm font-mono text-[#888]">{system.uptime}</p>
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@ const StatusPage = () => {
                     {/* Regions & Latency */}
                     <aside className="space-y-8">
                         <div className="p-8 bg-[#0a0a0a] border border-white/5 rounded-3xl relative overflow-hidden">
-                            <h3 className="text-[#CCFF00] text-[10px] uppercase tracking-[0.3em] font-bold mb-8 flex items-center gap-3">
+                            <h3 className="text-[#CCFF00] text-[11px] uppercase tracking-[0.2em] font-bold mb-8 flex items-center gap-3">
                                 <Globe className="w-4 h-4" />
                                 Edge Topology
                             </h3>
@@ -110,12 +110,12 @@ const StatusPage = () => {
                                 {regions.map((region) => (
                                     <div key={region.code} className="flex items-center justify-between group">
                                         <div className="flex items-center gap-4">
-                                            <div className="w-8 h-8 rounded-lg bg-[#111] border border-white/5 flex items-center justify-center text-[10px] font-mono text-[#555] group-hover:text-[#CCFF00] transition-colors">
+                                            <div className="w-8 h-8 rounded-lg bg-[#111] border border-white/5 flex items-center justify-center text-[11px] font-mono text-[#666] group-hover:text-[#CCFF00] transition-colors">
                                                 {region.code}
                                             </div>
                                             <div>
                                                 <p className="text-xs font-bold text-[#F2F2F2]">{region.location}</p>
-                                                <p className="text-[10px] text-[#333] uppercase tracking-widest leading-none mt-1">{region.status}</p>
+                                                <p className="text-[11px] text-[#666] uppercase tracking-wider leading-none mt-1">{region.status}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -130,9 +130,9 @@ const StatusPage = () => {
                             >
                                 <div className="flex items-center gap-3 mb-2">
                                     <ShieldCheck className="w-4 h-4 text-[#CCFF00]" />
-                                    <span className="text-[10px] uppercase font-bold text-[#F2F2F2]">Protection Active</span>
+                                    <span className="text-[11px] uppercase font-bold text-[#F2F2F2]">Protection Active</span>
                                 </div>
-                                <p className="text-[10px] text-[#555] leading-relaxed">
+                                <p className="text-[11px] text-[#666] leading-relaxed">
                                     Global DDoS mitigation nodes are active across the fluid fabric. No active threats detected.
                                 </p>
                             </motion.div>
@@ -147,14 +147,14 @@ const StatusPage = () => {
                             <h2 className="text-3xl font-bold font-['Clash_Display'] text-[#F2F2F2] mb-2">Uptime History</h2>
                             <p className="text-[#555] text-sm">Historical availability grid for the last 90 deployment cycles.</p>
                         </div>
-                        <div className="flex items-center gap-6 text-[10px] uppercase tracking-widest font-bold">
+                        <div className="flex items-center gap-6 text-[11px] uppercase tracking-wider font-bold">
                             <div className="flex items-center gap-2">
                                 <div className="w-3 h-3 bg-[#CCFF00] rounded-sm" />
                                 <span className="text-[#CCFF00]">Operational</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <div className="w-3 h-3 bg-white/10 rounded-sm" />
-                                <span className="text-[#333]">Scheduled Maintenance</span>
+                                <span className="text-[#666]">Scheduled Maintenance</span>
                             </div>
                         </div>
                     </div>
@@ -175,7 +175,7 @@ const StatusPage = () => {
                                 />
                             ))}
                         </div>
-                        <div className="flex justify-between mt-6 text-[10px] text-[#333] font-mono uppercase tracking-[0.2em]">
+                        <div className="flex justify-between mt-6 text-[11px] text-[#666] font-mono uppercase tracking-wider">
                             <span>90 Days Ago</span>
                             <span className="text-[#555] font-bold">Today: 100% Availability</span>
                         </div>
@@ -190,7 +190,7 @@ const StatusPage = () => {
 
                         <div className="space-y-6">
                             <div className="flex gap-6 pb-6 border-b border-white/5">
-                                <span className="text-[10px] font-mono text-[#333] pt-1">JAN 24</span>
+                                <span className="text-[11px] font-mono text-[#666] pt-1">JAN 24</span>
                                 <div>
                                     <h4 className="text-[#F2F2F2] font-bold text-sm mb-2">Planned Edge Optimization</h4>
                                     <p className="text-[#555] text-sm leading-relaxed max-w-2xl">
@@ -199,7 +199,7 @@ const StatusPage = () => {
                                 </div>
                             </div>
                             <div className="flex gap-6">
-                                <span className="text-[10px] font-mono text-[#333] pt-1">JAN 12</span>
+                                <span className="text-[11px] font-mono text-[#666] pt-1">JAN 12</span>
                                 <div>
                                     <h4 className="text-[#F2F2F2] font-bold text-sm mb-2">Fluid Network Expansion</h4>
                                     <p className="text-[#555] text-sm leading-relaxed max-w-2xl">

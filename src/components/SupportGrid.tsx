@@ -61,7 +61,7 @@ export default function SupportGrid() {
                     </div>
                     <div className="flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-[#111] border border-[#222] rounded-full">
                         <div className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-                        <span className="text-[9px] md:text-[10px] font-black uppercase tracking-wider md:tracking-widest text-[#F2F2F2]">Network Operational</span>
+                        <span className="text-[11px] md:text-xs font-bold uppercase tracking-wider md:tracking-widest text-[#F2F2F2]">Network Operational</span>
                     </div>
                 </div>
 
@@ -81,7 +81,7 @@ export default function SupportGrid() {
                                     <div className="p-2.5 bg-[#111] rounded-xl">
                                         {React.cloneElement(feature.icon, { className: "w-6 h-6 text-[#CCFF00]" })}
                                     </div>
-                                    <span className="text-[10px] font-black uppercase tracking-wider text-[#CCFF00] bg-[#CCFF00]/10 px-2.5 py-1 rounded-full">
+                                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#CCFF00] bg-[#CCFF00]/10 px-2.5 py-1 rounded-full">
                                         {feature.badge}
                                     </span>
                                 </div>
@@ -118,7 +118,7 @@ export default function SupportGrid() {
                                     {React.cloneElement(feature.icon, { className: "w-5 h-5 text-[#CCFF00]" })}
                                 </div>
                                 <h3 className="text-sm font-bold text-[#F2F2F2] mb-1">{feature.title}</h3>
-                                <span className="text-[10px] font-bold text-[#CCFF00] uppercase">{feature.badge}</span>
+                                <span className="text-[11px] font-bold text-[#CCFF00] uppercase">{feature.badge}</span>
                             </Link>
                         ))}
                     </div>
@@ -134,7 +134,7 @@ export default function SupportGrid() {
                         <div className="absolute bottom-0 left-0 p-5 w-full">
                             <div className="flex items-center gap-2 mb-2">
                                 <div className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-                                <span className="text-[9px] font-black uppercase tracking-wider text-[#CCFF00]">Live Monitoring</span>
+                                <span className="text-[11px] font-bold uppercase tracking-wider text-[#CCFF00]">Live Monitoring</span>
                             </div>
                             <h3 className="text-lg font-bold text-[#F2F2F2] uppercase">Proactive Guard</h3>
                             <p className="text-[#888] text-xs">24/7 scanning for zero-day vulnerabilities.</p>
@@ -155,7 +155,7 @@ export default function SupportGrid() {
                             className="group p-8 bg-[#0a0a0a] border border-[#222] rounded-3xl hover:border-[#CCFF00]/30 transition-all duration-300 relative overflow-hidden"
                         >
                             <div className="absolute top-0 right-0 p-4">
-                                <span className="text-[9px] font-black uppercase tracking-widest text-[#555] group-hover:text-[#CCFF00] transition-colors">
+                                <span className="text-[11px] font-bold uppercase tracking-wider text-[#666] group-hover:text-[#CCFF00] transition-colors">
                                     {feature.badge}
                                 </span>
                             </div>
@@ -173,7 +173,7 @@ export default function SupportGrid() {
 
                             <Link
                                 href={feature.link || "/contact"}
-                                className="mt-auto flex items-center justify-between w-full px-5 py-3 bg-[#111] border border-[#222] rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-[#F2F2F2] group-hover:border-[#CCFF00]/40 transition-all duration-300"
+                                className="mt-auto flex items-center justify-between w-full px-5 py-3 bg-[#111] border border-[#222] rounded-xl text-[11px] font-bold uppercase tracking-wider text-[#F2F2F2] group-hover:border-[#CCFF00]/40 transition-all duration-300"
                             >
                                 <span>{feature.cta}</span>
                                 <ArrowRight className="w-3.5 h-3.5 text-[#555] group-hover:text-[#CCFF00] group-hover:translate-x-1 transition-transform duration-300" />
@@ -200,7 +200,7 @@ export default function SupportGrid() {
                         <div className="absolute bottom-0 left-0 p-8 w-full">
                             <div className="flex items-center gap-2 mb-3">
                                 <div className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#CCFF00]">Live Monitoring</span>
+                                <span className="text-[11px] font-bold uppercase tracking-wider text-[#CCFF00]">Live Monitoring</span>
                             </div>
                             <h3 className="text-2xl font-bold text-[#F2F2F2] uppercase tracking-wide mb-2">Proactive Guard</h3>
                             <p className="text-[#888] text-sm leading-relaxed max-w-[240px]">

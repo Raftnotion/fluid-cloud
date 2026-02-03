@@ -119,7 +119,7 @@ const KBHub = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <span className="text-[#CCFF00] text-[10px] uppercase tracking-[0.4em] font-black mb-6 block">Central Intelligence Hub</span>
+                        <span className="text-[#CCFF00] text-[11px] uppercase tracking-[0.4em] font-black mb-6 block">Central Intelligence Hub</span>
                         <h1 className="text-6xl md:text-8xl font-bold font-['Clash_Display'] leading-none mb-12">
                             Knowledge <br />
                             <span className="text-white/20">Base.</span>
@@ -138,7 +138,7 @@ const KBHub = () => {
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                 />
-                                <div className="hidden md:flex items-center gap-2 pr-4 text-[10px] font-mono text-[#333] uppercase">
+                                <div className="hidden md:flex items-center gap-2 pr-4 text-[11px] font-mono text-[#333] uppercase">
                                     <span>Press</span>
                                     <kbd className="px-2 py-1 bg-[#111] border border-white/10 rounded">Enter</kbd>
                                 </div>
@@ -171,7 +171,7 @@ const KBHub = () => {
                                 {category.description}
                             </p>
 
-                            <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#333] group-hover:text-[#CCFF00] transition-colors">
+                            <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-[#333] group-hover:text-[#CCFF00] transition-colors">
                                 <span>{category.articleCount} Protocols</span>
                                 <ChevronRight className="w-3 h-3" />
                             </div>
@@ -203,7 +203,7 @@ const KBHub = () => {
                                             </div>
                                             <div>
                                                 <h4 className="font-bold text-[#F2F2F2] group-hover:text-[#CCFF00] transition-colors">{article.title}</h4>
-                                                <span className="text-[10px] uppercase font-bold tracking-widest text-[#333]">{article.category}</span>
+                                                <span className="text-[11px] uppercase font-bold tracking-widest text-[#333]">{article.category}</span>
                                             </div>
                                         </div>
                                         <ArrowRight className="w-4 h-4 text-[#222] group-hover:text-[#CCFF00] group-hover:translate-x-1 transition-all" />
@@ -227,11 +227,11 @@ const KBHub = () => {
 
                             <div className="space-y-4 relative z-10">
                                 <Link href="/contact" className="flex items-center justify-between w-full p-5 bg-[#CCFF00] text-black rounded-2xl group/btn hover:scale-[1.02] transition-all">
-                                    <span className="text-[10px] font-black uppercase tracking-widest">Open Channel</span>
+                                    <span className="text-[11px] font-black uppercase tracking-widest">Open Channel</span>
                                     <MessageSquare className="w-4 h-4" />
                                 </Link>
                                 <button className="flex items-center justify-between w-full p-5 bg-white/5 text-[#F2F2F2] border border-white/10 rounded-2xl hover:bg-white/10 transition-all">
-                                    <span className="text-[10px] font-black uppercase tracking-widest">Live Chat</span>
+                                    <span className="text-[11px] font-black uppercase tracking-widest">Live Chat</span>
                                     <Zap className="w-4 h-4 text-[#CCFF00]" />
                                 </button>
                             </div>
@@ -239,7 +239,7 @@ const KBHub = () => {
                             <div className="mt-12 pt-12 border-t border-white/5">
                                 <div className="flex items-center gap-3">
                                     <div className="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse" />
-                                    <span className="text-[9px] uppercase font-bold tracking-widest text-[#333]">Average Response: 30s</span>
+                                    <span className="text-[11px] uppercase font-bold tracking-widest text-[#333]">Average Response: 30s</span>
                                 </div>
                             </div>
                         </div>
@@ -249,7 +249,7 @@ const KBHub = () => {
 
                 {/* Footer Disclaimer for KB */}
                 <div className="mt-32 p-8 border-t border-white/5 text-center">
-                    <p className="text-[#333] text-[9px] uppercase tracking-[0.3em] font-bold">
+                    <p className="text-[#333] text-[11px] uppercase tracking-[0.3em] font-bold">
                         &copy; 2026 WPFYE TECHNOLOGY. ALL OPERATIONAL PROTOCOLS ARE SUBJECT TO THE GOVERNING LAW BLOCK.
                     </p>
                 </div>

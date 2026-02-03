@@ -106,7 +106,7 @@ const AboutPage = () => {
                                 <div className="absolute bottom-4 left-4 md:bottom-10 md:left-10">
                                     <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-4">
                                         <History className="w-4 h-4 md:w-5 md:h-5 text-[#CCFF00]" />
-                                        <span className="text-[9px] md:text-[10px] uppercase font-black tracking-widest text-[#F2F2F2]">Since '24</span>
+                                        <span className="text-[11px] md:text-xs uppercase font-bold tracking-wider text-[#F2F2F2]">Since '24</span>
                                     </div>
                                     <h3 className="text-lg md:text-2xl font-bold font-['Clash_Display'] text-white">Built for the <span className="text-[#CCFF00]">long haul.</span></h3>
                                 </div>
@@ -217,14 +217,14 @@ const AboutPage = () => {
                                     className="flex items-center gap-2 md:gap-3 px-4 md:px-8 py-3 md:py-4 bg-[#111] border border-white/5 rounded-xl md:rounded-2xl cursor-pointer active:bg-[#1a1a1a] transition-colors"
                                 >
                                     <Building2 className="w-4 h-4 text-[#CCFF00]" />
-                                    <span className="text-[9px] md:text-[10px] uppercase font-black tracking-widest text-[#F2F2F2]">HQ: Bengaluru</span>
+                                    <span className="text-[11px] md:text-xs uppercase font-bold tracking-wider text-[#F2F2F2]">HQ: Bengaluru</span>
                                 </motion.div>
                                 <motion.div
                                     whileTap={{ scale: 0.95 }}
                                     className="flex items-center gap-2 md:gap-3 px-4 md:px-8 py-3 md:py-4 bg-white/5 border border-white/10 text-[#555] rounded-xl md:rounded-2xl cursor-pointer active:bg-white/10 transition-colors"
                                 >
                                     <Globe className="w-4 h-4" />
-                                    <span className="text-[9px] md:text-[10px] uppercase font-black tracking-widest">Global Network</span>
+                                    <span className="text-[11px] md:text-xs uppercase font-bold tracking-wider">Global Network</span>
                                 </motion.div>
                             </div>
                         </motion.div>

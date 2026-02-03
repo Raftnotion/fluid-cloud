@@ -80,7 +80,7 @@ export default function FAQ() {
             <div className="max-w-4xl mx-auto">
                 {/* Header - Mobile Optimized */}
                 <div className="mb-8 md:mb-16">
-                    <span className="text-[#CCFF00] text-[9px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.4em] font-black mb-3 md:mb-4 block">Common Inquiries</span>
+                    <span className="text-[#CCFF00] text-[11px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] font-bold mb-3 md:mb-4 block">Common Inquiries</span>
                     <h2 className="text-3xl md:text-6xl font-bold text-[#F2F2F2] font-['Clash_Display'] leading-none">
                         Questions?<br />
                         <span className="text-[#333]">Answers.</span>
@@ -106,7 +106,7 @@ export default function FAQ() {
                         <h4 className="text-[#F2F2F2] font-bold text-base md:text-xl mb-1">Still have questions?</h4>
                         <p className="text-[#555] text-sm md:text-base">Our engineers are standing by 24/7.</p>
                     </div>
-                    <button className="w-full md:w-auto px-6 md:px-8 py-3 md:py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-[10px] md:text-xs rounded-xl hover:scale-105 active:scale-[0.98] transition-transform">
+                    <button className="w-full md:w-auto px-6 md:px-8 py-3 md:py-4 bg-[#CCFF00] text-black font-bold uppercase tracking-wider text-[11px] md:text-xs rounded-xl hover:scale-105 active:scale-[0.97] transition-transform">
                         Chat With Us
                     </button>
                 </div>

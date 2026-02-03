@@ -87,7 +87,7 @@ const PlanPhilosophy: React.FC = () => {
                         <motion.span
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
-                            className="text-[#CCFF00] text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-black mb-3 md:mb-6 block"
+                            className="text-[#CCFF00] text-[11px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] font-bold mb-3 md:mb-6 block"
                         >
                             The Paradigm Shift
                         </motion.span>

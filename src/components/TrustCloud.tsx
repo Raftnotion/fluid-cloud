@@ -15,7 +15,7 @@ export default function TrustCloud() {
         <div className="bg-black py-8 sm:py-12 md:py-16 border-y border-[#111] overflow-hidden">
             {/* Heading */}
             <div className="px-6 mb-6 sm:mb-8">
-                <h2 className="text-center text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#555]">
+                <h2 className="text-center text-[11px] sm:text-xs font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#666]">
                     Trusted by the world's best
                 </h2>
             </div>
