@@ -207,6 +207,69 @@ const CheckoutContent = () => {
         gstin: ''
     });
 
+    const [errors, setErrors] = useState<Record<string, string>>({});
+
+    // Validation functions
+    const validateStep1 = () => {
+        const newErrors: Record<string, string> = {};
+        if (!formData.domain.trim()) {
+            newErrors.domain = 'Domain is required';
+        } else if (!/^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]?\.[a-zA-Z]{2,}$/.test(formData.domain.trim())) {
+            newErrors.domain = 'Enter a valid domain (e.g., example.com)';
+        }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const validateStep2 = () => {
+        const newErrors: Record<string, string> = {};
+        if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
+        if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
+        if (!formData.email.trim()) {
+            newErrors.email = 'Email is required';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+            newErrors.email = 'Enter a valid email address';
+        }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const validateStep3 = () => {
+        const newErrors: Record<string, string> = {};
+        if (!formData.address.trim()) newErrors.address = 'Address is required';
+        if (!formData.city.trim()) newErrors.city = 'City is required';
+        if (!formData.state.trim()) newErrors.state = 'State is required';
+        if (!formData.zip.trim()) newErrors.zip = 'ZIP code is required';
+        if (!formData.country.trim()) newErrors.country = 'Country is required';
+        if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+        if (formData.isCompany) {
+            if (!formData.companyName.trim()) newErrors.companyName = 'Company name is required';
+            if (!formData.gstin.trim()) newErrors.gstin = 'GSTIN is required';
+        }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleNextStep = (currentStep: number) => {
+        let isValid = false;
+        if (currentStep === 1) isValid = validateStep1();
+        else if (currentStep === 2) isValid = validateStep2();
+        else if (currentStep === 3) isValid = validateStep3();
+        else isValid = true;
+
+        if (isValid) {
+            goToStep(currentStep + 1);
+        }
+    };
+
+    // Clear error when field is edited
+    const handleFieldChange = (field: string, value: string | boolean) => {
+        setFormData(prev => ({ ...prev, [field]: value }));
+        if (errors[field]) {
+            setErrors(prev => ({ ...prev, [field]: '' }));
+        }
+    };
+
     // Load form data
     useEffect(() => {
         const savedData = localStorage.getItem('checkout_form');
@@ -390,20 +453,21 @@ const CheckoutContent = () => {
                                                 type="text"
                                                 placeholder="yourdomain.com"
                                                 value={formData.domain}
-                                                onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
-                                                className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 md:p-5 text-base md:text-lg font-bold text-[#F2F2F2] outline-none focus:border-[#CCFF00]/50 transition-all relative z-10"
+                                                onChange={(e) => handleFieldChange('domain', e.target.value)}
+                                                className={`w-full bg-[#0a0a0a] border rounded-xl p-4 md:p-5 text-base md:text-lg font-bold text-[#F2F2F2] outline-none transition-all relative z-10 ${errors.domain ? 'border-red-500' : 'border-[#222] focus:border-[#CCFF00]/50'}`}
                                             />
                                             <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none">
                                                 <Globe className="w-5 h-5 text-[#333] group-focus-within:text-[#CCFF00] transition-colors" />
                                             </div>
                                         </div>
+                                        {errors.domain && <p className="mt-2 text-red-500 text-xs font-bold">{errors.domain}</p>}
                                         <p className="mt-3 md:mt-4 text-[11px] md:text-xs text-[#666] uppercase tracking-wide font-bold leading-relaxed">
                                             * Enter an existing domain. Purchase from GoDaddy or Namecheap first.
                                         </p>
                                     </section>
 
                                     <button
-                                        onClick={() => goToStep(2)}
+                                        onClick={() => handleNextStep(1)}
                                         className="w-full md:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-[1.02] active:scale-[0.97] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Next <ArrowRight className="w-4 h-4" />
@@ -434,33 +498,36 @@ const CheckoutContent = () => {
                                                 <input
                                                     type="text"
                                                     value={formData.firstName}
-                                                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    onChange={(e) => handleFieldChange('firstName', e.target.value)}
+                                                    className={`w-full bg-[#0a0a0a] border rounded-xl p-4 text-base font-bold outline-none transition-all text-[#F2F2F2] ${errors.firstName ? 'border-red-500' : 'border-[#222] focus:border-[#CCFF00]/30'}`}
                                                 />
+                                                {errors.firstName && <p className="text-red-500 text-xs font-bold">{errors.firstName}</p>}
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-xs font-bold uppercase tracking-wider text-[#777]">Last Name</label>
                                                 <input
                                                     type="text"
                                                     value={formData.lastName}
-                                                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    onChange={(e) => handleFieldChange('lastName', e.target.value)}
+                                                    className={`w-full bg-[#0a0a0a] border rounded-xl p-4 text-base font-bold outline-none transition-all text-[#F2F2F2] ${errors.lastName ? 'border-red-500' : 'border-[#222] focus:border-[#CCFF00]/30'}`}
                                                 />
+                                                {errors.lastName && <p className="text-red-500 text-xs font-bold">{errors.lastName}</p>}
                                             </div>
                                             <div className="space-y-2 md:col-span-2">
                                                 <label className="text-xs font-bold uppercase tracking-wider text-[#777]">Email Address</label>
                                                 <input
                                                     type="email"
                                                     value={formData.email}
-                                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    onChange={(e) => handleFieldChange('email', e.target.value)}
+                                                    className={`w-full bg-[#0a0a0a] border rounded-xl p-4 text-base font-bold outline-none transition-all text-[#F2F2F2] ${errors.email ? 'border-red-500' : 'border-[#222] focus:border-[#CCFF00]/30'}`}
                                                 />
+                                                {errors.email && <p className="text-red-500 text-xs font-bold">{errors.email}</p>}
                                             </div>
                                         </div>
                                     </section>
 
                                     <button
-                                        onClick={() => goToStep(3)}
+                                        onClick={() => handleNextStep(2)}
                                         className="w-full md:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-[1.02] active:scale-[0.97] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Billing <ArrowRight className="w-4 h-4" />
@@ -491,14 +558,14 @@ const CheckoutContent = () => {
                                                 <div className="bg-[#0a0a0a] border border-[#222] p-1.5 rounded-xl inline-flex gap-1.5 w-full md:w-fit">
                                                     <button
                                                         type="button"
-                                                        onClick={() => setFormData({ ...formData, isCompany: false })}
+                                                        onClick={() => handleFieldChange('isCompany', false)}
                                                         className={`flex-1 md:flex-none px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all active:scale-95 ${!formData.isCompany ? 'bg-[#CCFF00] text-black shadow-[0_4px_12px_rgba(204,255,0,0.15)]' : 'text-[#555] hover:text-[#888]'}`}
                                                     >
                                                         Individual
                                                     </button>
                                                     <button
                                                         type="button"
-                                                        onClick={() => setFormData({ ...formData, isCompany: true })}
+                                                        onClick={() => handleFieldChange('isCompany', true)}
                                                         className={`flex-1 md:flex-none px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all active:scale-95 ${formData.isCompany ? 'bg-[#CCFF00] text-black shadow-[0_4px_12px_rgba(204,255,0,0.15)]' : 'text-[#555] hover:text-[#888]'}`}
                                                     >
                                                         Company
@@ -517,9 +584,10 @@ const CheckoutContent = () => {
                                                         <input
                                                             type="text"
                                                             value={formData.companyName}
-                                                            onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                                                            className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                            onChange={(e) => handleFieldChange('companyName', e.target.value)}
+                                                            className={`w-full bg-[#0a0a0a] border rounded-xl p-4 text-base font-bold outline-none transition-all text-[#F2F2F2] ${errors.companyName ? 'border-red-500' : 'border-[#222] focus:border-[#CCFF00]/30'}`}
                                                         />
+                                                        {errors.companyName && <p className="text-red-500 text-xs font-bold">{errors.companyName}</p>}
                                                     </div>
                                                     <div className="space-y-2">
                                                         <label className="text-xs font-bold uppercase tracking-wider text-[#777]">GSTIN</label>
@@ -527,9 +595,10 @@ const CheckoutContent = () => {
                                                             type="text"
                                                             placeholder="29AADCW9345A1Z7"
                                                             value={formData.gstin}
-                                                            onChange={(e) => setFormData({ ...formData, gstin: e.target.value })}
-                                                            className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                            onChange={(e) => handleFieldChange('gstin', e.target.value)}
+                                                            className={`w-full bg-[#0a0a0a] border rounded-xl p-4 text-base font-bold outline-none transition-all text-[#F2F2F2] ${errors.gstin ? 'border-red-500' : 'border-[#222] focus:border-[#CCFF00]/30'}`}
                                                         />
+                                                        {errors.gstin && <p className="text-red-500 text-xs font-bold">{errors.gstin}</p>}
                                                     </div>
                                                 </motion.div>
                                             )}
@@ -539,44 +608,49 @@ const CheckoutContent = () => {
                                                     type="text"
                                                     placeholder="Street Address"
                                                     value={formData.address}
-                                                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    onChange={(e) => handleFieldChange('address', e.target.value)}
+                                                    className={`w-full bg-[#0a0a0a] border rounded-xl p-4 text-base font-bold outline-none transition-all text-[#F2F2F2] ${errors.address ? 'border-red-500' : 'border-[#222] focus:border-[#CCFF00]/30'}`}
                                                 />
+                                                {errors.address && <p className="text-red-500 text-xs font-bold">{errors.address}</p>}
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-xs font-bold uppercase tracking-wider text-[#777]">City</label>
                                                 <input
                                                     type="text"
                                                     value={formData.city}
-                                                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    onChange={(e) => handleFieldChange('city', e.target.value)}
+                                                    className={`w-full bg-[#0a0a0a] border rounded-xl p-4 text-base font-bold outline-none transition-all text-[#F2F2F2] ${errors.city ? 'border-red-500' : 'border-[#222] focus:border-[#CCFF00]/30'}`}
                                                 />
+                                                {errors.city && <p className="text-red-500 text-xs font-bold">{errors.city}</p>}
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-xs font-bold uppercase tracking-wider text-[#777]">State / Province</label>
                                                 <input
                                                     type="text"
                                                     value={formData.state}
-                                                    onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    onChange={(e) => handleFieldChange('state', e.target.value)}
+                                                    className={`w-full bg-[#0a0a0a] border rounded-xl p-4 text-base font-bold outline-none transition-all text-[#F2F2F2] ${errors.state ? 'border-red-500' : 'border-[#222] focus:border-[#CCFF00]/30'}`}
                                                 />
+                                                {errors.state && <p className="text-red-500 text-xs font-bold">{errors.state}</p>}
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-xs font-bold uppercase tracking-wider text-[#777]">ZIP / Postal Code</label>
                                                 <input
                                                     type="text"
                                                     value={formData.zip}
-                                                    onChange={(e) => setFormData({ ...formData, zip: e.target.value })}
-                                                    className="w-full bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                    onChange={(e) => handleFieldChange('zip', e.target.value)}
+                                                    className={`w-full bg-[#0a0a0a] border rounded-xl p-4 text-base font-bold outline-none transition-all text-[#F2F2F2] ${errors.zip ? 'border-red-500' : 'border-[#222] focus:border-[#CCFF00]/30'}`}
                                                 />
+                                                {errors.zip && <p className="text-red-500 text-xs font-bold">{errors.zip}</p>}
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-xs font-bold uppercase tracking-wider text-[#777]">Country / Region</label>
                                                 <SearchableCountrySelect
                                                     value={formData.country}
-                                                    onChange={(val) => setFormData({ ...formData, country: val })}
+                                                    onChange={(val) => handleFieldChange('country', val)}
                                                     options={countries}
                                                 />
+                                                {errors.country && <p className="text-red-500 text-xs font-bold">{errors.country}</p>}
                                             </div>
                                             <div className="space-y-2">
                                                 <label className="text-xs font-bold uppercase tracking-wider text-[#777]">Phone Number</label>
@@ -587,17 +661,18 @@ const CheckoutContent = () => {
                                                     <input
                                                         type="tel"
                                                         value={formData.phone}
-                                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                                        onChange={(e) => handleFieldChange('phone', e.target.value)}
                                                         placeholder="Phone Number"
-                                                        className="flex-1 bg-[#0a0a0a] border border-[#222] rounded-xl p-4 text-base font-bold outline-none focus:border-[#CCFF00]/30 transition-all text-[#F2F2F2]"
+                                                        className={`flex-1 bg-[#0a0a0a] border rounded-xl p-4 text-base font-bold outline-none transition-all text-[#F2F2F2] ${errors.phone ? 'border-red-500' : 'border-[#222] focus:border-[#CCFF00]/30'}`}
                                                     />
                                                 </div>
+                                                {errors.phone && <p className="text-red-500 text-xs font-bold">{errors.phone}</p>}
                                             </div>
                                         </div>
                                     </section>
 
                                     <button
-                                        onClick={() => goToStep(4)}
+                                        onClick={() => handleNextStep(3)}
                                         className="w-full md:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-[#CCFF00] text-black font-black uppercase tracking-widest text-xs rounded-xl hover:scale-[1.02] active:scale-[0.97] transition-all shadow-[0_10px_30px_rgba(204,255,0,0.1)]"
                                     >
                                         Review & Pay <ArrowRight className="w-4 h-4" />
