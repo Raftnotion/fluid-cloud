@@ -10,7 +10,7 @@ import { countries } from '@/utils/countries';
 import { PriceLockOverlay } from '@/components/PriceLockOverlay';
 import { useLenis } from '@/components/LenisProvider';
 import { useRazorpay } from '@/hooks/useRazorpay';
-import { trackInitiateCheckout, isEventTracked, markEventTracked, getCheckoutEventId } from '@/extensions/meta-pixel';
+import { trackInitiateCheckout, trackAddPaymentInfo, isEventTracked, markEventTracked, getCheckoutEventId } from '@/extensions/meta-pixel';
 
 const SearchableCountrySelect = ({ value, onChange, options }: { value: string, onChange: (val: string) => void, options: any[] }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -259,6 +259,15 @@ const CheckoutContent = () => {
         else isValid = true;
 
         if (isValid) {
+            // Track AddPaymentInfo when billing (step 3) is completed
+            if (currentStep === 3) {
+                const eventKey = `addpaymentinfo_${getCheckoutEventId()}`;
+                if (!isEventTracked(eventKey)) {
+                    const planValue = plans[planParam as keyof typeof plans]?.price || 2999;
+                    trackAddPaymentInfo(planValue, [`plan_${planParam}`]);
+                    markEventTracked(eventKey);
+                }
+            }
             goToStep(currentStep + 1);
         }
     };

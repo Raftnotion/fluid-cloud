@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, ShieldCheck, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { PriceLockOverlay } from './PriceLockOverlay';
 import { TiltButton } from 'react-tilt-button';
+import { trackViewContent, isEventTracked, markEventTracked } from '@/extensions/meta-pixel';
 
 const plans = [
     { price: 999, original: 1299, label: '1 Year', savings: 300, bonus: 7500 },
@@ -16,6 +17,38 @@ const plans = [
 const PriceLock: React.FC = () => {
     const [tier, setTier] = useState<number>(0); // 0, 1, 2 corresponds to 1, 2, 3 years
     const [showOverlay, setShowOverlay] = useState(false);
+    const sectionRef = useRef<HTMLElement>(null);
+    const hasTrackedView = useRef(false);
+
+    // Track ViewContent when pricing section comes into view
+    useEffect(() => {
+        if (hasTrackedView.current) return;
+
+        const eventKey = 'viewcontent_pricing';
+        if (isEventTracked(eventKey)) {
+            hasTrackedView.current = true;
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting && !hasTrackedView.current) {
+                    // Fire ViewContent event
+                    trackViewContent('wpfye_hosting', 'WPFYE Fluid Cloud Hosting', plans[2].price);
+                    markEventTracked(eventKey);
+                    hasTrackedView.current = true;
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.5 } // 50% visible
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
 
     const handleTierChange = (idx: number) => {
         if (idx === 2 && tier !== 2) {
@@ -25,7 +58,7 @@ const PriceLock: React.FC = () => {
     };
 
     return (
-        <section id="pricing" className="w-full py-16 md:py-32 px-4 md:px-8 flex flex-col items-center bg-[#050505] relative overflow-hidden">
+        <section ref={sectionRef} id="pricing" className="w-full py-16 md:py-32 px-4 md:px-8 flex flex-col items-center bg-[#050505] relative overflow-hidden">
             {showOverlay && (
                 <PriceLockOverlay
                     isVisible={showOverlay}

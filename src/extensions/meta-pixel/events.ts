@@ -137,6 +137,24 @@ export function trackInitiateCheckout(
 }
 
 /**
+ * Track AddPaymentInfo event
+ * 
+ * @param value - Cart value
+ * @param contentIds - Optional product IDs
+ */
+export function trackAddPaymentInfo(
+    value: number,
+    contentIds?: string[]
+): string | null {
+    return trackEvent('AddPaymentInfo', {
+        value,
+        currency: metaConfig.currency,
+        content_ids: contentIds,
+        content_type: 'product',
+    });
+}
+
+/**
  * User data for Purchase tracking (Advanced Matching)
  */
 export interface PurchaseUserData {

@@ -15,7 +15,7 @@
  */
 
 export { MetaPixel } from './MetaPixel';
-export { useMetaEvent, trackEvent, trackPurchase, trackPageView, trackInitiateCheckout } from './events';
+export { useMetaEvent, trackEvent, trackPurchase, trackPageView, trackInitiateCheckout, trackViewContent, trackAddPaymentInfo } from './events';
 export { sendCAPIEvent } from './capi';
 export { isEventTracked, markEventTracked, getPurchaseEventId, getCheckoutEventId } from './utils';
 export type { MetaEvent, MetaUserData, MetaEventData } from './types';
