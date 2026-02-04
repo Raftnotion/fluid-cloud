@@ -5,9 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import { useLenis } from '@/components/LenisProvider';
 
 const Header: React.FC = () => {
     const pathname = usePathname();
+    const lenis = useLenis();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
@@ -66,16 +68,28 @@ const Header: React.FC = () => {
             const id = href.replace('/#', '');
             const element = document.getElementById(id);
             if (element) {
-                const navHeight = 60;
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+                // Close menu first on mobile
+                setIsMenuOpen(false);
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
+                // Small delay to let menu close and get accurate position
+                setTimeout(() => {
+                    const navHeight = 70;
 
-                window.history.pushState(null, '', href);
+                    // Use Lenis scrollTo if available, otherwise fallback to native
+                    if (lenis) {
+                        lenis.scrollTo(element, { offset: -navHeight });
+                    } else {
+                        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+                        const offsetPosition = elementPosition - navHeight;
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+
+                    window.history.pushState(null, '', href);
+                }, 10);
+                return;
             }
         }
         setIsMenuOpen(false);
