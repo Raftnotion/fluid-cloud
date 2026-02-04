@@ -51,10 +51,16 @@ interface PaymentDetails {
     notes?: Record<string, string>;
 }
 
+interface PaymentResult {
+    success: boolean;
+    orderId?: string;
+    paymentId?: string;
+}
+
 interface UseRazorpayReturn {
     isLoading: boolean;
     error: string | null;
-    initiatePayment: (details: PaymentDetails) => Promise<boolean>;
+    initiatePayment: (details: PaymentDetails) => Promise<PaymentResult>;
 }
 
 export function useRazorpay(): UseRazorpayReturn {
@@ -76,7 +82,7 @@ export function useRazorpay(): UseRazorpayReturn {
         }
     }, []);
 
-    const initiatePayment = useCallback(async (details: PaymentDetails): Promise<boolean> => {
+    const initiatePayment = useCallback(async (details: PaymentDetails): Promise<PaymentResult> => {
         setIsLoading(true);
         setError(null);
 
@@ -142,23 +148,27 @@ export function useRazorpay(): UseRazorpayReturn {
 
                             if (verifyData.success) {
                                 setIsLoading(false);
-                                resolve(true);
+                                resolve({
+                                    success: true,
+                                    orderId: response.razorpay_order_id,
+                                    paymentId: response.razorpay_payment_id,
+                                });
                             } else {
                                 setError('Payment verification failed');
                                 setIsLoading(false);
-                                resolve(false);
+                                resolve({ success: false });
                             }
                         } catch {
                             setError('Payment verification failed');
                             setIsLoading(false);
-                            resolve(false);
+                            resolve({ success: false });
                         }
                     },
                     modal: {
                         ondismiss: () => {
                             setError('Payment was cancelled');
                             setIsLoading(false);
-                            resolve(false);
+                            resolve({ success: false });
                         },
                     },
                 };
@@ -170,7 +180,7 @@ export function useRazorpay(): UseRazorpayReturn {
             const message = err instanceof Error ? err.message : 'Payment failed';
             setError(message);
             setIsLoading(false);
-            return false;
+            return { success: false };
         }
     }, [scriptLoaded]);
 

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ArrowRight, Zap, Globe, Mail, Shield } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Zap, Globe, Mail, Shield, Receipt, IndianRupee } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -11,25 +11,52 @@ import { useSearchParams } from 'next/navigation';
 const SuccessContent = () => {
     const searchParams = useSearchParams();
     const [orderDetails, setOrderDetails] = useState({
+        orderId: '',
+        paymentId: '',
+        amount: 0,
         domain: '',
         email: '',
         plan: '3 Year (Price Lock)',
     });
 
     useEffect(() => {
+        // Get payment details from URL params
+        const paymentId = searchParams.get('payment_id') || '';
+        const orderId = searchParams.get('order_id') || '';
+        const planParam = searchParams.get('plan') || '3';
+
+        // Calculate amount based on plan
+        const planPrices: Record<string, number> = {
+            '1': 999,
+            '2': 1998,
+            '3': 2999
+        };
+
         const savedData = localStorage.getItem('checkout_form');
         if (savedData) {
             try {
                 const data = JSON.parse(savedData);
                 setOrderDetails({
+                    orderId: orderId || `ORD-${Date.now()}`,
+                    paymentId: paymentId,
+                    amount: planPrices[planParam] || 2697,
                     domain: data.domain || '',
                     email: data.email || '',
-                    plan: searchParams.get('plan') === '1' ? '1 Year Plan' :
-                        searchParams.get('plan') === '2' ? '2 Year Plan' : '3 Year (Price Lock)',
+                    plan: planParam === '1' ? '1 Year Plan' :
+                        planParam === '2' ? '2 Year Plan' : '3 Year (Price Lock)',
                 });
             } catch {
                 // Ignore parse errors
             }
+        } else {
+            setOrderDetails(prev => ({
+                ...prev,
+                orderId: orderId || `ORD-${Date.now()}`,
+                paymentId: paymentId,
+                amount: planPrices[planParam] || 2697,
+                plan: planParam === '1' ? '1 Year Plan' :
+                    planParam === '2' ? '2 Year Plan' : '3 Year (Price Lock)',
+            }));
         }
     }, [searchParams]);
 
@@ -83,6 +110,25 @@ const SuccessContent = () => {
                         <h3 className="text-xs font-black uppercase tracking-[0.3em] text-[#666] mb-6">Order Details</h3>
 
                         <div className="space-y-4">
+                            {/* Order ID */}
+                            <div className="flex items-center justify-between py-3 border-b border-[#1a1a1a]">
+                                <div className="flex items-center gap-3 text-[#888]">
+                                    <Receipt className="w-4 h-4" />
+                                    <span className="text-sm font-bold">Order ID</span>
+                                </div>
+                                <span className="text-sm font-bold text-[#CCFF00] font-mono">{orderDetails.orderId || 'Processing...'}</span>
+                            </div>
+
+                            {/* Amount Paid */}
+                            <div className="flex items-center justify-between py-3 border-b border-[#1a1a1a]">
+                                <div className="flex items-center gap-3 text-[#888]">
+                                    <IndianRupee className="w-4 h-4" />
+                                    <span className="text-sm font-bold">Amount Paid</span>
+                                </div>
+                                <span className="text-sm font-bold text-[#F2F2F2]">₹{orderDetails.amount.toLocaleString('en-IN')}</span>
+                            </div>
+
+                            {/* Domain */}
                             <div className="flex items-center justify-between py-3 border-b border-[#1a1a1a]">
                                 <div className="flex items-center gap-3 text-[#888]">
                                     <Globe className="w-4 h-4" />
@@ -91,6 +137,7 @@ const SuccessContent = () => {
                                 <span className="text-sm font-bold text-[#F2F2F2]">{orderDetails.domain || 'Not specified'}</span>
                             </div>
 
+                            {/* Email */}
                             <div className="flex items-center justify-between py-3 border-b border-[#1a1a1a]">
                                 <div className="flex items-center gap-3 text-[#888]">
                                     <Mail className="w-4 h-4" />
@@ -99,6 +146,7 @@ const SuccessContent = () => {
                                 <span className="text-sm font-bold text-[#F2F2F2]">{orderDetails.email || 'Not specified'}</span>
                             </div>
 
+                            {/* Plan */}
                             <div className="flex items-center justify-between py-3">
                                 <div className="flex items-center gap-3 text-[#888]">
                                     <Shield className="w-4 h-4" />

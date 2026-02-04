@@ -12,6 +12,19 @@ interface PriceLockOverlayProps {
 export const PriceLockOverlay: React.FC<PriceLockOverlayProps> = ({ isVisible, onComplete }) => {
     const [status, setStatus] = useState<'locking' | 'unlocked'>('locking');
 
+    // Lock body scroll when overlay is visible
+    useEffect(() => {
+        if (isVisible) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isVisible]);
+
     useEffect(() => {
         if (isVisible) {
             setStatus('locking');

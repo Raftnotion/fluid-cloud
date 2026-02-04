@@ -721,7 +721,7 @@ const CheckoutContent = () => {
 
                                             <button
                                                 onClick={async () => {
-                                                    const success = await initiatePayment({
+                                                    const result = await initiatePayment({
                                                         amount: totalAmount,
                                                         currency: 'INR',
                                                         name: `${formData.firstName} ${formData.lastName}`,
@@ -734,9 +734,9 @@ const CheckoutContent = () => {
                                                             billingType: formData.isCompany ? 'Company' : 'Individual',
                                                         },
                                                     });
-                                                    if (success) {
+                                                    if (result.success) {
                                                         localStorage.removeItem('checkout_step');
-                                                        router.push(`/checkout/success?plan=${planParam}`);
+                                                        router.push(`/checkout/success?plan=${planParam}&order_id=${result.orderId || ''}&payment_id=${result.paymentId || ''}`);
                                                     } else {
                                                         router.push(`/checkout/failed?plan=${planParam}`);
                                                     }
