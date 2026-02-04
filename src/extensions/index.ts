@@ -25,6 +25,12 @@
  */
 export { HeadScripts, BodyScripts, FooterScripts } from './script-injector';
 
+/**
+ * UTM Tracker Extension
+ * Advanced UTM & attribution tracking.
+ */
+export { UTMTracker, useUTM, getUTMForAPI, captureUTM, clearUTM, getUTMData } from './utm-tracker';
+
 // Future extensions will be exported here:
 // export { GoogleAnalytics } from './google-analytics';
 // export { CrispChat } from './crisp-chat';
