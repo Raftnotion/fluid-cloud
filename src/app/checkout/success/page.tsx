@@ -110,13 +110,13 @@ const SuccessContent = () => {
                         <h3 className="text-xs font-black uppercase tracking-[0.3em] text-[#666] mb-6">Order Details</h3>
 
                         <div className="space-y-4">
-                            {/* Order ID */}
+                            {/* Payment ID */}
                             <div className="flex items-center justify-between py-3 border-b border-[#1a1a1a]">
                                 <div className="flex items-center gap-3 text-[#888]">
                                     <Receipt className="w-4 h-4" />
-                                    <span className="text-sm font-bold">Order ID</span>
+                                    <span className="text-sm font-bold">Payment ID</span>
                                 </div>
-                                <span className="text-sm font-bold text-[#CCFF00] font-mono">{orderDetails.orderId || 'Processing...'}</span>
+                                <span className="text-sm font-bold text-[#CCFF00] font-mono">{orderDetails.paymentId || 'Processing...'}</span>
                             </div>
 
                             {/* Amount Paid */}

@@ -736,7 +736,7 @@ const CheckoutContent = () => {
                                                     });
                                                     if (result.success) {
                                                         localStorage.removeItem('checkout_step');
-                                                        router.push(`/checkout/success?plan=${planParam}&order_id=${result.orderId || ''}&payment_id=${result.paymentId || ''}`);
+                                                        router.push(`/checkout/success?plan=${planParam}&payment_id=${result.paymentId || ''}`);
                                                     } else {
                                                         router.push(`/checkout/failed?plan=${planParam}`);
                                                     }

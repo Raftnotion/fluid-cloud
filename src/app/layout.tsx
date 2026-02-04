@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { LenisProvider } from "@/components/LenisProvider";
 import { HashScroller } from "@/components/HashScroller";
+import { HeadScripts, BodyScripts, FooterScripts } from "@/extensions";
 
 export const metadata: Metadata = {
     title: "WPFYE | The Fluid Cloud",
@@ -31,14 +32,17 @@ export default function RootLayout({
                     href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600&f[]=satoshi@400,500,700&display=swap"
                     rel="stylesheet"
                 />
+                <HeadScripts />
             </head>
             <body>
+                <BodyScripts />
                 <LenisProvider>
                     <HashScroller />
                     {children}
                 </LenisProvider>
                 <div className="noise-texture" />
                 <div className="spotlight" />
+                <FooterScripts />
             </body>
         </html>
     );
