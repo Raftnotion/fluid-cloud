@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useEffect, useState, Suspense, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Zap, Globe, Mail, Shield, Receipt, IndianRupee } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { trackPurchase, isEventTracked, markEventTracked, getPurchaseEventId } from '@/extensions/meta-pixel';
 
 const SuccessContent = () => {
     const searchParams = useSearchParams();
@@ -58,6 +59,76 @@ const SuccessContent = () => {
                     planParam === '2' ? '2 Year Plan' : '3 Year (Price Lock)',
             }));
         }
+    }, [searchParams]);
+
+    // Track Purchase event (only once per payment_id)
+    const hasTrackedPurchase = useRef(false);
+    useEffect(() => {
+        if (hasTrackedPurchase.current) return;
+
+        const paymentId = searchParams.get('payment_id');
+        if (!paymentId) return;
+
+        // Check if already tracked using payment_id as unique key
+        const eventId = getPurchaseEventId(paymentId);
+        if (isEventTracked(eventId)) {
+            console.log('[Meta] Purchase already tracked for:', paymentId);
+            return;
+        }
+
+        // Get ALL user data for Advanced Matching
+        const savedData = localStorage.getItem('checkout_form');
+        let userData = {
+            email: '',
+            phone: '',
+            firstName: '',
+            lastName: '',
+            city: '',
+            state: '',
+            zip: '',
+            country: '',
+        };
+
+        if (savedData) {
+            try {
+                const data = JSON.parse(savedData);
+                userData = {
+                    email: data.email || '',
+                    phone: data.phone || '',
+                    firstName: data.firstName || '',
+                    lastName: data.lastName || '',
+                    city: data.city || '',
+                    state: data.state || '',
+                    zip: data.zip || '',
+                    country: data.country || '',
+                };
+            } catch {
+                // Ignore
+            }
+        }
+
+        // Get plan value
+        const planParam = searchParams.get('plan') || '3';
+        const planPrices: Record<string, number> = {
+            '1': 999,
+            '2': 1998,
+            '3': 2999
+        };
+        const value = planPrices[planParam] || 2999;
+
+        // Track Purchase with ALL user data for max matching
+        trackPurchase(value, paymentId, userData).then(() => {
+            markEventTracked(eventId);
+            hasTrackedPurchase.current = true;
+            console.log('[Meta] Purchase tracked with full matching:', {
+                paymentId,
+                value,
+                hasEmail: !!userData.email,
+                hasPhone: !!userData.phone,
+                hasName: !!userData.firstName,
+                hasCity: !!userData.city
+            });
+        });
     }, [searchParams]);
 
     return (

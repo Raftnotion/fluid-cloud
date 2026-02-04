@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { LenisProvider } from "@/components/LenisProvider";
 import { HashScroller } from "@/components/HashScroller";
-import { HeadScripts, BodyScripts, FooterScripts, UTMTracker } from "@/extensions";
+import { HeadScripts, BodyScripts, FooterScripts, UTMTracker, MetaPixel } from "@/extensions";
 
 export const metadata: Metadata = {
     title: "WPFYE | The Fluid Cloud",
@@ -37,6 +37,7 @@ export default function RootLayout({
             <body>
                 <BodyScripts />
                 <UTMTracker />
+                <MetaPixel />
                 <LenisProvider>
                     <HashScroller />
                     {children}

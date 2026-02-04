@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, Suspense, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, Lock, Globe, User, CreditCard, ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Zap, Search, Check, Loader2 } from 'lucide-react';
 import Header from '@/components/Header';
@@ -10,6 +10,7 @@ import { countries } from '@/utils/countries';
 import { PriceLockOverlay } from '@/components/PriceLockOverlay';
 import { useLenis } from '@/components/LenisProvider';
 import { useRazorpay } from '@/hooks/useRazorpay';
+import { trackInitiateCheckout, isEventTracked, markEventTracked, getCheckoutEventId } from '@/extensions/meta-pixel';
 
 const SearchableCountrySelect = ({ value, onChange, options }: { value: string, onChange: (val: string) => void, options: any[] }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -316,6 +317,21 @@ const CheckoutContent = () => {
             window.scrollTo({ top: 0, behavior: 'instant' });
         }
     }, [step, lenis]);
+
+    // Track InitiateCheckout event (only once per session)
+    const hasTrackedCheckout = useRef(false);
+    useEffect(() => {
+        if (hasTrackedCheckout.current) return;
+
+        const eventId = getCheckoutEventId();
+        if (isEventTracked(eventId)) return;
+
+        // Track InitiateCheckout
+        const planValue = plans[planParam as keyof typeof plans]?.price || 2999;
+        trackInitiateCheckout(planValue, [`plan_${planParam}`], 1);
+        markEventTracked(eventId);
+        hasTrackedCheckout.current = true;
+    }, [planParam]);
 
     const handleStepClick = (targetStep: number) => {
         // Only allow jumping back or to steps already "reached"

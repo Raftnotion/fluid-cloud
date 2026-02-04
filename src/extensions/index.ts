@@ -4,12 +4,13 @@
  * ║                     Main Registry                             ║
  * ╚═══════════════════════════════════════════════════════════════╝
  * 
- * Version: 1.0.0
+ * Version: 1.1.0
  * 
  * Extension System Structure:
  * extensions/
  * ├── script-injector/     ← Third-party scripts
- * ├── google-analytics/    ← (future)
+ * ├── utm-tracker/         ← UTM & attribution tracking
+ * ├── meta-pixel/          ← Meta Ads tracking
  * └── crisp-chat/          ← (future)
  * 
  * Har extension apne folder mein self-contained hai.
@@ -31,6 +32,9 @@ export { HeadScripts, BodyScripts, FooterScripts } from './script-injector';
  */
 export { UTMTracker, useUTM, getUTMForAPI, captureUTM, clearUTM, getUTMData } from './utm-tracker';
 
-// Future extensions will be exported here:
-// export { GoogleAnalytics } from './google-analytics';
-// export { CrispChat } from './crisp-chat';
+/**
+ * Meta Pixel Extension
+ * Meta Ads tracking with Pixel + Conversions API.
+ */
+export { MetaPixel, useMetaEvent, trackEvent, trackPurchase, trackPageView } from './meta-pixel';
+
