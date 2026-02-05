@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, ShieldCheck, Zap, Sparkles } from 'lucide-react';
+import { ShieldCheck, Zap, Sparkles } from 'lucide-react';
+import { useLenis } from '@/components/LenisProvider';
 
 interface PriceLockOverlayProps {
     isVisible: boolean;
@@ -11,19 +12,23 @@ interface PriceLockOverlayProps {
 
 export const PriceLockOverlay: React.FC<PriceLockOverlayProps> = ({ isVisible, onComplete }) => {
     const [status, setStatus] = useState<'locking' | 'unlocked'>('locking');
+    const lenis = useLenis();
 
-    // Lock body scroll when overlay is visible
+    // Lock scroll when overlay is visible using Lenis
     useEffect(() => {
         if (isVisible) {
+            lenis?.stop();
             document.body.style.overflow = 'hidden';
         } else {
+            lenis?.start();
             document.body.style.overflow = '';
         }
 
         return () => {
+            lenis?.start();
             document.body.style.overflow = '';
         };
-    }, [isVisible]);
+    }, [isVisible, lenis]);
 
     useEffect(() => {
         if (isVisible) {

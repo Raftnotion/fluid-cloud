@@ -180,6 +180,7 @@ const CheckoutContent = () => {
         router.push(`${pathname}?${params.toString()}`, { scroll: false });
     };
     const [showPriceLockAnimation, setShowPriceLockAnimation] = useState(false);
+    const [redirectStatus, setRedirectStatus] = useState<'idle' | 'success' | 'failed'>('idle');
 
     const handlePlanChange = (p: string) => {
         if (p === '3' && planParam !== '3') {
@@ -215,8 +216,8 @@ const CheckoutContent = () => {
         const newErrors: Record<string, string> = {};
         if (!formData.domain.trim()) {
             newErrors.domain = 'Domain is required';
-        } else if (!/^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]?\.[a-zA-Z]{2,}$/.test(formData.domain.trim())) {
-            newErrors.domain = 'Enter a valid domain (e.g., example.com)';
+        } else if (!/^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9]?\.([a-zA-Z]{2,}|[a-zA-Z]{2,}\.[a-zA-Z]{2,})$/.test(formData.domain.trim())) {
+            newErrors.domain = 'Enter a valid domain (e.g., example.com or example.co.in)';
         }
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -242,7 +243,11 @@ const CheckoutContent = () => {
         if (!formData.state.trim()) newErrors.state = 'State is required';
         if (!formData.zip.trim()) newErrors.zip = 'ZIP code is required';
         if (!formData.country.trim()) newErrors.country = 'Country is required';
-        if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+        if (!formData.phone.trim()) {
+            newErrors.phone = 'Phone number is required';
+        } else if (!/^\d{10}$/.test(formData.phone.trim())) {
+            newErrors.phone = 'Phone number must be exactly 10 digits';
+        }
         if (formData.isCompany) {
             if (!formData.companyName.trim()) newErrors.companyName = 'Company name is required';
             if (!formData.gstin.trim()) newErrors.gstin = 'GSTIN is required';
@@ -397,6 +402,27 @@ const CheckoutContent = () => {
                     onComplete={() => setShowPriceLockAnimation(false)}
                 />
             ) : null}
+
+            {/* Redirect Processing Overlay */}
+            <AnimatePresence>
+                {redirectStatus !== 'idle' && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[9999] bg-[#050505] flex flex-col items-center justify-center"
+                    >
+                        <div className="flex flex-col items-center gap-6">
+                            <Loader2 className="w-10 h-10 text-[#CCFF00] animate-spin" />
+                            <div className="text-center">
+                                <h2 className="text-xl font-bold font-['Clash_Display'] text-[#F2F2F2] mb-3">Processing...</h2>
+                                <p className="text-sm text-[#888] font-bold">Please do not close or refresh this tab.</p>
+                                <p className="text-xs text-[#555] font-bold mt-1">You will receive a confirmation shortly.</p>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
             <Header />
 
             <main className="pt-20 md:pt-32 pb-24 md:pb-40 px-4 md:px-8 relative z-10" style={{ paddingBottom: 'max(6rem, env(safe-area-inset-bottom))' }}>
@@ -686,8 +712,12 @@ const CheckoutContent = () => {
                                                     <input
                                                         type="tel"
                                                         value={formData.phone}
-                                                        onChange={(e) => handleFieldChange('phone', e.target.value)}
+                                                        onChange={(e) => {
+                                                            const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                                                            handleFieldChange('phone', value);
+                                                        }}
                                                         placeholder="Phone Number"
+                                                        maxLength={10}
                                                         className={`flex-1 bg-[#0a0a0a] border rounded-xl p-4 text-base font-bold outline-none transition-all text-[#F2F2F2] ${errors.phone ? 'border-red-500' : 'border-[#222] focus:border-[#CCFF00]/30'}`}
                                                     />
                                                 </div>
@@ -761,9 +791,15 @@ const CheckoutContent = () => {
                                                     });
                                                     if (result.success) {
                                                         localStorage.removeItem('checkout_step');
-                                                        router.push(`/checkout/success?plan=${planParam}&payment_id=${result.paymentId || ''}`);
+                                                        setRedirectStatus('success');
+                                                        setTimeout(() => {
+                                                            router.push(`/checkout/success?plan=${planParam}&payment_id=${result.paymentId || ''}`);
+                                                        }, 100);
                                                     } else {
-                                                        router.push(`/checkout/failed?plan=${planParam}`);
+                                                        setRedirectStatus('failed');
+                                                        setTimeout(() => {
+                                                            router.push(`/checkout/failed?plan=${planParam}`);
+                                                        }, 100);
                                                     }
                                                 }}
                                                 disabled={isPaymentLoading}
