@@ -8,6 +8,8 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { trackPurchase, isEventTracked, markEventTracked, getPurchaseEventId } from '@/extensions/meta-pixel';
+import { sendOrderNotification } from '@/extensions/slack-notification';
+import { getUTMData } from '@/extensions/utm-tracker';
 
 const SuccessContent = () => {
     const searchParams = useSearchParams();
@@ -127,6 +129,53 @@ const SuccessContent = () => {
                 hasPhone: !!userData.phone,
                 hasName: !!userData.firstName,
                 hasCity: !!userData.city
+            });
+
+            // Send Slack notification with full order details
+            const utmData = getUTMData();
+            const checkoutData = savedData ? JSON.parse(savedData) : {};
+
+            sendOrderNotification({
+                // Payment
+                paymentId,
+                amount: value,
+                plan: planParam === '1' ? '1 Year Plan' :
+                    planParam === '2' ? '2 Year Plan' : '3 Year (Price Lock)',
+
+                // Customer
+                firstName: checkoutData.firstName || '',
+                lastName: checkoutData.lastName || '',
+                email: checkoutData.email || '',
+                phone: checkoutData.phone || '',
+                domain: checkoutData.domain || '',
+
+                // Billing
+                address: checkoutData.address || '',
+                city: checkoutData.city || '',
+                state: checkoutData.state || '',
+                zip: checkoutData.zip || '',
+                country: checkoutData.country || '',
+                isCompany: checkoutData.isCompany || false,
+                companyName: checkoutData.companyName || '',
+                gstin: checkoutData.gstin || '',
+
+                // UTM Attribution
+                utmSource: utmData?.utm?.utm_source,
+                utmMedium: utmData?.utm?.utm_medium,
+                utmCampaign: utmData?.utm?.utm_campaign,
+                utmTerm: utmData?.utm?.utm_term,
+                utmContent: utmData?.utm?.utm_content,
+                landingPage: utmData?.landingPage,
+                referrer: utmData?.referrer,
+
+                // Device
+                browser: utmData?.device?.browser,
+                os: utmData?.device?.os,
+                deviceType: utmData?.device?.deviceType,
+                ip: utmData?.device?.ip,
+
+                // Timestamp
+                timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
             });
         });
     }, [searchParams]);
